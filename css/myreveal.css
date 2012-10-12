@@ -1,0 +1,31 @@
+#my_overview {
+	/*background: #000000;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #ffffff;
+	top: 20px;
+	left: 20px;
+	width: 200px; height: 200px;
+	opacity: 0.5; position: absolute;
+	z-index: 10;*/
+	/*-webkit-box-shadow: 1px 1px 3px #000;*/
+}
+
+body .reveal #my_overview #my_overviewHSlide {
+	background: #aaaaaa;
+	width: 30px;
+	height: 30px;
+	opacity: 0.5;
+	position: absolute;
+	z-index: 10;
+	/*-webkit-box-shadow: 1px 1px 3px #000;*/
+}
+
+body .reveal #my_overview #my_overviewVSlide {
+	background: #aaaaaa;
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	z-index: 10;
+	/*-webkit-box-shadow: 1px 1px 3px #000;*/
+}

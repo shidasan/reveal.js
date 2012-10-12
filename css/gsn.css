@@ -1,0 +1,168 @@
+.reveal #dcase_node #idtext {
+	padding-left: 8px;
+	padding-right: 2px;
+	position: absolute;
+	top: 10%;
+	margin-top: -0.4em;
+	font-family: "Osaka－等幅","Osaka-Mono";
+	font-size: 4px;
+	color: #000;
+}
+
+.reveal #dcase_node #idevitext {
+	padding-left: 20px;
+	padding-right: 2px;
+	position: absolute;
+	top: 40%;
+	margin-top: -1em;
+	font-family: "Osaka－等幅","Osaka-Mono";
+	font-size: 4px;
+	/*padding: 30px;*/
+	text-align: center;
+	color: #000;
+}
+
+.reveal #dcase_node #text {
+	padding-left: 8px;
+	padding-right: 2px;
+	position: absolute;
+	top: 50%;
+	margin-top: -0.4em;
+	font-family: "Osaka－等幅","Osaka-Mono";
+	font-size: 4px;
+	color: #000;
+}
+
+.reveal #dcase_node #evitext {
+	padding-left: 5px;
+	padding-right: 2px;
+	position: absolute;
+	top: 65%;
+	width: 200px;
+	margin-top: -1em;
+	font-family: "Osaka－等幅","Osaka-Mono";
+	font-size: 4px;
+	/*padding: 30px;*/
+	color: #000;
+}
+
+#tree {
+	top: 100px;
+	position: relative;
+}
+
+#dcase_node {
+	/*background-color: #ffffff;*/
+	width: 100%;
+	height: 0px;
+	position: relative;
+	overflow: visible;
+	z-index: 200;
+}
+
+#dcase {
+	/*background-color: #ffffff;*/
+	width: 100%;
+	height: 1024px;
+	/*top: 100px;*/
+	position: relative;
+	overflow: visible;
+	z-index: 0;
+}
+
+.dcase_line {
+	/*margin-top: 15px;*/
+	height: 128px;
+	position: absolute;
+}
+
+.mysvg {
+	width: 100%;
+	height: 64px;
+}
+
+.reveal #dcase_node .goal {
+	background: #ffffff;
+	border-style: solid;
+	border-width: 2px;
+	width: 220px;
+	height: 50px;
+	position: absolute;
+	z-index: 10;
+	/*-webkit-box-shadow: 1px 1px 3px #000;*/
+}
+
+.reveal #dcase_node .strategy {
+	background: #ffffff;
+	border-style: solid;
+	border-width: 2px;
+	width: 220px;
+	height: 70px;
+	transform: skew(-30deg);
+	-webkit-transform: skew(-30deg);
+	-moz-transform: skew(-30deg);
+	position: absolute;
+	z-index: 10;
+	/*-webkit-box-shadow: 1px 1px 3px #000;*/
+}
+
+.reveal #dcase_node .evidence {
+	position: relative;
+	background: #ffffff;
+	border-style: solid;
+	border-width: 2px;
+	width: 220px;
+	height: 50px;
+	border-radius: 110px/30px;
+	-webkit-radius: 120px;
+	-moz-radius: 120px;
+	-o-border-radius: 120px;
+	position: absolute;
+	z-index: 10;
+	/*-webkit-box-shadow: 1px 1px 3px #000;*/
+}
+
+.reveal #dcase_node .context {
+	background: #ffffff;
+	border-style: solid;
+	border-width: 2px;
+	width: 256px;
+	height: 128px;
+	border-radius: 150px;
+	-webkit-radius: 150px;
+	-moz-radius: 150px;
+	-o-border-radius: 150px;
+	position: absolute;
+	float: left;
+	left: -50%;
+}
+
+.reveal #dcase_node .ugoal {
+	background: #ffffff;
+	border-style: solid;
+	border-width: 2px;
+	width: 256px;
+	height: 128px;
+	position: absolute;
+	float: left;
+	left: -50%;
+
+}
+
+.reveal #dcase_node .ugoaldiamond {
+	margin: 0 auto;
+	background: #ffffff;
+	border-style: solid;
+	border-width: 2px;
+	/*margin-top: 60px;*/
+	width: 20px;
+	height: 20px;
+	-moz-transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	/*position: absolute;
+	float: left;
+	left: -50%;*/
+
+}

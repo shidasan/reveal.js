@@ -43,7 +43,7 @@ var Reveal = (function(){
 			rollingLinks: true,
 
 			// Transition style (see /css/theme)
-			theme: 'default', 
+			theme: 'simple', 
 
 			// Transition style
 			transition: 'default', // default/cube/page/concave/linear(2d),
@@ -124,6 +124,7 @@ var Reveal = (function(){
 
 		// Loads the dependencies and continues to #start() once done
 		load();
+    myOverview();
 		
 	}
 
@@ -412,6 +413,7 @@ var Reveal = (function(){
 
 		var triggered = true;
 
+    console.log('keyplessed: ' + parseInt(event.keyCode));
 		switch( event.keyCode ) {
 			// p, page up
 			case 80: case 33: navigatePrev(); break; 
@@ -673,7 +675,70 @@ var Reveal = (function(){
 		}
 
 	}
-	
+
+/* ----------------------------------------------------------------- */
+// my source
+/* ----------------------------------------------------------------- */
+
+	function myOverview() {
+		if (config.overview) {
+			dom.wrapper.classList.add( 'overview' );
+			var horizontalSlides = document.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR );
+      var $field = $('#my_overview');
+      var pad = 5;
+      for( var i = 0, len1 = horizontalSlides.length; i < len1; i++ ) {
+        var hslide = horizontalSlides[i];
+        var o_slide = $field.append('<div></div>').children('div:last');
+        o_slide.attr('id', 'my_overviewHSlide');
+        var o_slide_w = parseInt($('#my_overviewHSlide').css('width'));
+        var o_slide_h = parseInt($('#my_overviewHSlide').css('height'));
+        o_slide.css('left', (o_slide_w * i + pad) + 'px');
+        o_slide.css('top', '50px');
+				var verticalSlides = hslide.querySelectorAll( 'section' );
+        var vpad = 5;
+				for( var j = 1, len2 = verticalSlides.length; j < len2; j++ ) {
+          var vslide = verticalSlides[i];
+          var vo_slide = o_slide.append('<div></div>').children('div:last');
+          vo_slide.attr('id', 'my_overviewVSlide');
+          vo_slide.css('top', ((o_slide_h * j) + vpad) + 'px');
+          vpad += 5;
+        }
+        pad += 5;
+      }
+		}
+	}
+
+  function reset_overview_slide (h, v) {
+    if (h < 0 || v < 0) return;
+    var ho_slide = $('#my_overview > #my_overviewHSlide:nth-child(' + (h + 1) + '):first');
+    if (v != 0) {
+      var vo_slide = ho_slide.children('div:nth-child(' + v  + ')');
+      vo_slide.css('background', '#aaaaaa');
+    }
+    else {
+      ho_slide.css('background', '#aaaaaa');
+    }
+  }
+
+  function overview_slide (h, v) {
+    var $hslides = $('#my_overview').children();
+    //if (h < 0 || v < 0) return;
+    h = (h < 0) ? 0 : h;
+    v = (v < 0) ? 0 : v;
+    h = (h > $hslides.length-1) ? $hslides.length-1 : h;
+    var $vslides = $($hslides[h]).children();
+    v = (v > $vslides.length) ? $vslides.length : v;
+    var ho_slide = $('#my_overview > #my_overviewHSlide:nth-child(' + (h + 1) + '):first');
+    if (v != 0) {
+      var vo_slide = ho_slide.children('div:nth-child(' + v  + ')');
+      vo_slide.css('background', '#aa0000');
+    }
+    else {
+      ho_slide.css('background', '#aa0000');
+    }
+  }
+/* ----------------------------------------------------------------- */
+
 	/**
 	 * Exits the slide overview and enters the currently
 	 * active slide.
@@ -1129,13 +1194,17 @@ var Reveal = (function(){
 	function navigateLeft() {
 		// Prioritize hiding fragments
 		if( isOverviewActive() || previousFragment() === false ) {
-			slide( indexh - 1, 0 );
+			reset_overview_slide(indexh, indexv);
+			overview_slide( indexh - 1, 0 );
+			slide( indexh - 1, 0 ); 
 		}
 	}
 
 	function navigateRight() {
 		// Prioritize revealing fragments
 		if( isOverviewActive() || nextFragment() === false ) {
+			reset_overview_slide(indexh, indexv);
+			overview_slide( indexh + 1, 0 );
 			slide( indexh + 1, 0 );
 		}
 	}
@@ -1143,6 +1212,8 @@ var Reveal = (function(){
 	function navigateUp() {
 		// Prioritize hiding fragments
 		if( isOverviewActive() || previousFragment() === false ) {
+			reset_overview_slide(indexh, indexv);
+			overview_slide( indexh, indexv - 1 );
 			slide( indexh, indexv - 1 );
 		}
 	}
@@ -1150,6 +1221,8 @@ var Reveal = (function(){
 	function navigateDown() {
 		// Prioritize revealing fragments
 		if( isOverviewActive() || nextFragment() === false ) {
+			reset_overview_slide( indexh, indexv);
+			overview_slide( indexh, indexv + 1);
 			slide( indexh, indexv + 1 );
 		}
 	}
