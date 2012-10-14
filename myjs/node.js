@@ -320,4 +320,5 @@ $(function() {
   $('#dcase').svg({onLoad: draw_dcaseSVG});
   //$('#dscript_flow').svg({onLoad: draw_dscriptSVG});
   sendDummyGoal(neoMng, "RAMディスクにデータをコピーする");
+  //login('172.16.151.131');
 });
