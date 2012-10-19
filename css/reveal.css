@@ -96,6 +96,20 @@ body {
 		opacity: 1;
 	}
 
+.reveal .hiddenSlides section .fragment {
+	opacity: 0;
+
+	-webkit-transition: all .2s ease;
+	   -moz-transition: all .2s ease;
+	    -ms-transition: all .2s ease;
+	     -o-transition: all .2s ease;
+	        transition: all .2s ease;
+}
+	.reveal .hiddenSlides section .fragment.visible {
+		opacity: 1;
+	}
+
+
 
 /*********************************************
  * DEFAULT ELEMENT STYLES
@@ -394,7 +408,6 @@ body {
 	    -ms-transform: translate3d( 0px, 110%, 0px ) rotateX( -90deg );
 	        transform: translate3d( 0px, 110%, 0px ) rotateX( -90deg );
 }
-
 
 /*********************************************
  * SLIDES
