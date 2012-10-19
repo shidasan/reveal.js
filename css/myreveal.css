@@ -29,3 +29,7 @@ body .reveal #my_overview #my_overviewVSlide {
 	z-index: 10;
 	/*-webkit-box-shadow: 1px 1px 3px #000;*/
 }
+
+body .reveal .hiddenSlides>section {
+	display: none;
+}

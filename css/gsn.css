@@ -81,6 +81,16 @@
 	height: 64px;
 }
 
+.reveal .tree {
+	background: #ffffff;
+	border-style: solid;
+	border-width: 2px;
+	width: 220px;
+	height: 220px;
+	position: absolute;
+	z-index: 10;
+}
+
 .reveal #dcase_node .goal {
 	background: #ffffff;
 	border-style: solid;

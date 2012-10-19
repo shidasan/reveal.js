@@ -3,7 +3,7 @@ var field_width = 0;
 var line;
 var viewer;
 var flowviewer;
-var neoMng;
+var mng;
 var svg;
 var dscript_svg;
 
@@ -279,21 +279,21 @@ function resetLine(lines, node, x, y, isAnimate) {
   }
 }
 
-function sendDummyGoal(neoMng, str) {
+function sendDummyGoal(str) {
   setTimeout(function() {
     var res = DummyAjax();
-    neoMng.createTopGoal_Dummy(str);
-    neoMng.createTopStrategy_Dummy(neoMng.topGoal, 'Strategy', DummyStrategy());
+    mng.createTopGoal_Dummy(str);
+    mng.createTopStrategy_Dummy(mng.topGoal, 'Strategy', DummyStrategy());
     var goals = [];
     var kw = '';
-    var parent = neoMng.topStrategy;
+    var parent = mng.topStrategy;
     $.each(res['goal'], function() {
-      if (typeof neoMng.keynodes[this['keyword']] == 'undefined') {
-        neoMng.createGoal_Dummy(neoMng.topStrategy, 'Goal', this['keyword'], 'に対して未対応のリスクがない');
+      if (typeof mng.keynodes[this['keyword']] == 'undefined') {
+        mng.createGoal_Dummy(mng.topStrategy, 'Goal', this['keyword'], 'に対して未対応のリスクがない');
       }
-      neoMng.createGoal_Dummy(neoMng.keynodes[this['keyword']],
+      mng.createGoal_Dummy(mng.keynodes[this['keyword']],
                         'Goal', this['sentence']);
-      neoMng.createNode_Dummy(neoMng.keynodes[this['sentence']], 'Evidence', '');
+      mng.createNode_Dummy(mng.keynodes[this['sentence']], 'Evidence', '');
     });
     $('.load').css({
       'display': 'none'
@@ -306,19 +306,18 @@ function sendDummyGoal(neoMng, str) {
 function draw_dcaseSVG(lsvg) {
   svg = lsvg;
   $svg = $('lsvg');
-  //$svg.attr('top', '120px');
   $svg.attr('position', 'relative');
   viewer = new NodeViewer(lsvg);
   viewer.init();
   viewer.setSVGScope();
-  neoMng = new Neo4jManager('http://localhost', 7474);
-  neoMng.init(viewer);
-  //neoMng.traverse(1158);
+  mng = new DummyManager('http://localhost', 7474);
+  mng.init(viewer);
+  //mng.traverse(1158);
 }
 
 $(function() {
   $('#dcase').svg({onLoad: draw_dcaseSVG});
   //$('#dscript_flow').svg({onLoad: draw_dscriptSVG});
-  sendDummyGoal(neoMng, "RAMディスクにデータをコピーする");
+  sendDummyGoal("RAMディスクにデータをコピーする");
   //login('172.16.151.131');
 });
