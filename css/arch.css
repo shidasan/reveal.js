@@ -1,0 +1,43 @@
+.reveal #arch {
+	background: #ffffff;
+	border-style: solid;
+	border-width: 2px;
+	width: 800px;
+	height: 600px;
+	margin: 0 auto;
+}
+
+.reveal .slides section #arch .arch_node {
+	width: 200px;
+	height: 200px;
+	border: none;
+	-webkit-box-shadow: none;
+	position: absolute;
+}
+
+.reveal .slides section #arch img {
+	height: 170px;
+	border: none;
+	-webkit-box-shadow: none;
+}
+
+.reveal .slides section #arch .arch_node p{
+	font-size: 20px;
+	text-align: center;
+}
+
+.reveal .slides #arch .arch_node div.status {
+	position: absolute;
+	top: 100px;
+	left: 130px;
+}
+/*--------------- CSS Animation ----------------*/
+
+@-webkit-keyframes ET_rotateArea {
+	0% {-webkit-transform: rotate(0deg);}
+	100% {-webkit-transform: rotate(360deg);}
+}
+
+.arch_running .status img {
+	-webkit-animation: ET_rotateArea 2s linear infinite;
+}

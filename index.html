@@ -19,29 +19,37 @@
 
 		<!-- my css -->
 		<link rel="stylesheet" type="text/css" href="css/gsn.css"/>
+		<link rel="stylesheet" type="text/css" href="css/arch.css"/>
 		<link rel="stylesheet" type="text/css" href="css/myreveal.css"/>
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
+		<!-- jQuery -->
+		<script src="myjs/jquery.min.js"></script>
+
 	</head>
-	
 	<body>
-		
 		<div class="reveal">
 			<div class="slides">
 				<section>
 					<h2>Service Architecuture</h2>
+					<div id="arch"></div>
 				</section>
 				<section>
 					<section class='dscript_flow'>
-						<h2>D-Script: A</h2>
-						<div id='tree'>
-							<div id='dcase_node'></div>
-							<div id='dcase'></div>
-						</div>
+						<h2>D-Script</h2>
+						<h4>RAMディスクにデータをコピーする</h4>
 					</section>
 					<section class='dscript_flow'>
-						<h2>D-Script: B</h2>
+						<h2>Editor</h2>
+						<form action="" method="POST">
+							<textarea id="editor" name="editor" >hello, world</textarea>
+							<button type="button" class="btn" >execute</button>
+						</form>
+						<script>
+							$("#log").hover(function(){$("#log").css("background-color","#ccc");},function(){$("#log").css("background-color","#fff");});
+						</script>
+						<div id="log"></div>
 					</section>
 					<section class='dscript_flow'>
 						<h2>D-Script: C</h2>
@@ -49,7 +57,7 @@
 				</section>
 				<section>
 					<section>
-					<h2>CPU Usage</h2>
+					<h2>Editor</h2>
 					</section>
 					<section>
 						<h2>Memory Usage</h2>
@@ -62,7 +70,6 @@
 					</section>
 				</section>
 			</div>
-		<script src="myjs/jquery.min.js"></script>
 		<script src="myjs/jquery-ui-1.8.13.custom.min.js" charset="utf-8"></script>
 		<script src="myjs/jquery.transit.js"></script>
 		<script src="myjs/jquery.svg.js"></script>
@@ -71,10 +78,22 @@
 		<script src="plugin/zoom-js/zoom.js"></script>
 		<script src="js/et_demo.js"></script>
 		<script src="js/reveal.js"></script>
+		<!--
 		<script src="myjs/gsn.js"></script>
 		<script src="myjs/node.js"></script>
 		<script src="myjs/dummy.js"></script>
-		<script src="myjs/arch.js"></script>
+		-->
+		<script src="js/myjs/util.js"></script>
+		<script src="js/myjs/arch.js"></script>
+		<script src="js/myjs/demo.js"></script>
+
+		<!-- editor -->
+		<script src="demo/libs.js"></script>
+		<script src="demo/codemirror/lib/codemirror.js"></script>
+		<link rel="stylesheet" href="demo/codemirror/lib/codemirror.css">
+		<link rel="stylesheet" href="demo/libs.css">
+		<script src="demo/codemirror/mode/clike/clike.js"></script>
+
 		<script>
 			Reveal.initialize({});
 		</script>

@@ -30,18 +30,18 @@ var archi = {};
                          .attr("height", server_height)
                          .attr("widhth", server_width)
                          .css("display", "inline-block"));
-        var $description = $("<div/>")
-            .css({"display" : "inline-block"});
-        $new_node.append($description);
-        $description.append($("<div/>")
-                           .attr("id", id + "_name")
-                           .text("name:" + id)
-                          );
-        $description.append($("<div/>")
-                           .attr("id", id + "_state")
-                           .text("state:waiting") // FIX ME !!
-                          );
-        return $new_node;
+                         var $description = $("<div/>")
+                         .css({"display" : "inline-block"});
+                         $new_node.append($description);
+                         $description.append($("<div/>")
+                                             .attr("id", id + "_name")
+                                             .text("name:" + id)
+                                            );
+                                            $description.append($("<div/>")
+                                                                .attr("id", id + "_state")
+                                                                .text("state:waiting") // FIX ME !!
+                                                               );
+                                                               return $new_node;
     }
     function new_$architecture_section(id) {
         var $load_balancer = new_$node("lb", "architecture/pic/server.png");
@@ -50,105 +50,105 @@ var archi = {};
         var $db_server = new_$node("dbs", "architecture/pic/server.png");
 
         var $layout = $("<table/>")
-			.css({"position" : "relative",
-				  "z-index" : 0});
-        $layout.attr("height", layout_height);
-        $layout.attr("width", layout_width);
-        $layout.append(
-            (function() {
-                $new_row = $("<tr/>");
-                $new_row.append($("<td/>"));
-                $new_row.append($("<td/>").append($web_server1));
-                return $new_row;
-            })()
-        );
-        $layout.append(
-            (function() {
-                $new_row = $("<tr/>");
-                $new_row.append($("<td/>").append($load_balancer));
-                $new_row.append($("<td/>"));
-                $new_row.append($("<td/>").append($db_server));
-                return $new_row;
-            })()
-        );
-        $layout.append(
-            (function() {
-                $new_row = $("<tr/>");
-                $new_row.append($("<td/>"));
-                $new_row.append($("<td/>").append($web_server2));
-                return $new_row;
-            })()
-        )
+        .css({"position" : "relative",
+             "z-index" : 0});
+             $layout.attr("height", layout_height);
+             $layout.attr("width", layout_width);
+             $layout.append(
+                 (function() {
+                 $new_row = $("<tr/>");
+                 $new_row.append($("<td/>"));
+                 $new_row.append($("<td/>").append($web_server1));
+                 return $new_row;
+             })()
+             );
+             $layout.append(
+                 (function() {
+                 $new_row = $("<tr/>");
+                 $new_row.append($("<td/>").append($load_balancer));
+                 $new_row.append($("<td/>"));
+                 $new_row.append($("<td/>").append($db_server));
+                 return $new_row;
+             })()
+             );
+             $layout.append(
+                 (function() {
+                 $new_row = $("<tr/>");
+                 $new_row.append($("<td/>"));
+                 $new_row.append($("<td/>").append($web_server2));
+                 return $new_row;
+             })()
+             )
 
-		$new_canvas = $("<canvas/>")
-			.attr("width", layout_width)
-			.attr("height", layout_height)
-			.css({"position" : "absolute",
-				  "top" : "0",
-				  "left" : "0",
-				  "z-index" : "1"});
-		$layout.append($new_canvas);
-		new_$line($new_canvas, [layout_width / 9, layout_height / 2.5], [layout_width / 3.1, layout_height / 5]);
-		new_$line($new_canvas, [layout_width / 9, layout_height / 1.37], [layout_width / 3.1, layout_height / 1.1]);
-        new_$line($new_canvas, [layout_width / 2, layout_height / 1.05], [layout_width / 1.4, layout_height / 1.38]);
-        new_$line($new_canvas, [layout_width / 1.5, layout_height / 2.8], [layout_width / 1.4, layout_height / 2.45]);
+             $new_canvas = $("<canvas/>")
+             .attr("width", layout_width)
+             .attr("height", layout_height)
+             .css({"position" : "absolute",
+                  "top" : "0",
+                  "left" : "0",
+                  "z-index" : "1"});
+                  $layout.append($new_canvas);
+                  new_$line($new_canvas, [layout_width / 9, layout_height / 2.5], [layout_width / 3.1, layout_height / 5]);
+                  new_$line($new_canvas, [layout_width / 9, layout_height / 1.37], [layout_width / 3.1, layout_height / 1.1]);
+                  new_$line($new_canvas, [layout_width / 2, layout_height / 1.05], [layout_width / 1.4, layout_height / 1.38]);
+                  new_$line($new_canvas, [layout_width / 1.5, layout_height / 2.8], [layout_width / 1.4, layout_height / 2.45]);
 
-        $new_section = $("<section/>");
-        $new_section.append($layout);
+                  $new_section = $("<section/>");
+                  $new_section.append($layout);
 
-        return $new_section;
+                  return $new_section;
     }
     function add_$section($new_section) {
         $(".slides").append($new_section);
     }
     function to_running_state($node) {
-		node_id = $node.attr("id");
+        node_id = $node.attr("id");
 
-		node_img_id = "#" + node_id + "_img";
-		$(node_img_id).addClass("animated shake");
-		$(node_img_id).css({
-			"-webkit-animation-iteration-count" : "infinite",
-			"-moz-animation-iteration-count" : "infinite"
-		});
+        node_img_id = "#" + node_id + "_img";
+        $(node_img_id).addClass("animated shake");
+        $(node_img_id).css({
+            "-webkit-animation-iteration-count" : "infinite",
+            "-moz-animation-iteration-count" : "infinite"
+        });
 
-		node_state_id = "#" + node_id + "_state";
-		$(node_state_id).text("state:running");
+        node_state_id = "#" + node_id + "_state";
+        $(node_state_id).text("state:running");
     }
     function to_error_state($node) {
-		node_id = $node.attr("id");
+        node_id = $node.attr("id");
 
-		node_img_id = "#" + node_id + "_img";
-		$(node_img_id).addClass("animated flash");
-		$(node_img_id).css({
-			"-webkit-animation-iteration-count" : "infinite",
-			"-moz-animation-iteration-count" : "infinite"
-		});
+        node_img_id = "#" + node_id + "_img";
+        $(node_img_id).addClass("animated flash");
+        $(node_img_id).css({
+            "-webkit-animation-iteration-count" : "infinite",
+            "-moz-animation-iteration-count" : "infinite"
+        });
 
-		node_state_id = "#" + node_id + "_state";
-		$(node_state_id).text("state:error");
+        node_state_id = "#" + node_id + "_state";
+        $(node_state_id).text("state:error");
     }
     function to_waiting_state($node) {
-		node_id = $node.attr("id");
+        node_id = $node.attr("id");
 
-		node_img_id = "#" + node_id + "_img";
-		$(node_img_id).css({
-			"-webkit-animation-iteration-count" : "0",
-			"-moz-animation-iteration-count" : "0"
-		});
+        node_img_id = "#" + node_id + "_img";
+        $(node_img_id).css({
+            "-webkit-animation-iteration-count" : "0",
+            "-moz-animation-iteration-count" : "0"
+        });
 
-		node_state_id = "#" + node_id + "_state";
-		$(node_state_id).text("state:waiting");
+        node_state_id = "#" + node_id + "_state";
+        $(node_state_id).text("state:waiting");
     }
 
-//export function
-	archi.new_$architecture_section = new_$architecture_section;
-	archi.add_$section = add_$section;
-	archi.to_running_state = to_running_state;
-	archi.to_error_state = to_error_state;
-	archi.to_waiting_state = to_waiting_state;
+    //export function
+    archi.new_$architecture_section = new_$architecture_section;
+    archi.add_$section = add_$section;
+    archi.to_running_state = to_running_state;
+    archi.to_error_state = to_error_state;
+    archi.to_waiting_state = to_waiting_state;
 
-//dubug
-	console.log("#######################################");
+    //dubug
+    console.log("#######################################");
     console.log("window.innerHeight:" + window.innerHeight);
     console.log("window.innerWidth:" + window.innerWidth);
     console.log("server_height:" + server_height);
