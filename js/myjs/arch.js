@@ -78,40 +78,38 @@ function Arch_init(argument) {
   var $node_a = arch.setNode(250, 350, 'DSE Manager', '192.168.59.10');
   var $node_b = arch.setNode(650, 350, 'WebServer', '192.168.59.11');
   arch.connectTo($node_a, $node_b);
-  arch.doAnimate_running($node_b);
-  console.log(arch.getDomFromIp('192.168.59.10'));
+  Arch_stat(arch);
 }
 
 function Arch_stat(arch) {
+  var data = '';
+  var json;
   $.ajax({
-    url:'arch_action.php',
+    url:'http://localhost/cgi-bin/arch_state_controller.py',
     type:'POST',
-    data:data,
+    data: data,
     error:function() {},
     complete:function(data) {
-      var json = eval(data.responseText);
-      var t = 100;
-      var arr = [];
-      json.forEach(function(i) {
-        if(i.value.state === undefined) {
-          return;
+      console.log(data.responseText);
+      var json = jQuery.parseJSON(data.responseText);
+      if(json.state === undefined) {
+        return;
+      }
+      else if(json.state === "start") {
+        arch.doAnimate_running($(arch.getDomFromIp(json.ip)));
+      }
+      else if(i.value.state === "end") {
+        if (json.result === "success") {
+          arch.resetAnimation(arch.getDomFromIp(json.ip));
         }
-        else if(i.value.state === "start") {
-          arch.doAnimate_running(arch.getDomFromIp(i.value.ip));
+        else {
+          //arch.doAnimate_error(arch.getDomFromIp(i.value.ip));
+          arch.resetAnimation(arch.getDomFromIp(json.ip));
         }
-        else if(i.value.state === "end") {
-          if (i.value.result === "success") {
-            arch.resetAnimation(arch.getDomFromIp(i.value.ip));
-          }
-          else {
-            //arch.doAnimate_error(arch.getDomFromIp(i.value.ip));
-            arch.resetAnimation(arch.getDomFromIp(i.value.ip));
-          }
-        }
-        setTimeout( function() {
-          Arch_stat(arch);
-        },t);
-      });
+      }
+      setTimeout( function() {
+        Arch_stat(arch);
+      },1000);
     },
     dataType:'json'
   });
