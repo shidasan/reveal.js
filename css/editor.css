@@ -1,0 +1,17 @@
+
+.SGreen {
+  background-color: #aff !important;
+}
+
+.SRed {
+  background-color: #f30 !important;
+}
+
+.SWhite {
+  background-color: #fff !important;
+}
+
+.CodeMirror-scroll {
+  width: 100%;
+  height: 90%;
+}

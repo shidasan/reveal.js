@@ -85,7 +85,7 @@ function Arch_stat(arch) {
   var data = '';
   var json;
   $.ajax({
-    url:'http://localhost/cgi-bin/arch_state_controller.py',
+    url:'http://192.168.59.151/~tsunade/arch_state_controller.php',
     type:'POST',
     data: data,
     error:function() {},

@@ -46,9 +46,6 @@
 							<textarea id="editor" name="editor" >hello, world</textarea>
 							<button type="button" class="btn" >execute</button>
 						</form>
-						<script>
-							$("#log").hover(function(){$("#log").css("background-color","#ccc");},function(){$("#log").css("background-color","#fff");});
-						</script>
 						<div id="log"></div>
 					</section>
 					<section class='dscript_flow'>
@@ -58,6 +55,11 @@
 				<section>
 					<section>
 					<h2>Editor</h2>
+						<form action="" method="POST">
+							<textarea id="editor1" name="editor" >hello, world</textarea>
+							<button type="button" class="btn" >execute</button>
+						</form>
+					<div id="log"></div>
 					</section>
 					<section>
 						<h2>Memory Usage</h2>
@@ -88,11 +90,11 @@
 		<script src="js/myjs/demo.js"></script>
 
 		<!-- editor -->
-		<script src="demo/libs.js"></script>
-		<script src="demo/codemirror/lib/codemirror.js"></script>
-		<link rel="stylesheet" href="demo/codemirror/lib/codemirror.css">
-		<link rel="stylesheet" href="demo/libs.css">
-		<script src="demo/codemirror/mode/clike/clike.js"></script>
+		<script src="js/myjs/editor.js"></script>
+		<script src="lib/codemirror/lib/codemirror.js"></script>
+		<link rel="stylesheet" href="lib/codemirror/lib/codemirror.css">
+		<link rel="stylesheet" href="css/editor.css">
+		<script src="lib/codemirror/mode/clike/clike.js"></script>
 
 		<script>
 			Reveal.initialize({});
