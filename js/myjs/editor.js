@@ -2,7 +2,8 @@
  * editor is embedded into:
  * <textarea id="editor">hello, world</textarea>
  */
-$(function() {
+
+function Editor_init() {
 		var editor0 = CodeMirror(function(elt) {
 			$("#editor").replaceWith(elt);
 			}, {
@@ -74,5 +75,4 @@ $(function() {
 			dataType:'json'
 		});
 	});
-});
-
+}

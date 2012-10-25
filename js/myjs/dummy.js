@@ -85,7 +85,7 @@ DummyManager.prototype = {
   },
   createGoal_Dummy: function(parent, type, str, suffix) {
     var self = this;
-    var url = 'http://localhost/data/node/' + _DUMMY_NUM;
+    var url = 'http://' + MANAGER.ip + '/data/node/' + _DUMMY_NUM;
     var res = {
       data: {
         sentence: str,
@@ -172,7 +172,7 @@ function DummyKeywordSubGoal(key) {
 }
 
 function DummyTopGoal() {
-  var url = 'http://localhost/data/node/' + _DUMMY_NUM;
+  var url = 'http://' + MANAGER.ip + '/data/node/' + _DUMMY_NUM;
   var res = {
       data: {
         sentence: 'RAMディスクにデータをコピーする',
@@ -185,7 +185,7 @@ function DummyTopGoal() {
 };
 
 function DummyTopStrategy() {
-  var url = 'http://localhost/data/node/' + _DUMMY_NUM;
+  var url = 'http://' + MANAGER.ip + '/data/node/' + _DUMMY_NUM;
   var res = {
       data: {
         sentence: 'D-Script の設計から個別リスクを抽出する',
@@ -198,7 +198,7 @@ function DummyTopStrategy() {
 };
 
 function DummyEmptyEvidence() {
-  var url = 'http://localhost/data/node/' + _DUMMY_NUM;
+  var url = 'http://' + MANAGER.ip + '/data/node/' + _DUMMY_NUM;
   var res = {
       data: {
         sentence: '',

@@ -21,7 +21,6 @@ var Reveal = (function(){
 			progress: true,
 
 			// Push each slide change to the browser history
-			//history: true,
 			history: false,
 
 			// Enable keyboard shortcuts for navigation
@@ -37,11 +36,14 @@ var Reveal = (function(){
 			// next slide, disabled when set to 0
 			autoSlide: 0,
 
+			// Enable slide navigation via mouse wheel
+			mouseWheel: true,
+
 			// Apply a 3D roll to links on hover
 			rollingLinks: true,
 
 			// Transition style (see /css/theme)
-			theme: 'simple',
+			theme: 'default', 
 
 			// Transition style
 			transition: 'default', // default/cube/page/concave/linear(2d),
@@ -53,9 +55,6 @@ var Reveal = (function(){
 		// The horizontal and verical index of the currently active slide
 		indexh = 0,
 		indexv = 0,
-
-		hidden_indexh = 0,
-		hidden_indexv = 0,
 
 		// The previous and current slide HTML elements
 		previousSlide,
@@ -82,6 +81,8 @@ var Reveal = (function(){
 								'OTransform' in document.body.style ||
 								'transform' in document.body.style,
 		
+		// Throttles mouse wheel navigation
+		mouseWheelTimeout = 0,
 
 		// An interval used to automatically move on to the next slide
 		autoSlideTimeout = 0,
@@ -112,11 +113,17 @@ var Reveal = (function(){
 			return;
 		}
 
+		// Copy options over to our config object
+		extend( config, options );
+
 		// Make sure we've got all the DOM elements we need
 		setupDOM();
 
+		// Hide the address bar in mobile browsers
+		hideAddressBar();
+
 		// Loads the dependencies and continues to #start() once done
-    start();
+		load();
 		
 	}
 
@@ -177,6 +184,70 @@ var Reveal = (function(){
 	}
 
 	/**
+	 * Hides the address bar if we're on a mobile device.
+	 */
+	function hideAddressBar() {
+		if( navigator.userAgent.match( /(iphone|ipod|android)/i ) ) {
+			// Give the page some scrollable overflow
+			document.documentElement.style.overflow = 'scroll';
+			document.body.style.height = '120%';
+
+			// Events that should trigger the address bar to hide
+			window.addEventListener( 'load', removeAddressBar, false );
+			window.addEventListener( 'orientationchange', removeAddressBar, false );
+		}
+	}
+
+	/**
+	 * Loads the dependencies of reveal.js. Dependencies are 
+	 * defined via the configuration option 'dependencies' 
+	 * and will be loaded prior to starting/binding reveal.js. 
+	 * Some dependencies may have an 'async' flag, if so they 
+	 * will load after reveal.js has been started up.
+	 */
+	function load() {
+		var scripts = [],
+			scriptsAsync = [];
+
+		for( var i = 0, len = config.dependencies.length; i < len; i++ ) {
+			var s = config.dependencies[i];
+
+			// Load if there's no condition or the condition is truthy
+			if( !s.condition || s.condition() ) {
+				if( s.async ) {
+					scriptsAsync.push( s.src );
+				}
+				else {
+					scripts.push( s.src );
+				}
+
+				// Extension may contain callback functions
+				if( typeof s.callback === 'function' ) {
+					head.ready( s.src.match( /([\w\d_\-]*)\.?[^\\\/]*$/i )[0], s.callback );
+				}
+			}
+		}
+
+		// Called once synchronous scritps finish loading
+		function proceed() {
+			// Load asynchronous scripts
+			head.js.apply( null, scriptsAsync );
+			
+			start();
+		}
+
+		if( scripts.length ) {
+			head.ready( proceed );
+
+			// Load synchronous scripts
+			head.js.apply( null, scripts );
+		}
+		else {
+			proceed();
+		}
+	}
+
+	/**
 	 * Starts up reveal.js by binding input events and navigating 
 	 * to the current URL deeplink if there is one.
 	 */
@@ -226,6 +297,11 @@ var Reveal = (function(){
 			dom.wrapper.classList.add( config.transition );
 		}
 
+		if( config.mouseWheel ) {
+			document.addEventListener( 'DOMMouseScroll', onDocumentMouseScroll, false ); // FF
+			document.addEventListener( 'mousewheel', onDocumentMouseScroll, false );
+		}
+
 		if( config.rollingLinks ) {
 			// Add some 3D magic to our anchors
 			linkify();
@@ -248,11 +324,6 @@ var Reveal = (function(){
 			dom.controlsUp.addEventListener( 'click', preventAndForward( navigateUp ), false );
 			dom.controlsDown.addEventListener( 'click', preventAndForward( navigateDown ), false );	
 		}
-    //document.querySelector( '.tree' ).addEventListener( 'click', function( event ) {
-    //  event.preventDefault();
-    //  isZoom = true;
-    //  zoom.to( { element: event.target } );
-    //});
 	}
 
 	function removeEventListeners() {
@@ -267,6 +338,16 @@ var Reveal = (function(){
 			dom.controlsRight.removeEventListener( 'click', preventAndForward( navigateRight ), false );
 			dom.controlsUp.removeEventListener( 'click', preventAndForward( navigateUp ), false );
 			dom.controlsDown.removeEventListener( 'click', preventAndForward( navigateDown ), false );
+		}
+	}
+
+	/**
+	 * Extend object a with the properties of object b. 
+	 * If there's a conflict, object b takes precedence.
+	 */
+	function extend( a, b ) {
+		for( var i in b ) {
+			a[ i ] = b[ i ];
 		}
 	}
 
@@ -299,12 +380,23 @@ var Reveal = (function(){
 	}
 
 	/**
+	 * Causes the address bar to hide on mobile devices, 
+	 * more vertical space ftw.
+	 */
+	function removeAddressBar() {
+		setTimeout( function() {
+			window.scrollTo( 0, 1 );
+		}, 0 );
+	}
+
+	/**
 	 * Dispatches an event of the specified type from the 
 	 * reveal DOM element.
 	 */
 	function dispatchEvent( type, properties ) {
 		var event = document.createEvent( "HTMLEvents", 1, 2 );
 		event.initEvent( type, true, true );
+		extend( event, properties );
 		dom.wrapper.dispatchEvent( event );
 	}
 	
@@ -320,8 +412,11 @@ var Reveal = (function(){
 
 		var triggered = true;
 
-    console.log('keyplessed: ' + parseInt(event.keyCode));
 		switch( event.keyCode ) {
+			// p, page up
+			case 80: case 33: navigatePrev(); break; 
+			// n, page down
+			case 78: case 34: navigateNext(); break;
 			// h, left
 			case 72: case 37: navigateLeft(); break;
 			// l, right
@@ -350,9 +445,6 @@ var Reveal = (function(){
 			event.preventDefault();
 		}
 		else if ( event.keyCode === 27 && supports3DTransforms ) {
-      if ($('.generate').length > 0) {
-        indexv--;
-      }
 			toggleOverview();
 	
 			event.preventDefault();
@@ -462,6 +554,24 @@ var Reveal = (function(){
 	}
 
 	/**
+	 * Handles mouse wheel scrolling, throttled to avoid 
+	 * skipping multiple slides.
+	 */
+	function onDocumentMouseScroll( event ){
+		clearTimeout( mouseWheelTimeout );
+
+		mouseWheelTimeout = setTimeout( function() {
+			var delta = event.detail || -event.wheelDelta;
+			if( delta > 0 ) {
+				navigateNext();
+			}
+			else {
+				navigatePrev();
+			}
+		}, 100 );
+	}
+	
+	/**
 	 * Handler for the window level 'hashchange' event.
 	 * 
 	 * @param {Object} event
@@ -518,7 +628,6 @@ var Reveal = (function(){
 		// Only proceed if enabled in config
 		if( config.overview ) {
 		
-      $('.generate').remove();
 			dom.wrapper.classList.add( 'overview' );
 
 			var horizontalSlides = document.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR );
@@ -560,9 +669,11 @@ var Reveal = (function(){
 				}
 				
 			}
-		}
-	}
 
+		}
+
+	}
+	
 	/**
 	 * Exits the slide overview and enters the currently
 	 * active slide.
@@ -750,17 +861,12 @@ var Reveal = (function(){
 	 * @param {int} v Vertical index of the target slide
 	 */
 	function slide( h, v ) {
+		// Remember where we were at before
+		previousSlide = currentSlide;
 
-    // Remember where we were at before
-    previousSlide = currentSlide;
-    if ($(previousSlide).hasClass('generate')) {
-      generatedSlide_prev = $(previousSlide);
-    }
-    else if (!$(previousSlide).hasClass('generate') && generatedSlide_prev) {
-      generatedSlide_prev.remove();
-    }
-    // Remember the state before this slide
-    var stateBefore = state.concat();
+		// Remember the state before this slide
+		var stateBefore = state.concat();
+
 		// Reset the state array
 		state.length = 0;
 
@@ -839,12 +945,6 @@ var Reveal = (function(){
 		if( previousSlide ) {
 			previousSlide.classList.remove( 'present' );
 		}
-    //if (!isOverviewActive()) {
-    //  var $next = $(currentSlide).next();
-    //  if (checkBPMNPage($next)) {
-    //    generateBPMNPage($next);
-    //  }
-    //}
 	}
 
 	/**
@@ -1029,7 +1129,7 @@ var Reveal = (function(){
 	function navigateLeft() {
 		// Prioritize hiding fragments
 		if( isOverviewActive() || previousFragment() === false ) {
-			slide( indexh - 1, 0 ); 
+			slide( indexh - 1, 0 );
 		}
 	}
 
@@ -1049,19 +1149,50 @@ var Reveal = (function(){
 
 	function navigateDown() {
 		// Prioritize revealing fragments
-    if (!isOverviewActive()) {
-      var $next = $(currentSlide);
-      //var $next = $(currentSlide).next();
-      if (checkBPMNPage($next)) {
-        generateBPMNPage($next);
-      }
-    }
-
 		if( isOverviewActive() || nextFragment() === false ) {
 			slide( indexh, indexv + 1 );
 		}
 	}
 
+	/**
+	 * Navigates backwards, prioritized in the following order:
+	 * 1) Previous fragment
+	 * 2) Previous vertical slide
+	 * 3) Previous horizontal slide
+	 */
+	function navigatePrev() {
+		// Prioritize revealing fragments
+		if( previousFragment() === false ) {
+			if( availableRoutes().up ) {
+				navigateUp();
+			}
+			else {
+				// Fetch the previous horizontal slide, if there is one
+				var previousSlide = document.querySelector( '.reveal .slides>section.past:nth-child(' + indexh + ')' );
+
+				if( previousSlide ) {
+					indexv = ( previousSlide.querySelectorAll('section').length + 1 ) || 0;
+					indexh --;
+					slide();
+				}
+			}
+		}
+	}
+
+	/**
+	 * Same as #navigatePrev() but navigates forwards.
+	 */
+	function navigateNext() {
+		// Prioritize revealing fragments
+		if( nextFragment() === false ) {
+			availableRoutes().down ? navigateDown() : navigateRight();
+		}
+
+		// If auto-sliding is enabled we need to cue up 
+		// another timeout
+		cueAutoSlide();
+	}
+	
 	// Expose some methods publicly
 	return {
 		initialize: initialize,
@@ -1070,6 +1201,8 @@ var Reveal = (function(){
 		navigateRight: navigateRight,
 		navigateUp: navigateUp,
 		navigateDown: navigateDown,
+		navigatePrev: navigatePrev,
+		navigateNext: navigateNext,
 		toggleOverview: toggleOverview,
 
 		// Adds or removes all internal event listeners (such as keyboard)

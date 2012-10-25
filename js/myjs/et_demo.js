@@ -42,24 +42,3 @@ function generateEditorPage($page) {
     generatePage($page, 'd_editor');
   }
 }
-
-//$(function() {
-//    var data = {
-//        event: 'hello, world'
-//    };
-//  $.ajax({
-//    type: 'POST',
-//    url: '192.168.59.22',
-//    async: false,
-//    data: JSON.stringify(data),
-//    accept: 'application/json',
-//    success: function(data, xhr, status) {
-//      console.log('Successed!');
-//    },
-//    error: function(xhr) {
-//    },
-//    complete: function(xhr) {
-//      console.log('finish to send');
-//    }
-//  });
-//});

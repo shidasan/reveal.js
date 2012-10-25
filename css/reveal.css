@@ -65,7 +65,7 @@ body {
 
 @media screen and (max-width: 900px) {
 	.reveal {
-		font-size: 30px;
+		/*font-size: 30px;*/
 	}
 }
 
@@ -213,7 +213,7 @@ body {
 	margin: 10px auto;
 
 	text-align: left;
-	font-size: 0.55em;
+	/*font-size: 0.55em;*/
 	font-family: monospace;
 	line-height: 1.2em;
 

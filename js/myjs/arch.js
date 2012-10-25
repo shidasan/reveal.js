@@ -12,10 +12,6 @@ var Arch = function() {
 
 Arch.prototype = {
   init: function () {
-    var server_height = (window.innerHeight / 4.5);
-    var server_width = (window.innerWidth / 12);
-    var layout_height = (window.innerHeight * 0.8);
-    var layout_width = (window.innerWidth * 0.8);
     this.$dom = $('#arch');
     this.$dom.svg({onLoad: draw_archSVG});
     this.line = this.$dom.svg('get').group({
@@ -27,7 +23,7 @@ Arch.prototype = {
     var $ret = createLastChild(this.$dom);
     $ret.addClass('arch_node');
     var $img = createLastChild($ret, 'img');
-    $img.attr('src', 'architecture/pic/server.png');
+    $img.attr('src', CONFIG.img_dir + '/server.png');
     createLastChild($ret, 'p', name);
     createLastChild($ret, 'p', ip);
     $ret.css({
@@ -57,7 +53,7 @@ Arch.prototype = {
     var $stat = createLastChild($node);
     $stat.addClass('status');
     var $stat_img = createLastChild($stat, 'img');
-    $stat_img.attr('src', 'architecture/pic/running.png');
+    $stat_img.attr('src', CONFIG.img_dir + '/running.png');
     $stat_img.css({
         'width': '50px',
         'height': '50px'
@@ -75,8 +71,8 @@ Arch.prototype = {
 function Arch_init(argument) {
   var arch = new Arch();
   arch.init();
-  var $node_a = arch.setNode(250, 350, 'DSE Manager', '192.168.59.10');
-  var $node_b = arch.setNode(650, 350, 'WebServer', '192.168.59.11');
+  var $node_a = arch.setNode(250, 350, MANAGER.name, MANAGER.ip);
+  var $node_b = arch.setNode(650, 350, NODE_A.name, NODE_A.ip);
   arch.connectTo($node_a, $node_b);
   Arch_stat(arch);
 }
@@ -85,12 +81,11 @@ function Arch_stat(arch) {
   var data = '';
   var json;
   $.ajax({
-    url:'cgi-bin/arch_state_controller.php',
+    url: CONFIG.cgi_dir + '/arch_state_controller.php',
     type:'POST',
     data: data,
     error:function() {},
     complete:function(data) {
-      console.log(data.responseText);
       var json = jQuery.parseJSON(data.responseText);
       if(json.state === undefined) {
         return;
