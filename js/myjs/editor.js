@@ -29,17 +29,15 @@ $(function() {
 				editor.setLineClass(line - 1, null);
 			}
 		};
-	$(".btn").click(function(){
-		var data = {};
-		$.ajax(
-			{
-				url:'action.php',
+		var log = { getLog : function(data){
+			$.ajax({
+				url:'cgi-bin/zabbixlog.php',
 				type:'POST',
 				data:data,
-				error:function() { $("#log").text("error") },
+				error:function() { $("#log1").text("error") },
 				complete:function(data) {
 					var json = eval(data.responseText);
-					$("#log").text(JSON.stringify(json));
+					$("#log1").text(JSON.stringify(json));
 					var t = 100;
 					var arr = [];
 					json.forEach(function(i) {
@@ -61,8 +59,20 @@ $(function() {
 						});
 					},
 				dataType:'json'
-			}
-		);
+			});
+		}};
+	$(".btn").click(function(){
+		var data = editor.getValue(); //script
+		$.ajax({
+			url  : 'cgi-bin/DTaskSender.k',
+			type : 'POST',
+			data : data,
+			error:function(){$("#log1").text("error1"); },
+			complete:function(data){
+				log.getLog(data.responseText);
+			},
+			dataType:'json'
+		});
 	});
 });
 
