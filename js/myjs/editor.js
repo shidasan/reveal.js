@@ -63,9 +63,13 @@ function Editor_init() {
 			});
 		}};
 	$(".btn").click(function(){
-		var data = editor.getValue(); //script
+		var data = {
+			'Method': 'SendDSE',
+			'Script': editor.getValue(),
+			'Option': ''
+		};
 		$.ajax({
-			url  : 'cgi-bin/DTaskSender.k',
+			url:'cgi-bin/DCtrlSender.cgi',
 			type : 'POST',
 			data : data,
 			error:function(){$("#log1").text("error1"); },
