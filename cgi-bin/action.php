@@ -73,19 +73,14 @@ class Zabbix {
 		return false;
 	}
 
-	public function showHistory(){
-		//var_dump($this->ItemIds);
+	public function getHistory($id){
 		$params = array(
 				"history" => 2,
 				"output"  => "extend",
-				"search"  => array("value" => "minikonoha"),
+				"search"  => array("value" => $id),
 				"itemids" => $this->ItemIds
 		);
-		$result = $this->file_get($this->create_data("history.get",$params));
-		echo json_encode(array_map(function($value){
-							return array("clock" => /*date("Y.M.j H:i:s",*/$value["clock"]/*)*/,
-								"value" => json_decode(substr($value["value"],strpos($value["value"],"{")),true));},
-					$result["result"]));
+		return $this->file_get($this->create_data("history.get",$params));
 		//var_dump($result);
 	}
 	/*
