@@ -46,14 +46,18 @@ Arch.prototype = {
   },
   resetAnimation: function($node) {
     if($node !== undefined) {
-        $node.removeClass('arch_running');
-        $node.removeClass('arch_error');
+      $node.removeClass('arch_running');
+      $node.removeClass('arch_error');
+      $stat = $node.children('.status');
+      $stat.attr('phase', 'stop');
+      $stat.empty();
     }
   },
   doAnimate_running: function($node) {
     this.resetAnimation($node);
     var $stat = createLastChild($node);
     $stat.addClass('status');
+    $stat.attr('phase', 'run');
     var $stat_img = createLastChild($stat, 'img');
     $stat_img.attr('src', CONFIG.img_dir + '/running.png');
     $stat_img.css({
@@ -90,19 +94,20 @@ function Arch_stat(arch) {
     complete:function(data) {
       var json = jQuery.parseJSON(data.responseText);
       var value = json.Value[json.Value.length-1];
+      var $node = $(arch.getDomFromIp(value.Ip));
       if(value.State === undefined) {
-        value.State = "not working";
+        value.State = 'not working';
       }
-      else if(value.State === "start") {
-        arch.doAnimate_running($(arch.getDomFromIp(value.Ip)));
+      else if(value.State === 'start' && $node.attr('phase') !== 'run') {
+        arch.doAnimate_running($node);
       }
-      else if(value.State === "end") {
-        if (value.Result === "success") {
-          arch.resetAnimation(arch.getDomFromIp(value.Ip));
+      else if(value.State === 'end') {
+        if (value.Result === 'success') {
+          arch.resetAnimation($node);
         }
         else {
-          //arch.doAnimate_error(arch.getDomFromIp(i.value.ip));
-          arch.resetAnimation(arch.getDomFromIp(value.Ip));
+          //arch.doAnimate_error($node);
+          arch.resetAnimation($node);
         }
       }
       setTimeout( function() {
