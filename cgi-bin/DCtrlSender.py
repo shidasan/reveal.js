@@ -16,7 +16,7 @@ DCtrl_url = DCtrl_ip + '/cgi-bin/dse_dummy.cgi'
 def request_addCid():
 	form = cgi.FieldStorage()
 	req = ({
-			'Cid': createCId(),
+			'CId': createCId(),
 			'Method': form.getvalue('Method'),
 			'Script': form.getvalue('Script'),
 			'Option': form.getvalue('Option')
@@ -27,13 +27,15 @@ def sendRequest(req):
 	params = urllib.urlencode(req)
 	return urllib2.urlopen(DCtrl_url, params)
 
-def parseResponce(responseText):
-	return True
-
-def returnClient(res):
+def returnClient(req, res):
 	print "Content-Type: application/json"
 	print ''
-	print res
+	#print res
+	print json.dumps({
+			'CId': req['CId'],
+			'Result': 'success',
+			'Method': 'ResponseDSE'
+	})
 
 def createCId():
 	return str(uuid.uuid4())
@@ -41,4 +43,4 @@ def createCId():
 if __name__ == '__main__':
 	req = request_addCid()
 	res = sendRequest(req)
-	returnClient(res.read());
+	returnClient(req, res.read());
