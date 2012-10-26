@@ -33,22 +33,29 @@ function Editor_init() {
 					var res_json = JSON.parse(res_data.responseText);
 					//$("#error_log").text(JSON.stringify(res_json[0].Value));
 					var t = 100;
-					var arr = [];
-					res_json.Value.forEach(function(i) {
-						if(i.Method !== "DScriptResult") {
-							arr.push(i);
-							return;
+					var script_flag = false;
+					$.each(res_json.Value,function(key,value) {
+						switch(value.Method) {
+						case "DScriptResult":
+							if(script_flag) {
+								setTimeout( function() {
+									libs.setLineColor(value.ScriptLine,value.Count);
+								},t);
+							}
+							break;
+						case "EndTask":
+							return false;
+						case "StartTask":
+						script_flag = true;
+							break;
+						default :
+							$("#error_log").append(JSON.stringify(value) + "\n");
+							if(value.ScriptLine !== undefined) {
+								setTimeout( function() {
+									libs.setLineError(value.ScriptLine);
+								},t);
+							}
 						}
-						setTimeout( function() {
-							libs.setLineColor(i.ScriptLine,i.Count);
-						},t);
-						t += 100;
-						});
-					arr.forEach(function(i){
-						$("#error_log").append(JSON.stringify(i) + "\n");
-						setTimeout( function() {
-							libs.setLineError(i.ScriptLine);
-						},t);
 						t += 100;
 						});
 					},
