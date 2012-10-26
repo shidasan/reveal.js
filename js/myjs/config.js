@@ -1,10 +1,10 @@
 var MANAGER = {
   name: 'DSE Manager',
-  ip: '192.168.59.151'
+  ip: '192.168.59.150'
 };
 var NODE_A = {
-  name: 'Web Server',
-  ip: '192.168.59.150'
+  name: 'Node',
+  ip: '192.168.59.151'
 }
 
 var CONFIG = {

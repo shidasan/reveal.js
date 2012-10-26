@@ -7,6 +7,7 @@ class Zabbix {
 	private $HostName;
 	private $HostId;
 	private $ItemIds;
+	private $GraphIds;
 
 	function __construct($server) {
 		$this->API_URL = $server . "/zabbix/api_jsonrpc.php";
@@ -69,6 +70,21 @@ class Zabbix {
 		if(count($result["result"]) > 0) {
 			$this->ItemIds   = array_map(function($value){return $value["itemid"];}, $result["result"]);
 			return true;
+		}
+		return false;
+	}
+
+	public function getGraph($HostName, $search = array()) {
+		assert(isset($this->HostId) ? true: $this->setHost($HostName));
+		$params = array(
+				"hostids"    => array($this->HostId),
+				"output"     => "shorten",
+				"monitored"  => 1,
+				"search"     => $search
+		);
+		$result = $this->file_get($this->create_data("graph.get",$params));
+		if(count($result["result"]) > 0) {
+			return array_map(function($value){return $value["graphid"];}, $result["result"]);
 		}
 		return false;
 	}

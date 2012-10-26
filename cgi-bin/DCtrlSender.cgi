@@ -10,8 +10,8 @@ import urllib, urllib2
 import cgi, uuid, sys, os, json
 
 ### Config
-DCtrl_ip = 'http://localhost'
-DCtrl_url = DCtrl_ip + '/cgi-bin/dse_dummy.cgi'
+DCtrl_ip = 'http://192.168.59.150'
+DCtrl_url = DCtrl_ip + '/reveal/cgi-bin/dse_dummy.cgi'
 
 def request_addCid():
 	form = cgi.FieldStorage()

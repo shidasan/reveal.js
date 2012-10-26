@@ -45,8 +45,10 @@ Arch.prototype = {
     var l = this.$dom.svg('get').line(this.line, x1, y1 + 30, x2, y2 + 30);
   },
   resetAnimation: function($node) {
-    $node.removeClass('arch_running');
-    $node.removeClass('arch_error');
+    if($node !== undefined) {
+        $node.removeClass('arch_running');
+        $node.removeClass('arch_error');
+    }
   },
   doAnimate_running: function($node) {
     this.resetAnimation($node);
@@ -87,19 +89,20 @@ function Arch_stat(arch) {
     error:function() {},
     complete:function(data) {
       var json = jQuery.parseJSON(data.responseText);
-      if(json.state === undefined) {
-        return;
+      var value = json.Value[json.Value.length-1];
+      if(value.State === undefined) {
+        value.State = "not working";
       }
-      else if(json.state === "start") {
-        arch.doAnimate_running($(arch.getDomFromIp(json.ip)));
+      else if(value.State === "start") {
+        arch.doAnimate_running($(arch.getDomFromIp(value.Ip)));
       }
-      else if(i.value.state === "end") {
-        if (json.result === "success") {
-          arch.resetAnimation(arch.getDomFromIp(json.ip));
+      else if(value.State === "end") {
+        if (value.Result === "success") {
+          arch.resetAnimation(arch.getDomFromIp(value.Ip));
         }
         else {
           //arch.doAnimate_error(arch.getDomFromIp(i.value.ip));
-          arch.resetAnimation(arch.getDomFromIp(json.ip));
+          arch.resetAnimation(arch.getDomFromIp(value.Ip));
         }
       }
       setTimeout( function() {
