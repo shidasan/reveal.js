@@ -12,4 +12,4 @@ DummyDCtrlResponce_err = '{"Method": "ResponseDSE", "Result": "error", "ErrorLog
 if __name__ == '__main__':
 	print "Content-Type: application/json"
 	print ''
-	print DummyDCtrlResponce_suc
+	#print DummyDCtrlResponce_suc
