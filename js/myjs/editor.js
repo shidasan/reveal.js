@@ -2,19 +2,11 @@
  * editor is embedded into:
  * <textarea id="editor">hello, world</textarea>
  */
-
 function Editor_init() {
-		var editor0 = CodeMirror(function(elt) {
+		var editor = CodeMirror(function(elt) {
 			$("#editor").replaceWith(elt);
 			}, {
 				value: $("#editor").val(),
-				lineNumbers: true,
-				mode: "text/x-konoha"
-			});
-		var editor = CodeMirror(function(elt) {
-			$("#editor1").replaceWith(elt);
-			}, {
-				value: $("#editor1").val(),
 				lineNumbers: true,
 				mode: "text/x-konoha"
 			});
@@ -30,33 +22,41 @@ function Editor_init() {
 				editor.setLineClass(line - 1, null);
 			}
 		};
-		var log = { getLog : function(data){
+		var log = { getLog : function(){
+			var data = (JSON.stringify({ "Method": "RequestDSE","Script" : editor.getValue()}));
 			$.ajax({
 				url:'cgi-bin/zabbixlog.php',
 				type:'POST',
-				data:data,
-				error:function() { $("#log1").text("error") },
-				complete:function(data) {
-					var json = eval(data.responseText);
-					$("#log1").text(JSON.stringify(json));
+				data:{"JSON" : data},
+				error:function() { $("#error_log").text("error") },
+				complete:function(res_data) {
+					var res_json = JSON.parse(res_data.responseText);
+					//$("#error_log").text(JSON.stringify(res_json[0].Value));
 					var t = 100;
-					var arr = [];
-					json.forEach(function(i) {
-						if(i.value.count === undefined) {
-							i.value["count"] = 1;
-							arr.push(i);
-							return;
+					var script_flag = false;
+					$.each(res_json.Value,function(key,value) {
+						switch(value.Method) {
+						case "DScriptResult":
+							if(script_flag) {
+								setTimeout( function() {
+									libs.setLineColor(value.ScriptLine,value.Count);
+								},t);
+							}
+							break;
+						case "EndTask":
+							return false;
+						case "StartTask":
+						script_flag = true;
+							break;
+						default :
+							$("#error_log").append(JSON.stringify(value) + "\n");
+							if(value.ScriptLine !== undefined) {
+								setTimeout( function() {
+									libs.setLineError(value.ScriptLine);
+								},t);
+							}
 						}
-						setTimeout( function() {
-							libs.setLineColor(i.value.ScriptLine,i.value.count);
-						},t);
-						t += 1000;
-						});
-					arr.forEach(function(i){
-						setTimeout( function() {
-							libs.setLineError(i.value.ScriptLine);
-						},t);
-						t += 1000;
+						t += 100;
 						});
 					},
 				dataType:'json'
@@ -79,4 +79,5 @@ function Editor_init() {
 			dataType:'json'
 		});
 	});
-}
+};
+
