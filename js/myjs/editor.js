@@ -66,10 +66,14 @@ function Editor_init() {
 		var data = {
 			'Method': 'SendDSE',
 			'Script': editor.getValue(),
-			'Option': ''
+			'Option': '',
+			'To': '127.0.0.1:8080',
+			'From': '127.0.0.1:80',
+			'event': 'D-Task'
 		};
 		$.ajax({
-			url:'cgi-bin/DCtrlSender.cgi',
+			url:'cgi-bin/testSender.cgi',
+			//url:'cgi-bin/DCtrlSender.cgi',
 			type : 'POST',
 			data : data,
 			error:function(){$("#log1").text("error1"); },

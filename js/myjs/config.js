@@ -4,7 +4,8 @@ var MANAGER = {
 };
 var NODE_A = {
   name: 'Node',
-  ip: '192.168.59.151'
+  //ip: '192.168.59.151'
+  ip: '127.0.0.1:8080'
 }
 
 var CONFIG = {
