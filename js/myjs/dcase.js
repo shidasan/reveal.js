@@ -8,5 +8,5 @@ function DCase_init() {
   var dmng = new DManager();
   dmng.init();
   dmng.createDCase('RAMディスクにデータをコピーする');
-  dmng.createDCase('RAMディスクにデータをコピーする2');
+  //dmng.createDCase('RAMディスクにデータをコピーする2');
 }

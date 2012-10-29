@@ -24,8 +24,6 @@
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- jQuery -->
-		<script src="js/jquery.min.js"></script>
 
 	</head>
 	<body>
@@ -35,14 +33,28 @@
 					<h2>Service Architecuture</h2>
 					<div id="arch"></div>
 				</section>
-				<section class='dscript_flow'>
+				<section>
 					<h2>D-Script</h2>
 					<h4>RAMディスクにデータをコピーする</h4>
+					<div id="d_system">
+					</div>
 				</section>
 				<section>
-				<h2>Editor</h2>
+				<h2>D-Task Editor</h2>
 					<form action="" method="POST">
-						<textarea id="editor" name="editor" >hello, world</textarea>
+						<textarea id="editor" name="editor" >
+import ("konoha");
+System.p("hello, world.");
+
+
+
+
+
+
+
+
+
+						</textarea>
 						<button type="button" class="btn" >execute</button>
 					</form>
 				<div id="error_log"></div>
@@ -65,6 +77,7 @@
 					</section>
 				</section>
 			</div>
+		<script src="js/jquery.min.js"></script>
 		<script src="js/jquery-ui-1.8.13.custom.min.js" charset="utf-8"></script>
 		<script src="js/jquery.transit.js"></script>
 		<script src="js/jquery.svg.js"></script>
@@ -73,16 +86,16 @@
 		<script src="plugin/zoom-js/zoom.js"></script>
 		<script src="js/myjs/et_demo.js"></script>
 		<script src="js/reveal.js"></script>
-		<!--
-		<script src="myjs/gsn.js"></script>
-		<script src="myjs/node.js"></script>
-		<script src="myjs/dummy.js"></script>
-		-->
 		<script src="js/myjs/util.js"></script>
 		<script src="js/myjs/config.js"></script>
 		<script src="js/myjs/arch.js"></script>
 		<script src="js/myjs/graph.js"></script>
 		<script src="js/myjs/demo.js"></script>
+		<script src="js/myjs/gsn.js"></script>
+		<script src="js/myjs/nodeviewer.js"></script>
+		<script src="js/myjs/dummy.js"></script>
+		<script src="js/myjs/dmng.js"></script>
+		<script src="js/myjs/dcase.js"></script>
 
 		<!-- editor -->
 		<script src="js/myjs/editor.js"></script>
