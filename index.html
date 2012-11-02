@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		
-		<title>test</title>
+		<title>ET2012 Demo</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
@@ -13,6 +13,7 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 		
 		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Rosarivo' rel='stylesheet' type='text/css'>
 		
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
@@ -20,6 +21,7 @@
 		<!-- my css -->
 		<link rel="stylesheet" type="text/css" href="css/gsn.css"/>
 		<link rel="stylesheet" type="text/css" href="css/arch.css"/>
+		<link rel="stylesheet" type="text/css" href="css/matrix.css"/>
 		<link rel="stylesheet" type="text/css" href="css/myreveal.css"/>
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -30,19 +32,20 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h2>Service Architecuture</h2>
+					<h5>Service Architecture</h5>
 					<div id="arch"></div>
 				</section>
 				<section>
-					<h2>D-Script</h2>
-					<h4>RAMディスクにデータをコピーする</h4>
+					<h5>D-Case</h5>
+					<h6>"RAMディスクにデータをコピーする"</h6>
 					<div id="d_system">
 					</div>
 				</section>
 				<section>
-				<h2>D-Task Editor</h2>
-					<form action="" method="POST">
-						<textarea id="editor" name="editor" >
+					<section>
+					<h5>D-Task Editor</h5>
+						<form action="" method="POST">
+							<textarea id="editor" name="editor" >
 import ("konoha");
 System.p("hello, world.");
 
@@ -54,26 +57,31 @@ System.p("hello, world.");
 
 
 
-						</textarea>
-						<button type="button" class="btn" >execute</button>
-					</form>
-				<div id="error_log"></div>
+							</textarea>
+							<button type="button" class="btn" >execute</button>
+						</form>
+					<div id="error_log"></div>
+					</section>
+					<section>
+					<h5>Fault Matrix</h5>
+					<div id="fault_matrix"></div>
+					</section>
 				</section>
 				<section>
 					<section>
-						<h2>CPU Usage</h2>
+						<h5>CPU Usage</h5>
 						<img id="cpu"></img>
 					</section>
 					<section>
-						<h2>Memory Available</h2>
+						<h5>Memory Available</h5>
 						<img id="memory"></img>
 					</section>
 					<section>
-						<h2>NetWork Usage</h2>
+						<h5>NetWork Usage</h5>
 						<img id="network"></img>
 					</section>
 					<section>
-						<h2>LOG</h2>
+						<h5>LOG</h5>
 					</section>
 				</section>
 			</div>
@@ -89,6 +97,7 @@ System.p("hello, world.");
 		<script src="js/myjs/util.js"></script>
 		<script src="js/myjs/config.js"></script>
 		<script src="js/myjs/arch.js"></script>
+		<script src="js/myjs/faultMatrix.js"></script>
 		<script src="js/myjs/graph.js"></script>
 		<script src="js/myjs/demo.js"></script>
 		<script src="js/myjs/gsn.js"></script>
@@ -111,7 +120,7 @@ System.p("hello, world.");
 				history: false,
 				
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/linear(2d)
+				transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/linear(2d)
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [

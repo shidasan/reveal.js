@@ -1,0 +1,66 @@
+.reveal .slides #fault_matrix {
+	background: #ffffff;
+	width: 400px;
+	height: 300px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.reveal .slides #fault_matrix .matrix_cell {
+	background: #ffffff;
+	width: 180px;
+	height: 120px;
+	margin: 0 auto;
+	position: absolute;
+	font-size: 20px;
+}
+
+.reveal .slides #fault_matrix .fault_list {
+	background: #ffffff;
+	margin: 0 auto;
+	font-size: 30px;
+	text-align: left;
+}
+
+.reveal .slides #fault_matrix .fault_line {
+	background: #ffffff;
+	margin: 0 auto;
+	font-size: 30px;
+	text-align: left;
+	padding-top: 40px;
+}
+
+.reveal .slides #fault_matrix .fault_line p {
+	font-size: 30px;
+	text-align: left;
+	padding-right: 100px;
+	float: left;
+}
+
+.reveal .slides #fault_matrix .fault_line_User {
+	background: #aa4400;
+	width: 30px;
+	height: 30px;
+	float: left;
+}
+
+.reveal .slides #fault_matrix .fault_line_System {
+	background: #00aa00;
+	width: 30px;
+	height: 30px;
+	float: left;
+}
+
+.reveal .slides #fault_matrix .fault_line_Soft {
+	background: #aa0000;
+	width: 30px;
+	height: 30px;
+	float: left;
+}
+
+.reveal .slides #fault_matrix .fault_line_Ext {
+	background: #aa00aa;
+	width: 30px;
+	height: 30px;
+	float: left;
+}
