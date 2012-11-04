@@ -18,7 +18,7 @@ body .reveal .slides #title h1, body .reveal .slides #title h2,
 body .reveal .slides #title h3, body .reveal .slides #title h4,
 body .reveal .slides #title h5, body .reveal .slides #title h6, {
 */
-body .reveal .slides #title h5{
+body .reveal .slides #title h2{
 	color: #fff;
 }
 
@@ -52,15 +52,7 @@ body .reveal .slides #footer {
 	float: left;
 }
 
-body .reveal .slides #footer p5{
-	position: relative;
-	left: -50%;
-	float: left;
-	top: 30px;
-	padding: 15px 10px 0px 0px;
-}
-
-body .reveal .slides #footer p6{
+body .reveal .slides #footer p{
 	position: relative;
 	font-size: 20px;
 	left: -50%;
@@ -70,6 +62,7 @@ body .reveal .slides #footer p6{
 }
 
 body .reveal .slides #footer img{
+	height: 80px;
 	position: relative;
 	left: -50%;
 	float: left;

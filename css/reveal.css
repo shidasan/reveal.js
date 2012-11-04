@@ -287,19 +287,23 @@ body {
 		}
 
 	.reveal .controls .left {
+		font-size: 25px;
 		top: 30px;
 	}
 
 	.reveal .controls .right {
+		font-size: 25px;
 		left: 60px;
 		top: 30px;
 	}
 
 	.reveal .controls .up {
+		font-size: 25px;
 		left: 30px;
 	}
 
 	.reveal .controls .down {
+		font-size: 25px;
 		left: 30px;
 		top: 60px;
 	}
