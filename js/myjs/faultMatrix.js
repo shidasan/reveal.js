@@ -125,7 +125,7 @@ function Matrix_init(argument) {
   var matrix = new Matrix();
   matrix.init();
   matrix.drawMatrix();
-  matrix.addLine('hello, world', (matrix.flag_usr|matrix.flag_sys|matrix.flag_sft|matrix.flag_ext));
+  matrix.addLine('System.fopen()', (matrix.flag_usr|matrix.flag_sys|matrix.flag_sft|matrix.flag_ext));
   //Matrix_stat(matrix);
 }
 

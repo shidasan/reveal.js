@@ -32,18 +32,50 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h5>Service Architecture</h5>
+					<!--<img id="title" src="./img/ET2012LOGO.jpg" width="200px"></img>-->
+					<div id="title">
+						<h5>倉光チーム Demo</h5>
+						<h5>概要</h5>
+					</div>
+					<div id="demo_overview">
+						<img src="./img/demo_overview.png"></img>
+						<div id="footer">
+							<p6>Powered by</p6>
+							<img src="./img/zabbix_logo_original.png" width="240px"></img>
+							<img src="./img/dscript_logo.png" height="82px"></img>
+							<p5>D-Case Weaver</p5>
+							<p5>Alert Me</p5>
+						</div>
+					</div>
+				</section>
+				<section>
+					<div id="title">
+						<h5>デモ用サービス</h5>
+						<h5>Web Camera Service</h5>
+					</div>
+					<p>Under Construction.</p>
+				</section>
+				<section>
+					<div id="title">
+						<h5>サーバ構成図</h5>
+					</div>
 					<div id="arch"></div>
 				</section>
 				<section>
-					<h5>D-Case</h5>
+					<div id="title">
+						<h5>D-Case</h5>
+					</div>
 					<h6>"RAMディスクにデータをコピーする"</h6>
+					<div id="bpmn">
+					</div>
 					<div id="d_system">
 					</div>
 				</section>
 				<section>
 					<section>
-					<h5>D-Task Editor</h5>
+					<div id="title">
+						<h5>D-Task エディタ</h5>
+					</div>
 						<form action="" method="POST">
 							<textarea id="editor" name="editor" >
 import ("konoha");
@@ -63,25 +95,44 @@ System.p("hello, world.");
 					<div id="error_log"></div>
 					</section>
 					<section>
-					<h5>Fault Matrix</h5>
+					<div id="title">
+						<h5>Fault Matrix</h5>
+					</div>
 					<div id="fault_matrix"></div>
+					</section>
+					<section>
+					<iframe src="./alertme/static/index.html" width="1000" height="900">
+						Please tell Administator to install alertme.
+					</iframe>
 					</section>
 				</section>
 				<section>
 					<section>
-						<h5>CPU Usage</h5>
+						<div id="title">
+							<h5>サーバ監視項目</h5>
+						</div>
+						<h5>CPU 使用率</h5>
 						<img id="cpu"></img>
 					</section>
 					<section>
-						<h5>Memory Available</h5>
+						<div id="title">
+							<h5>サーバ監視項目</h5>
+						</div>
+						<h5>メモリ使用率</h5>
 						<img id="memory"></img>
 					</section>
 					<section>
-						<h5>NetWork Usage</h5>
+						<div id="title">
+							<h5>サーバ監視項目</h5>
+						</div>
+						<h5>ネットワーク使用率</h5>
 						<img id="network"></img>
 					</section>
 					<section>
-						<h5>LOG</h5>
+						<div id="title">
+							<h5>サーバ監視項目</h5>
+						</div>
+						<h5>ログ</h5>
 					</section>
 				</section>
 			</div>
@@ -120,7 +171,7 @@ System.p("hello, world.");
 				history: false,
 				
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/linear(2d)
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/linear(2d)
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
