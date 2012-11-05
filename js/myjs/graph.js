@@ -47,7 +47,8 @@ function TriggerLog_get(){
     complete:function(data) {
       var log = JSON.parse(data.responseText);
       if(log.result.length === 0) {
-        $("#trigger_log").text("現在正常に稼動しています。");
+        $(".trigger_element").remove();
+        $("#trigger_log").append('<div class="trigger_element">現在正常に稼動しています。</div>');
       } else {
         TriggerLog_setTable(log.result);
       }
