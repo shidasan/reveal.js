@@ -1196,6 +1196,7 @@ var Reveal = (function(){
 	// Expose some methods publicly
 	return {
 		initialize: initialize,
+    slide: slide,
 		navigateTo: navigateTo,
 		navigateLeft: navigateLeft,
 		navigateRight: navigateRight,

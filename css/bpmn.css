@@ -1,0 +1,40 @@
+.reveal #bpmn {
+	background: #ffffff;
+	border-style: solid;
+	border-width: 2px;
+	width: 800px;
+	height: 600px;
+	margin: 0 auto;
+}
+
+.reveal .slides section #bpmn .bpmn_node {
+	position: absolute;
+	background: #ffffff;
+	border-style: solid;
+	border-width: 2px;
+	width: 120px;
+	height: 120px;
+	margin: 0 auto;
+}
+
+.reveal .slides section #bpmn .bpmn_node p{
+	text-align: center;
+	font-size: 20px;
+	padding-top: 10px;
+}
+
+.reveal .slides #bpmn .bpmn_node div.status {
+	position: absolute;
+	top: 100px;
+	left: 130px;
+}
+/*--------------- CSS Animation ----------------*/
+
+@-webkit-keyframes ET_rotateArea {
+	0% {-webkit-transform: rotate(0deg);}
+	100% {-webkit-transform: rotate(360deg);}
+}
+
+.bpmn_running .status img {
+	-webkit-animation: ET_rotateArea 2s linear infinite;
+}

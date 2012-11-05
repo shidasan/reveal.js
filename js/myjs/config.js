@@ -12,3 +12,20 @@ var CONFIG = {
   cgi_dir: 'cgi-bin',
   img_dir: 'architecture/pic'
 }
+
+var TASK_A = {
+  name: 'Task:A',
+}
+
+var TASK_B = {
+  name: 'Task:B',
+}
+
+var TASK_C = {
+  name: 'Task:C',
+}
+
+var TASK_D = {
+  name: 'Task:D',
+}
+
