@@ -108,7 +108,7 @@ class Zabbix {
 				"expandData" => 1,
 				"filter" => array("value" => 1)
 		);
-		return $this->file_get($this->create_data("event.get",$params));
+		return $this->file_get($this->create_data("trigger.get",$params));
 	}
 }
 
