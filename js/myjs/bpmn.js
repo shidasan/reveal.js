@@ -20,7 +20,6 @@ BPMN.prototype = {
     });
   },
   setNode: function(x, y, name, str) {
-    console.log('hoge');
     var $ret = createLastChild(this.$dom);
     $ret.addClass('bpmn_node');
     //var $img = createLastChild($ret, 'img');
@@ -79,7 +78,7 @@ BPMN.prototype = {
 }
 
 function BPMN_init(argument) {
-  console.log('bpmn');
+  console.log('hogehgowe');
   var bpmn = new BPMN();
   bpmn.init();
   var $node_a = bpmn.setNode(200, 400, TASK_A.name);
