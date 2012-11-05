@@ -99,17 +99,17 @@ class Zabbix {
 		return $this->file_get($this->create_data("history.get",$params));
 		//var_dump($result);
 	}
-	/*
+
 	public function getEvent() {
-		assert(isset($this->TriggerId));
+		//assert(isset($this->TriggerId));
 		$params = array(
-				"triggerids" => array($this->TriggerId),
-				"output" => "extend"
+				//"triggerids" => array($this->TriggerId),
+				"output" => "extend",
+				"expandData" => 1,
+				"filter" => array("value" => 1)
 		);
-		$result = $this->file_get($this->create_data("event.get",$params));
-		var_dump($result);
+		return $this->file_get($this->create_data("event.get",$params));
 	}
-	*/
 }
 
 ?>

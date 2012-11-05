@@ -116,7 +116,7 @@ System.sleep(10);
 				</section>
 					<!--<section>
 					<div id="title">
-						<h2>D-Task エディタ</h2>
+						<h2>D-Script エディタ</h2>
 					</div>
 					<form action="" method="POST">
 						<textarea id="editor" name="editor" >
@@ -156,6 +156,13 @@ System.sleep(10);
 						</div>
 						<h2>CPU 使用率</h2>
 						<img id="cpu"></img>
+						<form>
+							<select name="Server" id="cpu_select" >
+								<option value="et2">Node 1
+								<option value="et3">Node 2
+								<option value="Zabbix">DSE Manager
+							</select>
+						</form>
 					</section>
 					<section>
 						<div id="title">
@@ -163,6 +170,13 @@ System.sleep(10);
 						</div>
 						<h2>メモリ使用率</h2>
 						<img id="memory"></img>
+						<form>
+							<select name="Server" id="memory_select">
+								<option value="et2">Node 1
+								<option value="et3">Node 2
+								<option value="Zabbix">Server
+							</select>
+						</form>
 					</section>
 					<section>
 						<div id="title">
@@ -170,6 +184,13 @@ System.sleep(10);
 						</div>
 						<h2>ネットワーク使用率</h2>
 						<img id="network"></img>
+						<form>
+							<select name="Server" id="network_select">
+								<option value="et2">Node 1
+								<option value="et3">Node 2
+								<option value="Zabbix">DSE Manager
+							</select>
+						</form>
 					</section>
 					<section>
 						<div id="title">

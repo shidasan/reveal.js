@@ -3,7 +3,7 @@ require_once("action.php");
 require_once("conf.php");
 $zabbix = new Zabbix($_ip);
 assert($zabbix->login($_user,$_pass));
-$Ids = $zabbix->getGraph("et2",array("name" => $_POST["name"]));
+$Ids = $zabbix->getGraph($_POST["Server"],array("name" => $_POST["name"]));
 if($Ids){
 	/*
 	$login_url = $_ip . "/zabbix/index.php";//"?form_refresh=1&name;=" . $_user . "&password;=" . $_pass . "&enter=Enter";
@@ -11,7 +11,7 @@ if($Ids){
 	var_dump($http_response_header);
 	$cookie = $head["Set-Cookie"];
 	*/
-	$graph_url = $_ip . "/zabbix/chart2.php?graphid=" . $Ids[0];
+	$graph_url = "/zabbix/chart2.php?graphid=" . $Ids[0];
 	echo json_encode(array("src" => $graph_url));
 	/*
 	$opts = array(
