@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Registory of D-Script Monitors -->
+
+<d-script xmlns="http://www.dependable-os.net/d-script">
+
+  <!--
+       *********************************************
+       *            Monitors                       *
+       *********************************************
+   -->
+  <monitors>
+
+    <monitor>
+      <name>www.dependable-os.net/dre/system.Monitor</name>
+      <description>System Monitor</description>
+      <version>0.5</version>
+      <license>GPL</license>
+      <author>DEOS Center</author>
+      <config_template><![CDATA[<<??>?xml version="1.0" encoding="utf-8"?>
+<plug-ins>
+
+  <plug-in name="plugins.system.Monitor"
+           interval="<?= get_value('interval') ?>">
+    <args host="<?= get_value('host') ?>"
+          rrd-dir="<?= get_value('rrd-dir') ?>"/>
+  </plug-in>
+
+  <plug-in name="plugins.system.Analyzer"
+           interval="<?= get_value('interval') ?>">
+    <args node-id="<?= get_value ('d_case_node_id_by_editor') ?>"
+          host="<?= get_value('host') ?>"
+          rrd-dir="<?= get_value('rrd-dir') ?>"
+          cpu-warn="<?= get_value('cpu-warn') ?>"
+          cpu-crit="<?= get_value('cpu-crit') ?>"
+          mem-warn="<?= get_value('mem-warn') ?>"
+          mem-crit="<?= get_value('mem-crit') ?>"
+          related-nodes="<?= get_value('related-nodes') ?>"/>
+  </plug-in>
+
+  <plug-in name="plugins.system.Graph"
+           interval="<?= get_value('interval') ?>">
+    <args rrd-dir="<?= get_value('rrd-dir') ?>"
+          graph-dir="<?= get_value('graph-dir') ?>"/>
+  </plug-in>
+
+</plug-ins>
+]]>
+      </config_template>
+      <config_path extension=".conf">/etc/dre-monitor/conf.d/</config_path>
+      <explanations>
+        <explanation lang="ja_JP"><![CDATA[
+          システムのCPU使用率とメモリ使用率を監視します。
+          監視間隔は[interval]秒です。
+          [host]サーバーを監視します。
+          監視した値は[rrd-dir]ディレクトリへ保存されます。
+          CPU使用率が[cpu-warn]%を越えた場合、WRNINGメッセージをsyslogへ出力します。
+          CPU使用率が[cpu-crit]%を越えた場合、CRITICALメッセージをsyslogへ出力します。
+          Memory使用率が[mem-warn]を越えた場合、WRNINGメッセージをsyslogへ出力します。
+          Memory使用率が[mem-crit]を越えた場合、CRITICALメッセージをsyslogへ出力します。
+          [graph-dir]ディレクトリへグラフが保存されます。
+          ]]>
+        </explanation>
+      </explanations>
+      <parameters>
+        <!-- Details must be determined.  Similar to XML schema? -->
+        <parameter name="interval" type="integer">
+          <description>監視間隔[秒]</description>
+          <default>2</default>
+        </parameter>
+        <parameter name="host" type="string">
+          <description>監視対象のホスト名</description>
+          <default>localhost</default>
+        </parameter>
+        <parameter name="cpu-crit" type="integer" min="1" max="100">
+          <description>CPU使用率CRITICALメッセージの閾値[%]</description>
+          <default>90</default>
+        </parameter>
+        <parameter name="cpu-warn" type="integer" min="1" max="100">
+          <description>CPU使用率WARNINGメッセージの閾値[%]</description>
+          <default>80</default>
+        </parameter>
+        <parameter name="mem-crit" type="integer" min="1" max="100">
+          <description>メモリー使用率CRITICALメッセージの閾値[%]</description>
+          <default>90</default>
+        </parameter>
+        <parameter name="mem-warn" type="integer" min="1" max="100">
+          <description>メモリー使用率WARNINGメッセージの閾値[%]</description>
+          <default>80</default>
+        </parameter>
+        <parameter name="related-nodes" type="string">
+          <description>関連するノード。複数指定する場合はコンマで区切ってください。</description>
+        </parameter>
+        <parameter name="rrd-dir" type="string">
+          <description>監視データの保存ディレクトリ</description>
+          <default>/tmp/dre-monitor/rrd/localhost/system</default>
+        </parameter>
+        <parameter name="graph-dir" type="string">
+          <description>グラフの保存ディレクトリ</description>
+          <default>/tmp/dre-monitor/graph/localhost/system</default>
+        </parameter>
+      </parameters>
+    </monitor>
+
+    <monitor>
+      <name>www.dependable-os.net/dre/container.Monitor</name>
+      <description>Container Monitor</description>
+      <version>0.5</version>
+      <license>GPL</license>
+      <author>DEOS Center</author>
+      <config_template><![CDATA[<<??>?xml version="1.0" encoding="utf-8"?>
+<plug-ins>
+
+  <plug-in name="plugins.container.Monitor"
+           interval="<?= get_value('interval') ?>">
+    <args container="<?= get_value('container') ?>"
+          rrd-dir="<?= get_value('rrd-dir') ?>"/>
+  </plug-in>
+
+  <plug-in name="plugins.container.Analyzer"
+           interval="<?= get_value('interval') ?>">
+    <args node-id="<?= get_value ('d_case_node_id_by_editor') ?>"
+          container="<?= get_value('container') ?>"
+          rrd-dir="<?= get_value('rrd-dir') ?>"
+          cpu-warn="<?= get_value('cpu-warn') ?>"
+          cpu-crit="<?= get_value('cpu-crit') ?>"
+          mem-warn="<?= get_value('mem-warn') ?>"
+          mem-crit="<?= get_value('mem-crit') ?>"
+          related-nodes="<?= get_value('related-nodes') ?>"/>
+  </plug-in>
+
+  <plug-in name="plugins.container.Graph"
+           interval="<?= get_value('interval') ?>">
+    <args rrd-dir="<?= get_value('rrd-dir') ?>"
+          graph-dir="<?= get_value('graph-dir') ?>"/>
+  </plug-in>
+
+</plug-ins>
+]]>
+      </config_template>
+      <config_path extension=".conf">/etc/dre-monitor/conf.d/</config_path>
+      <explanations>
+        <explanation lang="ja_JP"><![CDATA[
+          コンテナのCPU使用率とメモリ使用率を監視します。
+          監視間隔は[interval]です。
+          [container]コンテナを監視します。
+          監視した値は[rrd-dir]ディレクトリへ保存されます。
+          CPU使用率が[cpu-warn]を越えた場合、WRNINGメッセージをsyslogへ出力します。
+          CPU使用率が[cpu-crit]を越えた場合、CRITICALメッセージをsyslogへ出力します。
+          Memory使用率が[mem-warn]を越えた場合、WRNINGメッセージをsyslogへ出力します。
+          Memory使用率が[mem-crit]を越えた場合、CRITICALメッセージをsyslogへ出力します。
+          [graph-dir]ディレクトリへグラフが保存されます。
+        ]]>
+        </explanation>
+      </explanations>
+      <parameters>
+        <parameter name="interval" type="integer">
+          <description>監視間隔[秒]</description>
+          <default>2</default>
+        </parameter>
+        <parameter name="container" type="string">
+          <description>監視対象のコンテナ名</description>
+          <default>container</default>
+        </parameter>
+        <parameter name="cpu-crit" type="integer" min="1" max="100">
+          <description>CPU使用率CRITICALメッセージの閾値[%]</description>
+          <default>90</default>
+        </parameter>
+        <parameter name="cpu-warn" type="integer" min="1" max="100">
+          <description>CPU使用率WARNINGメッセージの閾値[%]</description>
+          <default>80</default>
+        </parameter>
+        <parameter name="mem-crit" type="integer" min="1" max="100">
+          <description>メモリー使用率CRITICALメッセージの閾値[%]</description>
+          <default>90</default>
+        </parameter>
+        <parameter name="mem-warn" type="integer" min="1" max="100">
+          <description>メモリー使用率WARNINGメッセージの閾値[%]</description>
+          <default>80</default>
+        </parameter>
+        <parameter name="related-nodes" type="string">
+          <description>関連するノード。複数指定する場合はコンマで区切ってください。</description>
+        </parameter>
+        <parameter name="rrd-dir" type="string">
+          <description>監視データの保存ディレクトリ</description>
+          <default>/tmp/dre-monitor/rrd/localhost/container</default>
+        </parameter>
+        <parameter name="graph-dir" type="string">
+          <description>グラフの保存ディレクトリ</description>
+          <default>/tmp/dre-monitor/graph/localhost/container</default>
+        </parameter>
+      </parameters>
+    </monitor>
+
+    <monitor>
+      <name>www.dependable-os.net/dre/apache.Monitor</name>
+      <description>Apache Server Access Count Monitor</description>
+      <version>0.5</version>
+      <license>GPL</license>
+      <author>DEOS Center</author>
+      <config_template><![CDATA[<<??>?xml version="1.0" encoding="utf-8"?>
+<plug-ins>
+
+  <plug-in name="plugins.apache.Monitor"
+           interval="<?= get_value('interval') ?>">
+    <args host="<?= get_value('host') ?>"
+          rrd-dir="<?= get_value('rrd-dir') ?>"/>
+  </plug-in>
+
+  <plug-in name="plugins.apache.Analyzer"
+           interval="<?= get_value('interval') ?>">
+    <args node-id="<?= get_value ('d_case_node_id_by_editor') ?>"
+          host="<?= get_value('host') ?>"
+          rrd-dir="<?= get_value('rrd-dir') ?>"
+          warn="<?= get_value('warn') ?>"
+          crit="<?= get_value('crit') ?>"
+          related-nodes="<?= get_value('related-nodes') ?>"/>
+  </plug-in>
+
+  <plug-in name="plugins.apache.Graph"
+           interval="<?= get_value('interval') ?>">
+    <args rrd-dir="<?= get_value('rrd-dir') ?>"
+          graph-dir="<?= get_value('graph-dir') ?>"/>
+  </plug-in>
+
+</plug-ins>
+]]>
+      </config_template>
+      <config_path extension=".conf">/etc/dre-monitor/conf.d/</config_path>
+      <explanations>
+        <explanation lang="ja_JP"><![CDATA[
+          Apacheサーバーのアクセス数を監視します。
+          監視間隔は[interval]です。
+          [host]サーバーを監視します。
+          監視した値は[rrd-dir]ディレクトリへ保存されます。
+          アクセス数が[warn]を越えた場合、WRNINGメッセージをsyslogへ出力します。
+          アクセス数が[crit]を越えた場合、CRITICALメッセージをsyslogへ出力します。
+          [graph-dir]ディレクトリへグラフが保存されます。
+        ]]>
+        </explanation>
+      </explanations>
+      <parameters>
+        <parameter name="interval" type="integer">
+          <description>監視間隔[秒]</description>
+          <default>2</default>
+        </parameter>
+        <parameter name="host" type="string">
+          <description>監視対象のホスト名</description>
+          <default>localhost</default>
+        </parameter>
+        <parameter name="crit" type="integer" min="0">
+          <description>アクセス数CRITICALメッセージの閾値[%]</description>
+          <default>2500</default>
+        </parameter>
+        <parameter name="warn" type="integer" min="0">
+          <description>アクセス数WARNINGメッセージの閾値[%]</description>
+          <default>2000</default>
+        </parameter>
+        <parameter name="related-nodes" type="string">
+          <description>関連するノード。複数指定する場合はコンマで区切ってください。</description>
+        </parameter>
+        <parameter name="rrd-dir" type="string">
+          <description>監視データの保存ディレクトリ</description>
+          <default>/tmp/dre-monitor/rrd/localhost/apache</default>
+        </parameter>
+        <parameter name="graph-dir" type="string">
+          <description>グラフの保存ディレクトリ</description>
+          <default>/tmp/dre-monitor/graph/localhost/apache</default>
+        </parameter>
+      </parameters>
+    </monitor>
+
+    <monitor>
+      <name>www.dependable-os.net/dre/mysql.Monitor</name>
+      <description>MySQL Responce Time Monitor</description>
+      <version>0.5</version>
+      <license>GPL</license>
+      <author>DEOS Center</author>
+      <config_template><![CDATA[<<??>?xml version="1.0" encoding="utf-8"?>
+<plug-ins>
+
+  <plug-in name="plugins.mysql.Monitor"
+           interval="<?= get_value('interval') ?>">
+    <args host="<?= get_value('host') ?>"
+          user="<?= get_value('user') ?>"
+          passwd="<?= get_value('passwd') ?>"
+          db="<?= get_value('db') ?>"
+          table="<?= get_value('table') ?>"
+          rrd-dir="<?= get_value('rrd-dir') ?>"/>
+  </plug-in>
+
+  <plug-in name="plugins.mysql.Analyzer"
+           interval="<?= get_value('interval') ?>">
+    <args node-id="<?= get_value ('d_case_node_id_by_editor') ?>"
+          host="<?= get_value('host') ?>"
+          rrd-dir="<?= get_value('rrd-dir') ?>"
+          warn="<?= get_value('warn') ?>"
+          crit="<?= get_value('crit') ?>"
+          related-nodes="<?= get_value('related-nodes') ?>"/>
+  </plug-in>
+
+  <plug-in name="plugins.mysql.Graph"
+           interval="<?= get_value('interval') ?>">
+    <args rrd-dir="<?= get_value('rrd-dir') ?>"
+          graph-dir="<?= get_value('graph-dir') ?>"/>
+  </plug-in>
+
+</plug-ins>
+]]>
+      </config_template>
+      <config_path extension=".conf">/etc/dre-monitor/conf.d/</config_path>
+      <explanations>
+        <explanation lang="ja_JP"><![CDATA[
+          MySQLサーバーの応答時間を監視します。
+          監視間隔は[interval]です。
+          [host]サーバーを監視します。
+          データベースのユーザは[user]で,パスワードは[passwd]です。
+          データベース[db]のテーブル[table]の応答時間を監視します。
+          監視した値は[rrd-dir]ディレクトリへ保存されます。
+          応答時間が[warn]を越えた場合、WRNINGメッセージをsyslogへ出力します。
+          応答時間が[crit]を越えた場合、CRITICALメッセージをsyslogへ出力します。
+          [graph-dir]ディレクトリへグラフが保存されます。
+        ]]>
+        </explanation>
+      </explanations>
+      <parameters>
+        <parameter name="interval" type="integer">
+          <description>監視間隔[秒]</description>
+          <default>2</default>
+        </parameter>
+        <parameter name="host" type="string">
+          <description>監視対象のホスト名</description>
+          <default>localhost</default>
+        </parameter>
+        <parameter name="user" type="string">
+          <description>ユーザ名</description>
+        </parameter>
+        <parameter name="passwd" type="password">
+          <description>パスワード</description>
+        </parameter>
+        <parameter name="db" type="string">
+          <description>データベース名</description>
+        </parameter>
+        <parameter name="table" type="string">
+          <description>テーブル名</description>
+        </parameter>
+        <parameter name="crit" type="integer" min="0" max="1">
+          <description>アクセス数CRITICALメッセージの閾値[%]</description>
+          <default>1</default>
+        </parameter>
+        <parameter name="warn" type="integer" min="0" max="1">
+          <description>アクセス数WARNINGメッセージの閾値[%]</description>
+          <default>0.8</default>
+        </parameter>
+        <parameter name="related-nodes" type="string">
+          <description>関連するノード。複数指定する場合はコンマで区切ってください。</description>
+        </parameter>
+        <parameter name="rrd-dir" type="string">
+          <description>監視データの保存ディレクトリ</description>
+          <default>/tmp/dre-monitor/rrd/localhost/mysql</default>
+        </parameter>
+        <parameter name="graph-dir" type="string">
+          <description>グラフの保存ディレクトリ</description>
+          <default>/tmp/dre-monitor/graph/localhost/mysql</default>
+        </parameter>
+      </parameters>
+    </monitor>
+
+  </monitors>
+
+
+  <!--
+       *********************************************
+       *            Actions                        *
+       *********************************************
+   -->
+
+  <actions>
+
+    <action>
+      <name>www.dependable-os.net/SEC/generic.Action</name>
+      <description>Generic Action with SEC</description>
+      <version>0.5</version>
+      <license>GPL</license>
+      <author>DEOS Center</author>
+      <config_template><![CDATA[#
+# Generic SEC configuration file generated at <?= date (DateTime::RFC3339) ?>
+# For D-Case Node (<?= get_value ('d_case_node_id') ?> | <?= get_value ('d_case_node_name') ?> | <?= get_value ('d_case_node_id_by_editor') ?>) with D-Script (<?= get_value ('d_script_id') ?>)
+         <?= get_value ('config_file_content') ?>
+      ]]>
+      </config_template>
+      <config_path extension=".conf">/etc/dre-action/sec.d/</config_path>
+      <explanations>
+        <explanation lang="ja_JP"><![CDATA[
+          Simple Event Correlator (SEC)の構成ファイルの中身を指定します。
+                  詳細は、secのman pageやSimple Event Correlator FAQを参照してください。
+        ]]>
+        </explanation>
+      </explanations>
+      <parameters>
+        <!-- Details must be determined.  Similar to XML schema? -->
+        <parameter name="config_file_content" type="string">
+           <description>Content of the entire configuration file</description>
+        </parameter>
+      </parameters>
+    </action>
+
+    <action>
+      <name>www.dependable-os.net/SEC/MySQLBatchAbort.Action</name>
+      <description>Aborting MySQL Batch with SEC</description>
+      <version>0.5</version>
+      <license>GPL</license>
+      <author>DEOS Center</author>
+      <config_template><![CDATA[#
+# Detect running MySQL batch
+# --------------------------------------------------
+#   Events - SEC Startup and Shutdown
+# --------------------------------------------------
+type=Single
+continue=TakeNext
+ptype=SubStr
+pattern=SEC_STARTUP
+desc=Import Perl modules
+action=eval %void ( foreach my $directory (@INC) { printf "  %%s\n", $directory; }; \
+                    use Utilities; \
+                    printf "Working directory: %%s\n", Utilities::trim ( qx( pwd ) ); \
+                  )
+
+# --------------------------------------------------
+type=Single
+continue=TakeNext
+rem=ptype=SubStr
+rem=pattern=SEC_STARTUP
+ptype=RegExp
+pattern=^SEC_(STARTUP|RESTART)$
+desc=Define a Perl function to stop MySQL Batch Job
+action=eval %stop_mysql_batch_jobs ( %%mysql_batch_jobs= (); sub { for my $job_id (keys %%mysql_batch_jobs) { \
+                   printf ("Killing PID %%s ...\n", $job_id); \
+                   system ("<?= get_value ('action_script') ?>", $job_id); \
+                }; \
+                printf "\n"; } )
+
+# --------------------------------------------------
+type=Single
+continue=TakeNext
+ptype=SubStr
+pattern=SEC_SHUTDOWN
+desc=Gracefully shutting down ...
+action=write - "%s"
+
+# --------------------------------------------------
+#   Events - Batch Job Start
+# --------------------------------------------------
+type=Single
+continue=DontCont
+ptype=RegExp
+pattern=event=Started;.*event-source=<?= get_value ('batch_job_id_pattern') ?>
+context=! MYSQL_BATCH_RUNNING
+desc=First MySQL Batch Job $2 started
+action=create MYSQL_BATCH_RUNNING 30 ( call %void %stop_mysql_batch_jobs ); \
+       write - "%s"; \
+       eval %void ( %%mysql_batch_jobs = ( $2 => 1 )  )
+
+rem=action=write - "%s"; \
+       create MYSQL_BATCH_RUNNING 30 ( write - "Kill MySQL Batch(s) in %%mysql_batch_jobs"; \
+                                       eval %void ( printf ("Killing: %%s\n", join (', ', keys %%mysql_batch_jobs)) ); \
+                                       call %void %stop_mysql_batch_jobs; ); \
+       eval %void ( %%mysql_batch_jobs = ( $2 => 1 ); printf ("%%s\n", join (', ', keys %%mysql_batch_jobs)) )
+
+# --------------------------------------------------
+type=Single
+continue=DontCont
+ptype=RegExp
+pattern=event=Started;.*event-source=<?= get_value ('batch_job_id_pattern') ?>
+context=MYSQL_BATCH_RUNNING
+desc=Subsequent MySQL Batch Job $2 started
+action=write - "%s"; eval %void ( $mysql_batch_jobs {$2} = 1 )
+
+rem=action=write - "%s"; add MYSQL_BATCH_RUNNING $1; \
+       eval %void ( $mysql_batch_jobs {$2} = 1 )
+
+# --------------------------------------------------
+#   Events - Batch Job End
+# --------------------------------------------------
+
+type=Single
+continue=TakeNext
+ptype=RegExp
+pattern=event=Stopped;.*event-source=<?= get_value ('batch_job_id_pattern') ?>
+context=MYSQL_BATCH_RUNNING
+desc=MySQL Batch Job $2 stopped
+rem=$2 needs to be removed from the event store of MYSQL_BATCH_RUNNING
+action=write - "%s"; eval %void ( delete $mysql_batch_jobs {$2} )
+
+# --------------------------------------------------
+type=Single
+continue=DontCont
+ptype=RegExp
+pattern=event=Stopped;.*event-source=<?= get_value ('batch_job_id_pattern') ?>
+context= =( scalar (keys %mysql_batch_jobs) == 0 )
+desc=No more MySQL Batch Jobs are running
+action=write - "%s"; delete MYSQL_BATCH_RUNNING
+
+# --------------------------------------------------
+#   Events - Access Time Exceed
+# --------------------------------------------------
+
+type=Single
+continue=DontCont
+ptype=RegExp
+pattern=<?= get_value ('response_time_excessive_pattern') ?>
+context=! MYSQL_BATCH_RUNNING
+desc=Response Time Excessive is received while no MySQL Batch Jobs are running
+action=write - "%s"
+
+# --------------------------------------------------
+type=Single
+continue=TakeNext
+ptype=RegExp
+pattern=event\=ResponseTimeExcessive\;
+context=MYSQL_BATCH_RUNNING
+desc=Response Time Excessive
+action=write - "%s"; obsolete MYSQL_BATCH_RUNNING
+      ]]>
+      </config_template>
+      <config_path extension=".conf">/etc/dre-action/sec.d/</config_path>
+      <explanations>
+        <explanation lang="ja_JP"><![CDATA[
+          MySQLからのResponseの遅れに対して、MySQLのBatch処理を強制終了させます。
+        ]]>
+        </explanation>
+      </explanations>
+      <parameters>
+        <parameter name="action_script" type="string">
+          <description>D-Script to be called to abort MySQL Batch Job.
+            Job ID will be passed as the first argument.
+          </description>
+          <default></default>
+        </parameter>
+
+        <parameter name="batch_job_id_pattern" type="string">
+          <description>syslog内でのMySQL Batch Job IDを表す正規表現</description>
+          <default>(.*/MySQL/Batch/([[:digit:]]+))</default>
+        </parameter>
+
+        <parameter name="response_excessive_pattern" type="string">
+          <description>syslog内でのMySQLのResponse遅れを表す正規表現</description>
+          <default>event\=ResponseTimeExcessive\;</default>
+        </parameter>
+      </parameters>
+    </action>
+
+    <action>
+      <name>www.dependable-os.net/SEC/Traffic_Limit_Exceeded.Action</name>
+      <description>Traffic_Limit_Exceeded Action with SEC</description>
+      <version>0.5</version>
+      <license>GPL</license>
+      <author>DEOS Center</author>
+      <config_template><![CDATA[###############################################################
+# Receives an external event [Traffic_Limit_Exceeded]
+###############################################################
+type=SingleWithSuppress
+ptype=RegExp
+pattern=app-apa TrafficLimitExceeded (\S+)
+desc=[SEC Action]
+action=shellcmd /usr/share/dre/d-script/action/act_logging.sh local5.err SEC "LogFormat=DRE1.0>Event=TrafficLimitExceeded>\
+TagSource=/Host:deosc-laptop>EventSource=/Host:deosc-laptop/AppContainer:app-apa/apache>\
+EventDiscoverer=/Host:deosc-laptop/Monitor>Message=Traffic Limit Exceeded$1>";
+window=30
+
+type=SingleWithSuppress
+ptype=RegExp
+pattern=Start TrafficLimitExceeded
+desc=[SEC Action]
+action=event 1 "Traffic_Limit_Exceeded_process1";
+window=30
+
+type=Single
+ptype=RegExp
+pattern=(\S+)Message=Installed new-service.deb(\S+)
+context=! NEW_SERVICE_INSTALLED
+desc=[SEC Action]
+action=create NEW_SERVICE_INSTALLED
+
+###############################################################
+# Receives an internal event [Traffic_Limit_Exceeded]
+###############################################################
+type=Single
+ptype=RegExp
+continue=TakeNext
+pattern=Traffic_Limit_Exceeded_process1
+context=PROCESSING && NEW_SERVICE_INSTALLED
+desc=[SEC Action]
+action=event 15 $0
+
+type=Single
+ptype=RegExp
+continue=DontCont
+pattern=Traffic_Limit_Exceeded_process1
+context=(! PROCESSING) && NEW_SERVICE_INSTALLED
+desc=[SEC Action]
+action=create PROCESSING; \
+shellcmd /usr/share/dre/d-script/action/act_logging.sh local5.info SEC "LogFormat=DRE1.0>Event=RecoveryActionStarted>\
+TagSource=/Host:deosc-laptop>EventSource=/Host:deosc-laptop/usr/share/dre/d-script/action/act_undo_container.sh>\
+Message=Undo Container : app-tom. [TrafficLimitExceeded] Recovery Action>"; \
+event 1 "Traffic_Limit_Exceeded_process2";
+
+type=SingleWithScript
+ptype=RegExp
+pattern=Traffic_Limit_Exceeded_process2
+script=/bin/sh /usr/share/dre/d-script/action/act_undo_container.sh app-tom ss1 >> /var/log/sec.log 2>&1
+desc=[SEC Action]
+action=delete PROCESSING; delete NEW_SERVICE_INSTALLED; \
+shellcmd /usr/share/dre/d-script/action/act_logging.sh local5.info SEC "LogFormat=DRE1.0>Event=RecoveryActionCompleted>\
+TagSource=/Host:deosc-laptop>EventSource=/Host:deosc-laptop/usr/share/dre/d-script/action/act_undo_container.sh>\
+Message=Undo Container : app-tom. [TrafficLimitExceeded] Recovery Action>";
+action2=shellcmd /usr/share/dre/d-script/action/act_logging.sh local5.info SEC "LogFormat=DRE1.0>Event=RecoveryActionFailed>\
+TagSource=/Host:deosc-laptop>EventSource=/Host:deosc-laptop/usr/share/dre/d-script/action/act_undo_container.sh>\
+Message=Undo Container : app-tom. [TrafficLimitExceeded] Recovery Action>";
+      ]]>
+      </config_template>
+      <config_path extension=".conf">/etc/dre-action/sec.d</config_path>
+      <explanations>
+        <explanation lang="ja_JP"><![CDATA[
+          Simple Event Correlator (SEC)の構成ファイルの中身を指定します。
+                  詳細は、secのman pageやSimple Event Correlator FAQを参照してください。
+        ]]>
+        </explanation>
+      </explanations>
+      <parameters>
+        <!-- Details must be determined.  Similar to XML schema? -->
+        <parameter name="config_file_content" type="string">
+           <description>Content of the entire configuration file</description>
+        </parameter>
+      </parameters>
+    </action>
+
+  </actions>
+
+</d-script>

@@ -1,0 +1,32 @@
+.tab-box {
+}
+
+.tab {
+    display: inline-block;
+    padding: 4px 16px;
+    border-top: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid gray;
+    border-bottom: 0 solid gray;
+    background-color: lightgray;
+    margin: 0 2px;
+}
+
+.tab.selected {
+    background-color: white;
+}
+
+.content-box {
+    padding: 8px;
+    border: 1px solid black;
+    border-top-width: 0;
+    border-left: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+.content {
+    overflow: auto;
+    height: 90%;
+}
