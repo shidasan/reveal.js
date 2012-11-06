@@ -13,21 +13,6 @@ import cgi, uuid, sys, os, json, re
 ### Config
 DCtrl_ip = 'http://127.0.0.1:8080'
 
-def request_addCid():
-	form = cgi.FieldStorage()
-	req = ({
-			'CId': createCId(),
-			'TId': 123,
-			'Method': form.getvalue('Method'),
-			'Script': form.getvalue('Script'),
-			'Option': form.getvalue('Option'),
-			'Name': 'hoge.k',
-			'event': 'D-Task',
-			'To': '127.0.0.1:8080',
-			'From': '127.0.0.1:80'
-			})
-	return req
-
 def sendRequest(req):
 	#string = '{"Method": "SendDSE", "Script": "System.p(123);", "Name": "hoge.k", "event": "D-Task", "To": "127.0.0.1:8080"}'
 	c = pycurl.Curl()

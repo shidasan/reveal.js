@@ -62,12 +62,12 @@ def checkKillCmd(req):
 	return reqs
 
 if __name__ == '__main__':
-	req = {"Method": "SendDSE", "Script": "System.p(123);kill(456);System.p(789);", "Name": "hoge.k", "event": "D-Task", "To": "127.0.0.1:8080"}
-#	req = request_addCid()
+#	req = {"Method": "SendDSE", "Script": "System.p(123);kill(456);System.p(789);", "Name": "hoge.k", "event": "D-Task", "To": "127.0.0.1:8080"}
+	req = request_addCid()
 	reqs = checkKillCmd(req)
 	f = open("req.sotre", "w")
 	for _req in reqs[1:]:
 		f.write(json.dumps(_req))
 	f.close()
-#	res = sendRequest(_req)
-#	returnClient(_req);
+	res = sendRequest(reqs[0])
+	returnClient(reqs[0]);

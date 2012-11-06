@@ -10,6 +10,9 @@ function Editor_init() {
 				lineNumbers: true,
 				mode: "text/x-konoha"
 			});
+		EDITOR_FILE.forEach(function(i){
+			$("#editor_select").append('<option value="'+ i.file +'">'+i.file);
+		});
 		var libs = {
 			setLineColor : function(line,count){
 					editor.setLineClass(line - 1,"SGreen");
@@ -83,5 +86,9 @@ function Editor_init() {
 			dataType:'json'
 		});
 	});
+	$("#editor_select").change(function(){
+		var value = $("#editor_select option:selected").val();
+		editor.setValue(EDITOR_FILE);
+	})
 };
 
