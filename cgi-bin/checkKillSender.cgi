@@ -15,13 +15,14 @@ DCtrl_ip = 'http://127.0.0.1:8080'
 
 def request_addCid():
 	form = cgi.FieldStorage()
+	cid = createCId();
 	req = ({
-			'CId': createCId(),
+			'CId': cid,
 			'TId': 123,
 			'Method': form.getvalue('Method'),
 			'Script': form.getvalue('Script'),
 			'Option': form.getvalue('Option'),
-			'Name': 'hoge.k',
+			'Name': cid + '.k',
 			'event': 'D-Task',
 			'To': '127.0.0.1:8080',
 			'From': '127.0.0.1:80'

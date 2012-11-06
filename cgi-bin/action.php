@@ -95,8 +95,8 @@ class Zabbix {
 				"output"  => "extend",
 				"search"  => array("value" => $id),
 				"itemids" => $this->ItemIds,
-				"sortfield" => "clock",
-				"sortorder" => "DESC"
+				"sortfield" => "clock"
+				//"sortorder" => "DESC"
 		);
 		return $this->file_get($this->create_data("history.get",$params));
 		//var_dump($result);

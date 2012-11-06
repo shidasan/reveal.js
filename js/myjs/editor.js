@@ -8,8 +8,6 @@ var yoan_dscript_editors = [];
 function Editor_init() {
   var i = 0;
   $.each($('.editor'), function() {
-    console.log(i++);
-    console.log($(this));
     yoan_dscript_editors.push(createEditor($(this)));
   });
   Editor_refresh();
@@ -35,21 +33,31 @@ function createEditor($dom) {
 				editor.setLineClass(line - 1, null);
 			}
 		};
-		var log = { getLog : function(){
+		var log = { getLog : function(data,idx){
 			//var data = (JSON.stringify({ "Method": "RequestDSE","Script" : editor.getValue()}));
-			var data = {};
 			$.ajax({
-				url:'cgi-bin/zabbixlog.php',
+				//url:'cgi-bin/zabbixlog.php',
+				url:'cgi-bin/zabbixpol.php',
 				type:'POST',
-				data: data,
+				data: {"JSON" : data},
 				error:function() { $("#error_log").text("error") },
 				complete:function(res_data) {
 					var res_json = JSON.parse(res_data.responseText);
 					$("#error_log").text("");
 					//$("#error_log").text(JSON.stringify(res_json[0].Value));
 					var t = 100;
-					var script_flag = false;
+					var script_flag = true;
+					var index = 0;
+					console.log(idx);
 					$.each(res_json.Value,function(key,value) {
+						if(key < idx) {
+							return;
+						}
+						if(value === null) {
+							return;
+						}
+						console.log(key + ":" + idx);
+						index = key;
 						if(value.ScriptName === ".\/dse.k") {
 							return;
 						}
@@ -57,16 +65,14 @@ function createEditor($dom) {
 						case "Alert":
               $('#myModal').modal();
 						case "DScriptResult":
-							if(script_flag) {
-								setTimeout( function() {
-									libs.setLineColor(value.ScriptLine,value.Count);
-								},t);
-							}
-							break;
-						case "EndTask":
-						script_flag = true;
+							setTimeout( function() {
+								libs.setLineColor(value.ScriptLine,value.Count);
+							},t);
 							break;
 						case "StartTask":
+							break;
+						case "EndTask":
+							script_flag = false;
 							return false;
 						case "DScriptPrint":
               zabbix_notify_info(value.Body.replace(/\#(.+)$/, ""));
@@ -82,26 +88,12 @@ function createEditor($dom) {
 						}
 						t += 100;
 						});
+						if(script_flag) {
+							setTimeout( function() {
+								log.getLog(data, index);
+							},1000);
+						}
 					},
-				dataType:'json'
-			});
-		},
-		logPolling : function(data){
-			$.ajax({
-				url:'cgi-bin/zabbixpol.php',
-				type:'POST',
-				data: {"JSON" : data},
-				error:function() { },
-				complete:function(res_data) {
-					var res_json = JSON.parse(res_data.responseText);
-					if(res_json.Value.length > 1){
-						log.getLog();
-					}else{
-						setTimeout( function() {
-							log.logPolling(data);
-						},1000);
-					}
-				},
 				dataType:'json'
 			});
 		}
@@ -126,7 +118,7 @@ function createEditor($dom) {
 			data : data,
 			error:function(){$("#log1").text("error1"); },
 			complete:function(data){
-					log.logPolling(data.responseText);
+					log.getLog(data.responseText,0);
 			},
 			dataType:'json'
 		});
@@ -167,5 +159,5 @@ function Editor_refresh() {
   console.log(yoan_dscript_editors.length);
   setTimeout( function() {
     Editor_refresh();
-  },1000);
+  },10000);
 }

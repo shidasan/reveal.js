@@ -41,8 +41,10 @@
 					<div id="title">
 						<h2>test</h2>
 					</div>
+					<!--
 					<button type="button" class="btn btn-primary" style="margin-top:20px" onclick="notify_test_form();">form</button>
-					<button type="button" id="exec" class="btn btn-primary" style="margin-top:20px" onclick="notify_test();">test</button>
+					<button type="button" id="exec" class="btn btn-primary" style="margin-top:20px" onclick="zabbix_notify_info();">test</button>
+					-->
 					<div id="form_notice" style="display: none;">
 						<form class="pf-form pform_custom" action method="post">
 							<img src="./img/dscript_logo.png" width="80px" style="float: left; margin-left: -50px;"></img>
@@ -175,15 +177,19 @@
 				</div>
 				<form action="" method="POST">
 					<textarea class="editor" name="editor" >
-// Task A;
 import ("posix.process");
-System.sleep(10);
+import ("cstyle");
 
+void f() {
+  int i = 0;
+  while (i < 100) {
+    System.sleep(1);
+    System.p(i);
+    i = i + 1;
+  }
+}
 
-
-
-
-
+f();
 
 
 					</textarea>
