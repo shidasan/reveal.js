@@ -54,7 +54,11 @@
 						<h2>デモ用サービス</h2>
 						<h2>Web Camera Service</h2>
 					</div>
-					<h>Under Construction.</h>
+					<div id="motion">
+						<iframe src="http://192.168.59.151:8081" width="640" height="480">
+						Please tell Administator to install alertme.
+						</iframe>
+					</div>
 				</section>
 				<section>
 					<div id="title">
@@ -100,11 +104,13 @@
 					</section>
 				</section>
 				<section>
+				<section>
 				<div id="title">
 					<h2>D-Script エディタ</h2>
 				</div>
 				<form action="" method="POST">
-					<textarea id="editor" name="editor" >
+					<textarea class="editor" name="editor" >
+// Task A;
 import ("posix.process");
 System.sleep(10);
 
@@ -115,18 +121,80 @@ System.sleep(10);
 
 
 
-
 					</textarea>
-					<button type="button" class="btn btn-primary" style="margin-top:20px">execute</button>
+					<div style="float: left">
+						<select name="ip" id="ip_select">
+							<option value="192.168.59.150">Node 1
+							<option value="192.168.59.150">Node 2
+							<option value="192.168.59.150">DSE Manager
+						</select>
+						<select name="script" id="script_select">
+							<option value="foo.k">foo.k
+							<option value="bar.k">bar.k
+							<option value="hoge.k">hoge.k
+						</select>
+						<button type="button" id="exec" class="btn btn-primary" style="margin-top:20px">execute</button>
+					</div>
 				</form>
 				<div id="error_log"></div>
+				<!-- Modal -->
+				<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						<h3 id="myModalLabel">RiskDB セキュリティアラート</h3>
+					</div>
+					<div class="modal-body">
+						hoge.k 内で kill コマンドが見つかりました. プロセスIDは123456になります.<br>
+						実行してもよろしいでしょうか?"
+					</div>
+					<div class="modal-footer">
+						<button id="agreedExec" class="btn" data-dismiss="modal" aria-hidden="true">実行</button>
+						<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">停止</button>
+					</div>
+				</div>
 				</section>
-					<!--<section>
+				<!--
+				<section>
 					<div id="title">
 						<h2>D-Script エディタ</h2>
 					</div>
 					<form action="" method="POST">
-						<textarea id="editor" name="editor" >
+						<textarea class="editor" name="editor" >
+// Task B;
+import ("posix.process");
+System.sleep(10);
+
+
+
+
+
+
+
+
+						</textarea>
+							<div style="float: left">
+								<select name="ip" id="ip_select">
+									<option value="192.168.59.150">Node 1
+									<option value="192.168.59.150">Node 2
+									<option value="192.168.59.150">DSE Manager
+								</select>
+								<select name="script" id="script_select">
+									<option value="foo.k">foo.k
+									<option value="bar.k">bar.k
+									<option value="hoge.k">hoge.k
+								</select>
+								<button type="button" class="btn btn-primary" style="margin-top:20px">execute</button>
+							</div>
+					</form>
+					<div id="error_log"></div>
+				</section>
+				<section>
+					<div id="title">
+						<h2>D-Script エディタ</h2>
+					</div>
+					<form action="" method="POST">
+						<textarea class="editor" name="editor" >
+// Task C;
 import ("posix.process");
 System.sleep(10);
 
@@ -139,10 +207,25 @@ System.sleep(10);
 
 
 						</textarea>
-						<button type="button" class="btn btn-primary" style="margin-top:20px">execute</button>
+						<div style="float: left">
+							<select name="ip" id="ip_select">
+								<option value="et2">Node 1
+								<option value="et3">Node 2
+								<option value="Zabbix">DSE Manager
+							</select>
+							<select name="script" id="script_select">
+								<option value="foo.k">foo.k
+								<option value="bar.k">bar.k
+								<option value="hoge.k">hoge.k
+							</select>
+							<button type="button" class="btn btn-primary" style="margin-top:20px">execute</button>
+						</div>
 					</form>
 					<div id="error_log"></div>
-					</section>
+				</section>
+				-->
+				</section>
+					<!--
 					<section>
 					<div id="title">
 						<h2>Fault Matrix</h2>
@@ -154,7 +237,33 @@ System.sleep(10);
 						Please tell Administator to install alertme.
 					</iframe>
 					</section>
-					-->
+				</section>
+				-->
+				<section>
+					<div id="title">
+						<h2>Fault Matrix</h2>
+					</div>
+					<div id="fault_matrix"></div>
+					<table id="fault_table" class="table table-hover">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>hoge</th>
+								<th>foo</th>
+								<th>bar</th>
+							</tr>
+						</thead>
+						<tbody>
+						<!--
+							<tr>
+								<th>hello, world</th>
+								<th>hello, world</th>
+								<th>hello, world</th>
+								<th>hello, world</th>
+							</tr>
+						-->
+						</tbody>
+					</table>
 				</section>
 				<section>
 					<section>
@@ -254,9 +363,9 @@ System.sleep(10);
 				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/linear(2d)
 
 				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: 'js/myjs/editor.js', async: true, callback: function() { Editor_init(); } }
-				]
+				//dependencies: [
+				//	{ src: 'js/myjs/editor.js', async: true, callback: function() { Editor_init(); } }
+				//]
 			});
 		</script>
 	</body>

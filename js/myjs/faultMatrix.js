@@ -6,7 +6,7 @@ function draw_MatrixSVG(lsvg) {
 
 var Matrix = function() {
   this.$dom;
-  this.$list;
+  this.$table;
   this.nodes = [];
   this.domDict = [];
   this.flag_usr = (1 << 0);
@@ -24,8 +24,8 @@ Matrix.prototype = {
       stroke: 'black',
       strokeWidth: 3
     });
-    this.$list = createLastChild(this.$dom);
-    this.$list.attr('#fault_list');
+
+    this.$table = $('#fault_table');
   },
   createSoftwareFault: function() {
     var $ret = createLastChild(this.$dom);
@@ -86,32 +86,36 @@ Matrix.prototype = {
     var $extern = this.createExternalFault();
     this.setAxis();
   },
-  addLine: function(str, flag) {
-    var comp = createLastChild(this.$list);
-    comp.addClass('fault_line');
-    var line = createLastChild(comp, 'p', str);
-    var matrix = createLastChild(comp);
-    //console.log(flag);
-    if (flag & this.flag_usr != 0) {
-      //console.log(flag & this.flag_usr)
-      var usr = createLastChild(matrix);
-      usr.addClass('fault_line_User');
-    }
-    if ((flag & this.flag_sys) != 0) {
-      //console.log(flag & this.flag_sys)
-      var sys = createLastChild(matrix);
-      sys.addClass('fault_line_System');
-    }
-    if ((flag & this.flag_sft) != 0) {
-      //console.log(flag & this.flag_sft)
-      var sft = createLastChild(matrix);
-      sft.addClass('fault_line_Soft');
-    }
-    if ((flag & this.flag_ext) != 0) {
-      //console.log(flag & this.flag_ext)
-      var ext = createLastChild(matrix);
-      ext.addClass('fault_line_Ext');
-    }
+  addLine: function(data) {
+    var tr = createLastChild(this.$table, 'tr');
+    createLastChild(tr, 'th', data['api']);
+    createLastChild(tr, 'th', data['file']);
+    createLastChild(tr, 'th', data['line']);
+    createLastChild(tr, 'th', data['diag']);
+    //line.addClass('fault_line');
+    //var line = createLastChild(line, 'p', str);
+    //var matrix = createLastChild(line);
+    ////console.log(flag);
+    //if (flag & this.flag_usr != 0) {
+    //  //console.log(flag & this.flag_usr)
+    //  var usr = createLastChild(matrix);
+    //  usr.addClass('fault_line_User');
+    //}
+    //if ((flag & this.flag_sys) != 0) {
+    //  //console.log(flag & this.flag_sys)
+    //  var sys = createLastChild(matrix);
+    //  sys.addClass('fault_line_System');
+    //}
+    //if ((flag & this.flag_sft) != 0) {
+    //  //console.log(flag & this.flag_sft)
+    //  var sft = createLastChild(matrix);
+    //  sft.addClass('fault_line_Soft');
+    //}
+    //if ((flag & this.flag_ext) != 0) {
+    //  //console.log(flag & this.flag_ext)
+    //  var ext = createLastChild(matrix);
+    //  ext.addClass('fault_line_Ext');
+    //}
   },
   resetAnimation: function($node) {
   },
@@ -130,9 +134,9 @@ function Matrix_init(argument) {
       'file': 'hoge.k',
       'line': '12',
       'api': 'System.fopen()',
+      'diag': 'SoftwareFault',
   };
-  matrix.addLine(data['file'] + ': ' + data['line'] + ': ' + data['api'],
-                 (matrix.flag_usr|matrix.flag_sys|matrix.flag_sft|matrix.flag_ext));
+  matrix.addLine(data);
   //Matrix_stat(matrix);
 }
 

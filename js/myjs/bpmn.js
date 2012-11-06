@@ -19,23 +19,18 @@ BPMN.prototype = {
       strokeWidth: 3
     });
   },
-  setNode: function(x, y, name, str) {
+  setNode: function(x, y, name, str, idx) {
     var $ret = createLastChild(this.$dom);
     $ret.addClass('bpmn_node');
-    //var $img = createLastChild($ret, 'img');
-    //$img.attr('src', CONFIG.img_dir + '/server.png');
     createLastChild($ret, 'p', name);
-    //createLastChild($ret, 'p', ip);
     $ret.css({
       'top': (y - $ret.height()/2) + 'px',
       'left': (x - $ret.width()/2) + 'px'
     });
     $ret.click(function() {
-      Reveal.slide(3, 1);
+      Reveal.slide(4, $('#bpmn').children().index(this) - 1);
     });
     this.nodes.push($ret);
-    //var dict = new Dict(ip, $ret);
-    //this.domDict.push(dict);
     return $ret;
   },
   connectTo: function(to, from) {
@@ -81,9 +76,9 @@ function BPMN_init(argument) {
   console.log('hogehgowe');
   var bpmn = new BPMN();
   bpmn.init();
-  var $node_a = bpmn.setNode(200, 400, TASK_A.name);
-  var $node_b = bpmn.setNode(450, 400, TASK_B.name);
-  var $node_c = bpmn.setNode(700, 400, TASK_C.name);
+  var $node_a = bpmn.setNode(200, 400, TASK_A.name, parseInt(TASK_A.idx));
+  var $node_b = bpmn.setNode(450, 400, TASK_B.name, parseInt(TASK_B.idx));
+  var $node_c = bpmn.setNode(700, 400, TASK_C.name, parseInt(TASK_C.idx));
   bpmn.connectTo($node_a, $node_b);
   bpmn.connectTo($node_b, $node_c);
   //BPMN_stat(bpmn);
