@@ -49,6 +49,8 @@ function createEditor($dom) {
 					var script_flag = false;
 					$.each(res_json.Value,function(key,value) {
 						switch(value.Method) {
+						case "Alert":
+              $('#myModal').modal();
 						case "DScriptResult":
 							if(script_flag) {
 								setTimeout( function() {
