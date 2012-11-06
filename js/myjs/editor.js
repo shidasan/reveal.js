@@ -2,11 +2,24 @@
  * editor is embedded into:
  * <textarea id="editor">hello, world</textarea>
  */
+
+var yoan_dscript_editors = [];
+
 function Editor_init() {
+  var i = 0;
+  $.each($('.editor'), function() {
+    console.log(i++);
+    console.log($(this));
+    yoan_dscript_editors.push(createEditor($(this)));
+  });
+  Editor_refresh();
+}
+
+function createEditor($dom) {
 		var editor = CodeMirror(function(elt) {
-			$("#editor").replaceWith(elt);
+			$dom.replaceWith(elt);
 			}, {
-				value: $("#editor").val(),
+				value: $dom.val(),
 				lineNumbers: true,
 				mode: "text/x-konoha"
 			});
@@ -62,15 +75,18 @@ function Editor_init() {
 				dataType:'json'
 			});
 		}};
-	$(".btn").click(function(){
+	$("#exec").click(function(){
 		var data = {
 			'Method': 'SendDSE',
+      'Name': $('#script_select option:selected').val(),
 			'Script': editor.getValue(),
 			'Option': '',
-			'To': '127.0.0.1:8080',
+			'To': $('#ip_select option:selected').val(),
 			'From': '127.0.0.1:80',
 			'event': 'D-Task'
 		};
+    console.log('----------------------------');
+    console.log(data);
 		$.ajax({
 			url:'cgi-bin/testSender.cgi',
 			//url:'cgi-bin/DCtrlSender.cgi',
@@ -83,5 +99,18 @@ function Editor_init() {
 			dataType:'json'
 		});
 	});
+  return editor;
 };
 
+
+function Editor_refresh() {
+  console.log('refresh');
+  for(var i = 0; i < yoan_dscript_editors.length; i++) {
+    console.log(yoan_dscript_editors[i]);
+    yoan_dscript_editors[i].refresh();
+  }
+  console.log(yoan_dscript_editors.length);
+  setTimeout( function() {
+    Editor_refresh();
+  },1000);
+}

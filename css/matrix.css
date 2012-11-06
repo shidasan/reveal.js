@@ -6,6 +6,10 @@
 	position: relative;
 }
 
+.reveal .slides #fault_matrix #fault_table {
+	margin: 0 auto 0 auto;
+}
+
 .reveal .slides #fault_matrix .matrix_cell {
 	background: #ffffff;
 	width: 180px;
@@ -16,11 +20,14 @@
 }
 
 .reveal .slides #fault_matrix .fault_list {
+/*
+.reveal .slides #fault_matrix .fault_list {
 	background: #ffffff;
 	margin: 0 auto;
 	font-size: 30px;
 	text-align: left;
 }
+*/
 
 .reveal .slides #fault_matrix .fault_line {
 	background: #ffffff;

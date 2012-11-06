@@ -73,3 +73,8 @@ body .reveal .slides #footer img{
 	-webkit-box-shadow: none;
 }
 
+body .reveal .slides #motion {
+	margin: 0 auto 0 auto;
+	width: 640px;
+	height: 480px;
+}
