@@ -35,8 +35,8 @@ function createEditor($dom) {
 				editor.setLineClass(line - 1, null);
 			}
 		};
-		var log = { getLog : function(){
-			var data = (JSON.stringify({ "Method": "RequestDSE","Script" : editor.getValue()}));
+		var log = { getLog : function(data){
+			//var data = (JSON.stringify({ "Method": "RequestDSE","Script" : editor.getValue()}));
 			$.ajax({
 				url:'cgi-bin/zabbixlog.php',
 				type:'POST',
@@ -48,6 +48,9 @@ function createEditor($dom) {
 					var t = 100;
 					var script_flag = false;
 					$.each(res_json.Value,function(key,value) {
+						if(value.ScriptName === ".\/dse.k") {
+							return;
+						}
 						switch(value.Method) {
 						case "Alert":
               $('#myModal').modal();
