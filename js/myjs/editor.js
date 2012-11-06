@@ -90,7 +90,8 @@ function createEditor($dom) {
     console.log('----------------------------');
     console.log(data);
 		$.ajax({
-			url:'cgi-bin/testSender.cgi',
+			url:'cgi-bin/checkKillSender.cgi',
+			//url:'cgi-bin/testSender.cgi',
 			//url:'cgi-bin/DCtrlSender.cgi',
 			type : 'POST',
 			data : data,
@@ -101,6 +102,30 @@ function createEditor($dom) {
 			dataType:'json'
 		});
 	});
+  $("#agreedExec").click(function(){
+		var data = {
+			'Method': 'SendDSE',
+      'Name': $('#script_select option:selected').val(),
+			'Script': editor.getValue(),
+			'Option': '',
+			'To': $('#ip_select option:selected').val(),
+			'From': '127.0.0.1:80',
+			'event': 'D-Task'
+		};
+    console.log('----------------------------');
+    console.log(data);
+		$.ajax({
+			url:'cgi-bin/storedScriptSender.cgi',
+			type : 'POST',
+			data : data,
+			error:function(){$("#log1").text("error1"); },
+			complete:function(data){
+				log.getLog(data.responseText);
+			},
+			dataType:'json'
+		});
+	});
+
   return editor;
 };
 
