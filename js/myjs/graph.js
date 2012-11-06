@@ -5,7 +5,7 @@ function Graph_init(){
   TriggerLog_get();
   setTimeout( function() {
       Graph_init();
-  },30000);
+  },1000);
 }
 
 function Cpu_get(){
