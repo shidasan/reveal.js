@@ -25,7 +25,7 @@ def request_addCid():
 			'event': 'D-Task',
 			'To': '127.0.0.1:8080',
 			'From': '127.0.0.1:80'
-		})
+			})
 	return req
 
 def sendRequest(req):
@@ -42,8 +42,9 @@ def returnClient(req):
 	print json.dumps({
 			'CId': req['CId'],
 			'Result': 'success',
-			'Method': 'ResponseDSE'
-	})
+			'Method': 'ResponseDSE',
+			'Script': req["Script"]
+			})
 
 def createCId():
 	return str(uuid.uuid4())
@@ -62,7 +63,7 @@ def checkKillCmd(req):
 	return reqs
 
 if __name__ == '__main__':
-#	req = {"Method": "SendDSE", "Script": "System.p(123);kill(456);System.p(789);", "Name": "hoge.k", "event": "D-Task", "To": "127.0.0.1:8080"}
+	#	req = {"Method": "SendDSE", "Script": "System.p(123);kill(456);System.p(789);", "Name": "hoge.k", "event": "D-Task", "To": "127.0.0.1:8080"}
 	req = request_addCid()
 	reqs = checkKillCmd(req)
 	f = open("req.sotre", "w")
@@ -70,4 +71,4 @@ if __name__ == '__main__':
 		f.write(json.dumps(_req))
 	f.close()
 	res = sendRequest(reqs[0])
-	returnClient(reqs[0]);
+	returnClient(req);

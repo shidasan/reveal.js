@@ -22,14 +22,13 @@ def request_addCid():
 			'Script': form.getvalue('Script'),
 			'Option': form.getvalue('Option'),
 			'Name': 'hoge.k',
-			'event': 'D-Task',
+			'event': 'D-Control',
 			'To': '127.0.0.1:8080',
 			'From': '127.0.0.1:80'
 		})
 	return req
 
 def sendRequest(req):
-	#string = '{"Method": "SendDSE", "Script": "System.p(123);", "Name": "hoge.k", "event": "D-Task", "To": "127.0.0.1:8080"}'
 	c = pycurl.Curl()
 	c.setopt(c.URL, DCtrl_ip)
 	c.setopt(c.POSTFIELDS, json.dumps(req))
@@ -38,7 +37,6 @@ def sendRequest(req):
 def returnClient(req):
 	print 'Content-Type: application/json'
 	print ''
-	#print res
 	print json.dumps({
 			'CId': req['CId'],
 			'Result': 'success',
