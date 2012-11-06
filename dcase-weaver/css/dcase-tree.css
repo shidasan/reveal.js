@@ -1,0 +1,62 @@
+.dcase-tree {
+    white-space: nowrap;
+}
+
+.dcase-sub-tree {
+    position: relative;
+    display: inline-block;
+    margin: 0 8px;
+    vertical-align: top;
+}
+
+.dcase-tree-node-box {
+    text-align: center;
+}
+
+.dcase-tree-node {
+    position: relative;
+    display: inline-block;
+    font-size: 12px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.dcase-tree-node-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.dcase-tree-node-name {
+    padding: 8px;
+}
+
+.dcase-tree-node-desc {
+    font-size: 10px;
+    min-width: 100px;
+    padding: 8px;
+}
+
+.dcase-tree-contexts-box {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+}
+
+.dcase-tree-spacer {
+    display:inline-block;
+    vertical-align: middle;
+}
+
+.dcase-tree-spacer2 {
+    height: 100px;
+}
+
+.dcase-tree-children-box {
+    text-align: center;
+}
+
+.dcase-tree-link {
+    position: absolute;
+}

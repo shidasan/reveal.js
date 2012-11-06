@@ -1,0 +1,51 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+#
+# (C) Copyright 2009, 2010 JST - Japan Science and Technology Agency
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+
+import sys, os, commands, cgi
+
+#print("""""")
+print "Content-type: text/plain; charset=UTF-8"
+print ""
+
+args = cgi.FieldStorage()
+
+if args.has_key("file"):
+	path = args["file"].value
+	f = open(path, 'r')
+	for line in f:
+		print line,
+	f.close()
+	exit(0)
+
+
+path = "/tmp/dcase/"
+
+os.system("mkdir -p " + path)
+
+if args.has_key("id"):
+	files = [args["id"].value]
+else:
+	files = os.listdir(path)
+	files.sort()
+
+for nid in files:
+	if not os.path.exists(path + nid):
+		continue
+	node = []
+	status = commands.getoutput("grep ^status " + path + nid + " | awk -F= '{print $2}'")
+	message = commands.getoutput("grep ^message " + path + nid + " | awk -F= '{print $2}'")
+	node.append("id=\"" + nid + "\"")
+	node.append("status=\"" + status + "\"")
+	node.append("message=\"" + message + "\"")
+	print(node[0] + " " + node[1] + " " + node[2] + "\r")
+
+#print("\n")
+
