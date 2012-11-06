@@ -14,19 +14,23 @@ var CONFIG = {
 }
 
 var TASK_A = {
-  name: 'Task:A',
+  name: 'TaskA.k',
+  idx: 0
 }
 
 var TASK_B = {
-  name: 'Task:B',
+  name: 'TaskB.k',
+  idx: 1
 }
 
 var TASK_C = {
-  name: 'Task:C',
+  name: 'TaskC.k',
+  idx: 2
 }
 
 var TASK_D = {
-  name: 'Task:D',
+  name: 'TaskD.k',
+  idx: 3
 }
 
 //element body is obsolute
