@@ -1,0 +1,1563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dcase:dcase xmlns:dcase="http://www.fujixerox.co.jp/2010/06/dcase" id="_YukicO_lEeCfR8DKJof9WA">
+<dcase:full-name>www.fujixerox.co.jp/division/department/sample/ET2011</dcase:full-name>
+<dcase:description>D-Case for ET-2011 Demonstration System</dcase:description>
+<dcase:author>Fujixerox</dcase:author>
+<dcase:create-timestamp>2012-04-02T13:07:32+09:00</dcase:create-timestamp>
+<dcase:version>1.0</dcase:version>
+<dcase:license></dcase:license>
+
+<dcase:properties>
+<dcase:property name="Userdef014" value="1000"/>
+<dcase:property name="Userdef015" value="http://192.168.1.195:12345/htbin/view"/>
+</dcase:properties>
+<dcase:nodes>
+<dcase:node type="Goal" id="_atVDQO_nEeCUTcXn4OOWxA" name="G_1" status="">
+<dcase:description>ウエブショッピングデモ&#13;
+システムはDEOSプロセスにより&#13;
+運用され、OSDを満たしている</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Context" id="_atVDQ-_nEeCUTcXn4OOWxA" name="C_1" status="">
+<dcase:description>サービス要件: &#13;
+・アクセス数の定格は2500件/分&#13;
+・応答時間は1件あたり3秒以内&#13;
+ ディペンダビリティ要件:&#13;
+・一回の障害あたりの復旧時間は5分以内</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Strategy" id="_atVDRO_nEeCUTcXn4OOWxA" name="S_1" status="">
+<dcase:description>DEOSプロセスにそって
+議論する</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_atVDRe_nEeCUTcXn4OOWxA" name="G_2" status="">
+<dcase:description>障害対応サイクルで、&#13;
+障害をできるだけ未然に防ぎ、&#13;
+発生した時、適切で&#13;
+迅速な対処を行いダメージを&#13;
+最小化し、説明責任を果たせる</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_atVqUO_nEeCUTcXn4OOWxA" name="G_3" status="">
+<dcase:description>変化対応サイクルで、サービスを&#13;
+安全に、継続的に提供できる</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Strategy" id="_atVqUe_nEeCUTcXn4OOWxA" name="S_2" status="">
+<dcase:description>リスクごとに&#13;
+場合わけ</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_atWRYu_nEeCUTcXn4OOWxA" name="G_4" status="">
+<dcase:description>アクセス数が&#13;
+急激に2500件/分を&#13;
+超えても、対処できる&#13;
+（シナリオ１）</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Strategy" id="_atWRY-_nEeCUTcXn4OOWxA" name="S_12" status="">
+<dcase:description>変化対応プロセスの
+フェーズにそって議論する</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Context" id="_atWRZO_nEeCUTcXn4OOWxA" name="C_2" status="">
+<dcase:description>Risk分析の結果&#13;
+・アクセス数の増大&#13;
+・応答遅延&#13;
+・リソース超過
+・・・・
+・・・・</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_atWRZe_nEeCUTcXn4OOWxA" name="G_36" status="">
+<dcase:description>変化を
+識別できる</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_atWRZu_nEeCUTcXn4OOWxA" name="G_37" status="">
+<dcase:description>変化に対して&#13;
+ステークホルダ&#13;
+間で合意できる</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_atWRZ-_nEeCUTcXn4OOWxA" name="G_38" status="">
+<dcase:description>変化に対して、以下を&#13;
+更新できる&#13;
+・環境、システムのモデル図&#13;
+・サービス、ディペンダビリティ要求&#13;
+・リスク分析の結果</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_atW4cO_nEeCUTcXn4OOWxA" name="G_39" status="">
+<dcase:description>システムの更新ができる&#13;
+</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Strategy" id="_atW4ce_nEeCUTcXn4OOWxA" name="S_16" status="">
+<dcase:description>システムの機能と
+運用に分けて議論する</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_atW4cu_nEeCUTcXn4OOWxA" name="G_43" status="">
+<dcase:description>識別された変化に対応するために
+システム機能を更新できる</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_atW4c-_nEeCUTcXn4OOWxA" name="G_42" status="">
+<dcase:description>識別された変化に対応するために
+運用を更新できる</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Strategy" id="_atW4dO_nEeCUTcXn4OOWxA" name="S_17" status="">
+<dcase:description>システムの構成による
+議論</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="System" id="_atW4de_nEeCUTcXn4OOWxA" name="SYS_1" status="">
+<dcase:description>アプリケーションサーバ&#13;
+のD-Case</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+<dcase:property name="NodeLink" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="System" id="_atW4du_nEeCUTcXn4OOWxA" name="SYS_2" status="">
+<dcase:description>DBサーバの&#13;
+D-Case</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+<dcase:property name="NodeLink" value="/dcaseTest/default.dcase_diagram"/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Strategy" id="_atW4d-_nEeCUTcXn4OOWxA" name="S_16" status="">
+<dcase:description>システムのコンポーネントごとに
+更新、検証し、全体テストで検証、
+リハーサルを行える</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_atXfgO_nEeCUTcXn4OOWxA" name="G_44" status="">
+<dcase:description>システムのコンポーネント&#13;
+を更新できる</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_atXfge_nEeCUTcXn4OOWxA" name="G_45" status="">
+<dcase:description>システムの全体テストができる</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_atXfhO_nEeCUTcXn4OOWxA" name="G_40" status="">
+<dcase:description>説明責任を果たせる</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Evidence" id="_atXfhe_nEeCUTcXn4OOWxA" name="E_9" status="">
+<dcase:description>説明責任を果たすための&#13;
+手順、ドキュメント</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_4u4m0O_xEeCUTcXn4OOWxA" name="G_5" status="">
+<dcase:description>応答遅延障害に&#13;
+対処できる&#13;
+（シナリオ２）</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Strategy" id="_gKicYO_zEeCUTcXn4OOWxA" name="S_4" status="">
+<dcase:description>モニタリングと&#13;
+対処で&#13;
+場合分け</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_jG9KMO_zEeCUTcXn4OOWxA" name="G_10" status="">
+<dcase:description>Tomcatから、MySQLへの&#13;
+応答時間が3秒を超えるか&#13;
+モニタリングする</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_wBKW0O_zEeCUTcXn4OOWxA" name="G_9" status="">
+<dcase:description>原因部分を推定し、&#13;
+その部分を&#13;
+取り除く（Isolation）</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Context" id="_egCiF-_2EeCUTcXn4OOWxA" name="C_6" status="">
+<dcase:description>障害対応にかかる時間
+は５分以内</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_rG-NYO_2EeCUTcXn4OOWxA" name="G_6" status="">
+<dcase:description>リソース超過&#13;
+に対応できる</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Strategy" id="_fkqyYO_3EeCUTcXn4OOWxA" name="S_5" status="">
+<dcase:description>リソース&#13;
+ごとに場合分け</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_i1uTcO_3EeCUTcXn4OOWxA" name="G_11" status="">
+<dcase:description>メモリ使用量&#13;
+超過に対処できる&#13;
+(シナリオ３)</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Strategy" id="_580K0O_3EeCUTcXn4OOWxA" name="S_10" status="">
+<dcase:description>モニタリング&#13;
+と対処で&#13;
+場合分け</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_C4MKYO_4EeCUTcXn4OOWxA" name="G_22" status="">
+<dcase:description>すべてサーバの&#13;
+メモリ使用量を&#13;
+モニタリングできる。&#13;
+（90％基準）</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_TCkHQO_4EeCUTcXn4OOWxA" name="G_23" status="">
+<dcase:description>基準を超えたサーバの&#13;
+コンテナを再起動し、&#13;
+診断モジュールを投入し、&#13;
+原因究明を行える</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Context" id="_H7WFwO_5EeCUTcXn4OOWxA" name="C_7" status="">
+<dcase:description>D-Script</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Context" id="_2x3KYO_6EeCUTcXn4OOWxA" name="C_8" status="">
+<dcase:description>障害対応に
+かかる時間は５分以内</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Context" id="_47cGAO_6EeCUTcXn4OOWxA" name="C_9" status="">
+<dcase:description>D-Script</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_qEBVcPokEeCk3IPT5H9crQ" name="G_46" status="">
+<dcase:description>アプリケーション&#13;
+サーバを更新できる</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_4-l3UPokEeCk3IPT5H9crQ" name="G_47" status="">
+<dcase:description>DBサーバを&#13;
+更新できる</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Strategy" id="_pFA6EPolEeCk3IPT5H9crQ" name="S_17" status="">
+<dcase:description>更新の手順に関する&#13;
+議論</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Strategy" id="_wMi9cPolEeCk3IPT5H9crQ" name="S_18" status="">
+<dcase:description>更新の手順に関する&#13;
+議論</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Evidence" id="_gjqHkPomEeCk3IPT5H9crQ" name="E_19" status="">
+<dcase:description>DS-BENCHによる&#13;
+全体テストの手順、&#13;
+Anomalyライブラリの&#13;
+十分性</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Context" id="_nMDe4QEsEeGcpKKcsbLj6A" name="C_4" status="">
+<dcase:description>システム構成図</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Strategy" id="_DRuwOAEtEeGcpKKcsbLj6A" name="S_6" status="">
+<dcase:description>モニタリングと&#13;
+対処で&#13;
+場合分け</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_DR36EAEtEeGcpKKcsbLj6A" name="G_12" status="">
+<dcase:description>アクセス数をモニタリング&#13;
+できる</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_DR36EQEtEeGcpKKcsbLj6A" name="G_13" status="">
+<dcase:description>直近の正常状態&#13;
+にUndoする。原因究明し、&#13;
+必要なら変化対応プロセスに&#13;
+移行する</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Context" id="_DR36EwEtEeGcpKKcsbLj6A" name="C_10" status="">
+<dcase:description>障害対応にかかる時間
+は５分以内</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Context" id="_DR36FAEtEeGcpKKcsbLj6A" name="C_11" status="">
+<dcase:description>D-Script</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Context" id="_Ppk2kAEtEeGcpKKcsbLj6A" name="C_26" status="">
+<dcase:description>障害対処方法は、&#13;
+アクセス数が2500件/分であった、&#13;
+直近の正常状態に戻す(Undo)&#13;
+ことである</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Strategy" id="_SXKkkAE1EeGcpKKcsbLj6A" name="S_11" status="">
+<dcase:description>システム構成図に&#13;
+従った議論</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_UZsdAAE1EeGcpKKcsbLj6A" name="G_24" status="">
+<dcase:description>ウエブサーバの&#13;
+D-REはApacheに問い合わせて&#13;
+アクセス数を取得し、D-Boxに
+SysLog経由で渡す</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_vP8twAE1EeGcpKKcsbLj6A" name="G_25" status="">
+<dcase:description>Log Analyzerにより&#13;
+2500件/分を超えたか&#13;
+どうか判断する</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value="http://demo-bal:12345/htbin/attachment?node=X_6"/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Evidence" id="_HVntQAE2EeGcpKKcsbLj6A" name="E_1" status="">
+<dcase:description>[検証/テスト結果]&#13;
+対象 : Appache&#13;
+ 1. 実際のアクセス数と Appache&#13;
+　 の認識するアクセス数は等しい&#13;
+----------------------------&#13;
+対象 : Appache, D-RE(WebServer), SysLog&#13;
+1. Appache から取得するアクセス数と &#13;
+    SysLog に通知されるアクセス数は等しい。&#13;
+2. 所要時間は 0 sec 以内である&#13;
+----------------------------&#13;
+対象 : SysLog, D-Box&#13;
+1. SysLog が認識するアクセス数と&#13;
+    D-Box に通知されるアクセス数は等しい&#13;
+2. 所要時間は 0 sec 以内である。</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Monitor" id="_QrdbQAE2EeGcpKKcsbLj6A" name="M_1" status="">
+<dcase:description>ログ解析結果、&#13;
+テスト結果</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value="http://demo-bal:12345/htbin/attachment?node=X_6"/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+<dcase:d-script>
+  <dcase:full-name>www.dependable-os.net/dre/apache.Monitor</dcase:full-name>
+  <dcase:values>
+     <dcase:value name="host">app-apa</dcase:value>
+     <dcase:value name="interval">2</dcase:value>
+     <dcase:value name="rrd-dir">/tmp/dre/rrd/app-apa/apache</dcase:value>
+     <dcase:value name="warn">2000</dcase:value>
+     <dcase:value name="crit">2500</dcase:value>
+
+     <dcase:value name="graph-dir">/var/www/dre/graph/app-apa/apache</dcase:value>
+  </dcase:values>
+</dcase:d-script>
+</dcase:node>
+<dcase:node type="Strategy" id="_kIx6IAE3EeGcpKKcsbLj6A" name="S_12" status="">
+<dcase:description>システム構成図に&#13;
+従った議論</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_o4ULYAE3EeGcpKKcsbLj6A" name="G_26" status="">
+<dcase:description>LogAnalyzerはアクセス数&#13;
+2500件/分以上の&#13;
+モニタリング結果を&#13;
+D-Script Engineに&#13;
+通知する</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_qD3YgAE3EeGcpKKcsbLj6A" name="G_27" status="">
+<dcase:description>D-Script Engineは&#13;
+アプリケーションサーバ上の&#13;
+DｰREにUndo命令を送る</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_lFGmMAE8EeGcpKKcsbLj6A" name="G_28" status="">
+<dcase:description>アプリケーションサーバ上の&#13;
+D-REはUndo命令を実行する</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_m0mYcAE9EeGcpKKcsbLj6A" name="G_29" status="">
+<dcase:description>D-Boxに保存されたログデータ&#13;
+をもとに原因究明を行い、&#13;
+必要ならば変化対応&#13;
+プロセスに移行する</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Evidence" id="_bW5JkAE-EeGcpKKcsbLj6A" name="E_2" status="">
+<dcase:description>[検証/テスト結果]&#13;
+対象 : LogAnalyzer, D-SE&#13;
+1. LogAnalyzer の認識するアクセス数が、&#13;
+    250件/分以上の時、D-Script Engine&#13;
+    は アクセス数超過障害 を認識する。&#13;
+2. 所要時間は 1 sec 以内である。</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Evidence" id="_fAiw0AE-EeGcpKKcsbLj6A" name="E_3" status="">
+<dcase:description>[検証/テスト結果]&#13;
+ 対象 : D-SE, D-RE(AppServer)&#13;
+1. D-Script Engine がアクセス数超過障害 を&#13;
+    認識したら、D-RE は Undo 命令を受け取る。&#13;
+2. 所要時間は 1 sec 以内である。</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Evidence" id="_hgI_wAE-EeGcpKKcsbLj6A" name="E_4" status="">
+<dcase:description>[検証/テスト結果]
+対象 : D-RE(AppServer)
+1. Undo 命令を実行すると、
+    直近の正常状態に戻る
+2. 所要時間は 300 sec 以内である</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Evidence" id="_kUSiYAE-EeGcpKKcsbLj6A" name="E_5" status="">
+<dcase:description>D-Boxのログデータの&#13;
+解析手順、変化対応&#13;
+サイクルへの移行手順</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Strategy" id="_bqU9UQasEeGCSPFUjwqBlw" name="S_3" status="">
+<dcase:description>迅速対応が成功する場合と、
+失敗した場合で場合分け</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_wr2PUAasEeGCSPFUjwqBlw" name="G_7" status="">
+<dcase:description>迅速対応が
+成功する</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_3tqFMAasEeGCSPFUjwqBlw" name="G_8" status="">
+<dcase:description>迅速対応が失敗した場合、
+変化対応ループへ移行するための
+必要な情報を得られる</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Context" id="_DA9lcAatEeGCSPFUjwqBlw" name="C_5" status="">
+<dcase:description>対処できるとは、
+D-REへにより迅速対応できることと、
+対応出来なかった場合、
+外ループに移行できることである</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Strategy" id="_3JjdIAatEeGCSPFUjwqBlw" name="S_7" status="">
+<dcase:description>外ループへ移行できるための条件
+で場合分け</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_OkEm0AauEeGCSPFUjwqBlw" name="G_14" status="">
+<dcase:description>迅速対応が失敗した
+原因を究明するための
+ログが常に取られている</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Evidence" id="_VFqEgAauEeGCSPFUjwqBlw" name="E_7" status="">
+<dcase:description>モデル検査ツール結果&#13;
+「D-REライブラリの実行中&#13;
+エラーはSysLogに出力される」</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_TzybgAj0EeGCSPFUjwqBlw" name="G_15" status="">
+<dcase:description>説明責任を果たせる</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_ORj3IAj2EeGCSPFUjwqBlw" name="G_30" status="">
+<dcase:description>説明責任を果たせる</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value="http://demo-bal:12345/htbin/attachment?node=X_6"/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Context" id="_AoarcAj3EeGCSPFUjwqBlw" name="C_3" status="">
+<dcase:description>現在のシステムの
+運用状態</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Evidence" id="_ZkOowAj3EeGCSPFUjwqBlw" name="E_8" status="">
+<dcase:description>説明責任を果たすため
+の手順、ドキュメント</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Evidence" id="_WQmp8Aj5EeGCSPFUjwqBlw" name="E_6" status="">
+<dcase:description>説明責任の手順、&#13;
+ドキュメント</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value="http://demo-bal:12345/htbin/attachment?node=X_6"/>
+<dcase:property name="Userdef002" value=""/>
+<dcase:property name="Userdef008" value="Is Normal=false"/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Undeveloped" id="_do2C0Aj5EeGCSPFUjwqBlw" name="U_2">
+<dcase:description/>
+<dcase:properties>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Undeveloped" id="_eUDjAAj5EeGCSPFUjwqBlw" name="U_3">
+<dcase:description/>
+<dcase:properties>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Undeveloped" id="_h6Z-oAj5EeGCSPFUjwqBlw" name="U_4">
+<dcase:description/>
+<dcase:properties>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Strategy" id="_UacJ0AkKEeGCSPFUjwqBlw" name="S_9" status="">
+<dcase:description>システム構成図に
+従った議論
+</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_fbbyEAkKEeGCSPFUjwqBlw" name="G_20" status="">
+<dcase:description>Log Analyzerは、&#13;
+SysLogをスキャンし、&#13;
+3秒を超えたか、判断する</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value="http://demo-bal:12345/htbin/attachment?node=X_7"/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Monitor" id="_fbcZIAkKEeGCSPFUjwqBlw" name="M_2" status="">
+<dcase:description>ログ解析結果、&#13;
+テスト結果</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value="http://demo-bal:12345/htbin/attachment?node=X_7"/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+<dcase:d-script>
+  <dcase:full-name>www.dependable-os.net/dre/mysql.Monitor</dcase:full-name>
+  <dcase:values>
+     <dcase:value name="interval">2</dcase:value>
+     <dcase:value name="host">app-mysql</dcase:value>
+     <dcase:value name="user">dre</dcase:value>
+     <dcase:value name="passwd">deosc</dcase:value>
+     <dcase:value name="db">dshopping</dcase:value>
+     <dcase:value name="table">BuyingHistory</dcase:value>
+
+     <dcase:value name="rrd-dir">/tmp/dre/rrd/app-mysql/mysql</dcase:value>
+
+     <dcase:value name="warn">0.1</dcase:value>
+     <dcase:value name="crit">0.8</dcase:value>
+
+     <dcase:value name="graph-dir">/var/www/dre/graph/app-mysql/mysql/</dcase:value>
+  </dcase:values>
+</dcase:d-script>
+</dcase:node>
+<dcase:node type="Goal" id="_xkJq8AkKEeGCSPFUjwqBlw" name="G_21" status="">
+<dcase:description>アプリケーションサーバの
+Tomcatは、応答時間が3秒を
+超えた場合、例外をSysLog
+に書く</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Evidence" id="_L7M3MAkLEeGCSPFUjwqBlw" name="E_13" status="">
+<dcase:description>テスト結果</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Strategy" id="_SEiM8AkLEeGCSPFUjwqBlw" name="S_8" status="">
+<dcase:description>システム構成図に従った
+議論</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_WkH9sAkLEeGCSPFUjwqBlw" name="G_16" status="">
+<dcase:description>D-Boxは
+原因と推定される
+バッチジョブのリスト
+を取得する</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_nfG4IAkLEeGCSPFUjwqBlw" name="G_17" status="">
+<dcase:description>D-Script Engineは、
+取得されたバッチジョブの
+リストをすべてkillする</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_1On8IAkLEeGCSPFUjwqBlw" name="G_18" status="">
+<dcase:description>D-Boxに保存されたログデータ&#13;
+をもとに原因究明を行い、&#13;
+必要ならば変化対応&#13;
+プロセスに移行する</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Evidence" id="_1OojMAkLEeGCSPFUjwqBlw" name="E_11" status="">
+<dcase:description>D-Boxのログデータの&#13;
+解析手順、変化対応サイクル&#13;
+の移行手順</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_1OojMQkLEeGCSPFUjwqBlw" name="G_19" status="">
+<dcase:description>説明責任を果たせる</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value="http://demo-bal:12345/htbin/attachment?node=X_7"/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Evidence" id="_1OpKQAkLEeGCSPFUjwqBlw" name="E_12" status="">
+<dcase:description>説明責任の手順、&#13;
+ドキュメント</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value="http://demo-bal:12345/htbin/attachment?node=X_7"/>
+<dcase:property name="Userdef002" value=""/>
+<dcase:property name="Userdef008" value="Is Normal=false"/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Evidence" id="_KVirgAkMEeGCSPFUjwqBlw" name="E_9" status="">
+<dcase:description>テスト結果、
+過去の原因推定
+の結果</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Evidence" id="_K2RaAAkMEeGCSPFUjwqBlw" name="E_10" status="">
+<dcase:description>テスト結果</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Strategy" id="_oNKbgAkMEeGCSPFUjwqBlw" name="S_13" status="">
+<dcase:description>システム構成図に従った
+議論</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_wMV4kAkMEeGCSPFUjwqBlw" name="G_31" status="">
+<dcase:description>アプリケーションサーバの&#13;
+D-REはシステムの
+メモリ使用量を取得し、D-Boxに
+SysLog経由で渡す</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_wMV4kQkMEeGCSPFUjwqBlw" name="G_32" status="">
+<dcase:description>Log Analyzerにより&#13;
+メモリ使用量が90%を超えたか&#13;
+どうか判断する</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value="http://demo-bal:12345/htbin/attachment?node=X_8"/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Evidence" id="_wMWfoAkMEeGCSPFUjwqBlw" name="E_14" status="">
+<dcase:description>テスト結果</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Monitor" id="_wMWfoQkMEeGCSPFUjwqBlw" name="M_3" status="">
+<dcase:description>ログ解析結果、&#13;
+テスト結果</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value="http://demo-bal:12345/htbin/attachment?node=X_8"/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+<dcase:d-script>
+  <dcase:full-name>www.dependable-os.net/dre/container.Monitor</dcase:full-name>
+  <dcase:values>
+     <dcase:value name="interval">2</dcase:value>
+     <dcase:value name="container">app-tom</dcase:value>
+     <dcase:value name="rrd-dir">/tmp/dre/rrd/app-tom/container</dcase:value>
+     <dcase:value name="cpu-warn">60</dcase:value>
+     <dcase:value name="cpu-crit">90</dcase:value>
+
+     <dcase:value name="mem-warn">60</dcase:value>
+     <dcase:value name="mem-crit">90</dcase:value>
+
+     <dcase:value name="graph-dir">/var/www/dre/graph/app-tom/container</dcase:value>
+  </dcase:values>
+</dcase:d-script>
+</dcase:node>
+<dcase:node type="Strategy" id="_YnKhkAkNEeGCSPFUjwqBlw" name="S_14" status="">
+<dcase:description>システム構成図に従った
+議論</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_dH0pUAkNEeGCSPFUjwqBlw" name="G_33" status="">
+<dcase:description>アプリケーションサーバの
+負荷が高いコンテナと連動する
+ウエブサーバのコンテナを再起動する</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_dH1QYAkNEeGCSPFUjwqBlw" name="G_34" status="">
+<dcase:description>D-Boxに保存されたログデータ&#13;
+をもとに原因究明(診断モジュール投入)
+を行い、必要ならば変化対応&#13;
+プロセスに移行する</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Evidence" id="_dH1QYQkNEeGCSPFUjwqBlw" name="E_16" status="">
+<dcase:description>D-Boxのログデータの&#13;
+解析手順、変化対応サイクル&#13;
+の移行手順</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_dH13cAkNEeGCSPFUjwqBlw" name="G_35" status="">
+<dcase:description>説明責任を果たせる</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value="http://demo-bal:12345/htbin/attachment?node=X_8"/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Evidence" id="_dH13cQkNEeGCSPFUjwqBlw" name="E_17" status="">
+<dcase:description>説明責任の手順、&#13;
+ドキュメント</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value="http://demo-bal:12345/htbin/attachment?node=X_8"/>
+<dcase:property name="Userdef002" value=""/>
+<dcase:property name="Userdef008" value="Is Normal=false"/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Evidence" id="_dH13cgkNEeGCSPFUjwqBlw" name="E_15" status="">
+<dcase:description>テスト結果</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Strategy" id="_nK6yMAlKEeGCSPFUjwqBlw" name="S_15" status="">
+<dcase:description>通常運用時における
+変化識別のための手順
+による議論</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Goal" id="_u3RZ4AlKEeGCSPFUjwqBlw" name="G_41" status="">
+<dcase:description>Time Shiftによる
+チェック</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Evidence" id="_zSqAEAlKEeGCSPFUjwqBlw" name="E_18" status="">
+<dcase:description>Time Shiftの手順</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+<dcase:property name="Userdef002" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Context" id="_7Uwi8AnGEeGCSPFUjwqBlw" name="C_14" status="">
+<dcase:description>スペースの都合上、&#13;
+アプリケーションサーバのみを&#13;
+考え、&#13;
+CPU使用量、&#13;
+ネットワーク使用量&#13;
+などの他のリソース超過&#13;
+は省略している&#13;
+</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Context" id="_YUg20AnHEeGCSPFUjwqBlw" name="C_12" status="">
+<dcase:description>スペースの都合上、
+迅速対応が失敗した場合
+は省略する。G_8の
+議論と同様である</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+</dcase:properties>
+</dcase:node>
+<dcase:node type="Context" id="_pBsl0AnHEeGCSPFUjwqBlw" name="C_13" status="">
+<dcase:description>スペースの都合上、
+迅速対応が失敗した場合
+は省略する。G_8の
+議論と同様である</dcase:description>
+<dcase:properties>
+<dcase:property name="Attachment" value=""/>
+</dcase:properties>
+</dcase:node>
+
+<dcase:node type="Action" id="_deosc_1" name="A_1" status="">
+<dcase:description>アクション 1</dcase:description>
+<dcase:properties>
+</dcase:properties>
+<dcase:d-script>
+  <dcase:full-name>www.dependable-os.net/SEC/generic.Action</dcase:full-name>
+  <dcase:values>
+     <dcase:value name="config_file_content"><![CDATA[
+# SEC configuration file generated for Action 1
+# Line 2
+# Line 3
+     ]]>
+     </dcase:value>
+  </dcase:values>
+</dcase:d-script>
+</dcase:node>
+
+<dcase:node type="Action" id="_deosc_2" name="A_2" status="">
+<dcase:description>アクション 2</dcase:description>
+<dcase:properties>
+</dcase:properties>
+<dcase:d-script>
+  <dcase:full-name>www.dependable-os.net/SEC/generic.Action</dcase:full-name>
+  <dcase:values>
+     <dcase:value name="config_file_content"><![CDATA[
+# SEC configuration file generated for Action 2
+     ]]>
+     </dcase:value>
+  </dcase:values>
+</dcase:d-script>
+</dcase:node>
+
+<dcase:node type="Action" id="_deosc_3" name="A_3" status="">
+<dcase:description>アクション 3</dcase:description>
+<dcase:properties>
+</dcase:properties>
+<dcase:d-script>
+  <dcase:full-name>www.dependable-os.net/SEC/MySQLBatchAbort.Action</dcase:full-name>
+  <dcase:values>
+     <dcase:value name="batch_job_id_pattern">Batch ([[:digit:]]+)</dcase:value>
+     <dcase:value name="response_time_excessive_pattern">event\=ResponseTimeExcessive\;</dcase:value>
+     <dcase:value name="action_script">echo</dcase:value>
+  </dcase:values>
+</dcase:d-script>
+</dcase:node>
+
+<dcase:node type="Action" id="_dscript_1" name="d_1" status="">
+<dcase:description>アクション 4</dcase:description>
+<dcase:properties>
+</dcase:properties>
+<dcase:d-script>
+  <dcase:full-name>www.dependable-os.net/SEC/Traffic_Limit_Exceeded.Action</dcase:full-name>
+  <dcase:values>
+  </dcase:values>
+</dcase:d-script>
+</dcase:node>
+
+</dcase:nodes>
+<dcase:links>
+<dcase:link id="_atYGk-_nEeCUTcXn4OOWxA" name="LINK_4" source="_atVDQO_nEeCUTcXn4OOWxA" target="_atVDRO_nEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_m0cIwPT6EeCo0MDS2u9g4g" name="LINK_91" source="_atVDQO_nEeCUTcXn4OOWxA" target="_atWRZO_nEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_oEKEMPT6EeCo0MDS2u9g4g" name="LINK_93" source="_atVDQO_nEeCUTcXn4OOWxA" target="_atVDQ-_nEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_Buh-8Aj3EeGCSPFUjwqBlw" name="LINK_152" source="_atVDQO_nEeCUTcXn4OOWxA" target="_AoarcAj3EeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_atYtoO_nEeCUTcXn4OOWxA" name="LINK_6" source="_atVDRO_nEeCUTcXn4OOWxA" target="_atVqUO_nEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_KZ2rsPhhEeCA7vCOzUcQpg" name="LINK_96" source="_atVDRO_nEeCUTcXn4OOWxA" target="_atVDRe_nEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_IbQ-oPiOEeCA7vCOzUcQpg" name="LINK_100" source="_atVqUO_nEeCUTcXn4OOWxA" target="_atWRY-_nEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_atZ7we_nEeCUTcXn4OOWxA" name="LINK_20" source="_atWRY-_nEeCUTcXn4OOWxA" target="_atWRZe_nEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties>
+<dcase:property name="Userdef001" value="1"/>
+</dcase:properties>
+</dcase:link>
+<dcase:link id="_atZ7wu_nEeCUTcXn4OOWxA" name="LINK_21" source="_atWRY-_nEeCUTcXn4OOWxA" target="_atWRZu_nEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties>
+<dcase:property name="Userdef001" value="2"/>
+</dcase:properties>
+</dcase:link>
+<dcase:link id="_atZ7w-_nEeCUTcXn4OOWxA" name="LINK_23" source="_atWRY-_nEeCUTcXn4OOWxA" target="_atWRZ-_nEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties>
+<dcase:property name="Userdef001" value="3"/>
+</dcase:properties>
+</dcase:link>
+<dcase:link id="_atai0O_nEeCUTcXn4OOWxA" name="LINK_24" source="_atWRY-_nEeCUTcXn4OOWxA" target="_atW4cO_nEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties>
+<dcase:property name="Userdef001" value="4"/>
+</dcase:properties>
+</dcase:link>
+<dcase:link id="_atbw8O_nEeCUTcXn4OOWxA" name="LINK_38" source="_atWRY-_nEeCUTcXn4OOWxA" target="_atXfhO_nEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties>
+<dcase:property name="Userdef001" value="5"/>
+</dcase:properties>
+</dcase:link>
+<dcase:link id="_n_eboAlKEeGCSPFUjwqBlw" name="LINK_188" source="_atWRZe_nEeCUTcXn4OOWxA" target="_nK6yMAlKEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_vrUtAAlKEeGCSPFUjwqBlw" name="LINK_189" source="_nK6yMAlKEeGCSPFUjwqBlw" target="_u3RZ4AlKEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_-WEqMAlKEeGCSPFUjwqBlw" name="LINK_190" source="_u3RZ4AlKEeGCSPFUjwqBlw" target="_zSqAEAlKEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_fKliYAj5EeGCSPFUjwqBlw" name="LINK_154" source="_atWRZu_nEeCUTcXn4OOWxA" target="_eUDjAAj5EeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_hPXdkAj5EeGCSPFUjwqBlw" name="LINK_156" source="_atWRZ-_nEeCUTcXn4OOWxA" target="_do2C0Aj5EeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_atai1e_nEeCUTcXn4OOWxA" name="LINK_31" source="_atW4cO_nEeCUTcXn4OOWxA" target="_atW4ce_nEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_atai0e_nEeCUTcXn4OOWxA" name="LINK_26" source="_atW4ce_nEeCUTcXn4OOWxA" target="_atW4cu_nEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_atai0u_nEeCUTcXn4OOWxA" name="LINK_27" source="_atW4ce_nEeCUTcXn4OOWxA" target="_atW4c-_nEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_atbJ4O_nEeCUTcXn4OOWxA" name="LINK_32" source="_atW4cu_nEeCUTcXn4OOWxA" target="_atW4d-_nEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_atbJ4e_nEeCUTcXn4OOWxA" name="LINK_33" source="_atW4d-_nEeCUTcXn4OOWxA" target="_atXfgO_nEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_atbJ4-_nEeCUTcXn4OOWxA" name="LINK_35" source="_atW4d-_nEeCUTcXn4OOWxA" target="_atXfge_nEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_atbJ4u_nEeCUTcXn4OOWxA" name="LINK_34" source="_atXfgO_nEeCUTcXn4OOWxA" target="_atW4dO_nEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_etnBYPolEeCk3IPT5H9crQ" name="LINK_104" source="_atW4dO_nEeCUTcXn4OOWxA" target="_qEBVcPokEeCk3IPT5H9crQ">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_fXMJ4PolEeCk3IPT5H9crQ" name="LINK_105" source="_atW4dO_nEeCUTcXn4OOWxA" target="_4-l3UPokEeCk3IPT5H9crQ">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_xVjz8PolEeCk3IPT5H9crQ" name="LINK_106" source="_qEBVcPokEeCk3IPT5H9crQ" target="_pFA6EPolEeCk3IPT5H9crQ">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_73Yz8PolEeCk3IPT5H9crQ" name="LINK_108" source="_pFA6EPolEeCk3IPT5H9crQ" target="_atW4de_nEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_x4IVgPolEeCk3IPT5H9crQ" name="LINK_107" source="_4-l3UPokEeCk3IPT5H9crQ" target="_wMi9cPolEeCk3IPT5H9crQ">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_8cynEPolEeCk3IPT5H9crQ" name="LINK_109" source="_wMi9cPolEeCk3IPT5H9crQ" target="_atW4du_nEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_hl-gMPomEeCk3IPT5H9crQ" name="LINK_110" source="_atXfge_nEeCUTcXn4OOWxA" target="_gjqHkPomEeCk3IPT5H9crQ">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_imawEAj5EeGCSPFUjwqBlw" name="LINK_157" source="_atW4c-_nEeCUTcXn4OOWxA" target="_h6Z-oAj5EeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_atbw8e_nEeCUTcXn4OOWxA" name="LINK_39" source="_atXfhO_nEeCUTcXn4OOWxA" target="_atXfhe_nEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_pWNVsPiOEeCA7vCOzUcQpg" name="LINK_101" source="_atVDRe_nEeCUTcXn4OOWxA" target="_atVqUe_nEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_oKCxIAEsEeGcpKKcsbLj6A" name="LINK_111" source="_atVDRe_nEeCUTcXn4OOWxA" target="_nMDe4QEsEeGcpKKcsbLj6A">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_atZUtO_nEeCUTcXn4OOWxA" name="LINK_17" source="_atVqUe_nEeCUTcXn4OOWxA" target="_atWRYu_nEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_L7TYYO_yEeCUTcXn4OOWxA" name="LINK_55" source="_atVqUe_nEeCUTcXn4OOWxA" target="_4u4m0O_xEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_0Or_0O_2EeCUTcXn4OOWxA" name="LINK_70" source="_atVqUe_nEeCUTcXn4OOWxA" target="_rG-NYO_2EeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_ixRK0AasEeGCSPFUjwqBlw" name="LINK_136" source="_atWRYu_nEeCUTcXn4OOWxA" target="_bqU9UQasEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_EuUfIAatEeGCSPFUjwqBlw" name="LINK_140" source="_atWRYu_nEeCUTcXn4OOWxA" target="_DA9lcAatEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_2VdjMAasEeGCSPFUjwqBlw" name="LINK_137" source="_bqU9UQasEeGCSPFUjwqBlw" target="_wr2PUAasEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_75vEEAasEeGCSPFUjwqBlw" name="LINK_139" source="_bqU9UQasEeGCSPFUjwqBlw" target="_3tqFMAasEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_2_9RsAasEeGCSPFUjwqBlw" name="LINK_138" source="_wr2PUAasEeGCSPFUjwqBlw" target="_DRuwOAEtEeGcpKKcsbLj6A">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_DR36FgEtEeGcpKKcsbLj6A" name="LINK_112" source="_DRuwOAEtEeGcpKKcsbLj6A" target="_DR36EAEtEeGcpKKcsbLj6A">
+<dcase:description/>
+<dcase:properties>
+<dcase:property name="Userdef001" value="1"/>
+</dcase:properties>
+</dcase:link>
+<dcase:link id="_DR36GAEtEeGcpKKcsbLj6A" name="LINK_114" source="_DRuwOAEtEeGcpKKcsbLj6A" target="_DR36EQEtEeGcpKKcsbLj6A">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_Qw8uUAEtEeGcpKKcsbLj6A" name="LINK_119" source="_DRuwOAEtEeGcpKKcsbLj6A" target="_Ppk2kAEtEeGcpKKcsbLj6A">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_TdpEcAE1EeGcpKKcsbLj6A" name="LINK_120" source="_DR36EAEtEeGcpKKcsbLj6A" target="_SXKkkAE1EeGcpKKcsbLj6A">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_9dETwAE1EeGcpKKcsbLj6A" name="LINK_121" source="_SXKkkAE1EeGcpKKcsbLj6A" target="_UZsdAAE1EeGcpKKcsbLj6A">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_-rl8YAE1EeGcpKKcsbLj6A" name="LINK_123" source="_SXKkkAE1EeGcpKKcsbLj6A" target="_vP8twAE1EeGcpKKcsbLj6A">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_I5KjoAE2EeGcpKKcsbLj6A" name="LINK_124" source="_UZsdAAE1EeGcpKKcsbLj6A" target="_HVntQAE2EeGcpKKcsbLj6A">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_RZWcAAE2EeGcpKKcsbLj6A" name="LINK_125" source="_vP8twAE1EeGcpKKcsbLj6A" target="_QrdbQAE2EeGcpKKcsbLj6A">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_DR36GQEtEeGcpKKcsbLj6A" name="LINK_115" source="_DR36EQEtEeGcpKKcsbLj6A" target="_DR36FAEtEeGcpKKcsbLj6A">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_DSBrEAEtEeGcpKKcsbLj6A" name="LINK_116" source="_DR36EQEtEeGcpKKcsbLj6A" target="_DR36EwEtEeGcpKKcsbLj6A">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_nda6sAE3EeGcpKKcsbLj6A" name="LINK_127" source="_DR36EQEtEeGcpKKcsbLj6A" target="_kIx6IAE3EeGcpKKcsbLj6A">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_q59TAAE3EeGcpKKcsbLj6A" name="LINK_128" source="_kIx6IAE3EeGcpKKcsbLj6A" target="_o4ULYAE3EeGcpKKcsbLj6A">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_re6aMAE3EeGcpKKcsbLj6A" name="LINK_129" source="_kIx6IAE3EeGcpKKcsbLj6A" target="_qD3YgAE3EeGcpKKcsbLj6A">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_pb6OYAE8EeGcpKKcsbLj6A" name="LINK_130" source="_kIx6IAE3EeGcpKKcsbLj6A" target="_lFGmMAE8EeGcpKKcsbLj6A">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_n0OpcAE9EeGcpKKcsbLj6A" name="LINK_131" source="_kIx6IAE3EeGcpKKcsbLj6A" target="_m0mYcAE9EeGcpKKcsbLj6A">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_SWiIcAj2EeGCSPFUjwqBlw" name="LINK_150" source="_kIx6IAE3EeGcpKKcsbLj6A" target="_ORj3IAj2EeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_dCoSoAE-EeGcpKKcsbLj6A" name="LINK_132" source="_o4ULYAE3EeGcpKKcsbLj6A" target="_bW5JkAE-EeGcpKKcsbLj6A">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_fuSnoAE-EeGcpKKcsbLj6A" name="LINK_133" source="_qD3YgAE3EeGcpKKcsbLj6A" target="_fAiw0AE-EeGcpKKcsbLj6A">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_iX35AAE-EeGcpKKcsbLj6A" name="LINK_134" source="_lFGmMAE8EeGcpKKcsbLj6A" target="_hgI_wAE-EeGcpKKcsbLj6A">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_lMeHkAE-EeGcpKKcsbLj6A" name="LINK_135" source="_m0mYcAE9EeGcpKKcsbLj6A" target="_kUSiYAE-EeGcpKKcsbLj6A">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_UVyDYAj2EeGCSPFUjwqBlw" name="LINK_151" source="_ORj3IAj2EeGCSPFUjwqBlw" target="_WQmp8Aj5EeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_4GQ9AAatEeGCSPFUjwqBlw" name="LINK_141" source="_3tqFMAasEeGCSPFUjwqBlw" target="_3JjdIAatEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_PSImsAauEeGCSPFUjwqBlw" name="LINK_142" source="_3JjdIAatEeGCSPFUjwqBlw" target="_OkEm0AauEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_WbnZYAj0EeGCSPFUjwqBlw" name="LINK_149" source="_3JjdIAatEeGCSPFUjwqBlw" target="_TzybgAj0EeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_V63OMAauEeGCSPFUjwqBlw" name="LINK_143" source="_OkEm0AauEeGCSPFUjwqBlw" target="_VFqEgAauEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_aNUCAAj3EeGCSPFUjwqBlw" name="LINK_153" source="_TzybgAj0EeGCSPFUjwqBlw" target="_ZkOowAj3EeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_A88L4PiOEeCA7vCOzUcQpg" name="LINK_97" source="_4u4m0O_xEeCUTcXn4OOWxA" target="_gKicYO_zEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_ZNcp8AnHEeGCSPFUjwqBlw" name="LINK_193" source="_4u4m0O_xEeCUTcXn4OOWxA" target="_YUg20AnHEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_lFQp8O_zEeCUTcXn4OOWxA" name="LINK_58" source="_gKicYO_zEeCUTcXn4OOWxA" target="_jG9KMO_zEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties>
+<dcase:property name="Userdef001" value="1"/>
+</dcase:properties>
+</dcase:link>
+<dcase:link id="_6CstMO_zEeCUTcXn4OOWxA" name="LINK_59" source="_gKicYO_zEeCUTcXn4OOWxA" target="_wBKW0O_zEeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties>
+<dcase:property name="Userdef001" value="2"/>
+</dcase:properties>
+</dcase:link>
+<dcase:link id="_VK59cAkKEeGCSPFUjwqBlw" name="LINK_160" source="_jG9KMO_zEeCUTcXn4OOWxA" target="_UacJ0AkKEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_yZCrkAkKEeGCSPFUjwqBlw" name="LINK_162" source="_UacJ0AkKEeGCSPFUjwqBlw" target="_xkJq8AkKEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties>
+<dcase:property name="Userdef001" value="1"/>
+</dcase:properties>
+</dcase:link>
+<dcase:link id="_y7lX8AkKEeGCSPFUjwqBlw" name="LINK_163" source="_UacJ0AkKEeGCSPFUjwqBlw" target="_fbbyEAkKEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties>
+<dcase:property name="Userdef001" value="2"/>
+</dcase:properties>
+</dcase:link>
+<dcase:link id="_MvvSgAkLEeGCSPFUjwqBlw" name="LINK_164" source="_xkJq8AkKEeGCSPFUjwqBlw" target="_L7M3MAkLEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_fbdnQAkKEeGCSPFUjwqBlw" name="LINK_161" source="_fbbyEAkKEeGCSPFUjwqBlw" target="_fbcZIAkKEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_-8zmkAjoEeGCSPFUjwqBlw" name="LINK_146" source="_wBKW0O_zEeCUTcXn4OOWxA" target="_egCiF-_2EeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="__vOiAAjoEeGCSPFUjwqBlw" name="LINK_147" source="_wBKW0O_zEeCUTcXn4OOWxA" target="_H7WFwO_5EeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_TFi-AAkLEeGCSPFUjwqBlw" name="LINK_165" source="_wBKW0O_zEeCUTcXn4OOWxA" target="_SEiM8AkLEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_encT4AkLEeGCSPFUjwqBlw" name="LINK_166" source="_SEiM8AkLEeGCSPFUjwqBlw" target="_WkH9sAkLEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_91Ro4AkLEeGCSPFUjwqBlw" name="LINK_169" source="_SEiM8AkLEeGCSPFUjwqBlw" target="_nfG4IAkLEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="__8hCMAkLEeGCSPFUjwqBlw" name="LINK_170" source="_SEiM8AkLEeGCSPFUjwqBlw" target="_1On8IAkLEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_Ckg_MAkMEeGCSPFUjwqBlw" name="LINK_171" source="_SEiM8AkLEeGCSPFUjwqBlw" target="_1OojMQkLEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_L-K2MAkMEeGCSPFUjwqBlw" name="LINK_173" source="_WkH9sAkLEeGCSPFUjwqBlw" target="_KVirgAkMEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_LbEwMAkMEeGCSPFUjwqBlw" name="LINK_172" source="_nfG4IAkLEeGCSPFUjwqBlw" target="_K2RaAAkMEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_1OpxUAkLEeGCSPFUjwqBlw" name="LINK_167" source="_1On8IAkLEeGCSPFUjwqBlw" target="_1OojMAkLEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_1OqYYAkLEeGCSPFUjwqBlw" name="LINK_168" source="_1OojMQkLEeGCSPFUjwqBlw" target="_1OpKQAkLEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_EbtY0PiOEeCA7vCOzUcQpg" name="LINK_99" source="_rG-NYO_2EeCUTcXn4OOWxA" target="_fkqyYO_3EeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_uY3e0AnHEeGCSPFUjwqBlw" name="LINK_194" source="_rG-NYO_2EeCUTcXn4OOWxA" target="_pBsl0AnHEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_qrQFQO_3EeCUTcXn4OOWxA" name="LINK_72" source="_fkqyYO_3EeCUTcXn4OOWxA" target="_i1uTcO_3EeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_8ShLsAnGEeGCSPFUjwqBlw" name="LINK_192" source="_fkqyYO_3EeCUTcXn4OOWxA" target="_7Uwi8AnGEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_9Q4joO_3EeCUTcXn4OOWxA" name="LINK_77" source="_i1uTcO_3EeCUTcXn4OOWxA" target="_580K0O_3EeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_MuI70O_4EeCUTcXn4OOWxA" name="LINK_78" source="_580K0O_3EeCUTcXn4OOWxA" target="_C4MKYO_4EeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_UhI-EO_4EeCUTcXn4OOWxA" name="LINK_80" source="_580K0O_3EeCUTcXn4OOWxA" target="_TCkHQO_4EeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_o7-pUAkMEeGCSPFUjwqBlw" name="LINK_174" source="_C4MKYO_4EeCUTcXn4OOWxA" target="_oNKbgAkMEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_2B1sUAkMEeGCSPFUjwqBlw" name="LINK_177" source="_oNKbgAkMEeGCSPFUjwqBlw" target="_wMV4kAkMEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_2lRwkAkMEeGCSPFUjwqBlw" name="LINK_178" source="_oNKbgAkMEeGCSPFUjwqBlw" target="_wMV4kQkMEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_wMXGsAkMEeGCSPFUjwqBlw" name="LINK_175" source="_wMV4kAkMEeGCSPFUjwqBlw" target="_wMWfoAkMEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_wMXtwAkMEeGCSPFUjwqBlw" name="LINK_176" source="_wMV4kQkMEeGCSPFUjwqBlw" target="_wMWfoQkMEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_4tdIYAjoEeGCSPFUjwqBlw" name="LINK_144" source="_TCkHQO_4EeCUTcXn4OOWxA" target="_2x3KYO_6EeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_5SiLYAjoEeGCSPFUjwqBlw" name="LINK_145" source="_TCkHQO_4EeCUTcXn4OOWxA" target="_47cGAO_6EeCUTcXn4OOWxA">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_ZPoPwAkNEeGCSPFUjwqBlw" name="LINK_179" source="_TCkHQO_4EeCUTcXn4OOWxA" target="_YnKhkAkNEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_gl9kIAkNEeGCSPFUjwqBlw" name="LINK_184" source="_YnKhkAkNEeGCSPFUjwqBlw" target="_dH0pUAkNEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_hwdBUAkNEeGCSPFUjwqBlw" name="LINK_186" source="_YnKhkAkNEeGCSPFUjwqBlw" target="_dH1QYAkNEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_iq0X0AkNEeGCSPFUjwqBlw" name="LINK_187" source="_YnKhkAkNEeGCSPFUjwqBlw" target="_dH13cAkNEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_dH4TsAkNEeGCSPFUjwqBlw" name="LINK_183" source="_dH0pUAkNEeGCSPFUjwqBlw" target="_dH13cgkNEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_dH2egQkNEeGCSPFUjwqBlw" name="LINK_180" source="_dH1QYAkNEeGCSPFUjwqBlw" target="_dH1QYQkNEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_dH3FkAkNEeGCSPFUjwqBlw" name="LINK_181" source="_dH13cAkNEeGCSPFUjwqBlw" target="_dH13cQkNEeGCSPFUjwqBlw">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_deosc_link_1" name="LINK_182" source="_QrdbQAE2EeGcpKKcsbLj6A" target="_deosc_1">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_deosc_link_2" name="LINK_183" source="_fbcZIAkKEeGCSPFUjwqBlw" target="_deosc_2">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+<dcase:link id="_deosc_link_3" name="LINK_184" source="_wMWfoQkMEeGCSPFUjwqBlw" target="_deosc_3">
+<dcase:description/>
+<dcase:properties/>
+</dcase:link>
+</dcase:links>
+</dcase:dcase>

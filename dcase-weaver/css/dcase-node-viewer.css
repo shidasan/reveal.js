@@ -1,0 +1,47 @@
+.dcase-node-editor.sub-window {
+    position: absolute;
+    min-width: 300px;
+}
+
+.dcase-node-editor .sub-window-content {
+    min-height: 200px;
+    overflow: auto;
+}
+
+.dcase-node-editor .sub-window-footer button {
+    margin: 0 8px;
+    width: 6em;
+}
+
+.dcase-node-editor .sub-window-content table {
+    font-size: 14px;
+    background-color: white;
+}
+
+.dcase-node-editor .sub-window-content td {
+    padding: 4px 8px;
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    vertical-align: top;
+}
+
+.dcase-node-editor .sub-window-content .tr-odd {
+    background-color: whitesmoke;
+}
+
+
+.dcase-node-content table {
+    font-size: 14px;
+    background-color: white;
+}
+
+.dcase-node-content td {
+    padding: 4px 8px;
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    vertical-align: top;
+}
+
+.dcase-node-content .tr-odd {
+    background-color: whitesmoke;
+}

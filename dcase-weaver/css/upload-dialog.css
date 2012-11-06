@@ -1,0 +1,43 @@
+.upload-dialog-base {
+    position: fixed;
+    display: inline-block;
+    background-color: lightgray;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    padding: 4px;
+    left: 0;
+    top: 0;
+}
+
+.upload-dialog-header {
+    padding: 4px;
+}
+
+.upload-dialog-header-l {
+    display:inline-block;
+    width: 75%;
+ }
+.upload-dialog-header-r {
+    display:inline-block;
+    width: 25%;
+    text-align: right;
+}
+
+.upload-dialog-file-base,
+.upload-dialog-submit-base
+{
+    padding: 8px;
+}
+
+.upload-dialog-content {
+    background-color: whitesmoke;
+    padding: 4px;
+}
+
+.upload-target {
+    display: none;
+}
+
+.upload-dialog-submit-base {
+    text-align: center;
+}
