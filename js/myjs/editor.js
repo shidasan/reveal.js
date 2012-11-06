@@ -35,15 +35,17 @@ function createEditor($dom) {
 				editor.setLineClass(line - 1, null);
 			}
 		};
-		var log = { getLog : function(data){
+		var log = { getLog : function(){
 			//var data = (JSON.stringify({ "Method": "RequestDSE","Script" : editor.getValue()}));
+			var data = {};
 			$.ajax({
 				url:'cgi-bin/zabbixlog.php',
 				type:'POST',
-				data:{"JSON" : data},
+				data: data,
 				error:function() { $("#error_log").text("error") },
 				complete:function(res_data) {
 					var res_json = JSON.parse(res_data.responseText);
+					$("#error_log").text("");
 					//$("#error_log").text(JSON.stringify(res_json[0].Value));
 					var t = 100;
 					var script_flag = false;
@@ -62,9 +64,12 @@ function createEditor($dom) {
 							}
 							break;
 						case "EndTask":
-							return false;
-						case "StartTask":
 						script_flag = true;
+							break;
+						case "StartTask":
+							return false;
+						case "DScriptPrint":
+							$("#error_log").append(value.Body.replace(/\#(.+)$/, ""));
 							break;
 						default :
 							$("#error_log").append(JSON.stringify(value) + "\n");
@@ -79,7 +84,27 @@ function createEditor($dom) {
 					},
 				dataType:'json'
 			});
-		}};
+		},
+		logPolling : function(data){
+			$.ajax({
+				url:'cgi-bin/zabbixpol.php',
+				type:'POST',
+				data: {"JSON" : data},
+				error:function() { },
+				complete:function(res_data) {
+					var res_json = JSON.parse(res_data.responseText);
+					if(res_json.Value.length > 1){
+						log.getLog();
+					}else{
+						setTimeout( function() {
+							log.logPolling(data);
+						},1000);
+					}
+				},
+				dataType:'json'
+			});
+		}
+		};
 	$("#exec").click(function(){
 		var data = {
 			'Method': 'SendDSE',
@@ -100,7 +125,7 @@ function createEditor($dom) {
 			data : data,
 			error:function(){$("#log1").text("error1"); },
 			complete:function(data){
-				log.getLog(data.responseText);
+					log.logPolling(data.responseText);
 			},
 			dataType:'json'
 		});
