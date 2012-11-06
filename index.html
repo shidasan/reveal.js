@@ -1,4 +1,4 @@
-<!doctype html>  
+<!doctype html>
 <html lang="en">
 	
 	<head>
@@ -30,8 +30,8 @@
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
+		<!-- jquery -->
 		<script src="js/jquery.min.js"></script>
-		<script src="js/jquery.pnotify.js"></script>
 
 	</head>
 	<body>
@@ -61,8 +61,8 @@
 								</div>
 								-->
 								<div class="pf-element pf-buttons pf-centered" style="position: relative; margin: 0 auto 0 auto;">
-									<input class="pf-button btn" type="submit" name="allow" value="Yes">
-									<input class="pf-button btn btn-primary" type="submit" name="deny" value="No">
+									<button class="pf-button btn" type="button" onclick="notifier_allow_script();">Yes</button>
+									<button class="pf-button btn btn-primary" type="button" onclick="notifier_deny_script();">No</button>
 								</div>
 							</div>
 						</form>
@@ -175,6 +175,7 @@
 				<div id="title">
 					<h2>D-Script エディタ</h2>
 				</div>
+				<div class="load" style="position:absolute; left: 50%; top: 50%"></div>
 				<form action="" method="POST">
 					<textarea class="editor" name="editor" >
 import ("posix.process");
@@ -374,14 +375,17 @@ System.sleep(10);
 			</div>
 		<script src="js/jquery-ui-1.8.13.custom.min.js" charset="utf-8"></script>
 		<script src="js/jquery.transit.js"></script>
+		<script src="js/jquery.pnotify.js"></script>
 		<script src="js/jquery.svg.js"></script>
 		<script src="js/jquery.svganim.js"></script>
+		<script src="js/spin.min.js"></script>
 		<script src="lib/js/head.min.js"></script>
 		<script src="plugin/zoom-js/zoom.js"></script>
 		<script src="js/reveal.js"></script>
 		<script src="js/bootstrap/bootstrap.min.js"></script>
 		<script src="js/myjs/util.js"></script>
 		<script src="js/myjs/config.js"></script>
+		<script src="js/myjs/spinner.js"></script>
 		<script src="js/myjs/notify.js"></script>
 		<script src="js/myjs/arch.js"></script>
 		<script src="js/myjs/faultMatrix.js"></script>

@@ -99,6 +99,7 @@ function createEditor($dom) {
 		}
 		};
 	$("#exec").click(function(){
+    Spinner_start();
 		var data = {
 			'Method': 'SendDSE',
       'Name': $('#script_select option:selected').val(),
@@ -151,12 +152,9 @@ function createEditor($dom) {
 
 
 function Editor_refresh() {
-  console.log('refresh');
   for(var i = 0; i < yoan_dscript_editors.length; i++) {
-    console.log(yoan_dscript_editors[i]);
     yoan_dscript_editors[i].refresh();
   }
-  console.log(yoan_dscript_editors.length);
   setTimeout( function() {
     Editor_refresh();
   },10000);

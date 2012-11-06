@@ -26,7 +26,6 @@ DManager.prototype = {
     viewer = new NodeViewer($dcase.svg('get'));
     //viewer = new NodeViewer($dcase.children('svg'), $dcase.svg('get'));
     viewer.init();
-    console.log($dcase.children('svg'));
     viewer.setSVGScope($dcase.children('svg'));
     // create tree manager
     var mng = new DummyManager('http://localhost', 7474);
