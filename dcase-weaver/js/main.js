@@ -437,9 +437,9 @@
      $(window).resize(resize_tree_box);
 
      $(child).css({ left: Math.floor(($(tree.elem).width() - $(child).width()) / 2) });
-     reveal_scale = $(window).width() / $(child).width();
+     reveal_scale = $(window).width() / $(child).width() * 1.4;
      resize_tree_box();
-     tree.draw();
+     //tree.draw();
      draggable.call(child, {bound:"outer"});
 
      var action_scaleup = function() {

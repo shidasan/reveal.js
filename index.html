@@ -18,6 +18,8 @@
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css" media="screen"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery.pnotify.default.css" media="all"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery.pnotify.default.icons.css" media="screen"/>
 
 		<!-- my css -->
 		<link rel="stylesheet" type="text/css" href="css/gsn.css"/>
@@ -28,10 +30,42 @@
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.pnotify.js"></script>
+
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
+				<section>
+					<div id="title">
+						<h2>test</h2>
+					</div>
+					<button type="button" class="btn btn-primary" style="margin-top:20px" onclick="notify_test_form();">form</button>
+					<button type="button" id="exec" class="btn btn-primary" style="margin-top:20px" onclick="notify_test();">test</button>
+					<div id="form_notice" style="display: none;">
+						<form class="pf-form pform_custom" action method="post">
+							<img src="./img/dscript_logo.png" width="80px" style="float: left; margin-left: -50px;"></img>
+							<div>
+								<div class="pf-element pf-heading">
+									<h5>スクリプトを実行しますか?</h5>
+								</div>
+								<!--
+								<div class="pf-element">
+									<label>
+										<span class="pf-label">Username</span>
+										<input class="pf-field" type="text" name="username">
+									</label>
+								</div>
+								-->
+								<div class="pf-element pf-buttons pf-centered" style="position: relative; margin: 0 auto 0 auto;">
+									<input class="pf-button btn" type="submit" name="allow" value="Yes">
+									<input class="pf-button btn btn-primary" type="submit" name="deny" value="No">
+								</div>
+							</div>
+						</form>
+					</div>
+				</section>
 				<section>
 					<!--<img id="title" src="./img/ET2012LOGO.jpg" width="200px"></img>-->
 					<div id="title">
@@ -332,7 +366,6 @@ System.sleep(10);
 					</section>
 				</section>
 			</div>
-		<script src="js/jquery.min.js"></script>
 		<script src="js/jquery-ui-1.8.13.custom.min.js" charset="utf-8"></script>
 		<script src="js/jquery.transit.js"></script>
 		<script src="js/jquery.svg.js"></script>
@@ -343,6 +376,7 @@ System.sleep(10);
 		<script src="js/bootstrap/bootstrap.min.js"></script>
 		<script src="js/myjs/util.js"></script>
 		<script src="js/myjs/config.js"></script>
+		<script src="js/myjs/notify.js"></script>
 		<script src="js/myjs/arch.js"></script>
 		<script src="js/myjs/faultMatrix.js"></script>
 		<script src="js/myjs/graph.js"></script>

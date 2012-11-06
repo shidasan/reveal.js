@@ -69,6 +69,7 @@ function createEditor($dom) {
 						case "StartTask":
 							return false;
 						case "DScriptPrint":
+              zabbix_notify_info(value.Body.replace(/\#(.+)$/, ""));
 							$("#error_log").append(value.Body.replace(/\#(.+)$/, ""));
 							break;
 						default :
