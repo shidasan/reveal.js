@@ -9,8 +9,7 @@
     padding: 6px;
     margin: 4px;
     border-width: 0;
-    background-color: silver;
-    background-image: -moz-linear-gradient(top, lightgray, darkgray);
+    background: -webkit-gradient(linear, left top, left bottom, from(lightgray), to(darkgray));
     border-right: 1px solid gray;
     border-left: 1px solid gainsboro;
     border-radius: 4px;
@@ -18,6 +17,5 @@
 }
 
 .tool-bar .tool-bar-item:hover {
-    background-color: lightgray;
-    background-image: -moz-linear-gradient(top, gainsboro, silver);
+    background: -webkit-gradient(linear, left top, left bottom, from(gainsboro), to(silver));
 }

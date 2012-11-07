@@ -8,8 +8,6 @@ var yoan_dscript_editors = [];
 function Editor_init() {
   var i = 0;
   $.each($('.editor'), function() {
-    console.log(i++);
-    console.log($(this));
     yoan_dscript_editors.push(createEditor($(this)));
   });
   Editor_refresh();
@@ -35,33 +33,52 @@ function createEditor($dom) {
 				editor.setLineClass(line - 1, null);
 			}
 		};
-		var log = { getLog : function(){
-			var data = (JSON.stringify({ "Method": "RequestDSE","Script" : editor.getValue()}));
+		var log = { getLog : function(data,index){
+			//var data = (JSON.stringify({ "Method": "RequestDSE","Script" : editor.getValue()}));
 			$.ajax({
-				url:'cgi-bin/zabbixlog.php',
+				//url:'cgi-bin/zabbixlog.php',
+				url:'cgi-bin/zabbixpol.php',
 				type:'POST',
-				data:{"JSON" : data},
+				data: {"JSON" : data},
 				error:function() { $("#error_log").text("error") },
 				complete:function(res_data) {
 					var res_json = JSON.parse(res_data.responseText);
-					//$("#error_log").text(JSON.stringify(res_json[0].Value));
 					var t = 100;
-					var script_flag = false;
-					$.each(res_json.Value,function(key,value) {
+					var script_flag = true;
+					var idx = index;
+					console.log(res_json.Value.length);
+					for(var i = index +1; i < res_json.Value.length; i++) {
+					console.log(i);
+						var value = res_json.Value[i];
+						var key = i;
+						if(value === null) {
+							continue;
+						}
+						//index = key;
+						if(value.ScriptName === ".\/dse.k") {
+							continue;
+						}
 						switch(value.Method) {
 						case "Alert":
               $('#myModal').modal();
 						case "DScriptResult":
-							if(script_flag) {
-								setTimeout( function() {
-									libs.setLineColor(value.ScriptLine,value.Count);
-								},t);
-							}
+							setTimeout( function() {
+								libs.setLineColor(value.ScriptLine,value.Count);
+							},t);
+							break;
+						case "StartTask":
 							break;
 						case "EndTask":
+							script_flag = false;
 							return false;
-						case "StartTask":
-						script_flag = true;
+						case "DScriptMessage":
+              zabbix_notify_info(value.Body.replace(/\#(.+)$/, ""));
+							$("#error_log").append(value.Body.replace(/\#(.+)$/, ""));
+              break;
+						case "DScriptAsk":
+              if (value.Ip !== undefined) {
+                zabbix_form_notify(value.Body.replace(/\#(.+)$/, ""), value.Ip);
+              }
 							break;
 						default :
 							$("#error_log").append(JSON.stringify(value) + "\n");
@@ -72,12 +89,20 @@ function createEditor($dom) {
 							}
 						}
 						t += 100;
-						});
-					},
+						idx = i;
+					}
+					if(script_flag) {
+							setTimeout( function() {
+								log.getLog(data, idx);
+							},1000);
+					}
+				},
 				dataType:'json'
 			});
-		}};
+		}
+		};
 	$("#exec").click(function(){
+    Spinner_start();
 		var data = {
 			'Method': 'SendDSE',
       'Name': $('#script_select option:selected').val(),
@@ -97,7 +122,7 @@ function createEditor($dom) {
 			data : data,
 			error:function(){$("#log1").text("error1"); },
 			complete:function(data){
-				log.getLog(data.responseText);
+					log.getLog(data.responseText,0);
 			},
 			dataType:'json'
 		});
@@ -125,19 +150,15 @@ function createEditor($dom) {
 			dataType:'json'
 		});
 	});
-
-  return editor;
+	return editor;
 };
 
 
 function Editor_refresh() {
-  console.log('refresh');
   for(var i = 0; i < yoan_dscript_editors.length; i++) {
-    console.log(yoan_dscript_editors[i]);
     yoan_dscript_editors[i].refresh();
   }
-  console.log(yoan_dscript_editors.length);
   setTimeout( function() {
     Editor_refresh();
-  },1000);
+  },10000);
 }

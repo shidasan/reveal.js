@@ -30,6 +30,7 @@ Matrix.prototype = {
   createSoftwareFault: function() {
     var $ret = createLastChild(this.$dom);
     $ret.addClass('matrix_cell');
+    $ret.addClass('software_fault');
     $ret.css({
         'background': '#aa4400',
         'top': '10px',
@@ -41,6 +42,7 @@ Matrix.prototype = {
   createUserFault: function() {
     var $ret = createLastChild(this.$dom);
     $ret.addClass('matrix_cell');
+    $ret.addClass('user_fault');
     $ret.css('bg', '#00aa00');
     $ret.css({
         'background': '#00aa00',
@@ -53,6 +55,7 @@ Matrix.prototype = {
   createSystemFault: function() {
     var $ret = createLastChild(this.$dom);
     $ret.addClass('matrix_cell');
+    $ret.addClass('system_fault');
     $ret.css({
         'background': '#aa0000',
         'top': '170px',
@@ -64,6 +67,7 @@ Matrix.prototype = {
   createExternalFault: function() {
     var $ret = createLastChild(this.$dom);
     $ret.addClass('matrix_cell');
+    $ret.addClass('external_fault');
     $ret.css({
         'background': '#aa00aa',
         'top': '170px',
@@ -87,11 +91,14 @@ Matrix.prototype = {
     this.setAxis();
   },
   addLine: function(data) {
-    var tr = createLastChild(this.$table, 'tr');
-    createLastChild(tr, 'th', data['api']);
-    createLastChild(tr, 'th', data['file']);
-    createLastChild(tr, 'th', data['line']);
-    createLastChild(tr, 'th', data['diag']);
+	var elem = $("<tr></tr>");
+	elem.append('<td>' + data['api'] +'</td>');
+	elem.append('<td>' + data['file'] +'</td>');
+	elem.append('<td>' + data['line'] +'</td>');
+	elem.append('<td>' + data['diag'] +'</td>');
+	this.$table.append(elem);
+	//$(".matrix_cell.user_fault").css('background', '#000000');
+	
     //line.addClass('fault_line');
     //var line = createLastChild(line, 'p', str);
     //var matrix = createLastChild(line);
@@ -130,14 +137,27 @@ function Matrix_init(argument) {
   matrix.init();
   matrix.drawMatrix();
   // TODO use bootstrap Table-hover
-  var data = {
-      'file': 'hoge.k',
-      'line': '12',
-      'api': 'System.fopen()',
-      'diag': 'SoftwareFault',
-  };
-  matrix.addLine(data);
-  //Matrix_stat(matrix);
+  var data = [ {
+	'file' : 'hoge.k',
+	'line' : '12',
+	'api' : 'System.fopen()',
+	'diag' : 'SoftwareFault',
+  }, {
+	'file' : 'hoge.k',
+	'line' : '13',
+	'api' : 'System.fopen()',
+	'diag' : 'SoftwareFault',
+  }, {
+	'file' : 'hoge.k',
+	'line' : '14',
+	'api' : 'System.fopen()',
+	'diag' : 'SoftwareFault',
+  } ];
+
+  for (var i = 0; i < data.length; i++) {
+	  matrix.addLine(data[i]);
+  }
+  // Matrix_stat(matrix);
 }
 
 //function Matrix_stat(matrix) {

@@ -1,4 +1,4 @@
-<!doctype html>  
+<!doctype html>
 <html lang="en">
 	
 	<head>
@@ -18,6 +18,8 @@
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css" media="screen"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery.pnotify.default.css" media="all"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery.pnotify.default.icons.css" media="screen"/>
 
 		<!-- my css -->
 		<link rel="stylesheet" type="text/css" href="css/gsn.css"/>
@@ -28,10 +30,22 @@
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
+		<!-- jquery -->
+		<script src="js/jquery.min.js"></script>
+
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
+				<!--
+				<section>
+					<div id="title">
+						<h2>test</h2>
+					</div>
+					<button type="button" class="btn btn-primary" style="margin-top:20px" onclick="zabbix_form_notify('hello', 'loclahost');">form</button>
+				</section>
+				-->
+				<div id="form_notice" style="display: none;"></div>
 				<section>
 					<!--<img id="title" src="./img/ET2012LOGO.jpg" width="200px"></img>-->
 					<div id="title">
@@ -50,6 +64,22 @@
 					</div>
 				</section>
 				<section>
+					<section>
+					<div id="title">
+						<h2>システム構成図</h2>
+					</div>
+					<div id="arch"></div>
+					</section>
+					<section>
+						<div id="title">
+							<h2>dcase-weaver</h2>
+						</div>
+						<div id="dcase-weaver-frame">
+							<iframe src="dcase-weaver/offline.html" width=100% height=500></iframe>
+						</div>
+					</section>
+				</section>
+				<section>
 					<div id="title">
 						<h2>デモ用サービス</h2>
 						<h2>Web Camera Service</h2>
@@ -61,46 +91,61 @@
 					</div>
 				</section>
 				<section>
-					<div id="title">
-						<h2>サーバ構成図</h2>
-					</div>
-					<div id="arch"></div>
-				</section>
-				<section>
-					<div id="title">
-						<h2>dcase-weaver</h2>
-					</div>
-					<div id="dcase-weaver-frame">
-						<iframe src="dcase-weaver/offline.html" width=100% height=500></iframe>
-					</div>
-				</section>
-				<section>
 					<section>
 						<div id="title">
-							<h2>D-Case Flow</h2>
+							<h2>サーバ監視項目</h2>
 						</div>
-						<div id="bpmn"> </div>
+						<h2>CPU 使用率</h2>
+						<img id="cpu"></img>
+						<form>
+							<select name="Server" id="cpu_select" >
+								<option value="et2">Node 1
+								<option value="et3">Node 2
+								<option value="Zabbix">DSE Manager
+							</select>
+						</form>
 					</section>
 					<section>
 						<div id="title">
-							<h2>D-Case</h2>
-							<h2>"RAMディスクにデータをコピーする"</h2>
+							<h2>サーバ監視項目</h2>
 						</div>
-						<div id="d_system"></div>
+						<h2>メモリ空き容量</h2>
+						<img id="memory"></img>
+						<form>
+							<select name="Server" id="memory_select">
+								<option value="et2">Node 1
+								<option value="et3">Node 2
+								<option value="Zabbix">Server
+							</select>
+						</form>
 					</section>
 					<section>
 						<div id="title">
-							<h2>D-Case</h2>
-							<h2>"RAMディスクにデータをコピーする"</h2>
+							<h2>サーバ監視項目</h2>
 						</div>
-						<div id="d_system"> </div>
+						<h2>ネットワーク使用率</h2>
+						<img id="network"></img>
+						<form>
+							<select name="Server" id="network_select">
+								<option value="et2">Node 1
+								<option value="et3">Node 2
+								<option value="Zabbix">DSE Manager
+							</select>
+						</form>
 					</section>
 					<section>
 						<div id="title">
-							<h2>D-Case</h2>
-							<h2>"RAMディスクにデータをコピーする"</h2>
+							<h2>サーバ監視項目</h2>
 						</div>
-						<div id="d_system"> </div>
+						<h2>障害状況</h2>
+						<table class="table">
+							<thead><tr>
+								<th>ホスト名</th>
+								<th>障害内容</th>
+								<th>発生時刻</th>
+							</tr></thead>
+						<tbody id="trigger_log"></tbody>
+						</table>
 					</section>
 				</section>
 				<section>
@@ -108,17 +153,22 @@
 				<div id="title">
 					<h2>D-Script エディタ</h2>
 				</div>
+				<div class="load" style="position:absolute; left: 50%; top: 50%"></div>
 				<form action="" method="POST">
 					<textarea class="editor" name="editor" >
-// Task A;
 import ("posix.process");
-System.sleep(10);
+import ("cstyle");
 
+void f() {
+  int i = 0;
+  while (i < 100) {
+    System.sleep(1);
+    System.p(i);
+    i = i + 1;
+  }
+}
 
-
-
-
-
+f();
 
 
 					</textarea>
@@ -136,7 +186,39 @@ System.sleep(10);
 						<button type="button" id="exec" class="btn btn-primary" style="margin-top:20px">execute</button>
 					</div>
 				</form>
-				<div id="error_log"></div>
+				</section>
+				<section>
+					<div id="title">
+						<h2>D-Script Result</h2>
+					</div>
+					<div id="error_log"></div>
+				</section>
+				<section>
+					<div id="title">
+						<h2>Fault Matrix</h2>
+					</div>
+					<div id="fault_matrix"></div>
+					<table id="fault_table" class="table table-hover">
+						<thead>
+							<tr>
+								<th>API</th>
+								<th>FileName</th>
+								<th>Line</th>
+								<th>FaultType</th>
+							</tr>
+						</thead>
+						<tbody>
+						<!--
+							<tr>
+								<th>hello, world</th>
+								<th>hello, world</th>
+								<th>hello, world</th>
+								<th>hello, world</th>
+							</tr>
+						-->
+						</tbody>
+					</table>
+				</section>
 				<!-- Modal -->
 				<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					<div class="modal-header">
@@ -240,101 +322,49 @@ System.sleep(10);
 				</section>
 				-->
 				<section>
-					<div id="title">
-						<h2>Fault Matrix</h2>
-					</div>
-					<div id="fault_matrix"></div>
-					<table id="fault_table" class="table table-hover">
-						<thead>
-							<tr>
-								<th>#</th>
-								<th>hoge</th>
-								<th>foo</th>
-								<th>bar</th>
-							</tr>
-						</thead>
-						<tbody>
-						<!--
-							<tr>
-								<th>hello, world</th>
-								<th>hello, world</th>
-								<th>hello, world</th>
-								<th>hello, world</th>
-							</tr>
-						-->
-						</tbody>
-					</table>
-				</section>
-				<section>
 					<section>
 						<div id="title">
-							<h2>サーバ監視項目</h2>
+							<h2>D-Case Flow</h2>
 						</div>
-						<h2>CPU 使用率</h2>
-						<img id="cpu"></img>
-						<form>
-							<select name="Server" id="cpu_select" >
-								<option value="et2">Node 1
-								<option value="et3">Node 2
-								<option value="Zabbix">DSE Manager
-							</select>
-						</form>
+						<div id="bpmn"> </div>
 					</section>
 					<section>
 						<div id="title">
-							<h2>サーバ監視項目</h2>
+							<h2>D-Case</h2>
+							<h2>"RAMディスクにデータをコピーする"</h2>
 						</div>
-						<h2>メモリ使用率</h2>
-						<img id="memory"></img>
-						<form>
-							<select name="Server" id="memory_select">
-								<option value="et2">Node 1
-								<option value="et3">Node 2
-								<option value="Zabbix">Server
-							</select>
-						</form>
+						<div id="d_system"></div>
 					</section>
 					<section>
 						<div id="title">
-							<h2>サーバ監視項目</h2>
+							<h2>D-Case</h2>
+							<h2>"RAMディスクにデータをコピーする"</h2>
 						</div>
-						<h2>ネットワーク使用率</h2>
-						<img id="network"></img>
-						<form>
-							<select name="Server" id="network_select">
-								<option value="et2">Node 1
-								<option value="et3">Node 2
-								<option value="Zabbix">DSE Manager
-							</select>
-						</form>
+						<div id="d_system"> </div>
 					</section>
 					<section>
 						<div id="title">
-							<h2>サーバ監視項目</h2>
+							<h2>D-Case</h2>
+							<h2>"RAMディスクにデータをコピーする"</h2>
 						</div>
-						<h2>ログ</h2>
-						<table class="table">
-							<thead><tr>
-								<th>ホスト名</th>
-								<th>障害内容</th>
-								<th>発生時刻</th>
-							</tr></thead>
-						<tbody id="trigger_log"></tbody>
-						</table>
+						<div id="d_system"> </div>
 					</section>
 				</section>
 			</div>
-		<script src="js/jquery.min.js"></script>
 		<script src="js/jquery-ui-1.8.13.custom.min.js" charset="utf-8"></script>
 		<script src="js/jquery.transit.js"></script>
+		<script src="js/jquery.pnotify.js"></script>
 		<script src="js/jquery.svg.js"></script>
 		<script src="js/jquery.svganim.js"></script>
+		<script src="js/spin.min.js"></script>
 		<script src="lib/js/head.min.js"></script>
 		<script src="plugin/zoom-js/zoom.js"></script>
 		<script src="js/reveal.js"></script>
 		<script src="js/bootstrap/bootstrap.min.js"></script>
 		<script src="js/myjs/util.js"></script>
 		<script src="js/myjs/config.js"></script>
+		<script src="js/myjs/spinner.js"></script>
+		<script src="js/myjs/notify.js"></script>
 		<script src="js/myjs/arch.js"></script>
 		<script src="js/myjs/faultMatrix.js"></script>
 		<script src="js/myjs/graph.js"></script>
