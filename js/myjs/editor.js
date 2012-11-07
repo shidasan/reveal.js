@@ -33,7 +33,7 @@ function createEditor($dom) {
 				editor.setLineClass(line - 1, null);
 			}
 		};
-		var log = { getLog : function(data,idx){
+		var log = { getLog : function(data,index){
 			//var data = (JSON.stringify({ "Method": "RequestDSE","Script" : editor.getValue()}));
 			$.ajax({
 				//url:'cgi-bin/zabbixlog.php',
@@ -43,23 +43,20 @@ function createEditor($dom) {
 				error:function() { $("#error_log").text("error") },
 				complete:function(res_data) {
 					var res_json = JSON.parse(res_data.responseText);
-					$("#error_log").text("");
-					//$("#error_log").text(JSON.stringify(res_json[0].Value));
 					var t = 100;
 					var script_flag = true;
-					var index = 0;
-					console.log(idx);
-					$.each(res_json.Value,function(key,value) {
-						if(key < idx) {
-							return;
-						}
+					var idx = index;
+					console.log(res_json.Value.length);
+					for(var i = index +1; i < res_json.Value.length; i++) {
+					console.log(i);
+						var value = res_json.Value[i];
+						var key = i;
 						if(value === null) {
-							return;
+							continue;
 						}
-						console.log(key + ":" + idx);
-						index = key;
+						//index = key;
 						if(value.ScriptName === ".\/dse.k") {
-							return;
+							continue;
 						}
 						switch(value.Method) {
 						case "Alert":
@@ -74,7 +71,7 @@ function createEditor($dom) {
 						case "EndTask":
 							script_flag = false;
 							return false;
-						case "DScriptPrint":
+						case "DScriptMessage":
               zabbix_notify_info(value.Body.replace(/\#(.+)$/, ""));
 							$("#error_log").append(value.Body.replace(/\#(.+)$/, ""));
               break;
@@ -92,13 +89,14 @@ function createEditor($dom) {
 							}
 						}
 						t += 100;
-						});
-						if(script_flag) {
+						idx = i;
+					}
+					if(script_flag) {
 							setTimeout( function() {
-								log.getLog(data, index);
+								log.getLog(data, idx);
 							},1000);
-						}
-					},
+					}
+				},
 				dataType:'json'
 			});
 		}

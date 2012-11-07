@@ -84,7 +84,7 @@ function notifier_allow_script(to) {
   return false;
 }
 
-function notifier_deny_script() {
+function notifier_deny_script(to) {
   $.ajax({
       url: to,
       type : 'POST',
