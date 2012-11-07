@@ -37,37 +37,20 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>
-					<div id="title">
-						<h2>test</h2>
+			<div id="form_notice" style="display: none;">
+				<form class="pf-form pform_custom" action method="post">
+					<img src="./img/dscript_logo.png" width="80px" style="float: left; margin-left: -50px;"></img>
+					<div>
+						<div class="pf-element pf-heading">
+							<h5>スクリプトを実行しますか?</h5>
+						</div>
+						<div class="pf-element pf-buttons pf-centered" style="position: relative; margin: 0 auto 0 auto;">
+							<button class="pf-button btn" type="button" onclick="notifier_allow_script();">Yes</button>
+							<button class="pf-button btn btn-primary" type="button" onclick="notifier_deny_script();">No</button>
+						</div>
 					</div>
-					<!--
-					<button type="button" class="btn btn-primary" style="margin-top:20px" onclick="notify_test_form();">form</button>
-					<button type="button" id="exec" class="btn btn-primary" style="margin-top:20px" onclick="zabbix_notify_info();">test</button>
-					-->
-					<div id="form_notice" style="display: none;">
-						<form class="pf-form pform_custom" action method="post">
-							<img src="./img/dscript_logo.png" width="80px" style="float: left; margin-left: -50px;"></img>
-							<div>
-								<div class="pf-element pf-heading">
-									<h5>スクリプトを実行しますか?</h5>
-								</div>
-								<!--
-								<div class="pf-element">
-									<label>
-										<span class="pf-label">Username</span>
-										<input class="pf-field" type="text" name="username">
-									</label>
-								</div>
-								-->
-								<div class="pf-element pf-buttons pf-centered" style="position: relative; margin: 0 auto 0 auto;">
-									<button class="pf-button btn" type="button" onclick="notifier_allow_script();">Yes</button>
-									<button class="pf-button btn btn-primary" type="button" onclick="notifier_deny_script();">No</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</section>
+				</form>
+			</div>
 				<section>
 					<!--<img id="title" src="./img/ET2012LOGO.jpg" width="200px"></img>-->
 					<div id="title">
