@@ -77,6 +77,11 @@ function createEditor($dom) {
 						case "DScriptPrint":
               zabbix_notify_info(value.Body.replace(/\#(.+)$/, ""));
 							$("#error_log").append(value.Body.replace(/\#(.+)$/, ""));
+              break;
+						case "DScriptAsk":
+              if (value.Ip !== undefined) {
+                zabbix_form_notify(value.Body.replace(/\#(.+)$/, ""), value.Ip);
+              }
 							break;
 						default :
 							$("#error_log").append(JSON.stringify(value) + "\n");
