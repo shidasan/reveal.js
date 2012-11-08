@@ -46,8 +46,6 @@ function createEditor($dom) {
 					var t = 100;
 					var script_flag = true;
 					var idx = index;
-					console.log(res_json.Value.length);
-					console.log(res_json.Value);
 					for(var i = index + 1; i < res_json.Value.length; i++) {
 						var value = res_json.Value[i];
 						var key = i;
@@ -58,7 +56,6 @@ function createEditor($dom) {
 						if(value.ScriptName === ".\/dse.k") {
 							continue;
 						}
-						console.log(value.Method)
 						switch(value.Method) {
 						case "Alert":
 							 $('#myModal').modal();
@@ -77,10 +74,7 @@ function createEditor($dom) {
 							zabbix_notify_info(value.Body.replace(/\#(.+)$/, ""));
 							$("#error_log").append(value.Body.replace(/\#(.+)$/, ""));
 							break;
-						case "DScriptAsk":
-							console.log('enter DScriptAsk');
-							consolw.log('--------------------------');
-							console.log(value.Ip);
+						case "DScriptApproval":
 							if (value.Ip !== undefined) {
 								zabbix_form_notify(value.Body.replace(/\#(.+)$/, ""), value.Ip);
 							}
@@ -117,8 +111,6 @@ function createEditor($dom) {
 			'From': '127.0.0.1:80',
 			'event': 'D-Task'
 		};
-    console.log('----------------------------');
-    console.log(data);
 		$.ajax({
 			//url:'cgi-bin/checkKillSender.cgi',
 			url:'cgi-bin/testSender.cgi',
@@ -142,8 +134,6 @@ function createEditor($dom) {
 			'From': '127.0.0.1:80',
 			'event': 'D-Task'
 		};
-    console.log('----------------------------');
-    console.log(data);
 		$.ajax({
 			url:'cgi-bin/storedScriptSender.cgi',
 			type : 'POST',
