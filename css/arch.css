@@ -4,7 +4,7 @@
 	border-width: 2px;
 	width: 800px;
 	height: 600px;
-	margin: 0 auto;
+	left: 50%;
 }
 
 .reveal .slides section #arch .arch_node {
@@ -13,6 +13,7 @@
 	border: none;
 	-webkit-box-shadow: none;
 	position: absolute;
+	left: 50%;
 }
 
 .reveal .slides section #arch img {
@@ -24,12 +25,14 @@
 .reveal .slides section #arch .arch_node p{
 	font-size: 20px;
 	text-align: center;
+	left: 50%;
 }
 
 .reveal .slides #arch .arch_node div.status {
 	position: absolute;
 	top: 100px;
 	left: 130px;
+	left: 50%;
 }
 /*--------------- CSS Animation ----------------*/
 

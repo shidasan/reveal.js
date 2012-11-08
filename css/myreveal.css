@@ -4,6 +4,42 @@ body .reveal .slides section {
 }
 */
 
+.reveal aside.overview_icon {
+	border-radius: 20px;
+	border-style: solid;
+	border-width: 5px;
+	border-color: darkblue;
+	position: fixed;
+	width: 80px;
+	height: 80px;
+	z-index: 30;
+
+	margin-right: 10px;
+	margin-bottom: 13px;
+	right: 100px;
+	bottom: 0px;
+	opacity: .1;
+	-webkit-box-shadow: 0px 0px 2px rgba(144, 207, 213, 0.3);
+}
+
+.reveal aside.overview_icon.enabled {
+	border-radius: 20px;
+	border-style: solid;
+	border-width: 5px;
+	border-color: darkblue;
+	position: fixed;
+	width: 80px;
+	height: 80px;
+	z-index: 30;
+
+	margin-right: 10px;
+	margin-bottom: 13px;
+	right: 100px;
+	bottom: 0px;
+	opacity: 1;
+	-webkit-box-shadow: 0px 0px 2px rgba(144, 207, 213, 0.3);
+}
+
 body .reveal .slides #title {
 	left; 0px;
 	background: #990000;
@@ -45,17 +81,17 @@ body .reveal .slides #demo_overview img{
 	-webkit-box-shadow: none;
 }
 
-body .reveal .slides #footer {
-	position: relative;
+body .reveal footer {
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
 	height: 120px;
-	padding-top: 30px;
 	margin: 0 auto 0 auto;
-	top: 50%;
 	float: left;
 }
 
-body .reveal .slides #footer p{
-	position: relative;
+body .reveal footer p{
+	display: block;
 	font-size: 20px;
 	left: -50%;
 	float: left;
@@ -63,12 +99,12 @@ body .reveal .slides #footer p{
 	padding: 15px 10px 0px 0px;
 }
 
-body .reveal .slides #footer img{
+body .reveal footer img{
 	height: 80px;
 	position: relative;
-	left: -50%;
+	bottom: 0px;
+	left: 0px;
 	float: left;
-	vertical-align: middle;
 	margin: 0 auto;
 	padding: 30px 0px 30px 0px;
 	border: none;

@@ -18,10 +18,10 @@ var Reveal = (function(){
 			controls: true,
 
 			// Display a presentation progress bar
-			progress: true,
+			progress: false,
 
 			// Push each slide change to the browser history
-			history: false,
+			history: true,
 
 			// Enable keyboard shortcuts for navigation
 			keyboard: true,
@@ -37,10 +37,10 @@ var Reveal = (function(){
 			autoSlide: 0,
 
 			// Enable slide navigation via mouse wheel
-			mouseWheel: true,
+			mouseWheel: false,
 
 			// Apply a 3D roll to links on hover
-			rollingLinks: true,
+			rollingLinks: false,
 
 			// Transition style (see /css/theme)
 			theme: 'default', 
@@ -144,6 +144,13 @@ var Reveal = (function(){
 			progressElement.innerHTML = '<span></span>';
 			dom.wrapper.appendChild( progressElement );
 		}
+
+		// Overview icons
+		var overviewElement = document.createElement( 'aside' );
+		overviewElement.classList.add( 'overview_icon' );
+		dom.wrapper.appendChild( overviewElement );
+		dom.overviewBtn = document.querySelector( '.reveal aside.overview_icon' );
+
 
 		// Arrow controls
 		if( !dom.wrapper.querySelector( '.controls' ) && config.controls ) {
@@ -317,6 +324,8 @@ var Reveal = (function(){
 		if( config.keyboard ) {
 			document.addEventListener( 'keydown', onDocumentKeyDown, false );
 		}
+
+		dom.overviewBtn.addEventListener( 'click', toggleOverview, false );
 
 		if ( config.controls && dom.controls ) {
 			dom.controlsLeft.addEventListener( 'click', preventAndForward( navigateLeft ), false );
@@ -714,11 +723,34 @@ var Reveal = (function(){
 	 * overview is open, false means it's closed.
 	 */
 	function toggleOverview( override ) {
+
+		dom.overviewBtn.classList.remove( 'enabled' );
+
+		// Add the 'enabled' class to the available routes
+
 		if( typeof override === 'boolean' ) {
-			override ? activateOverview() : deactivateOverview();
+			//override ? activateOverview() : deactivateOverview();
+			if (override) {
+        console.log('active boolean');
+        activateOverview();
+        dom.overviewBtn.classList.add( 'enabled' );
+      }
+      else {
+        console.log('deactive boolean');
+        deactivateOverview();
+      }
 		}
 		else {
-			isOverviewActive() ? deactivateOverview() : activateOverview();
+			//isOverviewActive() ? deactivateOverview() : activateOverview();
+			if (isOverviewActive()) {
+        console.log('deactive else');
+        deactivateOverview();
+      }
+      else {
+        console.log('active else');
+        activateOverview();
+        dom.overviewBtn.classList.add( 'enabled' );
+      }
 		}
 	}
 
