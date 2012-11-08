@@ -54,9 +54,6 @@ function form_template(sentence, to) {
 }
 
 function zabbix_form_notify(str, to) {
-  if (spinner !== undefined) {
-    spinner.stop();
-  }
   global_notice = $.pnotify({
     text: form_template(str, to).html(),
     opacity: .9,

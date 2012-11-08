@@ -47,8 +47,8 @@ function createEditor($dom) {
 					var script_flag = true;
 					var idx = index;
 					console.log(res_json.Value.length);
-					for(var i = index +1; i < res_json.Value.length; i++) {
-					console.log(i);
+					console.log(res_json.Value);
+					for(var i = index + 1; i < res_json.Value.length; i++) {
 						var value = res_json.Value[i];
 						var key = i;
 						if(value === null) {
@@ -58,9 +58,10 @@ function createEditor($dom) {
 						if(value.ScriptName === ".\/dse.k") {
 							continue;
 						}
+						console.log(value.Method)
 						switch(value.Method) {
 						case "Alert":
-              $('#myModal').modal();
+							 $('#myModal').modal();
 						case "DScriptResult":
 							setTimeout( function() {
 								libs.setLineColor(value.ScriptLine,value.Count);
@@ -69,16 +70,20 @@ function createEditor($dom) {
 						case "StartTask":
 							break;
 						case "EndTask":
+							spinner.stop();
 							script_flag = false;
 							return false;
 						case "DScriptMessage":
-              zabbix_notify_info(value.Body.replace(/\#(.+)$/, ""));
+							zabbix_notify_info(value.Body.replace(/\#(.+)$/, ""));
 							$("#error_log").append(value.Body.replace(/\#(.+)$/, ""));
-              break;
+							break;
 						case "DScriptAsk":
-              if (value.Ip !== undefined) {
-                zabbix_form_notify(value.Body.replace(/\#(.+)$/, ""), value.Ip);
-              }
+							console.log('enter DScriptAsk');
+							consolw.log('--------------------------');
+							console.log(value.Ip);
+							if (value.Ip !== undefined) {
+								zabbix_form_notify(value.Body.replace(/\#(.+)$/, ""), value.Ip);
+							}
 							break;
 						default :
 							$("#error_log").append(JSON.stringify(value) + "\n");
@@ -115,8 +120,8 @@ function createEditor($dom) {
     console.log('----------------------------');
     console.log(data);
 		$.ajax({
-			url:'cgi-bin/checkKillSender.cgi',
-			//url:'cgi-bin/testSender.cgi',
+			//url:'cgi-bin/checkKillSender.cgi',
+			url:'cgi-bin/testSender.cgi',
 			//url:'cgi-bin/DCtrlSender.cgi',
 			type : 'POST',
 			data : data,
