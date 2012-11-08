@@ -52,8 +52,8 @@
 						<h2>倉光チーム Demo</h2>
 						<h2>概要</h2>
 					</div>
-					<div id="demo_overview">
-						<img src="./img/demo_overview.png"></img>
+					<div id="demo_overview" style="left: 50%; overflow: visible;">
+						<img src="./img/demo_overview.png" sytle="left: -50%"></img>
 						<div id="footer">
 							<p>Powered by</p>
 							<img src="./img/Zabbix_logo_original.png"></img>
@@ -172,7 +172,7 @@ f();
 
 
 					</textarea>
-					<div style="float: left">
+					<div style="float: left; margin-top: 20px">
 						<select name="ip" id="ip_select">
 							<option value="192.168.59.150">Node 1
 							<option value="192.168.59.150">Node 2
@@ -183,9 +183,10 @@ f();
 							<option value="bar.k">bar.k
 							<option value="hoge.k">hoge.k
 						</select>
-						<button type="button" id="exec" class="btn btn-primary" style="margin-top:20px">execute</button>
+						<button type="button" id="exec" class="btn btn-primary" style="margin-left: 20px">execute</button>
 					</div>
 				</form>
+					<button type="button" id="check" class="btn btn-primary" style="margin-top: 24px; margin-left: 20px;">check</button>
 				</section>
 				<section>
 					<div id="title">

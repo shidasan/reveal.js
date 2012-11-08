@@ -23,9 +23,10 @@ body .reveal .slides #title h2{
 }
 
 body .reveal .slides #demo_overview {
-	position: relative;
-	overflow: hidden;
+	position: absolute;
+	overflow: visible;
 	float: left;
+	left: 50%;
 }
 
 body .reveal .slides img #title{
@@ -38,6 +39,8 @@ body .reveal .slides img #title{
 }
 
 body .reveal .slides #demo_overview img{
+	position: relative;
+	left: -50%;
 	border: none;
 	-webkit-box-shadow: none;
 }
@@ -47,7 +50,6 @@ body .reveal .slides #footer {
 	height: 120px;
 	padding-top: 30px;
 	margin: 0 auto 0 auto;
-	left: 50%;
 	top: 50%;
 	float: left;
 }
