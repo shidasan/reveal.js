@@ -23,14 +23,15 @@ function createEditor($dom) {
 			});
 		var libs = {
 			setLineColor : function(line,count){
-					console.log('setline - 1: ' + (line - 1));
 					editor.setLineClass(line - 1,"SGreen");
 			},
 			setLineError : function(line) {
+          console.log('lineerror');
 				editor.setLineClass(line - 1, null);
 				editor.setLineClass(line - 1,"SRed");
 			},
 			setLineClear : function(line) {
+          console.log('lineclear');
 				editor.setLineClass(line - 1, null);
 			}
 		};
