@@ -147,6 +147,7 @@
 				<section>
 				<div id="title">
 					<h2>D-Script エディタ</h2>
+					<h3>開発者 ちぇんじぃの場合</h3>
 				</div>
 				<div class="load" style="position:absolute; left: 50%; top: 50%"></div>
 				<form action="" method="POST">
@@ -233,108 +234,99 @@ f();
 						</tbody>
 					</table>
 				</section>
-				<!-- Modal -->
-				<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						<h3 id="myModalLabel">RiskDB セキュリティアラート</h3>
-					</div>
-					<div class="modal-body">
-						hoge.k 内で kill コマンドが見つかりました. プロセスIDは123456になります.<br>
-						実行してもよろしいでしょうか?"
-					</div>
-					<div class="modal-footer">
-						<button id="agreedExec" class="btn" data-dismiss="modal" aria-hidden="true">実行</button>
-						<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">停止</button>
-					</div>
+				</section>
+				<section>
+				<section>
+				<div id="title">
+					<h2>D-Script エディタ</h2>
+					<h3>DEOSの場合</h3>
 				</div>
+				<div class="load" style="position:absolute; left: 50%; top: 50%"></div>
+				<form action="" method="POST">
+					<textarea class="editor" name="editor" >
+import ("posix.process");
+import ("cstyle");
+
+void f() {
+  int i = 0;
+  while (i < 100) {
+    System.sleep(1);
+    System.p(i);
+    i = i + 1;
+  }
+}
+
+f();
+
+
+					</textarea>
+					<div style="float: left; margin-top: 20px">
+						<select name="ip" id="ip_select">
+							<option value="192.168.59.150">Node 1
+							<option value="192.168.59.150">Node 2
+							<option value="192.168.59.150">DSE Manager
+						</select>
+						<select name="script" id="script_select">
+							<option value="foo.k">foo.k
+							<option value="bar.k">bar.k
+							<option value="hoge.k">hoge.k
+						</select>
+						<button type="button" id="exec" class="btn btn-primary" style="margin-top:20px">execute</button>
+						<button type="button" id="check" class="btn btn-primary" style="margin-top:20px">check</button>
+					</div>
+				</form>
 				</section>
-				<!--
+				<section>
+				  <div id="title">
+					<h2>D-Script Risks</h2>
+				  </div>
+				  <table id="risk_table" class="table table-hover">
+					<thead>
+					  <tr>
+						<th class="span2">keyword</th>
+						<th class="span4">words</th>
+						<th class="span5">strategy</th>
+						<th class="span1">skip</th>
+					  </tr>
+					</thead>
+					<tbody>
+					</tbody>
+				  </table>
+				  <button type="button" id="secure_execution" class="btn btn-primary" style="margin-top:20px">secure execution</button>
+				</section>
 				<section>
 					<div id="title">
-						<h2>D-Script エディタ</h2>
+						<h2>D-Script Result</h2>
 					</div>
-					<form action="" method="POST">
-						<textarea class="editor" name="editor" >
-// Task B;
-import ("posix.process");
-System.sleep(10);
-
-
-
-
-
-
-
-
-						</textarea>
-							<div style="float: left">
-								<select name="ip" id="ip_select">
-									<option value="192.168.59.150">Node 1
-									<option value="192.168.59.150">Node 2
-									<option value="192.168.59.150">DSE Manager
-								</select>
-								<select name="script" id="script_select">
-									<option value="foo.k">foo.k
-									<option value="bar.k">bar.k
-									<option value="hoge.k">hoge.k
-								</select>
-								<button type="button" class="btn btn-primary" style="margin-top:20px">execute</button>
-							</div>
-					</form>
 					<div id="error_log"></div>
 				</section>
 				<section>
-					<div id="title">
-						<h2>D-Script エディタ</h2>
-					</div>
-					<form action="" method="POST">
-						<textarea class="editor" name="editor" >
-// Task C;
-import ("posix.process");
-System.sleep(10);
-
-
-
-
-
-
-
-
-
-						</textarea>
-						<div style="float: left">
-							<select name="ip" id="ip_select">
-								<option value="et2">Node 1
-								<option value="et3">Node 2
-								<option value="Zabbix">DSE Manager
-							</select>
-							<select name="script" id="script_select">
-								<option value="foo.k">foo.k
-								<option value="bar.k">bar.k
-								<option value="hoge.k">hoge.k
-							</select>
-							<button type="button" class="btn btn-primary" style="margin-top:20px">execute</button>
-						</div>
-					</form>
-					<div id="error_log"></div>
-				</section>
-				-->
-				</section>
-					<!--
-					<section>
 					<div id="title">
 						<h2>Fault Matrix</h2>
 					</div>
 					<div id="fault_matrix"></div>
-					</section>
-					<section>
-					<iframe src="./alertme/static/index.html" width="1000" height="900">
-						Please tell Administator to install alertme.
-					</iframe>
-					</section>
+					<table id="fault_table" class="table table-hover">
+						<thead>
+							<tr>
+								<th>API</th>
+								<th>FileName</th>
+								<th>Line</th>
+								<th>FaultType</th>
+							</tr>
+						</thead>
+						<tbody>
+						<!--
+							<tr>
+								<th>hello, world</th>
+								<th>hello, world</th>
+								<th>hello, world</th>
+								<th>hello, world</th>
+							</tr>
+						-->
+						</tbody>
+					</table>
 				</section>
-				-->
+				</section>
 				<section>
 					<section>
 						<div id="title">
@@ -366,11 +358,15 @@ System.sleep(10);
 				</section>
 			</div>
 		<footer>
-			<p>Powered by</p>
-			<img src="./img/Zabbix_logo_original.png"></img>
-			<img src="./img/dscript_logo.png"></img>
-			<p>D-Case Weaver</p>
-			<p>Alert Me</p>
+			<div id="footer-content">
+				<!--
+				<p>Powered by</p>
+				<img src="./img/Zabbix_logo_original.png"></img>
+				<img src="./img/dscript_logo.png"></img>
+				<p>D-Case Weaver</p>
+				<p>Alert Me</p>
+				-->
+			</div>
 		</footer>
 		<script src="js/jquery-ui-1.8.13.custom.min.js" charset="utf-8"></script>
 		<script src="js/jquery.transit.js"></script>
@@ -388,6 +384,7 @@ System.sleep(10);
 		<script src="js/myjs/notify.js"></script>
 		<!-- <script src="js/myjs/arch.js"></script> -->
 		<script src="js/myjs/faultMatrix.js"></script>
+		<script src="js/myjs/footer.js"></script>
 		<script src="js/myjs/graph.js"></script>
 		<script src="js/myjs/bpmn.js"></script>
 		<script src="js/myjs/gsn.js"></script>

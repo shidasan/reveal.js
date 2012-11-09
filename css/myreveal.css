@@ -54,7 +54,8 @@ body .reveal .slides #title h1, body .reveal .slides #title h2,
 body .reveal .slides #title h3, body .reveal .slides #title h4,
 body .reveal .slides #title h5, body .reveal .slides #title h6, {
 */
-body .reveal .slides #title h2{
+body .reveal .slides #title h2,
+body .reveal .slides #title h3 {
 	color: #fff;
 }
 
@@ -88,25 +89,28 @@ body .reveal footer {
 	height: 120px;
 	margin: 0 auto 0 auto;
 	float: left;
+	left: 50%;
 }
 
-body .reveal footer p{
+body .reveal footer #footer-content{
+	position: relative;
+	left: -30%;
+}
+
+body .reveal footer #footer-content p{
 	display: block;
 	font-size: 20px;
-	left: -50%;
 	float: left;
 	top: 30px;
 	padding: 15px 10px 0px 0px;
 }
 
-body .reveal footer img{
+body .reveal footer #footer-content img{
 	height: 80px;
 	position: relative;
 	bottom: 0px;
 	left: 0px;
 	float: left;
-	margin: 0 auto;
-	padding: 30px 0px 30px 0px;
 	border: none;
 	-webkit-box-shadow: none;
 }

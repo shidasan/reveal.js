@@ -10,7 +10,7 @@ var NODE_A = {
 
 var CONFIG = {
   cgi_dir: 'cgi-bin',
-  img_dir: 'architecture/pic'
+  img_dir: 'img'
 }
 
 var TASK_A = {
