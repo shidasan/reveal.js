@@ -11,7 +11,7 @@ import urllib, urllib2
 import cgi, uuid, sys, os, json
 
 ### Config
-DCtrl_ip = 'http://127.0.0.1:8080'
+#DCtrl_ip = 'http://127.0.0.1:8080'
 
 def request_addCid():
 	form = cgi.FieldStorage()
@@ -23,14 +23,15 @@ def request_addCid():
 			'Option': form.getvalue('Option'),
 			'Name': 'hoge.k',
 			'event': 'D-Control',
-			'To': '127.0.0.1:8080',
+			'To': form.getValue('To'),
+			#'To': '127.0.0.1:8080',
 			'From': '127.0.0.1:80'
 		})
 	return req
 
 def sendRequest(req):
 	c = pycurl.Curl()
-	c.setopt(c.URL, DCtrl_ip)
+	c.setopt(c.URL, 'http://' + req['To'] + ':8080')
 	c.setopt(c.POSTFIELDS, json.dumps(req))
 	c.perform()
 
