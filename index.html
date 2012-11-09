@@ -80,7 +80,7 @@
 						<h2>Web Camera Service</h2>
 					</div>
 					<div id="motion">
-						<iframe src="http://192.168.59.151:8081" width="640" height="480">
+						<iframe src="http://192.168.59.151:8082" width="640" height="480">
 						Please tell Administator to install alertme.
 						</iframe>
 					</div>
@@ -96,7 +96,7 @@
 							<select name="Server" id="cpu_select" >
 								<option value="et2">Node 1
 								<option value="et3">Node 2
-								<option value="Zabbix">DSE Manager
+								<option value="Zabbix server">DSE Manager
 							</select>
 						</form>
 					</section>
@@ -124,7 +124,7 @@
 							<select name="Server" id="network_select">
 								<option value="et2">Node 1
 								<option value="et3">Node 2
-								<option value="Zabbix">DSE Manager
+								<option value="Zabbix server">DSE Manager
 							</select>
 						</form>
 					</section>
@@ -170,9 +170,10 @@ f();
 					</textarea>
 					<div style="float: left; margin-top: 20px">
 						<select name="ip" id="ip_select">
-							<option value="192.168.59.150">Node 1
-							<option value="192.168.59.151">Node 2
-							<option value="192.168.59.150">DSE Manager
+							<option value="192.168.59.151:8080">Node 1
+							<option value="192.168.59.160:8080">Node 2
+							<option value="127.0.0.1:8080">DSE Managerlo
+							<option value="192.168.59.150:8080">DSE Manager
 						</select>
 						<select name="script" id="script_select">
 							<option value="foo.k">foo.k
@@ -235,6 +236,7 @@ f();
 					</table>
 				</section>
 				</section>
+				<!--
 				<section>
 				<section>
 				<div id="title">
@@ -262,17 +264,17 @@ f();
 					</textarea>
 					<div style="float: left; margin-top: 20px">
 						<select name="ip" id="ip_select">
-							<option value="192.168.59.150">Node 1
-							<option value="192.168.59.150">Node 2
-							<option value="192.168.59.150">DSE Manager
+							<option value="192.168.59.151:8888">Node 1
+							<option value="192.168.59.160:8888">Node 2
+							<option value="192.168.59.150:8888">DSE Manager
 						</select>
 						<select name="script" id="script_select">
 							<option value="foo.k">foo.k
 							<option value="bar.k">bar.k
 							<option value="hoge.k">hoge.k
 						</select>
-						<button type="button" id="exec" class="btn btn-primary" style="margin-top:20px">execute</button>
-						<button type="button" id="check" class="btn btn-primary" style="margin-top:20px">check</button>
+						<button type="button" id="exec2" class="btn btn-primary" style="margin-top:20px">execute</button>
+						<button type="button" id="check2" class="btn btn-primary" style="margin-top:20px">check</button>
 					</div>
 				</form>
 				</section>
@@ -292,7 +294,7 @@ f();
 					<tbody>
 					</tbody>
 				  </table>
-				  <button type="button" id="secure_execution" class="btn btn-primary" style="margin-top:20px">secure execution</button>
+				  <button type="button" id="secure_execution2" class="btn btn-primary" style="margin-top:20px">secure execution</button>
 				</section>
 				<section>
 					<div id="title">
@@ -315,18 +317,17 @@ f();
 							</tr>
 						</thead>
 						<tbody>
-						<!--
 							<tr>
 								<th>hello, world</th>
 								<th>hello, world</th>
 								<th>hello, world</th>
 								<th>hello, world</th>
 							</tr>
-						-->
 						</tbody>
 					</table>
 				</section>
 				</section>
+				-->
 				<section>
 					<section>
 						<div id="title">

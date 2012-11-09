@@ -68,8 +68,8 @@ function form_template(body, to) {
        <h5>' + sentence + '</h5>\
      </div>\
      <div class="pf-element pf-buttons pf-centered" style="position: relative; margin: 0 auto 0 auto;">\
-       <button class="' + allow_class + '" type="button" onclick="send_userResponse(\'' + allow_word + '\',\'' + to + '\');">' + allow_word + '</button>\
-       <button class="' + deny_class + '" type="button" onclick="send_userResponse(\'' + deny_word + '\',\'' + to + '\');">' + deny_word + '</button>\
+       <button class="' + allow_class + '" type="button" onclick="send_userResponse(\'y\',\'' + to + '\');">' + allow_word + '</button>\
+       <button class="' + deny_class + '" type="button" onclick="send_userResponse(\'n\',\'' + to + '\');">' + deny_word + '</button>\
      </div>\
    </div>\
   </form>';

@@ -1,11 +1,13 @@
 var MANAGER = {
   name: 'DSE Manager',
-  ip: '192.168.59.150'
+  ip: '192.168.59.150',
+	  zbx_id: 'Zabbix server'
 };
+
 var NODE_A = {
   name: 'Node',
-  //ip: '192.168.59.151'
-  ip: '127.0.0.1:8080'
+  ip: '192.168.59.151:8080',
+  zbx_id: 'et2'
 }
 
 var CONFIG = {

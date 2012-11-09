@@ -23,7 +23,7 @@ def request_addCid():
 			'Option': form.getvalue('Option'),
 			'Name': 'hoge.k',
 			'event': 'D-Control',
-			'To': form.getValue('To'),
+			'To': form.getvalue('To'),
 			#'To': '127.0.0.1:8080',
 			'From': '127.0.0.1:80'
 		})
@@ -31,7 +31,7 @@ def request_addCid():
 
 def sendRequest(req):
 	c = pycurl.Curl()
-	c.setopt(c.URL, 'http://' + req['To'] + ':8080')
+	c.setopt(c.URL, 'http://' + req['To'])
 	c.setopt(c.POSTFIELDS, json.dumps(req))
 	c.perform()
 
