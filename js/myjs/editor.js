@@ -124,10 +124,10 @@ function createEditor($dom) {
 			dataType:'json'
 		});
 	});
-  $("#agreedExec").click(function(){
+	$("#agreedExec").click(function(){
 		var data = {
 			'Method': 'SendDSE',
-      'Name': $('#script_select option:selected').val(),
+			'Name': $('#script_select option:selected').val(),
 			'Script': editor.getValue(),
 			'Option': '',
 			'To': $('#ip_select option:selected').val(),
@@ -141,6 +141,37 @@ function createEditor($dom) {
 			error:function(){$("#log1").text("error1"); },
 			complete:function(data){
 				log.getLog(data.responseText);
+			},
+			dataType:'json'
+		});
+	});
+	$("#check").click(function(){
+		var data = {
+			'Method': 'SendDSE',
+//			'Name': $('#script_select option:selected').val(),
+			'Script': editor.getValue(),
+			'Option': '',
+//			'To': $('#ip_select option:selected').val(),
+			'From': '127.0.0.1:80',
+			'event': 'D-Task'
+		};
+		console.log('----------------------------');
+		console.log(data);
+		$.ajax({
+			url:'cgi-bin/findRisk.cgi',
+			type : 'POST',
+			data : data,
+			success:make_risk_table,
+			error:function(XMLHttpRequest, textStatuc, errorThrown){
+				console.log("error");
+				console.log(XMLHttpRequest);
+				console.log(textStatuc);
+				console.errorThrown();
+//				$("#log1").text("error1");
+			},
+			complete:function(data){
+				console.log("complete");
+//				log.getLog(data.responseText,0);
 			},
 			dataType:'json'
 		});
