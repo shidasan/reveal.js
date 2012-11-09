@@ -23,6 +23,7 @@ function createEditor($dom) {
 			});
 		var libs = {
 			setLineColor : function(line,count){
+          console.log('linecoloer');
 					editor.setLineClass(line - 1,"SGreen");
 			},
 			setLineError : function(line) {
