@@ -1,5 +1,5 @@
 $(function () {
-  Arch_init();
+  //Arch_init();
   Matrix_init();
   Editor_init();
   BPMN_init();
