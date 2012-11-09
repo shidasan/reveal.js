@@ -26,7 +26,7 @@ def keyword2riskexpression(keyword):
 def returnClient(risks):
 	print('Content-Type: application/json')
 	print('')
-	print(json.dumps({'risks': risks}))
+	print(json.dumps({'risks': risks}, indent=4))
 
 def main():
 	form = cgi.FieldStorage()

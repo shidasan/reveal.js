@@ -52,7 +52,9 @@ function make_risk_table(data, dataType) {
 		for (i = 0; i < risks.length; i++) {
 			var risk = risks[i]
 			var count = risk["count"]
-			for (j = 0; j < 20; j++) {
+			console.log(count);
+			console.log(risk["words"].length);
+			for (j = 0; j < count; j++) { //fix me
 				save_to_table(risk["keyword"], risk["words"][j]);
 			}
 		}
