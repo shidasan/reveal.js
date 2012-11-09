@@ -39,8 +39,11 @@ function form_template(body, to) {
   var sentence = body_array[0];
   var $notify_body = $('#form_notice');
   var recv_words = body_array[1].replace(',', '').split(' ');
-  var allow_word = recv_words[1];
-  var allow_word = recv_words[3];
+  var allow_word = recv_words[0];
+  var deny_word = recv_words[2];
+  var allow_class = (recv_words[1] == 'Y') ? 'pf-button btn btn-primary' : 'pf-button btn';
+  var deny_class = (recv_words[3] == 'N') ? 'pf-button btn btn-primary' : 'pf-button btn';
+  console.log(body);
   console.log(sentence + '(' + to + '): [' + allow_word + ', ' + deny_word + ']');
   var html = '\
   <form class="pf-form pform_custom" action method="post">\
@@ -50,18 +53,17 @@ function form_template(body, to) {
        <h5>' + sentence + '</h5>\
      </div>\
      <div class="pf-element pf-buttons pf-centered" style="position: relative; margin: 0 auto 0 auto;">\
-       <button class="pf-button btn" type="button" onclick="notifier_allow_script(' + to + ');">' + allow_word + '</button>\
-       <button class="pf-button btn btn-primary" type="button" onclick="notifier_deny_script(' + to + ');">' + deny_word + '</button>\
+       <button class="' + allow_class + '" type="button" onclick="send_userResponse(\'' + allow_word + '\',\'' + to + '\');">' + allow_word + '</button>\
+       <button class="' + deny_class + '" type="button" onclick="send_userResponse(\'' + deny_word + '\',\'' + to + '\');">' + deny_word + '</button>\
      </div>\
    </div>\
   </form>';
-  $notify_body.html(html);
-  return $notify_body;
+  return html;
 }
 
 function zabbix_form_notify(str, to) {
   global_notice = $.pnotify({
-    text: form_template(str, to).html(),
+    text: form_template(str, to),
     opacity: .9,
     addclass: 'custom',
     width: '290px',
@@ -70,28 +72,21 @@ function zabbix_form_notify(str, to) {
     sticker: false,
     insert_brs: false,
   });
+  console.log('end form notify');
   return false;
 }
 
-function notifier_allow_script(to) {
+function send_userResponse(req, to) {
+	console.log('called send_userRequest: ' + req + ', ' + to);
+	var data = {
+		'Method': 'userResponse',
+		'Request': req,
+		'Ip': to
+	};
   $.ajax({
-      url: to,
+      url: 'cgi-bin/getUserResponse.cgi',
       type : 'POST',
-      data : 'Y',
-      error:function(){},
-      complete:function(data){
-        global_notice.pnotify_remove();
-      },
-      dataType:'text'
-  });
-  return false;
-}
-
-function notifier_deny_script(to) {
-  $.ajax({
-      url: to,
-      type : 'POST',
-      data : 'N',
+      data : data,
       error:function(){},
       complete:function(data){
         global_notice.pnotify_remove();
