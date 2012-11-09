@@ -26,10 +26,12 @@ function createEditor($dom) {
 					editor.setLineClass(line - 1,"SGreen");
 			},
 			setLineError : function(line) {
+          console.log('lineerror');
 				editor.setLineClass(line - 1, null);
 				editor.setLineClass(line - 1,"SRed");
 			},
 			setLineClear : function(line) {
+          console.log('lineclear');
 				editor.setLineClass(line - 1, null);
 			}
 		};
@@ -46,7 +48,9 @@ function createEditor($dom) {
 					var t = 100;
 					var script_flag = true;
 					var idx = index;
+					console.log(res_json.Value);
 					for(var i = index + 1; i < res_json.Value.length; i++) {
+						console.log('----------------------------------');
 						var value = res_json.Value[i];
 						var key = i;
 						if(value === null) {
@@ -56,14 +60,16 @@ function createEditor($dom) {
 						if(value.ScriptName === ".\/dse.k") {
 							continue;
 						}
+						console.log(value.Method);
 						switch(value.Method) {
 						case "Alert":
 							 $('#myModal').modal();
-						case "DScriptResult":
-							setTimeout( function() {
-								libs.setLineColor(value.ScriptLine,value.Count);
-							},t);
-							break;
+						//case "DScriptResult":
+						//	setTimeout( function() {
+						//		console.log(value.ScriptLine);
+						//		libs.setLineColor(value.ScriptLine,value.Count);
+						//	},t);
+						//	break;
 						case "StartTask":
 							break;
 						case "EndTask":
@@ -81,11 +87,11 @@ function createEditor($dom) {
 							break;
 						default :
 							$("#error_log").append(JSON.stringify(value) + "\n");
-							if(value.ScriptLine !== undefined) {
-								setTimeout( function() {
-									libs.setLineError(value.ScriptLine);
-								},t);
-							}
+							//if(value.ScriptLine !== undefined) {
+							//	setTimeout( function() {
+							//		libs.setLineError(value.ScriptLine);
+							//	},t);
+							//}
 						}
 						t += 100;
 						idx = i;
@@ -101,6 +107,7 @@ function createEditor($dom) {
 		}
 		};
 	$("#exec").click(function(){
+	console.log($('#ip_select option:selected').val());
     Spinner_start();
 		var data = {
 			'Method': 'SendDSE',
@@ -119,6 +126,12 @@ function createEditor($dom) {
 			data : data,
 			error:function(){$("#log1").text("error1"); },
 			complete:function(data){
+					var json_data = JSON.parse(data.responseText);
+					if(data.To == "192.168.59.151:8080") {
+						json_data["server"] = "et2";
+					}else {
+						json_data["server"] = "Zabbix server";
+					}
 					log.getLog(data.responseText,0);
 			},
 			dataType:'json'

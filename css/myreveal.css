@@ -54,7 +54,8 @@ body .reveal .slides #title h1, body .reveal .slides #title h2,
 body .reveal .slides #title h3, body .reveal .slides #title h4,
 body .reveal .slides #title h5, body .reveal .slides #title h6, {
 */
-body .reveal .slides #title h2{
+body .reveal .slides #title h2,
+body .reveal .slides #title h3 {
 	color: #fff;
 }
 
@@ -81,35 +82,46 @@ body .reveal .slides #demo_overview img{
 	-webkit-box-shadow: none;
 }
 
-body .reveal footer {
+body .reveal #footer-content {
 	position: absolute;
-	bottom: 0px;
+	bottom: 60px;
 	width: 100%;
-	height: 120px;
+	height: 100px;
 	margin: 0 auto 0 auto;
 	float: left;
+	left: 50%;
 }
 
-body .reveal footer p{
-	display: block;
-	font-size: 20px;
-	left: -50%;
-	float: left;
-	top: 30px;
-	padding: 15px 10px 0px 0px;
-}
-
-body .reveal footer img{
-	height: 80px;
-	position: relative;
-	bottom: 0px;
-	left: 0px;
-	float: left;
-	margin: 0 auto;
-	padding: 30px 0px 30px 0px;
-	border: none;
-	-webkit-box-shadow: none;
-}
+	body .reveal #footer-content ul{
+		position: relative;
+		display: table;
+		left: -40%;
+		width: 100%;
+	}
+	
+		body .reveal #footer-content ul li{
+			list-style: none;
+			float: left;
+			margin-right: 10px;
+			margin-bottom: 15px;
+			width: 200px;
+		}
+		
+			body .reveal #footer-content ul li p{
+				display: table-cell;
+				text-align: center;
+				vertical-align: middle;
+				width: 200px!important;
+				width: auto;
+				height: 80px!important;
+				height: auto;
+				font-size: 20px;
+			}
+			
+			body .reveal #footer-content ul li p img{
+				border: none;
+				-webkit-box-shadow: none;
+			}
 
 body .reveal .slides #motion {
 	margin: 0 auto 0 auto;
