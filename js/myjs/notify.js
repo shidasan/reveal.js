@@ -32,6 +32,18 @@ function dscript_notify_info(str) {
   });
 }
 
+function riskdb_notify_info(str) {
+  $.pnotify({
+    title: 'RiskDB Log',
+    text: str,
+    addclass: 'error',
+    icon: 'picon picon-32 picon-fill-color',
+    opacity: .8,
+    nonblock: true,
+    nonblock_opacity: .2
+  });
+}
+
 var global_notice;
 
 function form_template(body, to) {

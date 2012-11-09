@@ -1,6 +1,29 @@
+(function() {
+	$("#secure_execution").click(function() {
+		$checkboxs = $("#risk_table tbody tr");
+		console.log($checkboxs);
+		var error_flag = false;
+		$checkboxs.each(function() {
+			console.log(!($(this).hasClass("success") || $(this).hasClass("info")));
+			if (!($(this).hasClass("success") || $(this).hasClass("info"))) {
+				$(this).addClass("error");
+				error_flag = true;
+			}
+		});
+		if (error_flag) {
+			riskdb_notify_info("There was a problem with your request.\n Missing evidence.");
+		}
+		else {
+			$("#exec").click();
+			Reveal.slide(4, 0);
+		}
+	});
+})();
+
+
 function make_risk_table(data, dataType) {
 	function init() {
-		Reveal.slide(4,1);
+		Reveal.slide(4, 1);
 		this.$checkbox = $("<input/>")
 			.attr("type", "checkbox")
 			.attr("name", "q");
@@ -12,18 +35,9 @@ function make_risk_table(data, dataType) {
 		var $elem = $("<tr></tr>");
 		var $new_checkbox = this.$checkbox.clone(true);
 		$new_checkbox.click(function() {
+			$elem.removeClass("error")
 			if ($(this).attr("checked")) {
-				if ($elem.hasClass("info")) {
-					//pass
-				}
-				else if ($elem.hasClass("success") && !($elem.hasClass("info"))) {
-					$elem.removeClass("success");
-					$elem.addClass("info");
-					$elem.addClass("success");
-				}
-				else {
-					$elem.addClass("info");
-				}
+				$elem.addClass("info");
 			}
 			else {
 				$elem.removeClass("info");
@@ -34,8 +48,13 @@ function make_risk_table(data, dataType) {
 		// 		});
 		var $new_textarea = this.$textarea.clone(true);
 		$new_textarea.change(function() {
-			if ($(this).val() != "") {$elem.addClass("success");}
-			else {$elem.removeClass("success");}
+			if ($(this).val() != "") {
+				$elem.removeClass("error")
+				$elem.addClass("success");
+			}
+			else {
+				$elem.removeClass("success");
+			}
 		});
 		$elem.append('<td>' + keyword +'</td>');
 		$elem.append('<td>' + words +'</td>');

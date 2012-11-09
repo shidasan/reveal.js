@@ -32,7 +32,8 @@ def main():
 	form = cgi.FieldStorage()
 	script = form.getvalue('Script')
 	#cmds = commands.getoutput("ls").split("\n")
-	cmds = ["RFP", "顧客"]
+	#cmds = ["RFP", "顧客"]
+	cmds = ["作業タスク"]
 	risks = []
 	for cmd in cmds:
 		rxp = keyword2riskexpression(cmd)
