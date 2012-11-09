@@ -184,8 +184,27 @@ f();
 							<option value="hoge.k">hoge.k
 						</select>
 						<button type="button" id="exec" class="btn btn-primary" style="margin-top:20px">execute</button>
+						<button type="button" id="check" class="btn btn-primary" style="margin-top:20px">check</button>
 					</div>
 				</form>
+				</section>
+				<section>
+				  <div id="title">
+					<h2>D-Script Risks</h2>
+				  </div>
+				  <table id="risk_table" class="table table-hover">
+					<thead>
+					  <tr>
+						<th class="span2">keyword</th>
+						<th class="span4">words</th>
+						<th class="span5">strategy</th>
+						<th class="span1">skip</th>
+					  </tr>
+					</thead>
+					<tbody>
+					</tbody>
+				  </table>
+				  <button type="button" id="secure_execution" class="btn btn-primary" style="margin-top:20px">secure execution</button>
 				</section>
 				<section>
 					<div id="title">
@@ -377,6 +396,7 @@ System.sleep(10);
 		<script src="js/myjs/demo.js"></script>
 
 		<!-- editor -->
+		<script src="js/myjs/check.js"></script>
 		<script src="js/myjs/editor.js"></script>
 		<script src="lib/codemirror/lib/codemirror.js"></script>
 		<link rel="stylesheet" href="lib/codemirror/lib/codemirror.css">
