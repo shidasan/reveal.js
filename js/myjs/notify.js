@@ -17,6 +17,21 @@ function zabbix_notify_info(str) {
   });
 }
 
+function notify_compile_result(str) {
+  if (spinner !== undefined) {
+    spinner.stop();
+  }
+  $.pnotify({
+    title: 'Compilation result',
+    text: str,
+    addclass: 'custom',
+    icon: 'picon picon-32 picon-fill-color',
+    opacity: .8,
+    nonblock: true,
+    nonblock_opacity: .2
+  });
+}
+
 function dscript_notify_info(str) {
   if (spinner !== undefined) {
     spinner.stop();
