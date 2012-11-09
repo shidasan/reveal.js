@@ -3,18 +3,18 @@ function Graph_init(){
   Memory_get();
   Network_get();
   TriggerLog_get();
-  //NetArch_get();
+//  NetArch_get();
   setTimeout( function() {
       Graph_init();
   },5000);
 }
-/*
-function NetArch_get() {
-  $("#archzbx").attr({
-    src : "/zabbix/map.php?sysmapid=1"
-  });
-}
-*/
+
+//function NetArch_get() {
+//  $("#archzbx").attr({
+//    src : "/zabbix/map.php?sysmapid=1"
+//  });
+//}
+
 function Cpu_get(){
   Graph_get("#cpu",{"name":"util", "Server": $("#cpu_select option:selected").val()});
 }
