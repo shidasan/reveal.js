@@ -7,7 +7,7 @@
 # ------------------------------------------------------------------------------
 
 import urllib, urllib2
-import cgi, uuid, sys, os, json, re
+import cgi, uuid, sys, os, json, re, commands
 import cgitb
 cgitb.enable();
 
@@ -16,10 +16,12 @@ cgitb.enable();
 RiskDB_ip = 'http://192.168.59.150:8000/'
 
 def keyword2riskexpression(keyword):
-	return [{"keyword": "kill", "words":"あぶない"}, \
-		{"keyword": "kill", "words":"すごくあぶない"}]
-# 	req = RiskDB_ip + "alertme/api/1.0/search_with_word.json?query=" + keyword
-# 	return urllib.urlopen(req).read()
+	req = RiskDB_ip + "alertme/api/1.0/search_with_word.json?query=" + keyword
+	res = json.loads(urllib.urlopen(req).read())
+	ret = {'keyword':res["keyword"], 'count':res["count"], "words":[]}
+	for risk in res["risks"]:
+		ret["words"].append(risk["words"])
+	return ret
 
 def returnClient(risks):
 	print('Content-Type: application/json')
@@ -29,11 +31,13 @@ def returnClient(risks):
 def main():
 	form = cgi.FieldStorage()
 	script = form.getvalue('Script')
-	#commands = parse(script) ##script parse => command extract
-	commands = ["kill"]
+	#cmds = commands.getoutput("ls").split("\n")
+	cmds = ["RFP", "顧客"]
 	risks = []
-	for command in commands:
-		risks.append(keyword2riskexpression(command))
+	for cmd in cmds:
+		rxp = keyword2riskexpression(cmd)
+		if rxp["count"] != 0:
+			risks.append(rxp)
 	returnClient(risks)
 
 if __name__ == "__main__":

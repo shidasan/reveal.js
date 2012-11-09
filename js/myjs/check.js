@@ -51,8 +51,9 @@ function make_risk_table(data, dataType) {
 		var risks = data["risks"];
 		for (i = 0; i < risks.length; i++) {
 			var risk = risks[i]
-			for (j = 0; j < risk.length; j++) {
-				save_to_table(risk[j]["keyword"], risk[j]["words"]);
+			var count = risk["count"]
+			for (j = 0; j < 20; j++) {
+				save_to_table(risk["keyword"], risk["words"][j]);
 			}
 		}
 	}
