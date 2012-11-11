@@ -1,3 +1,5 @@
+var global_notice;
+
 function notify_setValue(val) {
   document.AskNotifier.onBtn.value = val;
 }
@@ -9,9 +11,9 @@ function zabbix_notify_info(str) {
   $.pnotify({
     title: 'Dscript Log',
     text: str,
-    addclass: 'custom',
+    //addclass: 'custom',
     icon: 'picon picon-32 picon-fill-color',
-    opacity: .8,
+    opacity: 1,
     nonblock: true,
     nonblock_opacity: .2
   });
@@ -24,9 +26,9 @@ function notify_compile_result(str) {
   $.pnotify({
     title: 'Compilation result',
     text: str,
-    addclass: 'custom',
+    //addclass: 'custom',
     icon: 'picon picon-32 picon-fill-color',
-    opacity: .8,
+    opacity: 1,
     nonblock: true,
     nonblock_opacity: .2
   });
@@ -39,9 +41,9 @@ function dscript_notify_info(str) {
   $.pnotify({
     title: 'Dscript Log',
     text: str,
-    addclass: 'custom',
+    //addclass: 'custom',
     icon: 'picon picon-32 picon-fill-color',
-    opacity: .8,
+    opacity: 1,
     nonblock: true,
     nonblock_opacity: .2
   });
@@ -53,13 +55,11 @@ function riskdb_notify_info(str) {
     text: str,
     addclass: 'error',
     icon: 'picon picon-32 picon-fill-color',
-    opacity: .8,
+    opacity: 1,
     nonblock: true,
     nonblock_opacity: .2
   });
 }
-
-var global_notice;
 
 function form_template(body, to) {
   var body_array = body.split(/\(|\)/);
@@ -92,7 +92,7 @@ function zabbix_form_notify(str, to) {
   global_notice = $.pnotify({
     text: form_template(str, to),
     opacity: .9,
-    addclass: 'custom',
+    //addclass: 'custom',
     width: '290px',
     hide: false,
     closer: false,

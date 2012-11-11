@@ -145,6 +145,12 @@ var Reveal = (function(){
 			dom.wrapper.appendChild( progressElement );
 		}
 
+		// Reload icons
+		var reloadElement = document.createElement( 'aside' );
+		reloadElement.classList.add( 'reload_icon' );
+		dom.wrapper.appendChild( reloadElement );
+		dom.reloadBtn = document.querySelector( '.reveal aside.reload_icon' );
+
 		// Overview icons
 		var overviewElement = document.createElement( 'aside' );
 		overviewElement.classList.add( 'overview_icon' );
@@ -325,6 +331,7 @@ var Reveal = (function(){
 			document.addEventListener( 'keydown', onDocumentKeyDown, false );
 		}
 
+		dom.reloadBtn.addEventListener( 'click', initialize, false );
 		dom.overviewBtn.addEventListener( 'click', toggleOverview, false );
 
 		if ( config.controls && dom.controls ) {
