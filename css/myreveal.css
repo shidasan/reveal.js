@@ -81,10 +81,26 @@ body .reveal .slides #title {
 	left; 0px;
 	background: #990000;
 	overflow: hidden;
-	padding: 30px 15px 10px 5px;
+	padding: 20px 15px 20px 15px;
 	margin-bottom: 10px;
 	font: 'Arial':
 }
+
+body .reveal .slides #title #script{
+	color: #fff;
+	float: left;
+}
+
+body .reveal .slides #title img{
+	position: relative;
+	height: 150px;
+	float: left;
+	left: 70%;
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-right: 50px;
+}
+
 
 /*
 body .reveal .slides #title h1, body .reveal .slides #title h2,
