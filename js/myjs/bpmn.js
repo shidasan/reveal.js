@@ -36,11 +36,17 @@ BPMN.prototype = {
   connectTo: function(to, from) {
     var to_img = to.find('img');
     var from_img = from.find('img');
-    var x1 = parseInt(to.css('left'));
-    var y1 = parseInt(to.css('top'));
-    var x2 = parseInt(from.css('left'));
-    var y2 = parseInt(from.css('top'));
-    var l = this.$dom.svg('get').line(this.line, x1, y1 - 40, x2, y2 - 40);
+    //var x1 = parseInt(to.css('left'));
+    //var y1 = parseInt(to.css('top'));
+    //var x2 = parseInt(from.css('left'));
+    //var y2 = parseInt(from.css('top'));
+    var x1 = to.offset().left - this.$dom.offset().left;
+    var y1 = to.offset().top - this.$dom.offset().top;
+    var x2 = from.offset().left - this.$dom.offset().left;
+    var y2 = from.offset().top - this.$dom.offset().top;
+    var w = to.width();
+    var h = to.height();
+    var l = this.$dom.svg('get').line(this.line, x1 + w, y1 + (h / 2), x2, y2 + (h / 2));
   },
   resetAnimation: function($node) {
     if($node !== undefined) {
@@ -56,12 +62,6 @@ BPMN.prototype = {
     var $stat = createLastChild($node);
     $stat.addClass('status');
     $stat.attr('phase', 'run');
-    //var $stat_img = createLastChild($stat, 'img');
-    //$stat_img.attr('src', CONFIG.img_dir + '/running.png');
-    //$stat_img.css({
-    //    'width': '50px',
-    //    'height': '50px'
-    //});
     $node.addClass('bpmn_running');
   },
   doAnimate_error: function($node) {
@@ -75,45 +75,11 @@ BPMN.prototype = {
 function BPMN_init(argument) {
   var bpmn = new BPMN();
   bpmn.init();
-  var $node_a = bpmn.setNode(200, 400, TASK_A.name, parseInt(TASK_A.idx));
-  var $node_b = bpmn.setNode(450, 400, TASK_B.name, parseInt(TASK_B.idx));
-  var $node_c = bpmn.setNode(700, 400, TASK_C.name, parseInt(TASK_C.idx));
+  var $node_a = bpmn.setNode(150, 250, TASK_A.name, parseInt(TASK_A.idx));
+  var $node_b = bpmn.setNode(400, 250, TASK_B.name, parseInt(TASK_B.idx));
+  var $node_c = bpmn.setNode(650, 250, TASK_C.name, parseInt(TASK_C.idx));
   bpmn.connectTo($node_a, $node_b);
   bpmn.connectTo($node_b, $node_c);
   //BPMN_stat(bpmn);
 }
 
-//function BPMN_stat(bpmn) {
-//  var data = '';
-//  var json;
-//  $.ajax({
-//    url: CONFIG.cgi_dir + '/arch_state_controller.php',
-//    type:'POST',
-//    data: data,
-//    error:function() {},
-//    complete:function(data) {
-//      var json = jQuery.parseJSON(data.responseText);
-//      var value = json.Value[json.Value.length-1];
-//      var $node = $(arch.getDomFromIp(value.Ip));
-//      if(value.State === undefined) {
-//        value.State = 'not working';
-//      }
-//      else if(value.State === 'start' && $node.attr('phase') !== 'run') {
-//        arch.doAnimate_running($node);
-//      }
-//      else if(value.State === 'end') {
-//        if (value.Result === 'success') {
-//          arch.resetAnimation($node);
-//        }
-//        else {
-//          //arch.doAnimate_error($node);
-//          arch.resetAnimation($node);
-//        }
-//      }
-//      setTimeout( function() {
-//        Arch_stat(arch);
-//      },1000);
-//    },
-//    dataType:'json'
-//  });
-//}
