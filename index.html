@@ -17,7 +17,8 @@
 		
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
-		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css" media="screen"/>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css" media="all"/>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-responsive.css" media="screen"/>
 		<link rel="stylesheet" type="text/css" href="css/jquery.pnotify.default.css" media="all"/>
 		<link rel="stylesheet" type="text/css" href="css/jquery.pnotify.default.icons.css" media="screen"/>
 
@@ -144,27 +145,17 @@
 					</section>
 				</section>
 				<section>
-				<section>
+					<section>
 				<div id="title">
 					<h2>D-Script エディタ</h2>
 					<h3>開発者 ちぇんじぃの場合</h3>
 				</div>
 				<div class="load" style="position:absolute; left: 50%; top: 50%"></div>
 				<form action="" method="POST">
-					<textarea class="editor" name="editor" >
-import ("posix.process");
-import ("cstyle");
+					<textarea class="editor" name="editor" id="chenji_editor">
+// edit script
 
-void f() {
-  int i = 0;
-  while (i < 100) {
-    System.sleep(1);
-    System.p(i);
-    i = i + 1;
-  }
-}
 
-f();
 
 
 					</textarea>
@@ -176,34 +167,15 @@ f();
 							<option value="192.168.59.150:8080">DSE Manager
 						</select>
 						<select name="script" id="script_select">
-							<option value="foo.k">foo.k
-							<option value="bar.k">bar.k
-							<option value="hoge.k">hoge.k
+							<option value="reboot.k">reboot.k
+							<option value="faultInject.k">faultInjector.k
+							<option value="script_chenji.k">script_chenji.k
+							<option value="script_deos.k">script_deos.k
+							<option value="hoge.k">test.k
 						</select>
 						<button type="button" id="exec" class="btn btn-primary" style="margin-top:20px">execute</button>
-						<button type="button" id="check" class="btn btn-primary" style="margin-top:20px">check</button>
 					</div>
 				</form>
-				</section>
-				<section>
-				  <div id="title">
-					<h2>D-Script Risks Analyzer</h2>
-				  </div>
-				  <div style="height:500px; overflow:auto;">
-					<table id="risk_table" class="table table-hover">
-					  <thead>
-						<tr>
-						  <th class="span2">keyword</th>
-						  <th class="span6">words</th>
-						  <th class="span3">evidence</th>
-						  <th class="span1">skip</th>
-						</tr>
-					  </thead>
-					  <tbody>
-					  </tbody>
-					</table>
-				  </div>
-				  <button type="button" id="secure_execution" class="btn btn-primary" style="margin-top:20px">secure execution</button>
 				</section>
 				<section>
 					<div id="title">
@@ -226,19 +198,10 @@ f();
 							</tr>
 						</thead>
 						<tbody>
-						<!--
-							<tr>
-								<th>hello, world</th>
-								<th>hello, world</th>
-								<th>hello, world</th>
-								<th>hello, world</th>
-							</tr>
-						-->
 						</tbody>
 					</table>
 				</section>
 				</section>
-				<!--
 				<section>
 				<section>
 				<div id="title">
@@ -247,36 +210,26 @@ f();
 				</div>
 				<div class="load" style="position:absolute; left: 50%; top: 50%"></div>
 				<form action="" method="POST">
-					<textarea class="editor" name="editor" >
-import ("posix.process");
-import ("cstyle");
+					<textarea class="editor" name="editor" id="deos_editor">
+// edit script
 
-void f() {
-  int i = 0;
-  while (i < 100) {
-    System.sleep(1);
-    System.p(i);
-    i = i + 1;
-  }
-}
 
-f();
 
 
 					</textarea>
 					<div style="float: left; margin-top: 20px">
-						<select name="ip" id="ip_select">
+						<select name="ip" id="ip_select_deos">
 							<option value="192.168.59.151:8888">Node 1
 							<option value="192.168.59.160:8888">Node 2
 							<option value="192.168.59.150:8888">DSE Manager
 						</select>
-						<select name="script" id="script_select">
+						<select name="script" id="script_select_deos">
 							<option value="foo.k">foo.k
 							<option value="bar.k">bar.k
 							<option value="hoge.k">hoge.k
 						</select>
-						<button type="button" id="exec2" class="btn btn-primary" style="margin-top:20px">execute</button>
-						<button type="button" id="check2" class="btn btn-primary" style="margin-top:20px">check</button>
+						<button type="button" id="exec_deos" class="btn" style="margin-top:20px">execute</button>
+						<button type="button" id="check_deos" class="btn btn-primary" style="margin-top:20px">check</button>
 					</div>
 				</form>
 				</section>
@@ -284,7 +237,7 @@ f();
 				  <div id="title">
 					<h2>D-Script Risks</h2>
 				  </div>
-				  <table id="risk_table" class="table table-hover">
+				  <table id="risk_table_deos" class="table table-hover">
 					<thead>
 					  <tr>
 						<th class="span2">keyword</th>
@@ -296,20 +249,20 @@ f();
 					<tbody>
 					</tbody>
 				  </table>
-				  <button type="button" id="secure_execution2" class="btn btn-primary" style="margin-top:20px">secure execution</button>
+				  <button type="button" id="secure_execution_deos" class="btn btn-primary" style="margin-top:20px">secure execution</button>
 				</section>
 				<section>
 					<div id="title">
 						<h2>D-Script Result</h2>
 					</div>
-					<div id="error_log"></div>
+					<div id="error_log_deos"></div>
 				</section>
 				<section>
 					<div id="title">
 						<h2>Fault Matrix</h2>
 					</div>
-					<div id="fault_matrix"></div>
-					<table id="fault_table" class="table table-hover">
+					<div id="fault_matrix_deos"></div>
+					<table id="fault_table_deos" class="table table-hover">
 						<thead>
 							<tr>
 								<th>API</th>
@@ -319,17 +272,10 @@ f();
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<th>hello, world</th>
-								<th>hello, world</th>
-								<th>hello, world</th>
-								<th>hello, world</th>
-							</tr>
 						</tbody>
 					</table>
 				</section>
 				</section>
-				-->
 				<section>
 					<section>
 						<div id="title">
@@ -410,6 +356,7 @@ f();
 
 		<!-- editor -->
 		<script src="js/myjs/check.js"></script>
+		<script src="js/myjs/deos_editor.js"></script>
 		<script src="js/myjs/editor.js"></script>
 		<script src="lib/codemirror/lib/codemirror.js"></script>
 		<link rel="stylesheet" href="lib/codemirror/lib/codemirror.css">
