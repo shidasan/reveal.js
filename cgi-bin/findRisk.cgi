@@ -40,7 +40,11 @@ def main():
 	risks = []
 	cmds = []
 	if script != None:
-		script = "import(\"dscript.util\");" + script
+		script = """String getHeavyProcess(){return "";}
+                            String getHeavyProcessFail(){return "";}
+                            String getHeavyProcessSuccess(){return "";}
+                            String getProcessNameFromPid(String pid){return "";}
+                            boolean ask(String query){return true;}""" + script
 		f = tempfile.NamedTemporaryFile();
 		f.write(script)
 		f.flush()
