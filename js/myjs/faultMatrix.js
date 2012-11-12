@@ -132,7 +132,7 @@ Matrix.prototype = {
   },
 };
 
-function Matrix_init(data) {
+function Matrix_init() {
   var matrix = new Matrix();
   matrix.init();
   matrix.drawMatrix();
@@ -155,10 +155,6 @@ function Matrix_init(data) {
 	'diag' : 'SoftwareFault',
   } ];
 */
-  for (var i = 0; i < data.length; i++) {
-	  matrix.addLine(data[i]);
-  }
-  // Matrix_stat(matrix);
 }
 
 //function Matrix_stat(matrix) {
