@@ -115,8 +115,6 @@ body .reveal .slides #title h3 {
 body .reveal .slides #demo_overview {
 	position: absolute;
 	overflow: visible;
-	float: left;
-	left: 50%;
 }
 
 body .reveal .slides img #title{

@@ -215,7 +215,7 @@ body {
 
 	text-align: left;
 	/*font-size: 0.55em;*/
-	font-family: monospace;
+	font-family: Osaka, Meiryo, 'メイリオ', Hiragino Kaku Gothic Pro, 'ヒラギノ角ゴ Pro W3',sans-serif;
 	line-height: 1.2em;
 
 	word-wrap: break-word;
@@ -224,7 +224,7 @@ body {
 }
 
 .reveal code {
-	font-family: monospace;
+	font-family: Osaka, Meiryo, 'メイリオ', Hiragino Kaku Gothic Pro, 'ヒラギノ角ゴ Pro W3',sans-serif;
 	overflow: auto;
 	max-height: 400px;
 }
