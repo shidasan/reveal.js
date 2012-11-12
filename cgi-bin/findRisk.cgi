@@ -7,7 +7,7 @@
 # ------------------------------------------------------------------------------
 
 import urllib, urllib2
-import cgi, uuid, sys, os, json, re, commands
+import cgi, uuid, sys, os, json, re, commands, tempfile
 import cgitb
 cgitb.enable();
 
@@ -31,14 +31,24 @@ def returnClient(risks):
 def main():
 	form = cgi.FieldStorage()
 	script = form.getvalue('Script')
-	#cmds = commands.getoutput("ls").split("\n")
-	cmds = ["RFP", "顧客"]
-	#cmds = ["作業タスク"]
+	text = form.getvalue('Text')
 	risks = []
-	for cmd in cmds:
-		rxp = keyword2riskexpression(cmd)
-		if rxp["count"] != 0:
-			risks.append(rxp)
+	if script != None:
+		f = tempfile.NamedTemporaryFile();
+		f.write(script)
+		f.flush()
+		cmds = commands.getoutput("/usr/local/bin/minikonoha -DSHOW_COMMAND=on " + f.name).split('\n')
+		#cmds = ["RFP", "顧客"]
+		#cmds = ["作業タスク"]
+		for cmd in cmds:
+			rxp = keyword2riskexpression(cmd)
+			if rxp["count"] != 0:
+				risks.append(rxp)
+	if text != None:
+		for cmd in text.split(" "):
+			rxp = keyword2riskexpression(cmd)
+			if rxp["count"] != 0:
+				risks.append(rxp)
 	returnClient(risks)
 
 if __name__ == "__main__":
