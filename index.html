@@ -174,8 +174,6 @@
 							<option value="127.0.0.1:8080">DSE Manager</option>
 						</select>
 						<select name="script" id="script_select">
-							<option value="reboot.ds">reboot.ds</option>
-							<option value="faultInject.ds">faultInjector.ds</option>
 							<option value="script_chenji.ds">script_chenji.ds</option>
 							<option value="script_deos.ds">script_deos.ds</option>
 						</select>
@@ -188,13 +186,13 @@
 					<div id="title">
 						<h2>D-Script Result</h2>
 					</div>
-					<div id="error_log"></div>
+					<h3><div id="error_log" style="word-wrap: break-word;"></div></h3>
 				</section>
 				<section>
 					<div id="title">
 						<h2>Fault Matrix</h2>
 					</div>
-					<div id="matrix_svg"></div>
+					<div id="matrix_svg" style="position: relative; left: 25%;  overflow: visible;"></div>
 					<table id="fault_table" class="table table-hover">
 						<thead>
 							<tr>
@@ -232,10 +230,9 @@
 							<option value="192.168.59.150:8080">DSE Manager</option>
 						</select>
 						<select name="script" id="script_select_deos">
-							<option value="reboot.ds">reboot.ds</option>
-							<option value="faultInject.ds">faultInjector.ds</option>
 							<option value="script_chenji.ds">script_chenji.ds</option>
 							<option value="script_deos.ds">script_deos.ds</option>
+							<option value="script_test.ds">script_test.ds</option>
 						</select>
 						<button type="button" id="exec_deos" class="btn" style="margin-bottom: 10px">execute</button>
 						<button type="button" id="check_deos" class="btn btn-primary" style="margin-bottom: 10px">check</button>
@@ -252,7 +249,7 @@
 						<tr>
 						  <th class="span2">goal</th>
 						  <th class="span4">risk</th>
-						  <th class="span5">strategy</th>
+						  <th class="span5">evidence</th>
 						  <th class="span1">skip</th>
 						</tr>
 					  </thead>
@@ -266,7 +263,7 @@
 					<div id="title">
 						<h2>D-Script Result</h2>
 					</div>
-					<div id="error_log_deos"></div>
+					<h3><div id="error_log_deos" style="word-wrap: break-word;"></div></h3>
 				</section>
 				<section>
 					<div id="title">
@@ -300,7 +297,7 @@
 							<h2>"RAMディスクにデータをコピーする"</h2>
 						</div>
 					</section>
-					<section>
+					<section> 
 						<div id="title">
 							<h2>D-Case</h2>
 							<h2>"RAMディスクにデータをコピーする"</h2>
