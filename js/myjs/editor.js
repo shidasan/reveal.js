@@ -157,6 +157,26 @@ function createEditor_chenji($dom) {
 			dataType:'json'
 		});
 	});
+	$("#exec2").click(function(){
+		$alert = $("<div/>");
+		$alert.addClass("modal fade");
+		$alert_body = $("<div/>");
+		$alert_body.addClass("modal-body");
+		$alert_body.append($("<img/>")
+						   .attr("src", "img/deos_logo.gif")
+						   .css("height", "128px"));
+		$alert_body.append($("<h3/>").text("ステークホルダ合意のないスクリプトを実行しようとしています．"));
+		$alert_footer = $("<div/>");
+		$alert_footer.addClass("modal-footer");
+		$alert_footer.append($("<button/>")
+							 .addClass("close")
+							 .attr("type", "button")
+							 .attr("data-dismiss", "modal")
+							 .text("close"));
+		$alert.append($alert_body);
+		$alert.append($alert_footer);
+		$alert.modal();
+	});
 	return editor;
 };
 
