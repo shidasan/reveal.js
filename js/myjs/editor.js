@@ -23,12 +23,18 @@ function createEditor_chenji($dom) {
 		var libs = {
 			setLineColor : function(line,count){
           console.log('linecoloer');
+					editor.setLineClass(line - 1, null);
 					editor.setLineClass(line - 1,"SGreen");
 			},
 			setLineError : function(line) {
           console.log('lineerror');
 				editor.setLineClass(line - 1, null);
 				editor.setLineClass(line - 1,"SRed");
+			},
+			setLineWarning : function(line) {
+          console.log('linewarning');
+				editor.setLineClass(line - 1, null);
+				editor.setLineClass(line - 1,"SYellow");
 			},
 			setLineClear : function(line) {
           console.log('lineclear');
@@ -90,8 +96,19 @@ function createEditor_chenji($dom) {
 						case "DScriptCompilerMessage":
 						case undefined:
 							$("#error_log").append(JSON.stringify(value) + "<br>");
+							if(value.ScriptLine === undefined && value.Body.match(/GlobalObject/) == null) {
+								value.ScriptLine = value.Body.match(/k:(.*)\)/)[1];
+							}
 							if(value.ScriptLine !== undefined) {
-								libs.setLineError(value.ScriptLine);
+								if(value.Body.match(/\(warning\)/)) {
+									libs.setLineWarning(value.ScriptLine);
+								}else {
+									libs.setLineError(value.ScriptLine);
+									if(value.FaultType === undefined) {
+										$("#fault_body").append('<tr class="fault_element"><td>CompileError</td><td>'+value.ScriptLine+"</td><td>SoftwareFault</td></tr>")
+										Matrix_fault("SoftwareFault");
+									}
+								}
 								if(value.FaultType !== undefined) {
 									$("#fault_body").append('<tr class="fault_element"><td>' + value.Api + "</td>" +"<td>"+value.ScriptLine+"</td>" + "<td>"+value.FaultType + "</td></tr>")
                                     Matrix_fault(value.FaultType);
@@ -108,9 +125,9 @@ function createEditor_chenji($dom) {
 						idx = i;
 					}
 					if(script_flag) {
-							setTimeout( function() {
-								log.getLog(data, idx);
-							},1000);
+						setTimeout( function() {
+							log.getLog(data, idx);
+						},1000);
 					}
 				},
 				dataType:'json'
