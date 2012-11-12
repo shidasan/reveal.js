@@ -65,9 +65,10 @@ function createEditor_chenji($dom) {
 						case "StartTask":
 							break;
 						case "EndTask":
+							console.log("end"+value.Method);
 							spinner_chenji.stop();
 							script_flag = false;
-							return false;
+							return;
 						case "DScriptMessage":
 							zabbix_notify_info(value.Body.replace(/\#(.+)$/, ""));
 							$("#error_log").append(value.Body.replace(/\#(.+)$/, ""));
@@ -77,12 +78,20 @@ function createEditor_chenji($dom) {
 								zabbix_form_notify(value.Body.replace(/\#(.+)$/, ""), value.Ip);
 							}
 							break;
-						default :
-							$("#error_log").append(JSON.stringify(value) + "\n");
+						case "DScriptCompilerMessage":
+						case undefined:
+							$("#error_log").append(JSON.stringify(value) + "<br>");
 							if(value.ScriptLine !== undefined) {
-								//setTimeout( function() {
-								//	libs.setLineError(value.ScriptLine);
-								//},t);
+								libs.setLineError(value.ScriptLine);
+								if(value.FaultType !== undefined) {
+									//TODO
+								}
+							}
+							break;
+						default :
+							$("#error_log").append(JSON.stringify(value) + "<br>");
+							if(value.ScriptLine !== undefined) {
+									libs.setLineError(value.ScriptLine);
 							}
 						}
 						t += 100;
