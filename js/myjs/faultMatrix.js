@@ -136,7 +136,7 @@ function Matrix_init() {
   //var matrix = new Matrix();
   //matrix.init();
   //matrix.drawMatrix();
-  $("#matrix_svg").append('<object type="image/svg+xml" data="sample.svg" height="450px" width="600px" id="svgID"></object>')
+  $("#matrix_svg").append('<object type="image/svg+xml" data="sample.svg" height="330px" width="440px" id="svgID"></object>')
 }
 
 //function Matrix_stat(matrix) {
