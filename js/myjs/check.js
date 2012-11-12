@@ -1,6 +1,6 @@
 (function() {
-	$("#secure_execution").click(function() {
-		$checkboxs = $("#risk_table tbody tr");
+	$("#secure_execution_deos").click(function() {
+		$checkboxs = $("#risk_table_deos tbody tr");
 		console.log($checkboxs);
 		var error_flag = false;
 		$checkboxs.each(function() {
@@ -14,7 +14,7 @@
 			riskdb_notify_info("There was a problem with your request.\n Missing evidence.");
 		}
 		else {
-			$("#exec").click();
+			$("#exec_deos").click();
 			Reveal.slide(4, 0);
 		}
 	});
@@ -23,7 +23,7 @@
 
 function make_risk_table(data, dataType) {
 	function init() {
-		Reveal.slide(4, 1);
+		Reveal.slide(5, 1);
 		this.$checkbox = $("<input/>")
 			.attr("type", "checkbox")
 			.attr("name", "q");
@@ -60,7 +60,7 @@ function make_risk_table(data, dataType) {
 		$elem.append('<td>' + words +'</td>');
 		$elem.append($("<td></td>").append($new_textarea.clone(true)));
 		$elem.append($("<td></td>").append($new_checkbox.clone(true)));
-		$("#risk_table").children("tbody").append($elem);
+		$("#risk_table_deos").children("tbody").append($elem);
 	}
 	function main() {
 		console.log(data);
