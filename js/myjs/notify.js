@@ -83,7 +83,7 @@ function form_template(body, to) {
   console.log(sentence + '(' + to + '): [' + allow_word + ', ' + deny_word + ']');
   var html = '\
   <form class="pf-form pform_custom" action method="post">\
-   <img src="./img/dscript_logo.png" width="80px" style="float: left; margin-left: -50px;"></img>\
+   <img src="./img/dscript_logo.png" width="80px" style="float: left; margin-left: 0px; margin-right: 50px"></img>\
    <div>\
      <div class="pf-element pf-heading">\
        <h5>' + sentence + '</h5>\
