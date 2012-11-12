@@ -5,8 +5,11 @@ function notify_setValue(val) {
 }
 
 function zabbix_notify_info(str) {
-  if (spinner !== undefined) {
-    spinner.stop();
+  if (spinner_deos !== undefined) {
+    spinner_deos.stop();
+  }
+  if (spinner_chenji !== undefined) {
+    spinner_chenji.stop();
   }
   $.pnotify({
     title: 'Dscript Log',
@@ -20,8 +23,11 @@ function zabbix_notify_info(str) {
 }
 
 function notify_compile_result(str) {
-  if (spinner !== undefined) {
-    spinner.stop();
+  if (spinner_deos !== undefined) {
+    spinner_deos.stop();
+  }
+  if (spinner_chenji !== undefined) {
+    spinner_chenji.stop();
   }
   $.pnotify({
     title: 'Compilation result',
@@ -35,8 +41,11 @@ function notify_compile_result(str) {
 }
 
 function dscript_notify_info(str) {
-  if (spinner !== undefined) {
-    spinner.stop();
+  if (spinner_deos !== undefined) {
+    spinner_deos.stop();
+  }
+  if (spinner_chenji !== undefined) {
+    spinner_chenji.stop();
   }
   $.pnotify({
     title: 'Dscript Log',
