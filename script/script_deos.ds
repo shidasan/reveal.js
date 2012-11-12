@@ -5,7 +5,7 @@ import("dscript.shell");
 boolean killHeavyProcess() {
 	String pid = getHeavyProcess();
 	String processname = getProcessNameFromPid(pid);
-	if(ask("プロセス '${processname}' をkillしてもよろしいですか？")) {
+	if(ask("Can we kill process ${processname} ?")) {
 		kill -9 ${pid}
 	}
 }
