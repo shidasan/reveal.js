@@ -85,6 +85,7 @@ function createEditor_chenji($dom) {
 								libs.setLineError(value.ScriptLine);
 								if(value.FaultType !== undefined) {
 									$("#fault_body").append('<tr class="fault_element"><td>' + value.Api + "</td>" +"<td>"+value.ScriptLine+"</td>" + "<td>"+value.FaultType + "</td></tr>")
+                                    Matrix_animation();
 								}
 							}
 							break;
