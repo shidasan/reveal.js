@@ -3,7 +3,11 @@ function risk_db_demo_init() {
 
 	function risk_db_table_update_success(data, dataType) {
 		console.log("success!!");
+		console.log(data);
 		var risks = data["risks"];
+		if (risks.length == 0) {
+			riskdb_notify_info("cannot find risks related keywod");
+		}
 		for (i = 0; i < risks.length; i++) {
 			var risk = risks[i]
 			var count = risk["count"]
@@ -28,10 +32,18 @@ function risk_db_demo_init() {
 
 	function risk_db_table_update(keyword) {
 		console.log("risk_db_table_update");
+		$("#risk_db_demo table tbody tr").remove();
+		var data = {
+			'Method': 'SendDSE',
+			'Text': keyword,
+			'Option': '',
+			'From': '127.0.0.1:80',
+			'event': 'D-Task'
+		};
 		$.ajax({
 			url:'cgi-bin/findRisk.cgi',
 			type : 'POST',
-			data : {id:keyword},
+			data : data,
 			success:risk_db_table_update_success,
 			error:risk_db_table_update_error,
 			complete:function(data){
