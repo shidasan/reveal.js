@@ -19,7 +19,7 @@ function createEditor_chenji($dom) {
 				lineNumbers: true,
 				mode: "text/x-konoha"
 			});
-    editor.setSize('100%', 400);
+    editor.setSize('100%', 350);
 		var libs = {
 			setLineColor : function(line,count){
           console.log('linecoloer');
@@ -65,7 +65,7 @@ function createEditor_chenji($dom) {
 						case "StartTask":
 							break;
 						case "EndTask":
-							spinner.stop();
+							spinner_chenji.stop();
 							script_flag = false;
 							return false;
 						case "DScriptMessage":
@@ -104,7 +104,7 @@ function createEditor_chenji($dom) {
 			'ScriptName': $('#script_select option:selected').val(),
 		};
 		$.ajax({
-			url:'/cgi-bin/scriptSender.cgi',
+			url:'cgi-bin/scriptSender.cgi',
 			type : 'POST',
 			data : data,
 			error:function(){},
@@ -120,7 +120,7 @@ function createEditor_chenji($dom) {
   });
 	$("#exec").click(function(){
 	console.log($('#ip_select option:selected').val());
-    Spinner_start();
+    Spinner_chenji_start();
 		var data = {
 			'Method': 'SendDSE',
       'Name': $('#script_select option:selected').val(),
@@ -143,35 +143,6 @@ function createEditor_chenji($dom) {
 						json_data["server"] = "Zabbix server";
 					}
 					log.getLog(data.responseText,0);
-			},
-			dataType:'json'
-		});
-	});
-	$("#check").click(function(){
-		var data = {
-			'Method': 'SendDSE',
-			'Script': editor.getValue(),
-			'Option': '',
-			'From': '127.0.0.1:80',
-			'event': 'D-Task'
-		};
-		console.log('----------------------------');
-		console.log(data);
-		$.ajax({
-			url:'cgi-bin/findRisk.cgi',
-			type : 'POST',
-			data : data,
-			success:make_risk_table,
-			error:function(XMLHttpRequest, textStatuc, errorThrown){
-				console.log("error");
-				console.log(XMLHttpRequest);
-				console.log(textStatuc);
-				console.errorThrown();
-//				$("#log1").text("error1");
-			},
-			complete:function(data){
-				console.log("complete");
-//				log.getLog(data.responseText,0);
 			},
 			dataType:'json'
 		});

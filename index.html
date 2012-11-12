@@ -54,7 +54,7 @@
 						<h2>概要</h2>
 					</div>
 					<div id="demo_overview" style="left: 50%; overflow: visible;">
-						<img src="./img/demo_overview.png" sytle="left: -50%"></img>
+						<img src="./img/demo_overview.png"></img>
 					</div>
 				</section>
 				<section>
@@ -62,8 +62,8 @@
 					<div id="title">
 						<h2>システム構成図</h2>
 					</div>
-					<div style="left: 50%; overflow: visible;">
-						<img id="archzbx" src="/zabbix/map.php?sysmapid=1"></img>
+					<div style="position: relative; left: 50%; float:left; overflow: visible;">
+						<img id="archzbx" src="/zabbix/map.php?sysmapid=1" style="position: relative; left: -50%;"></img>
 					</div>
 					</section>
 					<section>
@@ -95,7 +95,7 @@
 						<div class="zbx_contents">
 							<img id="cpu"></img>
 						</div>
-						<form>
+						<form class="zbx_form">
 							<select name="Server" id="cpu_select" >
 								<option value="et2">Node 1
 								<option value="et3">Node 2
@@ -111,7 +111,7 @@
 						<div class="zbx_contents">
 							<img id="memory"></img>
 						</div>
-						<form>
+						<form class="zbx_form">
 							<select name="Server" id="memory_select">
 								<option value="et2">Node 1
 								<option value="et3">Node 2
@@ -127,7 +127,7 @@
 						<div class="zbx_contents">
 							<img id="network"></img>
 						</div>
-						<form>
+						<form class="zbx_form">
 							<select name="Server" id="network_select">
 								<option value="et2">Node 1
 								<option value="et3">Node 2
@@ -157,9 +157,8 @@
 						<h2>D-Script エディタ</h2>
 						<h3>開発者 ちぇんじぃの場合</h3>
 					</div>
-					<img src="img/chenji.png"></img>
 				</div>
-				<div class="load" style="position:absolute; left: 50%; top: 50%"></div>
+				<div class="load" id="load_chenji" style="position:absolute; left: 50%; top: 50%"></div>
 				<form action="" method="POST">
 					<textarea class="editor" name="editor" id="chenji_editor">
 // edit script
@@ -172,8 +171,7 @@
 						<select name="ip" id="ip_select">
 							<option value="192.168.59.151:8080">Node 1
 							<option value="192.168.59.160:8080">Node 2
-							<option value="127.0.0.1:8080">DSE Managerlo
-							<option value="192.168.59.150:8080">DSE Manager
+							<option value="127.0.0.1:8080">DSE Manager
 						</select>
 						<select name="script" id="script_select">
 							<option value="reboot.k">reboot.k
@@ -218,9 +216,8 @@
 						<h2>D-Script エディタ</h2>
 						<h3>DEOSの場合</h3>
 					</div>
-					<img src="img/deos.png"></img>
 				</div>
-				<div class="load" style="position:absolute; left: 50%; top: 50%"></div>
+				<div class="load" id="load_deos" style="position:absolute; left: 50%; top: 50%"></div>
 				<form action="" method="POST">
 					<textarea class="editor" name="editor" id="deos_editor">
 // edit script
@@ -231,9 +228,9 @@
 					</textarea>
 					<div style="float: left; margin-top: 20px">
 						<select name="ip" id="ip_select_deos">
-							<option value="192.168.59.151:8888">Node 1
-							<option value="192.168.59.160:8888">Node 2
-							<option value="192.168.59.150:8888">DSE Manager
+							<option value="192.168.59.151:8080">Node 1
+							<option value="192.168.59.160:8080">Node 2
+							<option value="192.168.59.150:8080">DSE Manager
 						</select>
 						<select name="script" id="script_select_deos">
 							<option value="reboot.k">reboot.k
@@ -292,6 +289,7 @@
 					</table>
 				</section>
 				</section>
+					<!--
 				<section>
 					<section>
 						<div id="title">
@@ -304,23 +302,21 @@
 							<h2>D-Case</h2>
 							<h2>"RAMディスクにデータをコピーする"</h2>
 						</div>
-						<!--<div id="d_system"></div>-->
 					</section>
 					<section>
 						<div id="title">
 							<h2>D-Case</h2>
 							<h2>"RAMディスクにデータをコピーする"</h2>
 						</div>
-						<!--<div id="d_system"></div>-->
 					</section>
 					<section>
 						<div id="title">
 							<h2>D-Case</h2>
 							<h2>"RAMディスクにデータをコピーする"</h2>
 						</div>
-						<!--<div id="d_system"></div>-->
 					</section>
 				</section>
+					-->
 				<section>
 					<section>
 						<div id="title">

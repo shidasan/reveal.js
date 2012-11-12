@@ -10,7 +10,7 @@ import pycurl
 import urllib, urllib2
 import cgi, uuid, sys, os, json
 
-HOME = '/Users/yoan/Toybox/lang/js/my_reveal/'
+HOME = '/home/tsunade/reveal/'
 SCRIPT_DIR = HOME + 'script/'
 
 def escapeScript(script):

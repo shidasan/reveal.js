@@ -11,7 +11,7 @@ function createEditor_deos($dom) {
 				lineNumbers: true,
 				mode: "text/x-konoha"
 			});
-    editor.setSize('100%', 400);
+    editor.setSize('100%', 350);
 		var libs = {
 			setLineColor : function(line,count){
           console.log('linecoloer');
@@ -57,7 +57,7 @@ function createEditor_deos($dom) {
 						case "StartTask":
 							break;
 						case "EndTask":
-							spinner.stop();
+							spinner_deos.stop();
 							script_flag = false;
 							return false;
 						case "DScriptMessage":
@@ -96,7 +96,7 @@ function createEditor_deos($dom) {
 			'ScriptName': $('#script_select_deos option:selected').val(),
 		};
 		$.ajax({
-			url:'/cgi-bin/scriptSender.cgi',
+			url:'cgi-bin/scriptSender.cgi',
 			type : 'POST',
 			data : data,
 			error:function(){},
@@ -111,7 +111,7 @@ function createEditor_deos($dom) {
   });
 	$("#exec_deos").click(function(){
 	console.log($('#ip_select_deos option:selected').val());
-    Spinner_start();
+    Spinner_deos_start();
 		var data = {
 			'Method': 'SendDSE',
       'Name': $('#script_select_deos option:selected').val(),
@@ -170,7 +170,6 @@ function createEditor_deos($dom) {
 			},
 			dataType:'json'
 		});
-    Reveal.slide(5, 1)
 	});
 	return editor;
 };

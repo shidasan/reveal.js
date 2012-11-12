@@ -146,10 +146,10 @@ var Reveal = (function(){
 		}
 
 		// Reload icons
-		var reloadElement = document.createElement( 'aside' );
-		reloadElement.classList.add( 'reload_icon' );
-		dom.wrapper.appendChild( reloadElement );
-		dom.reloadBtn = document.querySelector( '.reveal aside.reload_icon' );
+		//var reloadElement = document.createElement( 'aside' );
+		//reloadElement.classList.add( 'reload_icon' );
+		//dom.wrapper.appendChild( reloadElement );
+		//dom.reloadBtn = document.querySelector( '.reveal aside.reload_icon' );
 
 		// Overview icons
 		var overviewElement = document.createElement( 'aside' );
@@ -336,7 +336,7 @@ var Reveal = (function(){
 			document.addEventListener( 'keydown', onDocumentKeyDown, false );
 		}
 
-		dom.reloadBtn.addEventListener( 'click', initialize, false );
+		//dom.reloadBtn.addEventListener( 'click', initialize, false );
 		dom.overviewBtn.addEventListener( 'click', myOverview, false );
 
 		if ( config.controls && dom.controls ) {
