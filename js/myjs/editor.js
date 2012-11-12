@@ -159,9 +159,9 @@ function createEditor_chenji($dom) {
 			complete:function(data){
 					var json_data = JSON.parse(data.responseText);
 					if(data.To == "192.168.59.151:8080") {
-						json_data["server"] = "et2";
+						json_data["server"] = "Node 1";
 					}else {
-						json_data["server"] = "Zabbix server";
+						json_data["server"] = "DSE Manager";
 					}
 					$("#error_log").text("");
 					log.getLog(data.responseText,0);
