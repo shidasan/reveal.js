@@ -65,9 +65,10 @@ function createEditor_chenji($dom) {
 						case "StartTask":
 							break;
 						case "EndTask":
+							console.log("end"+value.Method);
 							spinner_chenji.stop();
 							script_flag = false;
-							return false;
+							return;
 						case "DScriptMessage":
 							zabbix_notify_info(value.Body.replace(/\#(.+)$/, ""));
 							$("#error_log").append(value.Body.replace(/\#(.+)$/, ""));
@@ -77,13 +78,22 @@ function createEditor_chenji($dom) {
 								zabbix_form_notify(value.Body.replace(/\#(.+)$/, ""), value.Ip);
 							}
 							break;
+						case "DScriptCompilerMessage":
+						case undefined:
+							$("#error_log").append(JSON.stringify(value) + "<br>");
+							if(value.ScriptLine !== undefined) {
+								libs.setLineError(value.ScriptLine);
+								if(value.FaultType !== undefined) {
+									$("#fault_body").append('<tr class="fault_element"><td>' + value.Api + "</td>" +"<td>"+value.ScriptLine+"</td>" + "<td>"+value.FaultType + "</td></tr>")
+                                    Matrix_animation();
+								}
+							}
+							break;
 						default :
-							$("#error_log").append(JSON.stringify(value) + "\n");
-							//if(value.ScriptLine !== undefined) {
-							//	setTimeout( function() {
-							//		libs.setLineError(value.ScriptLine);
-							//	},t);
-							//}
+							$("#error_log").append(JSON.stringify(value) + "<br>");
+							if(value.ScriptLine !== undefined) {
+									libs.setLineError(value.ScriptLine);
+							}
 						}
 						t += 100;
 						idx = i;
@@ -142,10 +152,31 @@ function createEditor_chenji($dom) {
 					}else {
 						json_data["server"] = "Zabbix server";
 					}
+					$("#error_log").text("");
 					log.getLog(data.responseText,0);
 			},
 			dataType:'json'
 		});
+	});
+	$("#exec2").click(function(){
+		$alert = $("<div/>");
+		$alert.addClass("modal fade");
+		$alert_body = $("<div/>");
+		$alert_body.addClass("modal-body");
+		$alert_body.append($("<img/>")
+						   .attr("src", "img/deos_logo.gif")
+						   .css("height", "128px"));
+		$alert_body.append($("<h3/>").text("ステークホルダ合意のないスクリプトを実行しようとしています．"));
+		$alert_footer = $("<div/>");
+		$alert_footer.addClass("modal-footer");
+		$alert_footer.append($("<button/>")
+							 .addClass("close")
+							 .attr("type", "button")
+							 .attr("data-dismiss", "modal")
+							 .text("close"));
+		$alert.append($alert_body);
+		$alert.append($alert_footer);
+		$alert.modal();
 	});
 	return editor;
 };

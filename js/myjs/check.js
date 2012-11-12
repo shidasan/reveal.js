@@ -15,7 +15,7 @@
 		}
 		else {
 			$("#exec_deos").click();
-			Reveal.slide(4, 0);
+			Reveal.slide(5, 0);
 		}
 	});
 })();
@@ -24,6 +24,7 @@
 function make_risk_table(data, dataType) {
 	function init() {
 		Reveal.slide(5, 1);
+		$("#risk_table_deos tbody tr").remove();
 		this.$checkbox = $("<input/>")
 			.attr("type", "checkbox")
 			.attr("name", "q");
