@@ -12,7 +12,7 @@ function zabbix_notify_info(str) {
     spinner_chenji.stop();
   }
   $.pnotify({
-    title: 'Dscript Log',
+    title: 'notify',
     text: str,
     //addclass: 'custom',
     icon: 'picon picon-32 picon-fill-color',
@@ -48,7 +48,7 @@ function dscript_notify_info(str) {
     spinner_chenji.stop();
   }
   $.pnotify({
-    title: 'Dscript Log',
+    title: 'notify',
     text: str,
     //addclass: 'custom',
     icon: 'picon picon-32 picon-fill-color',
@@ -60,7 +60,7 @@ function dscript_notify_info(str) {
 
 function riskdb_notify_info(str) {
   $.pnotify({
-    title: 'RiskDB Log',
+    title: 'RiskDB notify',
     text: str,
     addclass: 'error',
     icon: 'picon picon-32 picon-fill-color',

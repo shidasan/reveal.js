@@ -11,7 +11,7 @@ function createEditor_deos($dom) {
 				lineNumbers: true,
 				mode: "text/x-konoha"
 			});
-    editor.setSize('100%', 350);
+    editor.setSize('100%', 380);
 		var libs = {
 			setLineColor : function(line,count){
           console.log('linecoloer');

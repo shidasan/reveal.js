@@ -88,6 +88,8 @@
 						Please tell Administator to install alertme.
 						</iframe>
 						<button type="button" id="fault" class="btn" style="margin-bottom: 10px">fault</button>
+						<button type="button" id="fault_stop" class="btn" style="margin-bottom: 10px">fault stop</button>
+						<!--button type="button" id="reboot_dse" class="btn" style="margin-bottom: 10px">reboot DSE</button-->
 					</div>
 				</section>
 				<section>
@@ -119,7 +121,7 @@
 							<select name="Server" id="memory_select">
 								<option value="et2">Node 1
 								<option value="et3">Node 2
-								<option value="Zabbix">Server
+								<option value="Zabbix server">DSE Manager
 							</select>
 						</form>
 					</section>
@@ -166,9 +168,10 @@
 				<form action="" method="POST">
 					<textarea class="editor" name="editor" id="chenji_editor">
 // edit script
+import("dscript.shell");
 
-
-
+String pid = getHeavyProcess();
+kill -9 ${pid}
 
 					</textarea>
 					<div style="float: left;">
@@ -190,13 +193,14 @@
 					<div id="title">
 						<h2>D-Script Result</h2>
 					</div>
-					<h3><div id="error_log" style="word-wrap: break-word; overflow: visible; padding :10px;"></div></h3>
+					<div id="error_log" style="word-wrap: break-word; overflow: auto; height:480px; font-size: 135%;line-height:30px;"></div>
 				</section>
 				<section>
 					<div id="title">
 						<h2>Fault Matrix</h2>
 					</div>
 					<div id="matrix_svg" style="position: relative; left: 25%;  overflow: visible;"></div>
+					<div style="overflow:auto; height:100px;">
 					<table id="fault_table" class="table table-hover">
 						<thead>
 							<tr>
@@ -208,6 +212,7 @@
 						<tbody id="fault_body">
 						</tbody>
 					</table>
+					</div>
 				</section>
 				</section>
 				<section>
@@ -222,10 +227,17 @@
 				<form action="" method="POST">
 					<textarea class="editor" name="editor" id="deos_editor">
 // edit script
+import("dscript.shell");
 
+boolean killHeavyProcess() {
+  String pid = getHeavyProcess();
+  String name = getProcessNameFromPid(pid);
+  if(ask("プロセス ${name} を kill してもよろしいですか？")) {
+    kill -9 ${pid}
+  }
+}
 
-
-
+killHeavyProcess();
 					</textarea>
 					<div style="float: left;">
 						<select name="ip" id="ip_select_deos">
@@ -275,7 +287,7 @@
 					<div id="title">
 						<h2>D-Script Result</h2>
 					</div>
-					<h3><div id="error_log_deos" style="word-wrap: break-word;"></div></h3>
+					<div id="error_log_deos" style="word-wrap: break-word; overflow: auto; height:480px; font-size: 135%;line-height:30px;"></div>
 				</section>
 				<section>
 					<div id="title">
@@ -305,7 +317,7 @@
 							<li><h3>Konoha 2 JS: 静的型付け言語KonohaからJavaScriptへのソースコード変換機</h3></li>
 							<li><h3>DSE: 分散環境における高信頼スクリプト実行基盤</h3></li>
 							<li><h3>RiskDB: リスクの自動提案機構</h3></li>
-							<li><h3>JIT: 静的型付けスクリプト言語におけるJITコンパイラ</h3></li>
+							<!--<li><h3>JIT: 静的型付けスクリプト言語におけるJITコンパイラ</h3></li>-->
 						</ul>
 					</section>
 					<section>
@@ -363,7 +375,7 @@
 						</a>
 					  </div>
 					</section>
-					<section>
+					<!--<section>
 					  <div id="title">
 						<h2>JIT: Just In Time Compiler</h2>
 						<h3>静的型付けスクリプト言語におけるJITコンパイラ</h3>
@@ -372,7 +384,7 @@
 					  <div id="dse_arch" style="text-align: center">
 						<img src="./img/dse.png" width="70%"></img>
 					  </div>
-					</section>
+					</section>-->
 
 				</section>
 			</div>
