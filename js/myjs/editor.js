@@ -63,11 +63,14 @@ function createEditor_chenji($dom) {
 						console.log(value.Method);
 						switch(value.Method) {
 						case "StartTask":
+							Matrix_faultType = [];
+							Matrix_animation_init();
 							break;
 						case "EndTask":
 							console.log("end"+value.Method);
 							spinner_chenji.stop();
 							script_flag = false;
+							Matrix_animation();
 							return;
 						case "DScriptMessage":
 							zabbix_notify_info(value.Body.replace(/\#(.+)$/, ""));
@@ -78,6 +81,14 @@ function createEditor_chenji($dom) {
 								zabbix_form_notify(value.Body.replace(/\#(.+)$/, ""), value.Ip);
 							}
 							break;
+						case "DScriptError":
+							value = value.Body;
+							$("#error_log").append(JSON.stringify(value) + "<br>");
+							if(value.FaultType !== undefined) {
+								$("#fault_body").append('<tr class="fault_element"><td>' + value.Api + "</td>" +"<td>"+value.ScriptLine+"</td>" + "<td>"+value.FaultType + "</td></tr>")
+                                Matrix_fault(value.FaultType);
+							}
+							break;
 						case "DScriptCompilerMessage":
 						case undefined:
 							$("#error_log").append(JSON.stringify(value) + "<br>");
@@ -85,7 +96,7 @@ function createEditor_chenji($dom) {
 								libs.setLineError(value.ScriptLine);
 								if(value.FaultType !== undefined) {
 									$("#fault_body").append('<tr class="fault_element"><td>' + value.Api + "</td>" +"<td>"+value.ScriptLine+"</td>" + "<td>"+value.FaultType + "</td></tr>")
-                                    Matrix_animation();
+                                    Matrix_fault(value.FaultType);
 								}
 							}
 							break;
@@ -148,9 +159,9 @@ function createEditor_chenji($dom) {
 			complete:function(data){
 					var json_data = JSON.parse(data.responseText);
 					if(data.To == "192.168.59.151:8080") {
-						json_data["server"] = "et2";
+						json_data["server"] = "Node 1";
 					}else {
-						json_data["server"] = "Zabbix server";
+						json_data["server"] = "DSE Manager";
 					}
 					$("#error_log").text("");
 					log.getLog(data.responseText,0);

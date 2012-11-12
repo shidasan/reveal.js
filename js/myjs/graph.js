@@ -26,12 +26,12 @@ function Memory_get(){
 function Network_get(){
   Graph_get("#network",{"name":"eth0", "Server": $("#network_select option:selected").val()});
 }
-
+/*
 function getHostName(name) {
   var host = {"Zabbix server":"DSE Manager","et2":"node 1","et3":"node 2"};
   return host[name];
 }
-
+*/
 function DatetoString(unixtime) {
     var d = new Date(unixtime*1000);
     return (d.getMonth() + 1) + "月" + d.getDate() + "日 " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
@@ -41,7 +41,7 @@ function TriggerLog_setTable(result) {
   var classname = "trigger_element";
   $("." + classname).remove();
   result.forEach(function(i){
-    $("#trigger_log").append('<tr class="trigger_element"><td>' + getHostName(i.hostname) + "</td>" +"<td>"+i.description+"</td>" + "<td>"+DatetoString(i.lastchange) + "</td></tr>");
+    $("#trigger_log").append('<tr class="trigger_element"><td>' + i.hostname + "</td>" +"<td>"+i.description+"</td>" + "<td>"+DatetoString(i.lastchange) + "</td></tr>");
     });
 }
 function TriggerLog_get(){

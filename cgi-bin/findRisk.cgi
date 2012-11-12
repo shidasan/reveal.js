@@ -23,6 +23,11 @@ def keyword2riskexpression(keyword):
 		ret["words"].append(risk["words"])
 	return ret
 
+def text2riskexpression(text):
+	req = RiskDB_ip + "alertme/api/1.0/search.json?query=" + text
+	ret = json.loads(urllib.urlopen(req).read())
+	return ret
+
 def returnClient(risks):
 	print('Content-Type: application/json')
 	print('')
@@ -30,25 +35,30 @@ def returnClient(risks):
 
 def main():
 	form = cgi.FieldStorage()
-	script = form.getvalue('Script')
-	text = form.getvalue('Text')
+ 	script = form.getvalue('Script')
+ 	text = form.getvalue('Text')
 	risks = []
+	cmds = []
 	if script != None:
+		script = """String getHeavyProcess(){return "";}
+                            String getHeavyProcessFail(){return "";}
+                            String getHeavyProcessSuccess(){return "";}
+                            String getProcessNameFromPid(String pid){return "";}
+                            boolean ask(String query){return true;}""" + script
 		f = tempfile.NamedTemporaryFile();
 		f.write(script)
 		f.flush()
 		cmds = commands.getoutput("/usr/local/bin/minikonoha -DSHOW_COMMAND=on " + f.name).split('\n')
-		#cmds = ["RFP", "顧客"]
-		#cmds = ["作業タスク"]
+# 		cmds = ["RFP", "顧客"]
+# 		cmds = ["作業タスク"]
 		for cmd in cmds:
 			rxp = keyword2riskexpression(cmd)
 			if rxp["count"] != 0:
 				risks.append(rxp)
 	if text != None:
-		for cmd in text.split(" "):
-			rxp = keyword2riskexpression(cmd)
-			if rxp["count"] != 0:
-				risks.append(rxp)
+		for risk in text2riskexpression(text):
+			if risk["count"] != 0:
+				risks.extend(risk["risks"])
 	returnClient(risks)
 
 if __name__ == "__main__":

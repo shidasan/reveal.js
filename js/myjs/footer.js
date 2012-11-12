@@ -13,6 +13,9 @@ Footer.prototype = {
     var $img = createLastChild(this.$dom, 'img');
     $img.attr('src', CONFIG.img_dir + '/' + src);
     $img.css('width', h + 'px');
+    $($img).click(function(e) {
+        console.log("CLICK!!");
+    });
   },
   setName: function(name) {
     var $li = createLastChild(this.$ul, 'li');

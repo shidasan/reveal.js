@@ -461,6 +461,12 @@
      };
      tool_bar.append($("<button>+</button>").click(action_scaleup));
      tool_bar.append($("<button>-</button>").click(action_scaledown));
+     setTimeout(function() { action_scaledown(); }, 100);
+     setTimeout(function() { action_scaleup(); }, 200);
+     setTimeout(function() { action_scaleup(); }, 300);
+     setTimeout(function() {
+       $(child).css({ left: Math.floor(($(tree.elem).width() - $(child).width()) / 2) });
+     }, 400);
      set_scale();
 
      function make_info () {

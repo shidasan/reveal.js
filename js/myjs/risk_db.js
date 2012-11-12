@@ -10,17 +10,12 @@ function risk_db_demo_init() {
 		}
 		for (i = 0; i < risks.length; i++) {
 			var risk = risks[i]
-			var count = risk["count"]
-			console.log(count);
-			console.log(risk["words"].length);
-			for (j = 0; j < count; j++) { //fix me
-				var keyword = risk["keyword"];
-				var words = risk["words"][j];
-				var $elem = $("<tr></tr>");
-				$elem.append('<td>' + keyword +'</td>');
-				$elem.append('<td>' + words +'</td>');
-				$("#risk_db_demo table tbody").append($elem);
-			}
+			var keyword = risk["keyword"];
+			var words = risk["words"];
+			var $elem = $("<tr></tr>");
+			$elem.append('<td>' + keyword +'</td>');
+			$elem.append('<td>' + words +'</td>');
+			$("#risk_db_demo table tbody").append($elem);
 		}
 	}
 	function risk_db_table_update_error() {

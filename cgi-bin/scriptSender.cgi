@@ -20,6 +20,10 @@ def escapeScript(script):
 			ret = ret + '\\n'
 		elif ch == '\"':
 			ret = ret + '\\"'
+		elif ch == '\'':
+			ret = ret + "\\'"
+		elif ch == '/':
+			ret = ret + "\/"
 		else :
 			ret = ret + ch
 	return ret
@@ -47,6 +51,6 @@ def wrapJson(script):
 if __name__ == '__main__':
 	form = cgi.FieldStorage()
 	script = searchScript(form.getvalue('ScriptName'))
-	#script = searchScript('hoge.k')
+	#script = searchScript('script_deos.ds')
 	script = escapeScript(script)
 	wrapJson(script)

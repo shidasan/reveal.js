@@ -136,7 +136,7 @@ function Matrix_init() {
   //var matrix = new Matrix();
   //matrix.init();
   //matrix.drawMatrix();
-  $("#matrix_svg").append('<object type="image/svg+xml" data="sample.svg" height="450px" width="600px" id="svgID"></object>')
+  $("#matrix_svg").append('<object type="image/svg+xml" data="sample.svg" height="330px" width="440px" id="svgID"></object>')
 }
 
 //function Matrix_stat(matrix) {
@@ -174,39 +174,70 @@ function Matrix_init() {
 //  });
 //}
 //
+var Matrix_faultType = [];
+function Matrix_fault(fault){
+  ft = fault.split(',');
+  $.each(ft,function(i,v){
+      Matrix_faultType.push(v);
+  });
+}
+function getElementsByClass(doc,searchClass) {
+  var classElements = new Array();
+  var allElements = doc.getElementsByTagName("*");
+  for (var i = 0, j = 0; i < allElements.length; i++) {
+    if (allElements[i].className == searchClass) {
+      classElements[j] = allElements[i];
+      j++;
+    }
+  }
+  return classElements;
+}
+
 function Matrix_animation(){
   var svgDoc = document.getElementById("svgID").contentDocument;
-  var poly = svgDoc.getElementById("software0");
-  poly.setAttribute("to", "1.6");
-  var poly = svgDoc.getElementById("software1");
-  poly.setAttribute("to", "1.6");
-  var poly = svgDoc.getElementById("software2");
-  poly.setAttribute("to", "1.6");
-  var poly = svgDoc.getElementById("software3");
-  poly.setAttribute("to", "1.6");
-  
-  var poly = svgDoc.getElementById("user0");
-  poly.setAttribute("to", "1.3");
-  var poly = svgDoc.getElementById("user1");
-  poly.setAttribute("to", "1.3");
-  var poly = svgDoc.getElementById("user2");
-  poly.setAttribute("to", "1.3");
-  
-  var poly = svgDoc.getElementById("system0");
-  poly.setAttribute("to", "1");
-  var poly = svgDoc.getElementById("system1");
-  poly.setAttribute("to", "1");
-  var poly = svgDoc.getElementById("system2");
-  poly.setAttribute("to", "1");
-  var poly = svgDoc.getElementById("system3");
-  poly.setAttribute("to", "1");
-  
-  var poly = svgDoc.getElementById("external0");
-  poly.setAttribute("to", "2");
-  var poly = svgDoc.getElementById("external1");
-  poly.setAttribute("to", "2");
-  var poly = svgDoc.getElementById("external2");
-  poly.setAttribute("to", "2");
-  var poly = svgDoc.getElementById("external3");
-  poly.setAttribute("to", "2");
+  $.each(Matrix_faultType,function(i,v){
+    if(v == "SystemFault"){
+      var fa = getElementsByClass(svgDoc,"system_f");
+      $.each(fa, function(j,vv){
+        vv.setAttribute("to","2.0");
+      });
+    }else if(v == "SoftwareFault") {
+      var fa = getElementsByClass(svgDoc,"software_f");
+      $.each(fa, function(j,vv){
+        vv.setAttribute("to","2.0");
+      });
+    }else if(v == "UserFault"){
+      var fa = getElementsByClass(svgDoc,"user_f");
+      $.each(fa, function(j,vv){
+        vv.setAttribute("to","2.0");
+      });
+    }else if(v == "ExternalFault") {
+      var fa = getElementsByClass(svgDoc,"external_f");
+      $.each(fa, function(j,vv){
+        vv.setAttribute("to","2.0");
+      });
+    }
+  });
+  svgDoc.getElementById("external0").beginElement();
+}
+
+function Matrix_animation_init(){
+  var svgDoc = document.getElementById("svgID").contentDocument;
+  var fa = getElementsByClass(svgDoc,"system_f");
+  $.each(fa, function(j,vv){
+    vv.setAttribute("to","0.0");
+  });
+  fa = getElementsByClass(svgDoc,"software_f");
+  $.each(fa, function(j,vv){
+    vv.setAttribute("to","0.0");
+  });
+  fa = getElementsByClass(svgDoc,"user_f");
+  $.each(fa, function(j,vv){
+    vv.setAttribute("to","0.0");
+  });
+  fa = getElementsByClass(svgDoc,"external_f");
+  $.each(fa, function(j,vv){
+    vv.setAttribute("to","0.0");
+  });
+  svgDoc.getElementById("external0").beginElement();
 }

@@ -1,11 +1,11 @@
-// Edit DEOS Script
+// DEOS Script
 
 import("dscript.shell");
 
 boolean killHeavyProcess() {
-	int pid = getHeavyProcess();
+	String pid = getHeavyProcess();
 	String processname = getProcessNameFromPid(pid);
-	if(ask "プロセス '${processname}' をkillしてもよろしいですか？") {
+	if(ask("プロセス '${processname}' をkillしてもよろしいですか？")) {
 		kill -9 ${pid}
 	}
 }

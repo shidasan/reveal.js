@@ -152,10 +152,10 @@ var Reveal = (function(){
 		//dom.reloadBtn = document.querySelector( '.reveal aside.reload_icon' );
 
 		// Overview icons
-		var overviewElement = document.createElement( 'aside' );
-		overviewElement.classList.add( 'overview_icon' );
-		dom.wrapper.appendChild( overviewElement );
-		dom.overviewBtn = document.querySelector( '.reveal aside.overview_icon' );
+		//var overviewElement = document.createElement( 'aside' );
+		//overviewElement.classList.add( 'overview_icon' );
+		//dom.wrapper.appendChild( overviewElement );
+		//dom.overviewBtn = document.querySelector( '.reveal aside.overview_icon' );
 
 
 		// Arrow controls
@@ -337,7 +337,7 @@ var Reveal = (function(){
 		}
 
 		//dom.reloadBtn.addEventListener( 'click', initialize, false );
-		dom.overviewBtn.addEventListener( 'click', myOverview, false );
+		//dom.overviewBtn.addEventListener( 'click', myOverview, false );
 
 		if ( config.controls && dom.controls ) {
 			dom.controlsLeft.addEventListener( 'click', preventAndForward( navigateLeft ), false );
