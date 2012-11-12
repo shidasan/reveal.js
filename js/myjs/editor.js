@@ -177,7 +177,7 @@ function createEditor_chenji($dom) {
 		$alert_body.append($("<img/>")
 						   .attr("src", "img/deos_logo.gif")
 						   .css("height", "128px"));
-		$alert_body.append($("<h3/>").text("ステークホルダ合意のないスクリプトを実行しようとしています．"));
+		$alert_body.append($("<h3/>").text("D-Case認証のないスクリプトを実行しようとしています．"));
 		$alert_footer = $("<div/>");
 		$alert_footer.addClass("modal-footer");
 		$alert_footer.append($("<button/>")
