@@ -132,11 +132,12 @@ Matrix.prototype = {
   },
 };
 
-function Matrix_init(argument) {
+function Matrix_init(data) {
   var matrix = new Matrix();
   matrix.init();
   matrix.drawMatrix();
   // TODO use bootstrap Table-hover
+  /*
   var data = [ {
 	'file' : 'hoge.k',
 	'line' : '12',
@@ -153,7 +154,7 @@ function Matrix_init(argument) {
 	'api' : 'System.fopen()',
 	'diag' : 'SoftwareFault',
   } ];
-
+*/
   for (var i = 0; i < data.length; i++) {
 	  matrix.addLine(data[i]);
   }

@@ -79,11 +79,11 @@ function createEditor_chenji($dom) {
 							break;
 						default :
 							$("#error_log").append(JSON.stringify(value) + "\n");
-							//if(value.ScriptLine !== undefined) {
-							//	setTimeout( function() {
-							//		libs.setLineError(value.ScriptLine);
-							//	},t);
-							//}
+							if(value.ScriptLine !== undefined) {
+								//setTimeout( function() {
+								//	libs.setLineError(value.ScriptLine);
+								//},t);
+							}
 						}
 						t += 100;
 						idx = i;
@@ -142,6 +142,7 @@ function createEditor_chenji($dom) {
 					}else {
 						json_data["server"] = "Zabbix server";
 					}
+					$("#error_log").text("");
 					log.getLog(data.responseText,0);
 			},
 			dataType:'json'
