@@ -127,8 +127,24 @@ body .reveal .slides img #title{
 
 body .reveal .slides #demo_overview img{
 	position: relative;
-	left: -55%;
-	width: 600px;
+	left: -75%;
+	width: 1000px;
+	max-width: 200%;
+	max-height: 200%;
+	border: none;
+	-webkit-box-shadow: none;
+}
+
+body .reveal .slides #demo_overview_last {
+	position: absolute;
+	overflow: visible;
+}
+
+
+body .reveal .slides #demo_overview_last img{
+	position: relative;
+	left: -70%;
+	width: 900px;
 	max-width: 200%;
 	max-height: 200%;
 	border: none;
