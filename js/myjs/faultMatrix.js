@@ -132,33 +132,11 @@ Matrix.prototype = {
   },
 };
 
-function Matrix_init(data) {
-  var matrix = new Matrix();
-  matrix.init();
-  matrix.drawMatrix();
-  // TODO use bootstrap Table-hover
-  /*
-  var data = [ {
-	'file' : 'hoge.k',
-	'line' : '12',
-	'api' : 'System.fopen()',
-	'diag' : 'SoftwareFault',
-  }, {
-	'file' : 'hoge.k',
-	'line' : '13',
-	'api' : 'System.fopen()',
-	'diag' : 'SoftwareFault',
-  }, {
-	'file' : 'hoge.k',
-	'line' : '14',
-	'api' : 'System.fopen()',
-	'diag' : 'SoftwareFault',
-  } ];
-*/
-  for (var i = 0; i < data.length; i++) {
-	  matrix.addLine(data[i]);
-  }
-  // Matrix_stat(matrix);
+function Matrix_init() {
+  //var matrix = new Matrix();
+  //matrix.init();
+  //matrix.drawMatrix();
+  $("#matrix_svg").append('<object type="image/svg+xml" data="sample.svg" height="450px" width="600px" id="svgID"></object>')
 }
 
 //function Matrix_stat(matrix) {
@@ -195,3 +173,40 @@ function Matrix_init(data) {
 //    dataType:'json'
 //  });
 //}
+//
+function Matrix_animation(){
+  var svgDoc = document.getElementById("svgID").contentDocument;
+  var poly = svgDoc.getElementById("software0");
+  poly.setAttribute("to", "1.6");
+  var poly = svgDoc.getElementById("software1");
+  poly.setAttribute("to", "1.6");
+  var poly = svgDoc.getElementById("software2");
+  poly.setAttribute("to", "1.6");
+  var poly = svgDoc.getElementById("software3");
+  poly.setAttribute("to", "1.6");
+  
+  var poly = svgDoc.getElementById("user0");
+  poly.setAttribute("to", "1.3");
+  var poly = svgDoc.getElementById("user1");
+  poly.setAttribute("to", "1.3");
+  var poly = svgDoc.getElementById("user2");
+  poly.setAttribute("to", "1.3");
+  
+  var poly = svgDoc.getElementById("system0");
+  poly.setAttribute("to", "1");
+  var poly = svgDoc.getElementById("system1");
+  poly.setAttribute("to", "1");
+  var poly = svgDoc.getElementById("system2");
+  poly.setAttribute("to", "1");
+  var poly = svgDoc.getElementById("system3");
+  poly.setAttribute("to", "1");
+  
+  var poly = svgDoc.getElementById("external0");
+  poly.setAttribute("to", "2");
+  var poly = svgDoc.getElementById("external1");
+  poly.setAttribute("to", "2");
+  var poly = svgDoc.getElementById("external2");
+  poly.setAttribute("to", "2");
+  var poly = svgDoc.getElementById("external3");
+  poly.setAttribute("to", "2");
+}
