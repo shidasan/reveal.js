@@ -84,7 +84,7 @@ function createEditor_chenji($dom) {
 							if(value.ScriptLine !== undefined) {
 								libs.setLineError(value.ScriptLine);
 								if(value.FaultType !== undefined) {
-									//TODO
+									$("#fault_body").append('<tr class="fault_element"><td>' + value.Api + "</td>" +"<td>"+value.ScriptLine+"</td>" + "<td>"+value.FaultType + "</td></tr>")
 								}
 							}
 							break;
