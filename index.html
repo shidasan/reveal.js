@@ -87,8 +87,8 @@
 						<iframe src="http://192.168.59.151:3082" width="640" height="480">
 						Please tell Administator to install alertme.
 						</iframe>
-						<button type="button" id="fault" class="btn" style="margin-bottom: 10px">fault</button>
-						<button type="button" id="fault_stop" class="btn" style="margin-bottom: 10px">fault stop</button>
+						<button type="button" id="fault" class="btn" style="margin-bottom: 10px">inject fault</button>
+						<button type="button" id="fault_stop" class="btn" style="margin-bottom: 10px">exclude fault</button>
 						<!--button type="button" id="reboot_dse" class="btn" style="margin-bottom: 10px">reboot DSE</button-->
 					</div>
 				</section>
@@ -312,7 +312,7 @@ killHeavyProcess();
 						<div id="title">
 							<h2>要素技術</h2>
 						</div>
-						<ul>
+						<ul id="tech_list">
 							<li><h3>Tiny Konoha: 組み込み向け超軽量スクリプト言語</h3></li>
 							<li><h3>Konoha 2 JS: 静的型付け言語KonohaからJavaScriptへのソースコード変換機</h3></li>
 							<li><h3>DSE: 分散環境における高信頼スクリプト実行基盤</h3></li>
