@@ -8,12 +8,9 @@ var Footer = function() {
 Footer.prototype = {
   init: function () {
     this.$dom = $('#footer-content');
-    this.$ul = createLastChild(this.$dom, 'ul');
   },
   setImg: function(src, h) {
-    var $li = createLastChild(this.$ul, 'li');
-    var $p = createLastChild($li, 'p');
-    var $img = createLastChild($p, 'img');
+    var $img = createLastChild(this.$dom, 'img');
     $img.attr('src', CONFIG.img_dir + '/' + src);
     $img.css('width', h + 'px');
   },
@@ -26,8 +23,8 @@ Footer.prototype = {
 function Footer_init() {
   var footer = new Footer();
   footer.init();
-  footer.setImg('dscript_logo.png', 40);
-  footer.setImg('deos_logo.gif', 40);
-  footer.setImg('ynu_logo.gif', 40);
-  footer.setImg('Zabbix_logo_original.png', 40);
+  footer.setImg('dscript_logo.png', 128);
+  footer.setImg('deos_logo.gif', 128);
+  footer.setImg('ynu_logo.gif', 128);
+  footer.setImg('Zabbix_logo_original.png', 128);
 }

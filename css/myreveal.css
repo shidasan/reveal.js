@@ -142,44 +142,17 @@ body .reveal #footer-content {
 	position: absolute;
 	bottom: 0px;
 	width: 100%;
-	height: 100px;
-	z-index: 30;
-	margin: 0 auto 0 auto;
+	float: left;
+	left: 50%;
 }
 
-	body .reveal #footer-content ul{
+	body .reveal #footer-content img{
 		position: relative;
-		display: table;
-		left: 40%;
-		width: 100%;
 		float: left;
+		left: -15%;
+		border: none;
+		-webkit-box-shadow: none;
 	}
-	
-		body .reveal #footer-content ul li{
-			position: relative;
-			list-style: none;
-			float: left;
-			margin-right: 10px;
-			margin-bottom: 15px;
-			width: 100px;
-		}
-		
-			body .reveal #footer-content ul li p{
-				position: relative;
-				left: -50%;
-				float: left;
-				display: table-cell;
-				text-align: center;
-				vertical-align: middle;
-				width: 100px!important;
-				width: auto;
-				font-size: 20px;
-			}
-			
-			body .reveal #footer-content ul li p img{
-				border: none;
-				-webkit-box-shadow: none;
-			}
 
 body .reveal .slides #motion {
 	margin: 0 auto 0 auto;
