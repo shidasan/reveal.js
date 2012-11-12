@@ -127,8 +127,8 @@ body .reveal .slides img #title{
 
 body .reveal .slides #demo_overview img{
 	position: relative;
-	left: -75%;
-	width: 1000px;
+	left: -55%;
+	width: 600px;
 	max-width: 200%;
 	max-height: 200%;
 	border: none;
