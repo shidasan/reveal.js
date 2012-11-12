@@ -95,7 +95,7 @@ body .reveal .slides #title img{
 	position: relative;
 	height: 150px;
 	float: left;
-	left: 70%;
+	left: 68%;
 	margin-top: auto;
 	margin-bottom: auto;
 	margin-right: 50px;
@@ -213,4 +213,18 @@ body .reveal .slides #form_notice {
 	margin: 3px;
 	width: 33px;
 	height: 33px;
+}
+
+body .reveal .slides section section .zbx_contents {
+	left: 50%;
+	position: relative;
+}
+
+body .reveal .slides section section .zbx_contents img{
+	left: -50%;
+}
+
+body .reveal .slides section section .zbx_contents form{
+	left: -100%;
+	margin-top: 10px;
 }

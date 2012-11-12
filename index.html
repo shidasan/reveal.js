@@ -90,9 +90,11 @@
 					<section>
 						<div id="title">
 							<h2>サーバ監視項目</h2>
+							<h3>CPU 使用率</h3>
 						</div>
-						<h2>CPU 使用率</h2>
-						<img id="cpu"></img>
+						<div class="zbx_contents">
+							<img id="cpu"></img>
+						</div>
 						<form>
 							<select name="Server" id="cpu_select" >
 								<option value="et2">Node 1
@@ -104,9 +106,11 @@
 					<section>
 						<div id="title">
 							<h2>サーバ監視項目</h2>
+							<h3>メモリ空き容量</h3>
 						</div>
-						<h2>メモリ空き容量</h2>
-						<img id="memory"></img>
+						<div class="zbx_contents">
+							<img id="memory"></img>
+						</div>
 						<form>
 							<select name="Server" id="memory_select">
 								<option value="et2">Node 1
@@ -118,9 +122,11 @@
 					<section>
 						<div id="title">
 							<h2>サーバ監視項目</h2>
+							<h3>ネットワーク使用率</h3>
 						</div>
-						<h2>ネットワーク使用率</h2>
-						<img id="network"></img>
+						<div class="zbx_contents">
+							<img id="network"></img>
+						</div>
 						<form>
 							<select name="Server" id="network_select">
 								<option value="et2">Node 1
@@ -132,8 +138,8 @@
 					<section>
 						<div id="title">
 							<h2>サーバ監視項目</h2>
+							<h3>障害状況</h3>
 						</div>
-						<h2>障害状況</h2>
 						<table class="table">
 							<thead><tr>
 								<th>ホスト名</th>
@@ -230,9 +236,11 @@
 							<option value="192.168.59.150:8888">DSE Manager
 						</select>
 						<select name="script" id="script_select_deos">
-							<option value="foo.k">foo.k
-							<option value="bar.k">bar.k
-							<option value="hoge.k">hoge.k
+							<option value="reboot.k">reboot.k
+							<option value="faultInject.k">faultInjector.k
+							<option value="script_chenji.k">script_chenji.k
+							<option value="script_deos.k">script_deos.k
+							<option value="hoge.k">test.k
 						</select>
 						<button type="button" id="exec_deos" class="btn" style="margin-top:20px">execute</button>
 						<button type="button" id="check_deos" class="btn btn-primary" style="margin-top:20px">check</button>

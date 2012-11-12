@@ -11,6 +11,7 @@ function createEditor_deos($dom) {
 				lineNumbers: true,
 				mode: "text/x-konoha"
 			});
+    editor.setSize('100%', 400);
 		var libs = {
 			setLineColor : function(line,count){
           console.log('linecoloer');
@@ -89,6 +90,25 @@ function createEditor_deos($dom) {
 			});
 		}
 		};
+  $('#script_select_deos').change(function() {
+    var data = {
+			'Method': 'SendScriptName',
+			'ScriptName': $('#script_select_deos option:selected').val(),
+		};
+		$.ajax({
+			url:'/cgi-bin/scriptSender.cgi',
+			type : 'POST',
+			data : data,
+			error:function(){},
+			complete:function(data){
+					console.log(data.responseText);
+					var res = JSON.parse(data.responseText);
+          var script = res['Script'];
+          editor.setValue(script);
+			},
+			dataType:'json'
+		});
+  });
 	$("#exec_deos").click(function(){
 	console.log($('#ip_select_deos option:selected').val());
     Spinner_start();

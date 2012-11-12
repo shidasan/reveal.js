@@ -19,6 +19,7 @@ function createEditor_chenji($dom) {
 				lineNumbers: true,
 				mode: "text/x-konoha"
 			});
+    editor.setSize('100%', 400);
 		var libs = {
 			setLineColor : function(line,count){
           console.log('linecoloer');

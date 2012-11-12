@@ -34,18 +34,13 @@ BPMN.prototype = {
     return $ret;
   },
   connectTo: function(to, from) {
-    var to_img = to.find('img');
-    var from_img = from.find('img');
-    //var x1 = parseInt(to.css('left'));
-    //var y1 = parseInt(to.css('top'));
-    //var x2 = parseInt(from.css('left'));
-    //var y2 = parseInt(from.css('top'));
-    var x1 = to.offset().left - this.$dom.offset().left;
-    var y1 = to.offset().top - this.$dom.offset().top;
-    var x2 = from.offset().left - this.$dom.offset().left;
-    var y2 = from.offset().top - this.$dom.offset().top;
+    var x1 = parseInt(to.css('left'));
+    var y1 = parseInt(to.css('top'));
+    var x2 = parseInt(from.css('left'));
+    var y2 = parseInt(from.css('top'));
     var w = to.width();
     var h = to.height();
+    console.log(x1, y1, x2, y2);
     var l = this.$dom.svg('get').line(this.line, x1 + w, y1 + (h / 2), x2, y2 + (h / 2));
   },
   resetAnimation: function($node) {
