@@ -101,7 +101,6 @@ body .reveal .slides #title img{
 	margin-right: 50px;
 }
 
-
 /*
 body .reveal .slides #title h1, body .reveal .slides #title h2,
 body .reveal .slides #title h3, body .reveal .slides #title h4,
@@ -128,8 +127,8 @@ body .reveal .slides img #title{
 
 body .reveal .slides #demo_overview img{
 	position: relative;
-	left: -90%;
-	width: 1000px;
+	left: -55%;
+	width: 700px;
 	max-width: 200%;
 	max-height: 200%;
 	border: none;
