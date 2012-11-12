@@ -420,11 +420,13 @@ body {
 
 .reveal .slides {
 	position: absolute;
-	max-width: 900px;
+	max-width: 1500px;
+	height: 1000px;
+	/*max-width: 900px;*/
 	width: 80%;
 	height: 60%;
 	left: 50%;
-	top: 50%;
+	top: 40%;
 	margin-top: -320px;
 	padding: 20px 0px;
 	overflow: visible;
@@ -454,7 +456,7 @@ body {
 	display: none;
 	position: absolute;
 	width: 100%;
-	min-height: 600px;
+	min-height: 800px;
 
 	z-index: 10;
 	
@@ -909,7 +911,7 @@ body {
 
 .reveal.overview .slides section {
 	padding: 20px 0;
-	max-height: 600px;
+	max-height: 1000px;
 	overflow: hidden;	
 	opacity: 1;
 	cursor: pointer;

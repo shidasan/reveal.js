@@ -18,10 +18,10 @@ var Reveal = (function(){
 			controls: true,
 
 			// Display a presentation progress bar
-			progress: true,
+			progress: false,
 
 			// Push each slide change to the browser history
-			history: false,
+			history: true,
 
 			// Enable keyboard shortcuts for navigation
 			keyboard: true,
@@ -37,10 +37,10 @@ var Reveal = (function(){
 			autoSlide: 0,
 
 			// Enable slide navigation via mouse wheel
-			mouseWheel: true,
+			mouseWheel: false,
 
 			// Apply a 3D roll to links on hover
-			rollingLinks: true,
+			rollingLinks: false,
 
 			// Transition style (see /css/theme)
 			theme: 'default', 
@@ -144,6 +144,19 @@ var Reveal = (function(){
 			progressElement.innerHTML = '<span></span>';
 			dom.wrapper.appendChild( progressElement );
 		}
+
+		// Reload icons
+		//var reloadElement = document.createElement( 'aside' );
+		//reloadElement.classList.add( 'reload_icon' );
+		//dom.wrapper.appendChild( reloadElement );
+		//dom.reloadBtn = document.querySelector( '.reveal aside.reload_icon' );
+
+		// Overview icons
+		var overviewElement = document.createElement( 'aside' );
+		overviewElement.classList.add( 'overview_icon' );
+		dom.wrapper.appendChild( overviewElement );
+		dom.overviewBtn = document.querySelector( '.reveal aside.overview_icon' );
+
 
 		// Arrow controls
 		if( !dom.wrapper.querySelector( '.controls' ) && config.controls ) {
@@ -308,6 +321,11 @@ var Reveal = (function(){
 		}
 	}
 
+  function myOverview() {
+    console.log('clicked');
+    toggleOverview();
+  }
+
 	function addEventListeners() {
 		document.addEventListener( 'touchstart', onDocumentTouchStart, false );
 		document.addEventListener( 'touchmove', onDocumentTouchMove, false );
@@ -317,6 +335,9 @@ var Reveal = (function(){
 		if( config.keyboard ) {
 			document.addEventListener( 'keydown', onDocumentKeyDown, false );
 		}
+
+		//dom.reloadBtn.addEventListener( 'click', initialize, false );
+		dom.overviewBtn.addEventListener( 'click', myOverview, false );
 
 		if ( config.controls && dom.controls ) {
 			dom.controlsLeft.addEventListener( 'click', preventAndForward( navigateLeft ), false );
@@ -714,11 +735,30 @@ var Reveal = (function(){
 	 * overview is open, false means it's closed.
 	 */
 	function toggleOverview( override ) {
+
+		dom.overviewBtn.classList.remove( 'enabled' );
+
+		// Add the 'enabled' class to the available routes
+
 		if( typeof override === 'boolean' ) {
-			override ? activateOverview() : deactivateOverview();
+			//override ? activateOverview() : deactivateOverview();
+			if (override) {
+        activateOverview();
+        dom.overviewBtn.classList.add( 'enabled' );
+      }
+      else {
+        deactivateOverview();
+      }
 		}
 		else {
-			isOverviewActive() ? deactivateOverview() : activateOverview();
+			//isOverviewActive() ? deactivateOverview() : activateOverview();
+			if (isOverviewActive()) {
+        deactivateOverview();
+      }
+      else {
+        activateOverview();
+        dom.overviewBtn.classList.add( 'enabled' );
+      }
 		}
 	}
 

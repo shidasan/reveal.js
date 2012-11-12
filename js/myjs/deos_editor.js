@@ -3,15 +3,7 @@
  * <textarea id="editor">hello, world</textarea>
  */
 
-var dscript_editors = [];
-
-function Editor_init() {
-  dscript_editors.push(createEditor_chenji($('#chenji_editor')));
-  dscript_editors.push(createEditor_deos($('#deos_editor')));
-  Editor_refresh();
-}
-
-function createEditor_chenji($dom) {
+function createEditor_deos($dom) {
 		var editor = CodeMirror(function(elt) {
 			$dom.replaceWith(elt);
 			}, {
@@ -65,12 +57,12 @@ function createEditor_chenji($dom) {
 						case "StartTask":
 							break;
 						case "EndTask":
-							spinner_chenji.stop();
+							spinner_deos.stop();
 							script_flag = false;
 							return false;
 						case "DScriptMessage":
 							zabbix_notify_info(value.Body.replace(/\#(.+)$/, ""));
-							$("#error_log").append(value.Body.replace(/\#(.+)$/, ""));
+							$("#error_log_deos").append(value.Body.replace(/\#(.+)$/, ""));
 							break;
 						case "DScriptApproval":
 							if (value.Ip !== undefined) {
@@ -78,7 +70,7 @@ function createEditor_chenji($dom) {
 							}
 							break;
 						default :
-							$("#error_log").append(JSON.stringify(value) + "\n");
+							$("#error_log_deos").append(JSON.stringify(value) + "\n");
 							//if(value.ScriptLine !== undefined) {
 							//	setTimeout( function() {
 							//		libs.setLineError(value.ScriptLine);
@@ -98,10 +90,10 @@ function createEditor_chenji($dom) {
 			});
 		}
 		};
-  $('#script_select').change(function() {
+  $('#script_select_deos').change(function() {
     var data = {
 			'Method': 'SendScriptName',
-			'ScriptName': $('#script_select option:selected').val(),
+			'ScriptName': $('#script_select_deos option:selected').val(),
 		};
 		$.ajax({
 			url:'cgi-bin/scriptSender.cgi',
@@ -116,22 +108,23 @@ function createEditor_chenji($dom) {
 			},
 			dataType:'json'
 		});
-
   });
-	$("#exec").click(function(){
-	console.log($('#ip_select option:selected').val());
-    Spinner_chenji_start();
+	$("#exec_deos").click(function(){
+	console.log($('#ip_select_deos option:selected').val());
+    Spinner_deos_start();
 		var data = {
 			'Method': 'SendDSE',
-      'Name': $('#script_select option:selected').val(),
+      'Name': $('#script_select_deos option:selected').val(),
 			'Script': editor.getValue(),
 			'Option': '',
-			'To': $('#ip_select option:selected').val(),
+			'To': $('#ip_select_deos option:selected').val(),
 			'From': '127.0.0.1:80',
 			'event': 'D-Task'
 		};
 		$.ajax({
+			//url:'cgi-bin/checkKillSender.cgi',
 			url:'cgi-bin/testSender.cgi',
+			//url:'cgi-bin/DCtrlSender.cgi',
 			type : 'POST',
 			data : data,
 			error:function(){$("#log1").text("error1"); },
@@ -147,19 +140,37 @@ function createEditor_chenji($dom) {
 			dataType:'json'
 		});
 	});
+	$("#check_deos").click(function(){
+		var data = {
+			'Method': 'SendDSE',
+//			'Name': $('#script_select option:selected').val(),
+			'Script': editor.getValue(),
+			'Option': '',
+//			'To': $('#ip_select option:selected').val(),
+			'From': '127.0.0.1:80',
+			'event': 'D-Task'
+		};
+		console.log('----------------------------');
+		console.log(data);
+		$.ajax({
+			url:'cgi-bin/findRisk.cgi',
+			type : 'POST',
+			data : data,
+			success:make_risk_table,
+			error:function(XMLHttpRequest, textStatuc, errorThrown){
+				console.log("error");
+				console.log(XMLHttpRequest);
+				console.log(textStatuc);
+				console.errorThrown();
+//				$("#log1").text("error1");
+			},
+			complete:function(data){
+				console.log("complete");
+//				log.getLog(data.responseText,0);
+			},
+			dataType:'json'
+		});
+	});
 	return editor;
 };
 
-function Editor_chenji_load(script) {
-  $('#chenji_editor').html(script);
-  Editor_refresh();
-}
-
-function Editor_refresh() {
-  for(var i = 0; i < dscript_editors.length; i++) {
-    dscript_editors[i].refresh();
-  }
-  setTimeout( function() {
-    Editor_refresh();
-  },1000);
-}

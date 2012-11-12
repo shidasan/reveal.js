@@ -17,7 +17,8 @@
 		
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
-		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css" media="screen"/>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css" media="all"/>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-responsive.css" media="screen"/>
 		<link rel="stylesheet" type="text/css" href="css/jquery.pnotify.default.css" media="all"/>
 		<link rel="stylesheet" type="text/css" href="css/jquery.pnotify.default.icons.css" media="screen"/>
 
@@ -52,15 +53,8 @@
 						<h2>倉光チーム Demo</h2>
 						<h2>概要</h2>
 					</div>
-					<div id="demo_overview">
+					<div id="demo_overview" style="left: 50%; overflow: visible;">
 						<img src="./img/demo_overview.png"></img>
-						<div id="footer">
-							<p>Powered by</p>
-							<img src="./img/Zabbix_logo_original.png"></img>
-							<img src="./img/dscript_logo.png"></img>
-							<p>D-Case Weaver</p>
-							<p>Alert Me</p>
-						</div>
 					</div>
 				</section>
 				<section>
@@ -68,14 +62,16 @@
 					<div id="title">
 						<h2>システム構成図</h2>
 					</div>
-					<div id="arch"></div>
+					<div style="position: relative; left: 50%; float:left; overflow: visible;">
+						<img id="archzbx" src="/zabbix/map.php?sysmapid=1" style="position: relative; left: -50%;"></img>
+					</div>
 					</section>
 					<section>
 						<div id="title">
 							<h2>dcase-weaver</h2>
 						</div>
 						<div id="dcase-weaver-frame">
-							<iframe src="dcase-weaver/offline.html" width=100% height=500></iframe>
+							<iframe src="dcase-weaver/offline.html" width=100% height=480></iframe>
 						</div>
 					</section>
 				</section>
@@ -85,7 +81,7 @@
 						<h2>Web Camera Service</h2>
 					</div>
 					<div id="motion">
-						<iframe src="http://192.168.59.151:8081" width="640" height="480">
+						<iframe src="http://192.168.59.151:8082" width="640" height="480">
 						Please tell Administator to install alertme.
 						</iframe>
 					</div>
@@ -94,24 +90,28 @@
 					<section>
 						<div id="title">
 							<h2>サーバ監視項目</h2>
+							<h3>CPU 使用率</h3>
 						</div>
-						<h2>CPU 使用率</h2>
-						<img id="cpu"></img>
-						<form>
+						<div class="zbx_contents">
+							<img id="cpu"></img>
+						</div>
+						<form class="zbx_form">
 							<select name="Server" id="cpu_select" >
 								<option value="et2">Node 1
 								<option value="et3">Node 2
-								<option value="Zabbix">DSE Manager
+								<option value="Zabbix server">DSE Manager
 							</select>
 						</form>
 					</section>
 					<section>
 						<div id="title">
 							<h2>サーバ監視項目</h2>
+							<h3>メモリ空き容量</h3>
 						</div>
-						<h2>メモリ空き容量</h2>
-						<img id="memory"></img>
-						<form>
+						<div class="zbx_contents">
+							<img id="memory"></img>
+						</div>
+						<form class="zbx_form">
 							<select name="Server" id="memory_select">
 								<option value="et2">Node 1
 								<option value="et3">Node 2
@@ -122,22 +122,24 @@
 					<section>
 						<div id="title">
 							<h2>サーバ監視項目</h2>
+							<h3>ネットワーク使用率</h3>
 						</div>
-						<h2>ネットワーク使用率</h2>
-						<img id="network"></img>
-						<form>
+						<div class="zbx_contents">
+							<img id="network"></img>
+						</div>
+						<form class="zbx_form">
 							<select name="Server" id="network_select">
 								<option value="et2">Node 1
 								<option value="et3">Node 2
-								<option value="Zabbix">DSE Manager
+								<option value="Zabbix server">DSE Manager
 							</select>
 						</form>
 					</section>
 					<section>
 						<div id="title">
 							<h2>サーバ監視項目</h2>
+							<h3>障害状況</h3>
 						</div>
-						<h2>障害状況</h2>
 						<table class="table">
 							<thead><tr>
 								<th>ホスト名</th>
@@ -149,39 +151,34 @@
 					</section>
 				</section>
 				<section>
-				<section>
+					<section>
 				<div id="title">
-					<h2>D-Script エディタ</h2>
+					<div id="script">
+						<h2>D-Script エディタ</h2>
+						<h3>開発者 ちぇんじぃの場合</h3>
+					</div>
 				</div>
-				<div class="load" style="position:absolute; left: 50%; top: 50%"></div>
+				<div class="load" id="load_chenji" style="position:absolute; left: 50%; top: 50%"></div>
 				<form action="" method="POST">
-					<textarea class="editor" name="editor" >
-import ("posix.process");
-import ("cstyle");
+					<textarea class="editor" name="editor" id="chenji_editor">
+// edit script
 
-void f() {
-  int i = 0;
-  while (i < 100) {
-    System.sleep(1);
-    System.p(i);
-    i = i + 1;
-  }
-}
 
-f();
 
 
 					</textarea>
-					<div style="float: left">
+					<div style="float: left; margin-top: 20px">
 						<select name="ip" id="ip_select">
-							<option value="192.168.59.150">Node 1
-							<option value="192.168.59.150">Node 2
-							<option value="192.168.59.150">DSE Manager
+							<option value="192.168.59.151:8080">Node 1
+							<option value="192.168.59.160:8080">Node 2
+							<option value="127.0.0.1:8080">DSE Manager
 						</select>
 						<select name="script" id="script_select">
-							<option value="foo.k">foo.k
-							<option value="bar.k">bar.k
-							<option value="hoge.k">hoge.k
+							<option value="reboot.k">reboot.k
+							<option value="faultInject.k">faultInjector.k
+							<option value="script_chenji.k">script_chenji.k
+							<option value="script_deos.k">script_deos.k
+							<option value="hoge.k">test.k
 						</select>
 						<button type="button" id="exec" class="btn btn-primary" style="margin-top:20px">execute</button>
 					</div>
@@ -208,119 +205,91 @@ f();
 							</tr>
 						</thead>
 						<tbody>
-						<!--
-							<tr>
-								<th>hello, world</th>
-								<th>hello, world</th>
-								<th>hello, world</th>
-								<th>hello, world</th>
-							</tr>
-						-->
 						</tbody>
 					</table>
 				</section>
-				<!-- Modal -->
-				<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						<h3 id="myModalLabel">RiskDB セキュリティアラート</h3>
-					</div>
-					<div class="modal-body">
-						hoge.k 内で kill コマンドが見つかりました. プロセスIDは123456になります.<br>
-						実行してもよろしいでしょうか?"
-					</div>
-					<div class="modal-footer">
-						<button id="agreedExec" class="btn" data-dismiss="modal" aria-hidden="true">実行</button>
-						<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">停止</button>
+				</section>
+				<section>
+				<section>
+				<div id="title">
+					<div id="script">
+						<h2>D-Script エディタ</h2>
+						<h3>DEOSの場合</h3>
 					</div>
 				</div>
-				</section>
-				<!--
-				<section>
-					<div id="title">
-						<h2>D-Script エディタ</h2>
+				<div class="load" id="load_deos" style="position:absolute; left: 50%; top: 50%"></div>
+				<form action="" method="POST">
+					<textarea class="editor" name="editor" id="deos_editor">
+// edit script
+
+
+
+
+					</textarea>
+					<div style="float: left; margin-top: 20px">
+						<select name="ip" id="ip_select_deos">
+							<option value="192.168.59.151:8080">Node 1
+							<option value="192.168.59.160:8080">Node 2
+							<option value="192.168.59.150:8080">DSE Manager
+						</select>
+						<select name="script" id="script_select_deos">
+							<option value="reboot.k">reboot.k
+							<option value="faultInject.k">faultInjector.k
+							<option value="script_chenji.k">script_chenji.k
+							<option value="script_deos.k">script_deos.k
+							<option value="hoge.k">test.k
+						</select>
+						<button type="button" id="exec_deos" class="btn" style="margin-top:20px">execute</button>
+						<button type="button" id="check_deos" class="btn btn-primary" style="margin-top:20px">check</button>
 					</div>
-					<form action="" method="POST">
-						<textarea class="editor" name="editor" >
-// Task B;
-import ("posix.process");
-System.sleep(10);
-
-
-
-
-
-
-
-
-						</textarea>
-							<div style="float: left">
-								<select name="ip" id="ip_select">
-									<option value="192.168.59.150">Node 1
-									<option value="192.168.59.150">Node 2
-									<option value="192.168.59.150">DSE Manager
-								</select>
-								<select name="script" id="script_select">
-									<option value="foo.k">foo.k
-									<option value="bar.k">bar.k
-									<option value="hoge.k">hoge.k
-								</select>
-								<button type="button" class="btn btn-primary" style="margin-top:20px">execute</button>
-							</div>
-					</form>
-					<div id="error_log"></div>
+				</form>
 				</section>
 				<section>
+				  <div id="title">
+					<h2>D-Script Risks</h2>
+				  </div>
+				  <div style="height:480px;overflow:auto;">
+					<table id="risk_table_deos" class="table table-hover">
+					  <thead>
+						<tr>
+						  <th class="span2">keyword</th>
+						  <th class="span4">words</th>
+						  <th class="span5">strategy</th>
+						  <th class="span1">skip</th>
+						</tr>
+					  </thead>
+					  <tbody>
+					  </tbody>
+					</table>
+				  </div>
+				  <button type="button" id="secure_execution_deos" class="btn btn-primary" style="margin-top:20px">secure execution</button>
+				</section>
+				<section>
 					<div id="title">
-						<h2>D-Script エディタ</h2>
+						<h2>D-Script Result</h2>
 					</div>
-					<form action="" method="POST">
-						<textarea class="editor" name="editor" >
-// Task C;
-import ("posix.process");
-System.sleep(10);
-
-
-
-
-
-
-
-
-
-						</textarea>
-						<div style="float: left">
-							<select name="ip" id="ip_select">
-								<option value="et2">Node 1
-								<option value="et3">Node 2
-								<option value="Zabbix">DSE Manager
-							</select>
-							<select name="script" id="script_select">
-								<option value="foo.k">foo.k
-								<option value="bar.k">bar.k
-								<option value="hoge.k">hoge.k
-							</select>
-							<button type="button" class="btn btn-primary" style="margin-top:20px">execute</button>
-						</div>
-					</form>
-					<div id="error_log"></div>
+					<div id="error_log_deos"></div>
 				</section>
-				-->
-				</section>
-					<!--
-					<section>
+				<section>
 					<div id="title">
 						<h2>Fault Matrix</h2>
 					</div>
-					<div id="fault_matrix"></div>
-					</section>
-					<section>
-					<iframe src="./alertme/static/index.html" width="1000" height="900">
-						Please tell Administator to install alertme.
-					</iframe>
-					</section>
+					<div id="fault_matrix_deos"></div>
+					<table id="fault_table_deos" class="table table-hover">
+						<thead>
+							<tr>
+								<th>API</th>
+								<th>FileName</th>
+								<th>Line</th>
+								<th>FaultType</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
 				</section>
-				-->
+				</section>
+					<!--
 				<section>
 					<section>
 						<div id="title">
@@ -333,24 +302,74 @@ System.sleep(10);
 							<h2>D-Case</h2>
 							<h2>"RAMディスクにデータをコピーする"</h2>
 						</div>
-						<div id="d_system"></div>
 					</section>
 					<section>
 						<div id="title">
 							<h2>D-Case</h2>
 							<h2>"RAMディスクにデータをコピーする"</h2>
 						</div>
-						<div id="d_system"> </div>
 					</section>
 					<section>
 						<div id="title">
 							<h2>D-Case</h2>
 							<h2>"RAMディスクにデータをコピーする"</h2>
 						</div>
-						<div id="d_system"> </div>
+					</section>
+				</section>
+					-->
+				<section>
+					<section>
+						<div id="title">
+							<h2>Script Language for Embedded System</h2>
+						</div>
+						<div style="text-align: center">
+						<video src="./mov/inside_track.mov" width="640" height="480" controls="controls">
+							<p>Cannot open video file on your browser</p>
+						</video>
+						</div>
+					</section>
+					<section>
+						<div id="title">
+							<h2>JavaScript Translation</h2>
+						</div>
+						<div style="left: 50%; overflow: visible;">
+							<iframe src="k2js_demo/index.html" width="100%" height="100%">
+							</iframe>
+						</div>
+					</section>
+					<section>
+					  <div id="title">
+						<h2>Risk DB demo</h2>
+					  </div>
+					  <div id="risk_db_demo">
+						  <input type="text">
+						  <button type="button" class="btn btn-primary">search</button>
+						  <div style="height:480px;overflow:auto;">
+							<table class="table table-hover">
+							  <thead>
+								<tr>
+								  <th class="span3">keyword</th>
+								  <th class="span9">words</th>
+								</tr>
+							  </thead>
+							  <tbody>
+							  </tbody>
+							</table>
+						  </div>
+					  </div>
+					</section>
+					<section>
+					  <div id="title">
+						<h2>DScript Enigine's Architecture</h2>
+					  </div>
+
+					  <div id="dse_arch" style="text-align: center">
+						<img src="./img/dse.png" width="70%"></img>
+					  </div>
 					</section>
 				</section>
 			</div>
+		<footer id="footer-content"> </footer>
 		<script src="js/jquery-ui-1.8.13.custom.min.js" charset="utf-8"></script>
 		<script src="js/jquery.transit.js"></script>
 		<script src="js/jquery.pnotify.js"></script>
@@ -365,8 +384,9 @@ System.sleep(10);
 		<script src="js/myjs/config.js"></script>
 		<script src="js/myjs/spinner.js"></script>
 		<script src="js/myjs/notify.js"></script>
-		<script src="js/myjs/arch.js"></script>
+		<!-- <script src="js/myjs/arch.js"></script> -->
 		<script src="js/myjs/faultMatrix.js"></script>
+		<script src="js/myjs/footer.js"></script>
 		<script src="js/myjs/graph.js"></script>
 		<script src="js/myjs/bpmn.js"></script>
 		<script src="js/myjs/gsn.js"></script>
@@ -375,8 +395,11 @@ System.sleep(10);
 		<script src="js/myjs/dmng.js"></script>
 		<script src="js/myjs/dcase.js"></script>
 		<script src="js/myjs/demo.js"></script>
+		<script src="js/myjs/risk_db.js"></script>
 
 		<!-- editor -->
+		<script src="js/myjs/check.js"></script>
+		<script src="js/myjs/deos_editor.js"></script>
 		<script src="js/myjs/editor.js"></script>
 		<script src="lib/codemirror/lib/codemirror.js"></script>
 		<link rel="stylesheet" href="lib/codemirror/lib/codemirror.css">
@@ -386,8 +409,6 @@ System.sleep(10);
 		<script>
 			Reveal.initialize({
 				controls: true,
-				progress: true,
-				history: false,
 				
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/linear(2d)
