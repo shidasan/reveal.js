@@ -34,7 +34,7 @@ function createEditor_deos($dom) {
 				url:'cgi-bin/zabbixpol.php',
 				type:'POST',
 				data: {"JSON" : data},
-				error:function() { $("#error_log").text("error") },
+				error:function() { $("#error_log_deos").text("error") },
 				complete:function(res_data) {
 					var res_json = JSON.parse(res_data.responseText);
 					var t = 100;
@@ -59,6 +59,7 @@ function createEditor_deos($dom) {
 						case "EndTask":
 							spinner_deos.stop();
 							script_flag = false;
+							Matrix_animation_deos();
 							return false;
 						case "DScriptMessage":
 							zabbix_notify_info(value.Body.replace(/\#(.+)$/, ""));
@@ -67,6 +68,25 @@ function createEditor_deos($dom) {
 						case "DScriptApproval":
 							if (value.Ip !== undefined) {
 								zabbix_form_notify(value.Body.replace(/\#(.+)$/, ""), value.Ip);
+							}
+							break;
+						case "DScriptError":
+							value = value.Body;
+							$("#error_log_deos").append(JSON.stringify(value) + "<br>");
+							if(value.FaultType !== undefined) {
+								$("#fault_body_deos").append('<tr class="fault_element_deos"><td>' + value.Api + "</td>" +"<td>"+value.ScriptLine+"</td>" + "<td>"+value.FaultType + "</td></tr>")
+                                Matrix_fault_deos(value.FaultType);
+							}
+							break;
+						case "DScriptCompilerMessage":
+						case undefined:
+							$("#error_log_deos").append(JSON.stringify(value) + "<br>");
+							if(value.ScriptLine !== undefined) {
+								libs.setLineError(value.ScriptLine);
+								if(value.FaultType !== undefined) {
+									$("#fault_body_deos").append('<tr class="fault_element_deos"><td>' + value.Api + "</td>" +"<td>"+value.ScriptLine+"</td>" + "<td>"+value.FaultType + "</td></tr>")
+                                    Matrix_fault_deos(value.FaultType);
+								}
 							}
 							break;
 						default :
@@ -135,6 +155,9 @@ function createEditor_deos($dom) {
 					}else {
 						json_data["server"] = "DSE Manager";
 					}
+					$("#error_log_deos").text("");
+					Matrix_faultType_deos = [];
+					Matrix_animation_init_deos();
 					log.getLog(data.responseText,0);
 			},
 			dataType:'json'

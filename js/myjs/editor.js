@@ -63,8 +63,6 @@ function createEditor_chenji($dom) {
 						console.log(value.Method);
 						switch(value.Method) {
 						case "StartTask":
-							Matrix_faultType = [];
-							Matrix_animation_init();
 							break;
 						case "EndTask":
 							console.log("end"+value.Method);
@@ -164,6 +162,8 @@ function createEditor_chenji($dom) {
 						json_data["server"] = "DSE Manager";
 					}
 					$("#error_log").text("");
+					Matrix_faultType = [];
+					Matrix_animation_init();
 					log.getLog(data.responseText,0);
 			},
 			dataType:'json'

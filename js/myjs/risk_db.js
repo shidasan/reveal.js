@@ -54,10 +54,10 @@ function risk_db_demo_init() {
 			risk_db_table_update(keyword);
 		}
 	});
-	$("#risk_db_demo button").change(function() {
-		var keyword = $("risk_db_demo input").val();
+	$("#risk_db_demo button").click(function() {
+		var keyword = $("#risk_db_demo input").val();
 		if (keyword != "") {
-			risk_db_demo_table_update(keyword);
+			risk_db_table_update(keyword);
 		}
 	});
 }
