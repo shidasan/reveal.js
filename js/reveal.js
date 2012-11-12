@@ -321,6 +321,11 @@ var Reveal = (function(){
 		}
 	}
 
+  function myOverview() {
+    console.log('clicked');
+    toggleOverview();
+  }
+
 	function addEventListeners() {
 		document.addEventListener( 'touchstart', onDocumentTouchStart, false );
 		document.addEventListener( 'touchmove', onDocumentTouchMove, false );
@@ -332,7 +337,7 @@ var Reveal = (function(){
 		}
 
 		dom.reloadBtn.addEventListener( 'click', initialize, false );
-		dom.overviewBtn.addEventListener( 'click', toggleOverview, false );
+		dom.overviewBtn.addEventListener( 'click', myOverview, false );
 
 		if ( config.controls && dom.controls ) {
 			dom.controlsLeft.addEventListener( 'click', preventAndForward( navigateLeft ), false );
@@ -738,23 +743,19 @@ var Reveal = (function(){
 		if( typeof override === 'boolean' ) {
 			//override ? activateOverview() : deactivateOverview();
 			if (override) {
-        console.log('active boolean');
         activateOverview();
         dom.overviewBtn.classList.add( 'enabled' );
       }
       else {
-        console.log('deactive boolean');
         deactivateOverview();
       }
 		}
 		else {
 			//isOverviewActive() ? deactivateOverview() : activateOverview();
 			if (isOverviewActive()) {
-        console.log('deactive else');
         deactivateOverview();
       }
       else {
-        console.log('active else');
         activateOverview();
         dom.overviewBtn.classList.add( 'enabled' );
       }

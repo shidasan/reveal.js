@@ -157,17 +157,15 @@ body .reveal #footer-content {
 			float: left;
 			margin-right: 10px;
 			margin-bottom: 15px;
-			width: 200px;
+			width: 170px;
 		}
 		
 			body .reveal #footer-content ul li p{
 				display: table-cell;
 				text-align: center;
 				vertical-align: middle;
-				width: 200px!important;
+				width: 170px!important;
 				width: auto;
-				height: 80px!important;
-				height: auto;
 				font-size: 20px;
 			}
 			

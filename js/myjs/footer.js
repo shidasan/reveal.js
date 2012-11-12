@@ -31,5 +31,6 @@ function Footer_init() {
   footer.setImg('deos_logo.gif', 50);
   footer.setImg('ynu_logo.gif', 60);
   footer.setImg('Zabbix_logo_original.png', 30);
+  footer.setImg('motion-trans.gif', 40);
   footer.setName('D-Case Weaver');
 }

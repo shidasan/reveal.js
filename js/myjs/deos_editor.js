@@ -170,6 +170,7 @@ function createEditor_deos($dom) {
 			},
 			dataType:'json'
 		});
+    Reveal.slide(5, 1)
 	});
 	return editor;
 };
