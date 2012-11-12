@@ -21,6 +21,7 @@
 		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-responsive.css" media="screen"/>
 		<link rel="stylesheet" type="text/css" href="css/jquery.pnotify.default.css" media="all"/>
 		<link rel="stylesheet" type="text/css" href="css/jquery.pnotify.default.icons.css" media="screen"/>
+		<link rel="stylesheet" type="text/css" href="css/animate.css"/>
 
 		<!-- my css -->
 		<link rel="stylesheet" type="text/css" href="css/gsn.css"/>
@@ -28,6 +29,7 @@
 		<link rel="stylesheet" type="text/css" href="css/bpmn.css"/>
 		<link rel="stylesheet" type="text/css" href="css/matrix.css"/>
 		<link rel="stylesheet" type="text/css" href="css/myreveal.css"/>
+		<link rel="stylesheet" type="text/css" href="css/slideshow.css"/>
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
@@ -38,17 +40,7 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<!--
 				<section>
-					<div id="title">
-						<h2>test</h2>
-					</div>
-					<button type="button" class="btn btn-primary" style="margin-top:20px" onclick="zabbix_form_notify('hello', 'loclahost');">form</button>
-				</section>
-				-->
-				<div id="form_notice" style="display: none;"></div>
-				<section>
-					<!--<img id="title" src="./img/ET2012LOGO.jpg" width="200px"></img>-->
 					<div id="title">
 						<h2>倉光チーム Demo</h2>
 						<h2>概要</h2>
@@ -56,6 +48,17 @@
 					<div id="demo_overview" style="left: 50%; overflow: visible;">
 						<img src="./img/demo_overview.png"></img>
 					</div>
+					<!--
+					<div id="demo_overview">
+						<div class="slideshow">
+							<div class="slide-images">
+								<img src="img/slide/1.png" alt="image01" title="slide 1" style="display:block;"/>
+								<img src="img/slide/2.png" alt="image02" title="slide 2"/>
+								<img src="img/slide/3.png" alt="image03" title="slide 3"/>
+							</div>
+						</div>
+					</div>
+					-->
 				</section>
 				<section>
 					<section>
@@ -84,6 +87,7 @@
 						<iframe src="http://192.168.59.151:3082" width="640" height="480">
 						Please tell Administator to install alertme.
 						</iframe>
+						<button type="button" id="fault" class="btn" style="margin-bottom: 10px">fault</button>
 					</div>
 				</section>
 				<section>
@@ -174,8 +178,6 @@
 							<option value="127.0.0.1:8080">DSE Manager</option>
 						</select>
 						<select name="script" id="script_select">
-							<option value="reboot.ds">reboot.ds</option>
-							<option value="faultInject.ds">faultInjector.ds</option>
 							<option value="script_chenji.ds">script_chenji.ds</option>
 							<option value="script_deos.ds">script_deos.ds</option>
 						</select>
@@ -188,13 +190,13 @@
 					<div id="title">
 						<h2>D-Script Result</h2>
 					</div>
-					<div id="error_log"></div>
+					<h3><div id="error_log" style="word-wrap: break-word; overflow: visible; padding :10px;"></div></h3>
 				</section>
 				<section>
 					<div id="title">
 						<h2>Fault Matrix</h2>
 					</div>
-					<div id="matrix_svg"></div>
+					<div id="matrix_svg" style="position: relative; left: 25%;  overflow: visible;"></div>
 					<table id="fault_table" class="table table-hover">
 						<thead>
 							<tr>
@@ -232,10 +234,9 @@
 							<option value="192.168.59.150:8080">DSE Manager</option>
 						</select>
 						<select name="script" id="script_select_deos">
-							<option value="reboot.ds">reboot.ds</option>
-							<option value="faultInject.ds">faultInjector.ds</option>
 							<option value="script_chenji.ds">script_chenji.ds</option>
 							<option value="script_deos.ds">script_deos.ds</option>
+							<option value="script_test.ds">script_test.ds</option>
 						</select>
 						<button type="button" id="exec_deos" class="btn" style="margin-bottom: 10px">execute</button>
 						<button type="button" id="check_deos" class="btn btn-primary" style="margin-bottom: 10px">check</button>
@@ -252,7 +253,7 @@
 						<tr>
 						  <th class="span2">goal</th>
 						  <th class="span4">risk</th>
-						  <th class="span5">strategy</th>
+						  <th class="span5">evidence</th>
 						  <th class="span1">skip</th>
 						</tr>
 					  </thead>
@@ -266,7 +267,7 @@
 					<div id="title">
 						<h2>D-Script Result</h2>
 					</div>
-					<div id="error_log_deos"></div>
+					<h3><div id="error_log_deos" style="word-wrap: break-word;"></div></h3>
 				</section>
 				<section>
 					<div id="title">
@@ -286,38 +287,23 @@
 					</table>
 				</section>
 				</section>
-					<!--
 				<section>
 					<section>
 						<div id="title">
-							<h2>D-Case Flow</h2>
+							<h2>要素技術</h2>
 						</div>
-						<div id="bpmn"> </div>
+						<ul>
+							<li><h3>Tiny Konoha: 組み込み向け超軽量スクリプト言語</h3></li>
+							<li><h3>Konoha 2 JS: 静的型付け言語KonohaからJavaScriptへのソースコード変換機</h3></li>
+							<li><h3>DSE: 分散環境における高信頼スクリプト実行基盤</h3></li>
+							<li><h3>RiskDB: リスクの自動提案機構</h3></li>
+							<li><h3>JIT: 静的型付けスクリプト言語におけるJITコンパイラ</h3></li>
+						</ul>
 					</section>
 					<section>
 						<div id="title">
-							<h2>D-Case</h2>
-							<h2>"RAMディスクにデータをコピーする"</h2>
-						</div>
-					</section>
-					<section>
-						<div id="title">
-							<h2>D-Case</h2>
-							<h2>"RAMディスクにデータをコピーする"</h2>
-						</div>
-					</section>
-					<section>
-						<div id="title">
-							<h2>D-Case</h2>
-							<h2>"RAMディスクにデータをコピーする"</h2>
-						</div>
-					</section>
-				</section>
-					-->
-				<section>
-					<section>
-						<div id="title">
-							<h2>Script Language for Embedded System</h2>
+							<h2>Tiny Konoha</h2>
+							<h3>組み込み向け超軽量スクリプト言語</h3>
 						</div>
 						<div style="text-align: center">
 						<video src="./mov/inside_track.mov" width="640" height="480" controls="controls">
@@ -327,7 +313,8 @@
 					</section>
 					<section>
 						<div id="title">
-							<h2>JavaScript Translation</h2>
+							<h2>Konoha 2 JS</h2>
+							<h3>静的型付け言語KonohaからJavaScriptへのソースコード変換機</h3>
 						</div>
 						<div style="left: 50%; overflow: visible;">
 							<iframe src="k2js_demo/index.html" width="100%" height="100%">
@@ -336,7 +323,8 @@
 					</section>
 					<section>
 					  <div id="title">
-						<h2>Risk DB demo</h2>
+						<h2>Risk DB</h2>
+						<h3>リスクの自動提案機構</h3>
 					  </div>
 					  <div id="risk_db_demo">
 						  <input type="text" style="margin-top:10px;">
@@ -357,13 +345,27 @@
 					</section>
 					<section>
 					  <div id="title">
-						<h2>DScript Enigine's Architecture</h2>
+						<h2>DSE: DScript Enigine's Architecture</h2>
+						<h3>分散環境における高信頼統合実行環境</h3>
+					  </div>
+
+					  <div id="dse_arch" style="text-align: center">
+						<a id="dsebutton">
+						<img src="./img/dse.png" width="70%"></img>
+						</a>
+					  </div>
+					</section>
+					<section>
+					  <div id="title">
+						<h2>JIT: Just In Time Compiler</h2>
+						<h3>静的型付けスクリプト言語におけるJITコンパイラ</h3>
 					  </div>
 
 					  <div id="dse_arch" style="text-align: center">
 						<img src="./img/dse.png" width="70%"></img>
 					  </div>
 					</section>
+
 				</section>
 			</div>
 		<footer id="footer-content"> </footer>
@@ -372,6 +374,7 @@
 		<script src="js/jquery.pnotify.js"></script>
 		<script src="js/jquery.svg.js"></script>
 		<script src="js/jquery.svganim.js"></script>
+		<script src="js/jquery.slideshow.js"></script>
 		<script src="js/spin.min.js"></script>
 		<script src="lib/js/head.min.js"></script>
 		<script src="plugin/zoom-js/zoom.js"></script>
@@ -381,6 +384,7 @@
 		<script src="js/myjs/config.js"></script>
 		<script src="js/myjs/spinner.js"></script>
 		<script src="js/myjs/notify.js"></script>
+		<script src="js/myjs/fault.js"></script>
 		<!-- <script src="js/myjs/arch.js"></script> -->
 		<script src="js/myjs/faultMatrix.js"></script>
 		<script src="js/myjs/footer.js"></script>
@@ -392,6 +396,7 @@
 		<script src="js/myjs/dmng.js"></script>
 		<script src="js/myjs/dcase.js"></script>
 		<script src="js/myjs/demo.js"></script>
+		<script src="js/myjs/slideshow.js"></script>
 		<script src="js/myjs/risk_db.js"></script>
 
 		<!-- editor -->

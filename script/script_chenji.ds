@@ -1,6 +1,6 @@
-// Edit chenji Script
+// chenji Script
 
 import("dscript.shell");
 
-int pid = getHeavyProcess();
+String pid = getHeavyProcess();
 kill -9 ${pid}
