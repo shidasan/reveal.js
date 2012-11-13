@@ -5,7 +5,7 @@ $("#fault").click(function(){
 			console.log(data);
 		}
 	});
-	dscript_notify_info("Fault was injected.");
+	dscript_notify_info("Fault has been injected.");
 });
 $("#fault_stop").click(function(){
 	$.ajax({
@@ -14,7 +14,7 @@ $("#fault_stop").click(function(){
 			console.log(data);
 		}
 	});
-	dscript_notify_info("Fault was excluded.");
+	dscript_notify_info("Fault has been excluded.");
 });
 $("#reboot_dse").click(function(){
 	$.ajax({

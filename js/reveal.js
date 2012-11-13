@@ -736,7 +736,7 @@ var Reveal = (function(){
 	 */
 	function toggleOverview( override ) {
 
-		dom.overviewBtn.classList.remove( 'enabled' );
+		//dom.overviewBtn.classList.remove( 'enabled' );
 
 		// Add the 'enabled' class to the available routes
 
