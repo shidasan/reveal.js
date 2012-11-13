@@ -216,22 +216,22 @@ function Matrix_animation_deos(){
 
 function Matrix_animation_init_deos(){
   $(".fault_element_deos").remove();
-  var svgDoc = document.getElementById("svgID_deos").contentDocument;
-  var fa = getElementsByClass(svgDoc,"system_f");
-  $.each(fa, function(j,vv){
-    vv.setAttribute("to","0.0");
-  });
-  fa = getElementsByClass(svgDoc,"software_f");
-  $.each(fa, function(j,vv){
-    vv.setAttribute("to","0.0");
-  });
-  fa = getElementsByClass(svgDoc,"user_f");
-  $.each(fa, function(j,vv){
-    vv.setAttribute("to","0.0");
-  });
-  fa = getElementsByClass(svgDoc,"external_f");
-  $.each(fa, function(j,vv){
-    vv.setAttribute("to","0.0");
-  });
-  svgDoc.getElementById("external0").beginElement();
+  //var svgDoc = document.getElementById("svgID_deos").contentDocument;
+  //var fa = getElementsByClass(svgDoc,"system_f");
+  //$.each(fa, function(j,vv){
+  //  vv.setAttribute("to","0.0");
+  //});
+  //fa = getElementsByClass(svgDoc,"software_f");
+  //$.each(fa, function(j,vv){
+  //  vv.setAttribute("to","0.0");
+  //});
+  //fa = getElementsByClass(svgDoc,"user_f");
+  //$.each(fa, function(j,vv){
+  //  vv.setAttribute("to","0.0");
+  //});
+  //fa = getElementsByClass(svgDoc,"external_f");
+  //$.each(fa, function(j,vv){
+  //  vv.setAttribute("to","0.0");
+  //});
+  //svgDoc.getElementById("external0").beginElement();
 }

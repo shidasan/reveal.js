@@ -131,43 +131,11 @@ function createEditor_deos($dom) {
 			});
 		}
 		};
+	for(var key in DSCRIPTS) {
+		$('#script_select_deos').append('<option value="' + key + '">' + key + '</option>');
+	}
 	$('#script_select_deos').change(function() {
-			var scripts = {
-				'script_chenji.ds': '// script_chenji.ds\n\
-\n\
-import("dscript.shell");\n\
-\n\
-boolean KillHeavyProcess() {\n\
-	String pid = getHeavyProcess();\n\
-	kill -9 ${pid}\n\
-}\n\
-\n\
-KillHeavyProcess();',
-				'script_deos.ds': '// script_deos.ds\n\
-\n\
-import("dscript.shell");\n\
-\n\
-boolean KillHeavyProcess() {\n\
-	String pid = getHeavyProcess();\n\
-	String procName = getProcessNameFromPid(pid);\n\
-	if(ask("プロセス ${procName} をkillしてもよろしいですか？")) {\n\
-		kill -9 ${pid}\n\
-	}\n\
-}\n\
-\n\
-KillHeavyProcess();',
-				'fopen_fail.ds': '// fopen_faile.ds\n\
-\n\
-import("cstyle.file");\n\
-\n\
-boolean TestOpendir() {\n\
-	\/\/ directory "/etc/passwd" is not permitted to write\n\
-	FILE fp = fopen("/etc/passwd", "w");\n\
-}\n\
-\n\
-TestOpendir();'
-			};
-			editor.setValue(scripts[$('#script_select_deos option:selected').val()]);
+		editor.setValue(DSCRIPTS[$('#script_select_deos option:selected').val()]);
 	});
 	$("#exec_deos").click(function(){
 	console.log($('#ip_select_deos option:selected').val());

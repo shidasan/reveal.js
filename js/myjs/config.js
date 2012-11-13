@@ -35,3 +35,39 @@ var TASK_D = {
   idx: 3
 }
 
+var DSCRIPTS = {
+	'chenji_response.ds': '// chenji_response.ds\n\
+\n\
+import("dscript.shell");\n\
+\n\
+boolean KillHeavyProcess() {\n\
+	String pid = getHeavyProcess();\n\
+	kill -9 ${pid}\n\
+}\n\
+\n\
+KillHeavyProcess();',
+	'deos_response.ds': '// deos_response.ds\n\
+\n\
+import("dscript.shell");\n\
+\n\
+boolean KillHeavyProcess() {\n\
+	String pid = getHeavyProcess();\n\
+	String procName = getProcessNameFromPid(pid);\n\
+	if(ask("プロセス ${procName} をkillしてもよろしいですか？")) {\n\
+		kill -9 ${pid}\n\
+	}\n\
+}\n\
+\n\
+KillHeavyProcess();',
+	'backup_fail.ds': '// backup_fail.ds\n\
+\n\
+import("cstyle.file");\n\
+\n\
+boolean BackupUserData() {\n\
+	\/\/ directory "/etc/passwd" is not permitted to write\n\
+	FILE fp = fopen("/etc/passwd", "w");\n\
+	/* ... */\n\
+}\n\
+\n\
+BackupUserData();'
+};
