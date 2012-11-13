@@ -8,6 +8,7 @@ var dscript_editors = [];
 function Editor_init() {
   dscript_editors.push(createEditor_chenji($('#chenji_editor')));
   dscript_editors.push(createEditor_deos($('#deos_editor')));
+  dscript_editors.push(createEditor_deos2($('#deos_editor2')));
   Editor_refresh();
 }
 

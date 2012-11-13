@@ -12,8 +12,8 @@
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 		
-		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Rosarivo' rel='stylesheet' type='text/css'>
+		<!--<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>-->
+		<!--<link href='http://fonts.googleapis.com/css?family=Rosarivo' rel='stylesheet' type='text/css'>-->
 		
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
@@ -86,7 +86,7 @@
 						<iframe src="http://192.168.59.151:3082" width="640" height="480">
 						Please tell Administator to install alertme.
 						</iframe>
-						<button type="button" id="fault" class="btn" style="margin-bottom: 10px">inject fault</button>
+						<button type="button" id="fault" class="btn" style="margin-bottom: 10px">障害を発生</button>
 						<!--<button type="button" id="fault_stop" class="btn" style="margin-bottom: 10px">exclude fault</button>-->
 						<!--button type="button" id="reboot_dse" class="btn" style="margin-bottom: 10px">reboot DSE</button-->
 					</div>
@@ -185,14 +185,14 @@ KillHeavyProcess();
 						</select>
 						<select name="script" id="script_select">
 						</select>
-						<button type="button" id="exec" class="btn" style="margin-bottom: 10px">execute</button>
-						<button type="button" id="exec2" class="btn btn-primary" style="margin-bottom: 10px">execute（DEOSサポート有）</button>
+						<button type="button" id="exec" class="btn" style="margin-bottom: 10px">実行</button>
+						<button type="button" id="exec2" class="btn btn-primary" style="margin-bottom: 10px">実行（DEOSサポート有）</button>
 					</div>
 				</form>
 				</section>
 				<section>
 					<div id="title">
-						<h2>D-Script Result</h2>
+						<h2>D-Script 出力結果</h2>
 					</div>
 					<div id="error_log" style="word-wrap: break-word; overflow: auto; height:480px; font-size: 135%;line-height:30px;"></div>
 				</section>
@@ -206,8 +206,8 @@ KillHeavyProcess();
 						<thead>
 							<tr>
 								<th>API</th>
-								<th>Line</th>
-								<th>FaultType</th>
+								<th>コード行数</th>
+								<th>要因の種類</th>
 							</tr>
 						</thead>
 						<tbody id="fault_body">
@@ -246,14 +246,14 @@ KillHeavyProcess();
 						</select>
 						<select name="script" id="script_select_deos">
 						</select>
-						<button type="button" id="exec_deos" class="btn" style="margin-bottom: 10px">execute</button>
-						<button type="button" id="check_deos" class="btn btn-primary" style="margin-bottom: 10px">check</button>
+						<button type="button" id="exec_deos" class="btn" style="margin-bottom: 10px">実行</button>
+						<button type="button" id="check_deos" class="btn btn-primary" style="margin-bottom: 10px">D-Case認証を行う</button>
 					</div>
 				</form>
 				</section>
 				<section>
 				  <div id="title">
-					<h2>D-Script Risks</h2>
+					<h2>D-Scriptのリスク</h2>
 				  </div>
 				  <div style="height:480px;overflow:auto;">
 					<table id="risk_table_deos" class="table table-hover">
@@ -262,23 +262,63 @@ KillHeavyProcess();
 						  <th class="span2">キーワード</th>
 						  <th class="span4">サブゴール</th>
 						  <th class="span5">エビデンス</th>
-						  <th class="span1">skip</th>
+						  <th class="span1">無視</th>
 						</tr>
 					  </thead>
 					  <tbody>
 					  </tbody>
 					</table>
 				  </div>
-				  <button type="button" id="secure_execution_deos" class="btn btn-primary" style="margin-top:20px">secure execution</button>
+				  <button type="button" id="secure_execution_deos" class="btn btn-primary" style="margin-top:20px">合意内容の実行</button>
 				</section>
 				<section>
 					<div id="title">
 						<h2>D-ScriptのD-Case</h2>
 					</div>
 					<div style="position:relative; left:50%;">
-						<img src="img/dcase_risk.png" style="position: relative; left: -25%; -webkit-box-shadow: none; border: none;"></img>
+						<img src="img/dcase_risk.png" style="position: relative; left: -40%; -webkit-box-shadow: none; border: none;"></img>
 					</div>
 				</section>
+				<section>
+				<div id="title">
+					<div id="script">
+						<h2>D-Script エディタ</h2>
+						<h3>合意形成を行ったスクリプト</h3>
+					</div>
+				</div>
+				<div class="load" id="load_deos2" style="position:absolute; left: 50%; top: 50%"></div>
+				<form action="" method="POST">
+					<textarea class="editor" name="editor" id="deos_editor2">
+// script_deos.ds
+
+import("dscript.shell");
+
+boolean KillHeavyProcess() {
+	String pid = getHeavyProcess();
+	String procName = getProcessNameFromPid(pid);
+	if(ask("プロセス ${procName} をkillしてもよろしいですか？")) {
+		kill -9 ${pid}
+	}
+}
+
+KillHeavyProcess();
+					</textarea>
+					<div style="float: left;">
+						<select name="ip" id="ip_select_deos2">
+							<option value="192.168.59.151:8080">Node 1</option>
+							<option value="192.168.59.160:8080">Node 2</option>
+							<option value="192.168.59.150:8080">DSE Manager</option>
+						</select>
+						<!--
+						<select name="script" id="script_select_deos2">
+						</select>
+						-->
+						<button type="button" id="exec_deos2" class="btn btn-primary" style="margin-bottom: 10px">実行</button>
+						<button type="button" id="check_deos2" class="btn" style="margin-bottom: 10px">D-Case認証を行う</button>
+					</div>
+				</form>
+				</section>
+
 				<!--
 				<section>
 					<div id="title">
@@ -324,7 +364,7 @@ KillHeavyProcess();
 					  </div>
 					  <div id="risk_db_demo">
 						  <input type="text" style="margin-top:10px;width:480px;" value="開発チーム間で，作業の進捗について相談する．">
-						  <button type="button" class="btn btn-primary">search</button>
+						  <button type="button" class="btn btn-primary">検索</button>
 						  <div><h4 style="line-height:20px;">
 ある単語から，その単語に関するリスクの検索を行うことができます．<br>
 日本語の文章を単語単位に分解し，各単語についてのリスクの検索を行うこともできます．<br>
@@ -334,8 +374,8 @@ KillHeavyProcess();
 							<table class="table table-hover">
 							  <thead>
 								<tr>
-								  <th class="span3">risk</th>
-								  <th class="span9">dependability goal</th>
+								  <th class="span3">リスク</th>
+								  <th class="span9">リスクに対するディペンダビリティ ゴール</th>
 								</tr>
 							  </thead>
 							  <tbody>
@@ -346,7 +386,7 @@ KillHeavyProcess();
 					</section>
 					<section>
 					  <div id="title">
-						<h2>DSE: DScript Enigine's Architecture</h2>
+						<h2>DSE: DScript Enigine アーキテクチャ</h2>
 						<h3>分散環境における高信頼統合実行環境</h3>
 					  </div>
 					  <div id="dse_arch" style="text-align: center">
