@@ -61,6 +61,20 @@ function make_risk_table(data, dataType) {
 		$elem.append('<td>' + words +'</td>');
 		$elem.append($("<td></td>").append($new_textarea.clone(true)));
 		$elem.append($("<td></td>").append($new_checkbox.clone(true)));
+
+		if (words == "意図しないプロセスを殺してしまう") {
+			$new_textarea.attr("value", "運用者に確認する機構を用意する");
+		}
+		else if (words == "発行するシグナルの種類を間違えてしまう") {
+			$new_textarea.attr("value", "事前にソフトウェアテストを行う");
+		}
+		else if (words == "プロセスを操作する権限がない") {
+			$new_textarea.attr("value", "");
+		}
+		else if (words == "プロセスでの作業データが削除されてしまう") {
+			$new_textarea.attr("value", "");
+		}
+
 		$("#risk_table_deos").children("tbody").append($elem);
 	}
 	function main() {
