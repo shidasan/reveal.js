@@ -41,8 +41,8 @@ var DSCRIPTS = {
 import("dscript.shell");\n\
 \n\
 boolean KillHeavyProcess() {\n\
-	String pid = getHeavyProcess();\n\
-	kill -9 ${pid}\n\
+  String pid = getHeavyProcess();\n\
+  kill -9 ${pid}\n\
 }\n\
 \n\
 KillHeavyProcess();',
@@ -51,22 +51,38 @@ KillHeavyProcess();',
 import("dscript.shell");\n\
 \n\
 boolean KillHeavyProcess() {\n\
-	String pid = getHeavyProcess();\n\
-	String procName = getProcessNameFromPid(pid);\n\
-	if(ask("プロセス ${procName} をkillしてもよろしいですか？")) {\n\
-		kill -9 ${pid}\n\
-	}\n\
+  String pid = getHeavyProcess();\n\
+  String procName = getProcessNameFromPid(pid);\n\
+  if(ask("プロセス ${procName} をkillしてもよろしいですか？")) {\n\
+    kill -9 ${pid}\n\
+  }\n\
 }\n\
 \n\
 KillHeavyProcess();',
-	'backup_fail.ds': '// backup_fail.ds\n\
+	'backup_fail_software.ds': '// backup_fail_software.ds\n\
 \n\
 import("cstyle.file");\n\
 \n\
 boolean BackupUserData() {\n\
-	\/\/ directory "/etc/passwd" is not permitted to write\n\
-	FILE fp = fopen("/etc/passwd", "w");\n\
-	/* ... */\n\
+  \/\/ file "/etc/passwd" is not permitted to write\n\
+  FILE fp = fopen("/etc/passwd", "w");\n\
+  /* ... */\n\
+}\n\
+\n\
+BackupUserData();',
+	'backup_fail_user.ds': '// backup_fail_user.ds\n\
+\n\
+import("cstyle.file");\n\
+\n\
+String ReadLine() {\n\
+	return "/etc";\n\
+}\n\
+\n\
+boolean BackupUserData() {\n\
+  \/\/ Suppose \'input\' is user input variable.\n\
+  String input = ReadLine();\n\
+  FILE fp = fopen(input + "/passwd", "w");\n\
+  /* ... */\n\
 }\n\
 \n\
 BackupUserData();'
