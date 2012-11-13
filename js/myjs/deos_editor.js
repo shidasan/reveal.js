@@ -229,10 +229,16 @@ TestOpendir();'
 				var json = JSON.parse(data.responseText);
 				for(var i=0;i<json.errors.length;i++) {
 					if(json.errors[i].match(/\(error\)/)) {
-						libs.setLineError(json.errors[i].match(/:(.*)\)/)[1]);
+						var line = json.errors[i].match(/:(.*)\)/)[1];
+						if(parseInt(line, 10) >= 5) {
+							libs.setLineError(line - 5);
+						}
 					}
 					else if(json.errors[i].match(/\(warning\)/)) {
-						libs.setLineWarning(json.errors[i].match(/:(.*)\)/)[1]);
+						var line = json.errors[i].match(/:(.*)\)/)[1];
+						if(parseInt(line, 10) >= 5) {
+							libs.setLineWarning(line - 5);
+						}
 					}
 				}
 				console.log("complete");
