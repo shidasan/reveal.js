@@ -226,6 +226,15 @@ TestOpendir();'
 //				$("#log1").text("error1");
 			},
 			complete:function(data){
+				var json = JSON.parse(data.responseText);
+				for(var i=0;i<json.errors.length;i++) {
+					if(json.errors[i].match(/\(error\)/)) {
+						libs.setLineError(json.errors[i].match(/:(.*)\)/)[1]);
+					}
+					else if(json.errors[i].match(/\(warning\)/)) {
+						libs.setLineWarning(json.errors[i].match(/:(.*)\)/)[1]);
+					}
+				}
 				console.log("complete");
 //				log.getLog(data.responseText,0);
 			},
