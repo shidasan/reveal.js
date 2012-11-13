@@ -22,9 +22,17 @@ function createEditor_deos($dom) {
 				editor.setLineClass(line - 1, null);
 				editor.setLineClass(line - 1,"SRed");
 			},
-			setLineClear : function(line) {
-          console.log('lineclear');
+			setLineWarning : function(line) {
+          console.log('linewarning');
 				editor.setLineClass(line - 1, null);
+				editor.setLineClass(line - 1,"SYellow");
+			},
+			setLineClear : function() {
+          console.log('lineclear');
+				var size = editor.lineCount();
+				for(var i=0;i<size;i++) {
+					editor.setLineClass(i, null);
+				}
 			}
 		};
 		var log = { getLog : function(data,index){
@@ -48,7 +56,6 @@ function createEditor_deos($dom) {
 						if(value === null) {
 							continue;
 						}
-						//index = key;
 						if(value.ScriptName === ".\/dse.k") {
 							continue;
 						}
@@ -81,8 +88,19 @@ function createEditor_deos($dom) {
 						case "DScriptCompilerMessage":
 						case undefined:
 							$("#error_log_deos").append(JSON.stringify(value) + "<br>");
+							if(value.ScriptLine === undefined && value.Body.match(/GlobalObject/) == null) {
+								value.ScriptLine = value.Body.match(/k:(.*)\)/)[1];
+							}
 							if(value.ScriptLine !== undefined) {
-								libs.setLineError(value.ScriptLine);
+								if(value.Body.match(/\(warning\)/)) {
+									libs.setLineWarning(value.ScriptLine);
+								}else {
+									libs.setLineError(value.ScriptLine);
+									if(value.FaultType === undefined) {
+										$("#fault_body_deos").append('<tr class="fault_element_deos"><td>CompileError</td><td>'+value.ScriptLine+"</td><td>SoftwareFault</td></tr>")
+										Matrix_fault_deos("SoftwareFault");
+									}
+								}
 								if(value.FaultType !== undefined) {
 									$("#fault_body_deos").append('<tr class="fault_element_deos"><td>' + value.Api + "</td>" +"<td>"+value.ScriptLine+"</td>" + "<td>"+value.FaultType + "</td></tr>")
                                     Matrix_fault_deos(value.FaultType);
@@ -110,25 +128,44 @@ function createEditor_deos($dom) {
 			});
 		}
 		};
-  $('#script_select_deos').change(function() {
-    var data = {
-			'Method': 'SendScriptName',
-			'ScriptName': $('#script_select_deos option:selected').val(),
-		};
-		$.ajax({
-			url:'cgi-bin/scriptSender.cgi',
-			type : 'POST',
-			data : data,
-			error:function(){},
-			complete:function(data){
-					console.log(data.responseText);
-					var res = JSON.parse(data.responseText);
-          var script = res['Script'];
-          editor.setValue(script);
-			},
-			dataType:'json'
-		});
-  });
+	$('#script_select_deos').change(function() {
+			var scripts = {
+				'script_chenji.ds': '// script_chenji.ds\n\
+\n\
+import("dscript.shell");\n\
+\n\
+boolean KillHeavyProcess() {\n\
+	String pid = getHeavyProcess();\n\
+	kill -9 ${pid}\n\
+}\n\
+\n\
+KillHeavyProcess();',
+				'script_deos.ds': '// script_deos.ds\n\
+\n\
+import("dscript.shell");\n\
+\n\
+boolean KillHeavyProcess() {\n\
+	String pid = getHeavyProcess();\n\
+	String procName = getProcessNameFromPid(pid);\n\
+	if(ask("プロセス ${procName} をkillしてもよろしいですか？")) {\n\
+		kill -9 ${pid}\n\
+	}\n\
+}\n\
+\n\
+KillHeavyProcess();',
+				'fopen_fail.ds': '// fopen_faile.ds\n\
+\n\
+import("cstyle.file");\n\
+\n\
+boolean TestOpendir() {\n\
+	\/\/ directory "/etc/passwd" is not permitted to write\n\
+	FILE fp = fopen("/etc/passwd", "w");\n\
+}\n\
+\n\
+TestOpendir();'
+			};
+			editor.setValue(scripts[$('#script_select_deos option:selected').val()]);
+	});
 	$("#exec_deos").click(function(){
 	console.log($('#ip_select_deos option:selected').val());
     Spinner_deos_start();
@@ -158,6 +195,7 @@ function createEditor_deos($dom) {
 					$("#error_log_deos").text("");
 					Matrix_faultType_deos = [];
 					Matrix_animation_init_deos();
+					libs.setLineClear();
 					log.getLog(data.responseText,0);
 			},
 			dataType:'json'

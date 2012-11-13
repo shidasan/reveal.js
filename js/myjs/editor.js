@@ -38,7 +38,10 @@ function createEditor_chenji($dom) {
 			},
 			setLineClear : function(line) {
           console.log('lineclear');
-				editor.setLineClass(line - 1, null);
+				var size = editor.lineCount();
+				for(var i=0;i<size;i++) {
+					editor.setLineClass(i, null);
+				}
 			}
 		};
 		var log = { getLog : function(data,index){
@@ -134,26 +137,44 @@ function createEditor_chenji($dom) {
 			});
 		}
 		};
-  $('#script_select').change(function() {
-    var data = {
-			'Method': 'SendScriptName',
-			'ScriptName': $('#script_select option:selected').val(),
-		};
-		$.ajax({
-			url:'cgi-bin/scriptSender.cgi',
-			type : 'POST',
-			data : data,
-			error:function(){},
-			complete:function(data){
-					console.log(data.responseText);
-					var res = JSON.parse(data.responseText);
-          var script = res['Script'];
-          editor.setValue(script);
-			},
-			dataType:'json'
+		$('#script_select').change(function() {
+			var scripts = {
+				'script_chenji.ds': '// script_chenji.ds\n\
+\n\
+import("dscript.shell");\n\
+\n\
+boolean KillHeavyProcess() {\n\
+	String pid = getHeavyProcess();\n\
+	kill -9 ${pid}\n\
+}\n\
+\n\
+KillHeavyProcess();',
+				'script_deos.ds': '// script_deos.ds\n\
+\n\
+import("dscript.shell");\n\
+\n\
+boolean KillHeavyProcess() {\n\
+	String pid = getHeavyProcess();\n\
+	String procName = getProcessNameFromPid(pid);\n\
+	if(ask("プロセス ${procName} をkillしてもよろしいですか？")) {\n\
+		kill -9 ${pid}\n\
+	}\n\
+}\n\
+\n\
+KillHeavyProcess();',
+				'fopen_fail.ds': '// fopen_faile.ds\n\
+\n\
+import("cstyle.file");\n\
+\n\
+boolean TestOpendir() {\n\
+	\/\/ directory "/etc/passwd" is not permitted to write\n\
+	FILE fp = fopen("/etc/passwd", "w");\n\
+}\n\
+\n\
+TestOpendir();'
+			};
+			editor.setValue(scripts[$('#script_select option:selected').val()]);
 		});
-
-  });
 	$("#exec").click(function(){
 	console.log($('#ip_select option:selected').val());
     Spinner_chenji_start();
@@ -181,6 +202,7 @@ function createEditor_chenji($dom) {
 					$("#error_log").text("");
 					Matrix_faultType = [];
 					Matrix_animation_init();
+					libs.setLineClear();
 					log.getLog(data.responseText,0);
 			},
 			dataType:'json'

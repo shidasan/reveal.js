@@ -42,7 +42,7 @@
 			<div class="slides">
 				<section>
 					<div id="title">
-						<h2>倉光チーム Demo</h2>
+						<h2>倉光チーム D-Script Demo</h2>
 						<h2>概要</h2>
 					</div>
 					<div id="demo_overview" style="left: 50%; overflow: visible;">
@@ -80,8 +80,7 @@
 				</section>
 				<section>
 					<div id="title">
-						<h2>デモ用サービス</h2>
-						<h2>Web Camera Service</h2>
+						<h2>ストリーミング配信サービス</h2>
 					</div>
 					<div id="motion">
 						<iframe src="http://192.168.59.151:3082" width="640" height="480">
@@ -167,13 +166,17 @@
 				<div class="load" id="load_chenji" style="position:absolute; left: 50%; top: 50%"></div>
 				<form action="" method="POST">
 					<textarea class="editor" name="editor" id="chenji_editor">
-// edit script
+// script_chenji.ds
+
 import("dscript.shell");
 
-String pid = getHeavyProcess();
-kill -9 ${pid}
+boolean KillHeavyProcess() {
+	String pid = getHeavyProcess();
+	kill -9 ${pid}
+}
 
-					</textarea>
+KillHeavyProcess();
+				</textarea>
 					<div style="float: left;">
 						<select name="ip" id="ip_select">
 							<option value="192.168.59.151:8080">Node 1</option>
@@ -227,18 +230,16 @@ kill -9 ${pid}
 				<div class="load" id="load_deos" style="position:absolute; left: 50%; top: 50%"></div>
 				<form action="" method="POST">
 					<textarea class="editor" name="editor" id="deos_editor">
-// edit script
+// script_chenji.ds
+
 import("dscript.shell");
 
-boolean killHeavyProcess() {
-  String pid = getHeavyProcess();
-  String name = getProcessNameFromPid(pid);
-  if(ask("プロセス ${name} を kill してもよろしいですか？")) {
-    kill -9 ${pid}
-  }
+boolean KillHeavyProcess() {
+	String pid = getHeavyProcess();
+	kill -9 ${pid}
 }
 
-killHeavyProcess();
+KillHeavyProcess();
 					</textarea>
 					<div style="float: left;">
 						<select name="ip" id="ip_select_deos">
