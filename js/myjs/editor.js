@@ -17,7 +17,10 @@ function createEditor_chenji($dom) {
 			}, {
 				value: $dom.val(),
 				lineNumbers: true,
-				mode: "text/x-konoha"
+				mode: "text/x-konoha",
+				onCursorActivity: function() {
+					editor.setLineClass(editor.getCursor().line, null);
+				}
 			});
     editor.setSize('100%', 350);
 		var libs = {

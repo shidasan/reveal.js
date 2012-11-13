@@ -9,7 +9,10 @@ function createEditor_deos($dom) {
 			}, {
 				value: $dom.val(),
 				lineNumbers: true,
-				mode: "text/x-konoha"
+				mode: "text/x-konoha",
+				onCursorActivity: function() {
+					editor.setLineClass(editor.getCursor().line, null);
+				}
 			});
     editor.setSize('100%', 380);
 		var libs = {
