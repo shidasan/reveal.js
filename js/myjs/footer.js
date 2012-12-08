@@ -26,8 +26,8 @@ Footer.prototype = {
 function Footer_init() {
   var footer = new Footer();
   footer.init();
-  footer.setImg('dscript_logo.png', 128);
-  footer.setImg('deos_logo.gif', 128);
-  footer.setImg('ynu_logo.gif', 128);
-  footer.setImg('Zabbix_logo_original.png', 128);
+  //footer.setImg('dscript_logo.png', 128);
+  //footer.setImg('deos_logo.gif', 128);
+  //footer.setImg('ynu_logo.gif', 128);
+  //footer.setImg('Zabbix_logo_original.png', 128);
 }
