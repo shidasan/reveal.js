@@ -68,34 +68,33 @@
 				<section>
 				<div id="title">
 					<div id="script">
-						<h2>D-Script エディタ</h2>
-						<h3>運用者 ちぇんじぃの場合</h3>
+						<h2>Tiny Konoha エディタ</h2>
+						<h3>倒立振子制御</h3>
 					</div>
 				</div>
 				<div class="load" id="load_chenji" style="position:absolute; left: 50%; top: 50%"></div>
 				<form action="" method="POST">
 					<textarea class="editor" name="editor" id="chenji_editor">
-// script_chenji.ds
+K.import("konoha.float");
+K.import("konoha.array");
+K.import("konoha.nxt");
+K.import("konoha.while");
 
-import("dscript.shell");
-
-boolean KillHeavyProcess() {
-	String pid = getHeavyProcess();
-	kill -9 ${pid}
+void run() {
+	NXT.init();
+	whiile (true) {
+		NXT.balanceControl(0/*speed*/, 0/*angle*/);
+		NXT.waiSem();
+		NXT.updateStatus();
+	}
 }
 
-KillHeavyProcess();
+if (NXT.ecrobotIsRunning()) {
+	start();
+}
 				</textarea>
 					<div style="float: left;">
-						<select name="ip" id="ip_select">
-							<option value="192.168.59.151:8080">Node 1</option>
-							<option value="192.168.59.160:8080">Node 2</option>
-							<option value="127.0.0.1:8080">DSE Manager</option>
-						</select>
-						<select name="script" id="script_select">
-						</select>
 						<button type="button" id="exec" class="btn" style="margin-bottom: 10px">実行</button>
-						<button type="button" id="exec2" class="btn btn-primary" style="margin-bottom: 10px">実行（DEOSサポート有）</button>
 					</div>
 				</form>
 				</section>
