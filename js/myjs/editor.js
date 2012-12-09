@@ -23,7 +23,6 @@ function createEditor_chenji($dom) {
 					editor.setLineClass(editor.getCursor().line, null);
 				}
 			});
-    //editor.setSize('100%', 550);
 		var libs = {
 			setLineColor : function(line,count){
           console.log('linecoloer');
@@ -49,35 +48,14 @@ function createEditor_chenji($dom) {
 			}
 		};
 	$("#exec").click(function(){
-    Spinner_chenji_start();
+    //Spinner_chenji_start();
 		var data = {
-			'Method': 'SendDSE',
-      'Name': $('#script_select option:selected').val(),
-			'Script': editor.getValue(),
-			'Option': '',
-			'To': $('#ip_select option:selected').val(),
-			'From': '127.0.0.1:80',
-			'event': 'D-Task'
+			"Script": editor.getValue(),
 		};
 		$.ajax({
-			url:'cgi-bin/testSender.cgi',
+			url:'cgi-bin/execute.cgi',
 			type : 'POST',
 			data : data,
-			error:function(){$("#log1").text("error1"); },
-			//complete:function(data){
-			//		var json_data = JSON.parse(data.responseText);
-			//		if(data.To == "192.168.59.151:8080") {
-			//			json_data["server"] = "Node 1";
-			//		}else {
-			//			json_data["server"] = "DSE Manager";
-			//		}
-			//		$("#error_log").text("");
-			//		Matrix_faultType = [];
-			//		Matrix_animation_init();
-			//		libs.setLineClear();
-			//		log.getLog(data.responseText,0);
-			//},
-			dataType:'json'
 		});
 	});
 	return editor;

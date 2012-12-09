@@ -82,7 +82,7 @@ K.import("konoha.while");
 
 void run() {
 	NXT.init();
-	whiile (true) {
+	while (true) {
 		NXT.balanceControl(0/*speed*/, 0/*angle*/);
 		NXT.waiSem();
 		NXT.updateStatus();
@@ -90,7 +90,7 @@ void run() {
 }
 
 if (NXT.ecrobotIsRunning()) {
-	start();
+	run();
 }
 				</textarea>
 					<div style="float: left;">
