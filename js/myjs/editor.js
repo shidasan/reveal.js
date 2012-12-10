@@ -6,13 +6,15 @@
 var dscript_editors = [];
 
 function Editor_init() {
-  dscript_editors.push(createEditor_chenji($('#chenji_editor')));
+  dscript_editors.push(createEditor_chenji($('#chenji_editor'), "#exec"));
+  dscript_editors.push(createEditor_chenji($('#chenji_editor2'), "#exec2"));
+  dscript_editors.push(createEditor_chenji($('#chenji_editor3'), "#exec3"));
   dscript_editors.push(createEditor_deos($('#deos_editor')));
   dscript_editors.push(createEditor_deos2($('#deos_editor2')));
   Editor_refresh();
 }
 
-function createEditor_chenji($dom) {
+function createEditor_chenji($dom, exec) {
 		var editor = CodeMirror(function(elt) {
 			$dom.replaceWith(elt);
 			}, {
@@ -47,7 +49,7 @@ function createEditor_chenji($dom) {
 				}
 			}
 		};
-	$("#exec").click(function(){
+	$(exec).click(function(){
     //Spinner_chenji_start();
 		var data = {
 			"Script": editor.getValue(),

@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		
-		<title>ET2012 Demo</title>
+		<title>TRONSHOW 2013</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
@@ -45,25 +45,32 @@
 						<h2>横浜国立大学 倉光君郎研究室</h2>
 						<h2>概要</h2>
 					</div>
-					<ul id="tech_list">
-						<li><h3>Tiny Konoha: 組み込み向け超軽量スクリプト言語</h3></li>
-						<li><h3>Konoha 2 JS: 静的型付け言語KonohaからJavaScriptへのソースコード変換機</h3></li>
-						<!--<li><h3>JIT: 静的型付けスクリプト言語におけるJITコンパイラ</h3></li>-->
-					</ul>
-				</section>
-				<section>
-					<div id="title">
-						<h2>Tiny Konoha</h2>
-					</div>
 					<ul>
+						<li><h3>Tiny Konoha: 静的型付け言語Konohaの組み込み向け超軽量実装</h3></li>
 						<li><h3>メモリ64KBで動作する軽量スクリプト言語</h3></li>
 						<li><h3>スクリプト言語による組み込み機器制御を実現</h3></li>
+						<!--<li><h3>JIT: 静的型付けスクリプト言語におけるJITコンパイラ</h3></li>-->
 					</ul>
-					<div style="text-align: center">
-					<video src="./mov/inside_track.mov" width="640" height="480" controls="controls">
-						<p>Cannot open video file on your browser</p>
-					</video>
+					<div style="text-align: center; ">
+						<img src="./img/TRONSHOW.png" width="50%"></img>
 					</div>
+				</section>
+				<section>
+				<div id="title">
+					<div id="script">
+						<h2>Tiny Konoha エディタ</h2>
+						<h3>Hello world</h3>
+					</div>
+				</div>
+				<div class="load" id="load_chenji" style="position:absolute; left: 50%; top: 50%"></div>
+				<form action="" method="POST">
+					<textarea class="editor2" name="editor2" id="chenji_editor2">
+System.p("hello world");
+				</textarea>
+					<div style="float: left;">
+						<button type="button" id="exec2" class="btn" style="margin-bottom: 10px">実行</button>
+					</div>
+				</form>
 				</section>
 				<section>
 				<div id="title">
@@ -99,6 +106,71 @@ if (NXT.ecrobotIsRunning()) {
 				</form>
 				</section>
 				<section>
+				<div id="title">
+					<div id="script">
+						<h2>Tiny Konoha エディタ</h2>
+						<h3>走行体制御</h3>
+					</div>
+				</div>
+				<div class="load" id="load_chenji" style="position:absolute; left: 50%; top: 50%"></div>
+				<form action="" method="POST">
+					<textarea class="editor3" name="editor3" id="chenji_editor3">
+K.import("konoha.float");
+K.import("konoha.array");
+K.import("konoha.nxt");
+K.import("konoha.while");
+
+void run() {
+	NXT.init();
+	int i = 0;
+	while (true) {
+		if (i > 1000) {
+			NXT.balanceControl(0/*speed*/, 50/*angle*/);
+		} else {
+			NXT.balanceControl(0/*speed*/, -50/*angle*/);
+		}
+		i = (i + 1) % 2000;
+		NXT.waiSem();
+		NXT.updateStatus();
+	}
+}
+
+if (NXT.ecrobotIsRunning()) {
+	run();
+}
+				</textarea>
+					<div style="float: left;">
+						<button type="button" id="exec3" class="btn" style="margin-bottom: 10px">実行</button>
+					</div>
+				</form>
+				</section>
+				<section>
+					<div id="title">
+						<h2>光センサを用いたライントレース走行</h2>
+					</div>
+					<ul>
+						<!--<li><h3>JIT: 静的型付けスクリプト言語におけるJITコンパイラ</h3></li>-->
+					</ul>
+					<div style="text-align: center">
+					<video src="./mov/TRONSHOW_demo.m4v" width="640" height="480" controls="controls">
+						<p>Cannot open video file on your browser</p>
+					</video>
+					</div>
+				</section>
+				<section>
+					<div id="title">
+						<h2>競技会での走行</h2>
+					</div>
+					<ul>
+						<!--<li><h3>JIT: 静的型付けスクリプト言語におけるJITコンパイラ</h3></li>-->
+					</ul>
+					<div style="text-align: center">
+					<video src="./mov/inside_track.mov" width="640" height="480" controls="controls">
+						<p>Cannot open video file on your browser</p>
+					</video>
+					</div>
+				</section>
+				<section>
 					<div id="title">
 						<h2>Konoha 2 JS</h2>
 					</div>
@@ -112,6 +184,7 @@ if (NXT.ecrobotIsRunning()) {
 					</div>
 				</section>
 				</section>
+				<!--
 				<section>
 					<div id="title">
 						<h2>まとめ</h2>
@@ -120,6 +193,7 @@ if (NXT.ecrobotIsRunning()) {
 						<img src="./img/demo_overview2.png"></img>
 					</div>
 				</section>
+				-->
 			</div>
 		<footer id="footer-content"> </footer>
 		<script src="js/jquery-ui-1.8.13.custom.min.js" charset="utf-8"></script>
